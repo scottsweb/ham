@@ -1,0 +1,441 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Sycamore
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level)
+  elevation: 94
+  # Metric system
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret timezone
+  customize:
+    sensor.hallway_temperature:
+      friendly_name: 'Temp'
+    sensor.hallway_target:
+      friendly_name: 'Target'
+    sensor.hallway_humidity:
+      friendly_name: 'Humidity'
+    sensor.downstairs_co_status:
+      friendly_name: '⬇ CO2'
+      icon: mdi:gas-cylinder
+    sensor.downstairs_smoke_status:
+      friendly_name: '⬇ Smoke'
+      icon: mdi:fire
+    sensor.upstairs_co_status:
+      friendly_name: '⬆ CO2'
+      icon: mdi:gas-cylinder
+    sensor.upstairs_smoke_status:
+      friendly_name: '⬆ Smoke'
+      icon: mdi:fire
+    sensor.forecastio_temperature:
+      friendly_name: 'Outside Temp'
+    sensor.forecastio_humidity:
+      friendly_name: 'Outside Humidity'
+    sensor.speedtest_download:
+      friendly_name: 'Download'
+      icon: mdi:speedometer
+    sensor.speedtest_upload:
+      friendly_name: 'Upload'
+      icon: mdi:speedometer
+    sensor.speedtest_ping:
+      friendly_name: 'Ping'
+      icon: mdi:access-point-network
+    sensor.forecastio_summary:
+      friendly_name: 'Summary'
+      icon: mdi:weather-cloudy
+    sensor.forecastio_precip_intensity:
+      friendly_name: 'Precipitation Intensity (mm)'
+      icon: mdi:weather-pouring
+    climate.hallway:
+      icon: mdi:oil-temperature
+    media_player.goody:
+      friendly_name: 'TV Chromecast'
+      emulated_hue_name: 'Chromecast'
+    media_player.tv_kodi:
+      emulated_hue_name: 'Kodi'
+    media_player.tv:
+      friendly_name: 'TV'
+      emulated_hue_name: 'TV'
+    sensor.ip_address:
+      icon: mdi:account-network
+    sensor.cpu_use:
+      icon: mdi:chip
+    sensor.ram_use:
+      icon: mdi:chip
+    sensor.cpu_temperature:
+      icon: mdi:chip
+    binary_sensor.nodered:
+      friendly_name: 'Node-Red'
+      icon: mdi:nfc-tap
+    sensor.pihole:
+      friendly_name: 'Pi-hole Adverts Blocked'
+      icon: 'mdi:checkbox-blank-circle'
+    sensor.last_call:
+      icon: 'mdi:phone-classic'
+    group.pi:
+      emulated_hue: false
+    group.weather:
+      emulated_hue: false
+    group.internet:
+      emulated_hue: false
+    group.protect:
+      emulated_hue: false
+    light.back_door:
+      emulated_hue_name: 'Back Door Light'
+
+# Server Config
+http:
+  api_password: !secret api_password
+
+# Allows you to issue voice commands from the frontend
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# Discover some devices automatically
+discovery:
+
+# View all events in a logbook
+logbook:
+
+# Enables the frontend
+frontend:
+
+# Track the sun
+sun:
+
+# Checks for available updates
+updater:
+
+# Emulate Hue for Echo
+emulated_hue:
+
+# TV goody
+media_player tv:
+  platform: braviatv
+  host: 192.168.11.40
+  name: TV
+
+# Kodi on goody
+media_player kodi:
+  platform: kodi
+  host: !secret kodi_ip
+  port: 8080
+  name: TV Kodi
+  user: kodi
+  turn_off_action: shutdown
+
+# Media Center
+#media_player:
+ # platform: universal
+  #name: Lounge
+  #children:
+    #- media_player.goody
+    #- media_player.goody_kodi
+
+# Nest
+nest:
+  username: !secret nest_username
+  password: !secret nest_password
+
+climate:
+  platform: nest
+
+sensor:
+  platform: nest
+  monitored_conditions:
+    - 'temperature'
+    - 'target'
+    - 'humidity'
+    # - 'operation_mode'
+    # - weather_condition
+    # - weather_temperature
+    # - weather_humidity
+    # - wind_speed
+    # - wind_direction
+    - 'co_status'
+    - 'smoke_status'
+
+# zwave
+zwave:
+  usb_path: /zwaveusbstick
+
+# MQTT
+mqtt:
+  broker: !secret mqtt_ip
+  port: 1883
+  client_id: home-assistant
+
+# Pi - https://home-assistant.io/components/sensor.systemmonitor/
+sensor pi:
+  platform: systemmonitor
+  resources:
+    # - type: disk_use_percent
+    - type: memory_use_percent
+    - type: processor_use
+    - type: network_in
+      arg: eth0
+    - type: network_out
+      arg: eth0
+    # - type: since_last_boot
+
+# Binary Sensor (Node Red)
+#binary_sensor nodered:
+  #platform: command_line
+  #command: /bin/systemctl status node-red | grep "running" &> /dev/null && echo on || echo off
+  #name: Node-Red
+  #payload_on: "on"
+  #payload_off: "off"
+
+# IP
+sensor ip:
+  platform: rest
+  resource: https://api.ipify.org?format=json
+  value_template: '{{ value_json.ip }}'
+  method: GET
+  name: IP Address
+  #unit_of_measurement: "°C"
+
+# Processor Temp
+sensor processor_temp:
+  platform: command_line
+  name: CPU Temperature
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ ( value | multiply(0.001) ) | round(1) }}'
+
+sensor ncid:
+  platform: command_line
+  name: Last Call
+  command: "tail -n 1 /var/log/cidcall.log | grep -oP '(?<=NMBR\\*)[0-9]*+|(?<=NAME\\*)[A-Za-z\\s]*+'"
+
+# LIFX
+light:
+  platform: lifx
+
+# Weather
+sensor forecast:
+  platform: forecast
+  api_key: !secret forecast_key
+  monitored_conditions:
+    - summary
+    # - precip_type
+    - precip_intensity
+    - temperature
+    # - dew_point
+    # - wind_speed
+    # - wind_bearing
+    # - cloud_cover
+    - humidity
+    # - pressure
+    # - visibility
+    # - ozone
+
+# Speed Test
+sensor speedtest:
+  platform: speedtest
+  minute: 00
+  hour:
+    - 0
+    - 12
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+# Pi-hole
+sensor pihole:
+  platform: pi_hole
+  host: !secret pihole_ip
+
+# Device tracking
+device_tracker:
+  platform: asuswrt
+  host: !secret asus_ip
+  mode: router
+  protocol: ssh
+  username: !secret asus_username
+  password: !secret asus_password
+  track_new_devices: no
+  # home_interval: 5
+  # consider_home will be the number of seconds to wait till marking someone as not home after not being seen on scans.
+  # 900 seconds = 15 minutes
+  # consider_home: 300
+
+# IFTTT
+ifttt:
+  key: !secret ifttt_key
+
+# Zeroconf
+zeroconf:
+
+# Zones
+zone sycamore:
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  radius: 100
+  icon: mdi:home-map-marker
+
+# Groups
+group:
+  # Panels
+  Internet:
+    - sensor.speedtest_ping
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - sensor.ip_address
+    - sensor.pihole
+  Weather:
+    - sensor.forecastio_summary
+    - sensor.forecastio_precip_intensity
+    - sun.sun
+  Protect:
+    - sensor.downstairs_co_status
+    - sensor.downstairs_smoke_status
+    - sensor.upstairs_co_status
+    - sensor.upstairs_smoke_status
+  Pi:
+    - sensor.ram_use
+    - sensor.cpu_use
+    - sensor.cpu_temperature
+    - sensor.received_eth0
+    - sensor.sent_eth0
+    - sensor.since_last_boot
+    - binary_sensor.nodered
+  Lights:
+    - light.back_door
+  Calls:
+    - sensor.last_call
+  #Allotment:
+  # Views
+  default_view:
+    name: Sycamore
+    view: yes
+    icon: mdi:home
+    entities:
+      - device_tracker.gemma
+      - device_tracker.scott
+      - device_tracker.lund
+      - device_tracker.monk
+      - climate.hallway
+      - group.protect
+      - group.lights
+      - group.calls
+      - sensor.hallway_temperature
+      - sensor.hallway_target
+      - sensor.hallway_humidity
+  media:
+    name: Media
+    view: yes
+    icon: mdi:filmstrip
+    entities:
+      - configurator.tv
+      - media_player.tv
+      - media_player.tv_kodi
+      - media_player.goody
+  outdoors:
+    name: Outside
+    view: yes
+    icon: mdi:pine-tree
+    entities:
+      - group.allotment
+      - group.weather
+      - sun.sun
+      - sensor.forecastio_summary
+      - sensor.forecastio_temperature
+      - sensor.forecastio_humidity
+  settings:
+    name: Settings
+    view: yes
+    icon: mdi:settings
+    entities:
+      - group.internet
+      - group.pi
+
+# Other UIs
+panel_iframe:
+  kodi:
+    title: 'Kodi'
+    icon: 'mdi:library-music'
+    url: !secret kodi_ui_ip
+  homeboy:
+    title: 'Homeboy'
+    icon: 'mdi:camera-iris'
+    url: 'https://app.homeboy.com/'
+  nodered:
+    title: 'Node-Red'
+    icon: 'mdi:vector-polyline'
+    url: !secret node_red_ip
+  pihole:
+    title: 'Pi-hole'
+    icon: 'mdi:checkbox-blank-circle'
+    url: 'http://pihole.sycamore.lan/admin/'
+
+# Automations
+automation leave:
+  alias: Leave Sycamore
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    from: 'home'
+    to: 'not_home'
+  action:
+    - service: climate.set_away_mode
+      data:
+        away_mode: true
+    - service: ifttt.trigger
+      data:
+        event: 'arm_sycamore'
+    - service: mqtt.publish
+      data:
+        topic: sycamore/unicorn
+        payload: '{ "opcode": "10" }'
+
+automation arrive:
+  alias: Arrive at Sycamore
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    from: 'not_home'
+    to: 'home'
+  action:
+    - service: climate.set_away_mode
+      data:
+        away_mode: false
+    - service: ifttt.trigger
+      data:
+        event: 'disarm_sycamore'
+    - service: mqtt.publish
+      data:
+        topic: sycamore/unicorn
+        payload: '{ "opcode": "11" }'
+
+automation weatherautomation:
+  alias: Weather Summary Automation
+  trigger:
+    platform: time
+    minutes: '/15'
+    seconds: 0
+  action:
+    - service: mqtt.publish
+      data_template:
+        topic: sycamore/unicorn
+        payload: '{ "opcode": "1", "text": "{{ states.sensor.forecastio_summary.state }} {{ states.sensor.forecastio_temperature.state }}~degrsc" }'
+
+automation environmentautomation:
+  alias: Environment Summary Automation
+  trigger:
+    platform: state
+    entity_id: sensor.hallway_temperature
+  action:
+    - service: mqtt.publish
+      data_template:
+        topic: sycamore/unicorn
+        payload: '{ "opcode": "1", "text": "{{ states.sensor.hallway_temperature.state }}~degrsc" }'
+
+
+

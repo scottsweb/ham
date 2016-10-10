@@ -1,0 +1,19 @@
+{
+  "name": "sycamore-node-red",
+  "version": "0.0.1",
+  "description": "Sycamore Node-RED",
+  "main": "flows.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Scott Evans",
+  "license": "ISC",
+  "dependencies": {
+    "node-red-contrib-bean": "^0.5.2",
+    "node-red-contrib-kodi": "^0.2.7",
+    "node-red-contrib-moment": "^2.0.0",
+    "node-red-contrib-particle": "0.0.4",
+    "node-red-node-emoncms": "0.0.10",
+    "node-red-node-pushbullet": "0.0.9"
+  }
+}

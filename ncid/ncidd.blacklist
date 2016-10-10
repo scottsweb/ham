@@ -1,0 +1,112 @@
+# ncidd.hangup blacklist file
+
+# File last changed: Nov 17, 2015
+
+# This file contains the names or numbers of telephone calls to
+# be terminated automatically using the hangup option.
+
+###############################
+# Definitions and Line format #
+###############################
+
+# The number must be a string of digits as they appear in
+# /var/log/cidcall.log. A leading '1' is required if it is
+# in /var/log/cidcall.log.
+#
+# A partial name or number can match.
+#
+# There are three types of lines: blank, comment, and entry
+# Blank lines and comment lines are ignored.
+# Entry lines are processed.
+#
+# Entry lines contain one or more expressions and an
+# optional comment.  An expression is either a string of
+# non-blank characters or everything between double quotes.
+# Multiple expressions are separated by spaces.  A comment
+# must be last.
+#
+# Entry line comments are either normal comments or match name comments.
+#
+# A normal comment begins with a '#' and must not be immediately
+# followed by an equals sign. Anything after the '#' is ignored.
+#
+# A match name comment begins with '#=' and is followed by a name to
+# display for the caller when the entry matches either the number
+# or name of a call.  Do not use double quotes around the name.
+
+#########
+# NOTES #
+#########
+
+#    - Each expression is compared to the caller name and number.
+#    - If simple expressions are used (regex = 0 in ncidd.conf):
+#      * A '^' at the beginning an expression means it must match
+#        at the start of a name or number
+#      * A "^1?" at the beginning makes a leading 1 optional.
+#        This is only useful for US numbers.
+#      * Upper and lower case letters are significant.
+#      * A partial name or number can match.
+#    - If regular expressions are used (regex = 1 in ncidd.conf):
+#      * POSIX Extended Regular Expression syntax is used.
+#        https://en.wikipedia.org/wiki/Regular_expression
+#      * Introduction to Regular Expressions
+#        http://www.regular-expressions.info/quickstart.html
+#    - A leading '1' is required if it is in /var/log/cidcall.log
+#    - If an expression is longer than the name or number, it
+#      will never match.
+
+#    A hangup Name can be given in the comment field
+#    A "#=" indicates the comment field is a match name
+#    Do not use double quotes around the name
+#    Example:    407-555-5670    #= Unwanted Marketing Call
+
+#############
+#  EXAMPLES #
+#############
+
+#    Blacklist the entire 999 areacode (if no leading 1 needed): ^999
+#    Blacklist the entire 999 areacode (if leading 1 needed): ^1999
+#    Blacklist the entire 999 areacode (with/without leading 1): ^1?999
+#    Blacklist callers with the name "BAD MARKETING": "BAD MARKETING"
+#    Blacklist anything with "MARKETING" in the name: MARKETING
+#    Blacklist name and number on one line: Ogre 13215551212
+
+###################
+# DEFAULT ENTRIES #
+###################
+
+#   Compatible with either the simple expressions or regular expressions.
+
+#   999 - spoofing see http://wiki.answers.com/Q/Which_city_has_area_code_999
+
+^1?999    # unassigned and used for spoofing calls
+
+#   Expensive international calling area codes and 900 Pay-Per-Call
+#   https://www.fcc.gov/guides/900-pay-call-and-other-information-services
+#   https://www.fcc.gov/guides/one-ring-wireless-phone-scam
+#   http://www.forbes.com/sites/josephsteinberg/2014/02/01/dont-return-calls-from-these-area-codes-its-a-scam/
+
+^1?264    # Antiqua
+^1?268    # Antiqua
+^1?284    # British Virgin Islands
+^1?273    # Grenada
+^1?345    # Cayman Islands
+^1?441    # Bermuda
+^1?473    # Grenada, Carriacou and Petite Martinique
+^1?649    # Turks and Caicos Islands
+^1?664    # Montserrat
+^1?758    # St Lucia
+^1?767    # Dominica
+^1?784    # St. Vincent & Grenadines
+^1?876    # Jamica
+^1?809    # Dominican Republic
+^1?829    # Dominican Republic
+^1?849    # Dominican Republic
+^1?900    # Pay-Per-Call Service
+
+########################
+# Add Expressions here #
+########################
+
+WITHHELD
+No Caller ID

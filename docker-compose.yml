@@ -1,0 +1,67 @@
+# In Progress...
+version: 1
+services:
+    caddy:
+        image:
+        volumes:
+            - "one:one"
+        ports:
+            - "80:80"
+            - "443:443"
+        restart: always
+
+    homeassistant:
+        image:
+        volumes:
+            - "one:one"
+        ports:
+            - "80:80"
+            - "443:443"
+        restart: always
+
+    mqtt:
+        image:
+        volumes:
+            - "one:one"
+        ports:
+            - "80:80"
+            - "443:443"
+        restart: always
+
+    nodered:
+        image:
+        volumes:
+            - "one:one"
+        ports:
+            - "80:80"
+            - "443:443"
+        restart: always
+
+    unicorn:
+        image:
+        volumes:
+            - "one:one"
+        ports:
+            - "80:80"
+            - "443:443"
+        restart: always
+
+    # optional
+    ncid:
+        image:
+        volumes:
+            - "one:one"
+        ports:
+            - "80:80"
+            - "443:443"
+        restart: always
+
+    # optional
+    pihole:
+        image:
+        volumes:
+            - "one:one"
+        ports:
+            - "80:80"
+            - "443:443"
+        restart: always

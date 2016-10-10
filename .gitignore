@@ -1,0 +1,39 @@
+# caddy
+caddy/.caddy/
+caddy/Caddyfile
+caddy/sites/
+
+# homeassistant
+homeassistant/*.log
+homeassistant/*.db
+homeassistant/*.sqlite
+homeassistant/*.xml
+homeassistant/.HA_VERSION
+homeassistant/bravia.conf
+homeassistant/known_devices.yaml
+homeassistant/OZW_Log.txt
+homeassistant/secrets.yaml
+
+# mqtt
+mqtt/config/
+mqtt/data/
+mqtt/log/
+
+# ncid
+ncid/ncidd.whitelist
+
+# node-red
+node-red/node_modules/
+node-red/settings.js
+node-red/flows_cred.json
+node-red/.sessions.json
+node-red/.config.json
+node-red/.flows.json.backup
+node-red/.flows_cred.json.backup
+
+# pihole
+pihole/*.domains
+pihole/adlists.default
+pihole/gravity.list
+pihole/piholeIP
+pihole/setupVars.conf
