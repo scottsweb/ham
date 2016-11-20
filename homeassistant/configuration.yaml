@@ -29,9 +29,9 @@ homeassistant:
     sensor.upstairs_smoke_status:
       friendly_name: '⬆ Smoke'
       icon: mdi:fire
-    sensor.forecastio_temperature:
+    sensor.dark_sky_temperature:
       friendly_name: 'Outside Temp'
-    sensor.forecastio_humidity:
+    sensor.dark_sky_humidity:
       friendly_name: 'Outside Humidity'
     sensor.speedtest_download:
       friendly_name: 'Download'
@@ -42,10 +42,16 @@ homeassistant:
     sensor.speedtest_ping:
       friendly_name: 'Ping'
       icon: mdi:access-point-network
-    sensor.forecastio_summary:
+    sensor.emoncms104902_feedid_104902:
+      friendly_name: 'Meter'
+      icon: mdi:counter
+    sensor.emoncms104856_feedid_104856:
+      friendly_name: 'Watts'
+      icon: mdi:power-plug
+    sensor.dark_sky_summary:
       friendly_name: 'Summary'
       icon: mdi:weather-cloudy
-    sensor.forecastio_precip_intensity:
+    sensor.dark_sky_precip_intensity:
       friendly_name: 'Precipitation Intensity (mm)'
       icon: mdi:weather-pouring
     climate.hallway:
@@ -88,6 +94,11 @@ homeassistant:
 # Server Config
 http:
   api_password: !secret api_password
+  # server_host: sycamore.lan
+  # trusted_networks:
+    #- 127.0.0.1
+    #- ::1
+    #- 192.168.11.0/24
 
 # Allows you to issue voice commands from the frontend
 conversation:
@@ -216,10 +227,29 @@ sensor ncid:
 light:
   platform: lifx
 
+# Emoncms
+sensor emoncms:
+  - platform: emoncms
+    api_key: !secret emoncms_api_key
+    url: https://emoncms.org
+    scan_interval: 600
+    id: 104856
+    unit_of_measurement: 'W'
+    include_only_feed_id:
+      - 104856
+  - platform: emoncms
+    api_key: !secret emoncms_api_key
+    url: https://emoncms.org
+    id: 104902
+    scan_interval: 1200
+    include_only_feed_id:
+      - 104902
+    unit_of_measurement: 'kWh'
+
 # Weather
 sensor forecast:
-  platform: forecast
-  api_key: !secret forecast_key
+  platform: darksky
+  api_key: !secret darksky_key
   monitored_conditions:
     - summary
     # - precip_type
@@ -290,8 +320,8 @@ group:
     - sensor.ip_address
     - sensor.pihole
   Weather:
-    - sensor.forecastio_summary
-    - sensor.forecastio_precip_intensity
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_precip_intensity
     - sun.sun
   Protect:
     - sensor.downstairs_co_status
@@ -310,6 +340,9 @@ group:
     - light.back_door
   Calls:
     - sensor.last_call
+  Energy:
+    - sensor.emoncms104856_feedid_104856
+    - sensor.emoncms104902_feedid_104902
   #Allotment:
   # Views
   default_view:
@@ -325,6 +358,7 @@ group:
       - group.protect
       - group.lights
       - group.calls
+      - group.energy
       - sensor.hallway_temperature
       - sensor.hallway_target
       - sensor.hallway_humidity
@@ -345,9 +379,9 @@ group:
       - group.allotment
       - group.weather
       - sun.sun
-      - sensor.forecastio_summary
-      - sensor.forecastio_temperature
-      - sensor.forecastio_humidity
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_humidity
   settings:
     name: Settings
     view: yes
@@ -366,6 +400,10 @@ panel_iframe:
     title: 'Homeboy'
     icon: 'mdi:camera-iris'
     url: 'https://app.homeboy.com/'
+  emoncms:
+    title: 'Emoncms'
+    icon: 'mdi:counter'
+    url: 'https://emoncms.org/app?readkey=b5dcc028dd57fe65c9824b5fc8f3e0f0#myelectric'
   nodered:
     title: 'Node-Red'
     icon: 'mdi:vector-polyline'
@@ -424,7 +462,7 @@ automation weatherautomation:
     - service: mqtt.publish
       data_template:
         topic: sycamore/unicorn
-        payload: '{ "opcode": "1", "text": "{{ states.sensor.forecastio_summary.state }} {{ states.sensor.forecastio_temperature.state }}~degrsc" }'
+        payload: '{ "opcode": "1", "text": "{{ states.sensor.dark_sky_summary.state }} {{ states.sensor.dark_sky_temperature.state }}~degrsc" }'
 
 automation environmentautomation:
   alias: Environment Summary Automation
