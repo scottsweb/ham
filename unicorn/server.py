@@ -213,6 +213,119 @@ def house(r,g,b):
 	UH.off()
 	working = False
 
+def stop(r,g,b):
+	UH.off()
+	UH.rotation(180)
+	UH.brightness(0.5)
+	global working
+	working = True
+	UH.set_pixel(1,1,r,g,b)
+	UH.set_pixel(2,1,r,g,b)
+	UH.set_pixel(3,1,r,g,b)
+	UH.set_pixel(4,1,r,g,b)
+	UH.set_pixel(5,1,r,g,b)
+	UH.set_pixel(6,1,r,g,b)
+	UH.set_pixel(1,2,r,g,b)
+	UH.set_pixel(2,2,r,g,b)
+	UH.set_pixel(3,2,r,g,b)
+	UH.set_pixel(4,2,r,g,b)
+	UH.set_pixel(5,2,r,g,b)
+	UH.set_pixel(6,2,r,g,b)
+	UH.set_pixel(1,3,r,g,b)
+	UH.set_pixel(2,3,r,g,b)
+	UH.set_pixel(3,3,r,g,b)
+	UH.set_pixel(4,3,r,g,b)
+	UH.set_pixel(5,3,r,g,b)
+	UH.set_pixel(6,3,r,g,b)
+	UH.set_pixel(1,4,r,g,b)
+	UH.set_pixel(2,4,r,g,b)
+	UH.set_pixel(3,4,r,g,b)
+	UH.set_pixel(4,4,r,g,b)
+	UH.set_pixel(5,4,r,g,b)
+	UH.set_pixel(6,4,r,g,b)
+	UH.set_pixel(1,5,r,g,b)
+	UH.set_pixel(2,5,r,g,b)
+	UH.set_pixel(3,5,r,g,b)
+	UH.set_pixel(4,5,r,g,b)
+	UH.set_pixel(5,5,r,g,b)
+	UH.set_pixel(6,5,r,g,b)
+	UH.set_pixel(1,6,r,g,b)
+	UH.set_pixel(2,6,r,g,b)
+	UH.set_pixel(3,6,r,g,b)
+	UH.set_pixel(4,6,r,g,b)
+	UH.set_pixel(5,6,r,g,b)
+	UH.set_pixel(6,6,r,g,b)
+	UH.show()
+	time.sleep(2)
+	UH.off()
+	working = False
+
+def play(r,g,b):
+	UH.off()
+	UH.rotation(180)
+	UH.brightness(0.5)
+	global working
+	working = True
+	UH.set_pixel(2,0,r,g,b)
+	UH.set_pixel(2,1,r,g,b)
+	UH.set_pixel(2,2,r,g,b)
+	UH.set_pixel(2,3,r,g,b)
+	UH.set_pixel(2,4,r,g,b)
+	UH.set_pixel(2,5,r,g,b)
+	UH.set_pixel(2,6,r,g,b)
+	UH.set_pixel(2,7,r,g,b)
+	UH.set_pixel(3,1,r,g,b)
+	UH.set_pixel(3,2,r,g,b)
+	UH.set_pixel(3,3,r,g,b)
+	UH.set_pixel(3,4,r,g,b)
+	UH.set_pixel(3,5,r,g,b)
+	UH.set_pixel(3,6,r,g,b)
+	UH.set_pixel(4,2,r,g,b)
+	UH.set_pixel(4,3,r,g,b)
+	UH.set_pixel(4,4,r,g,b)
+	UH.set_pixel(4,5,r,g,b)
+	UH.set_pixel(5,3,r,g,b)
+	UH.set_pixel(5,4,r,g,b)
+	UH.show()
+	time.sleep(2)
+	UH.off()
+	working = False
+
+def pause(r,g,b):
+	UH.off()
+	UH.rotation(180)
+	UH.brightness(0.5)
+	global working
+	working = True
+	UH.set_pixel(1,1,r,g,b)
+	UH.set_pixel(1,2,r,g,b)
+	UH.set_pixel(1,3,r,g,b)
+	UH.set_pixel(1,4,r,g,b)
+	UH.set_pixel(1,5,r,g,b)
+	UH.set_pixel(1,6,r,g,b)
+	UH.set_pixel(2,1,r,g,b)
+	UH.set_pixel(2,2,r,g,b)
+	UH.set_pixel(2,3,r,g,b)
+	UH.set_pixel(2,4,r,g,b)
+	UH.set_pixel(2,5,r,g,b)
+	UH.set_pixel(2,6,r,g,b)
+	UH.set_pixel(5,1,r,g,b)
+	UH.set_pixel(5,2,r,g,b)
+	UH.set_pixel(5,3,r,g,b)
+	UH.set_pixel(5,4,r,g,b)
+	UH.set_pixel(5,5,r,g,b)
+	UH.set_pixel(5,6,r,g,b)
+	UH.set_pixel(6,1,r,g,b)
+	UH.set_pixel(6,2,r,g,b)
+	UH.set_pixel(6,3,r,g,b)
+	UH.set_pixel(6,4,r,g,b)
+	UH.set_pixel(6,5,r,g,b)
+	UH.set_pixel(6,6,r,g,b)
+	UH.show()
+	time.sleep(2)
+	UH.off()
+	working = False
+
 def battery(r,g,b):
 	UH.off()
 	UH.rotation(180)
@@ -244,53 +357,66 @@ def battery(r,g,b):
 
 # Handle command
 def handleRequest(req):
-	print ("OpCode: " + req['opcode'])
-	if (req['opcode'] == '0'):
-		UH.off()
-	elif (req['opcode'] == '1'):
-		if (req['text'] != ''):
-			unicorn_scroll(req['text'],'white',150,0.15)
-			UH.off()
-	elif (req['opcode'] == '2'):
-		uh_setFullColour(255,0,0)
-	elif (req['opcode'] == '3'):
-		uh_setFullColour(255,153,0)
-	elif (req['opcode'] == '4'):
-		uh_setFullColour(0,255,0)
-	elif (req['opcode'] == '5'):
-		light(255,255,0)
-	elif (req['opcode'] == '6'):
-		light(255,255,255)
-	elif (req['opcode'] == '7'):
-		rain()
-	elif (req['opcode'] == '8'):
-		back(255,0,0)
-	elif (req['opcode'] == '9'):
-		front(255,0,0)
-	elif (req['opcode'] == '10'):
-		house(255,0,0)
-	elif (req['opcode'] == '11'):
-		house(0,255,0)
-	elif (req['opcode'] == '12'):
-		battery(255,0,0)
-	elif (req['opcode'] == '13'):
-		battery(0,255,0)
-	elif (req['opcode'] == '14'):
-		battery(255,255,0)
-	elif (req['opcode'] == '40'):
+
+	# new handler
+	if ( 'icon' in req and 'r' in req and 'g' in req and 'b' in req ):
+		iconName = req['icon']
 		try:
-			thread.start_new_thread(uh_pulse, ())
+			icon = globals()[ iconName ]
+			if callable( icon ):
+				icon( req['r'], req['g'], req['b'] )
 		except:
-			print "Error: unable to start thread"
-	elif (req['opcode'] == '41'):
-		global contWorking
-		contWorking = False
-	elif (req['opcode'] == '50'):
-		uh_f1start()
-	elif (req['opcode'] == '99'):
-		UH.off()
-		print ("Exit request received")
-		sys.exit(0)
+			print iconName + ' not defined'
+
+	if 'opcode' in req:
+		print ("OpCode: " + req['opcode'])
+
+		if (req['opcode'] == '0'):
+			UH.off()
+		elif (req['opcode'] == '1'):
+			if (req['text'] != ''):
+				unicorn_scroll(req['text'],'white',150,0.15)
+				UH.off()
+		elif (req['opcode'] == '2'):
+			uh_setFullColour(255,0,0)
+		elif (req['opcode'] == '3'):
+			uh_setFullColour(255,153,0)
+		elif (req['opcode'] == '4'):
+			uh_setFullColour(0,255,0)
+		elif (req['opcode'] == '5'):
+			light(255,255,0)
+		elif (req['opcode'] == '6'):
+			light(255,255,255)
+		elif (req['opcode'] == '7'):
+			rain()
+		elif (req['opcode'] == '8'):
+			back(255,0,0)
+		elif (req['opcode'] == '9'):
+			front(255,0,0)
+		elif (req['opcode'] == '10'):
+			house(255,0,0)
+		elif (req['opcode'] == '11'):
+			house(0,255,0)
+		elif (req['opcode'] == '12'):
+			battery(255,0,0)
+		elif (req['opcode'] == '13'):
+			battery(0,255,0)
+		elif (req['opcode'] == '14'):
+			battery(255,255,0)
+		elif (req['opcode'] == '40'):
+			try:
+				thread.start_new_thread(uh_pulse, ())
+			except:
+				print "Error: unable to start thread"
+		elif (req['opcode'] == '41'):
+			global contWorking
+			contWorking = False
+		elif (req['opcode'] == '50'):
+			uh_f1start()
+		elif (req['opcode'] == '99'):
+			UH.off()
+			print ("Exit request received")
+			sys.exit(0)
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
