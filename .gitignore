@@ -37,3 +37,4 @@ pihole/adlists.default
 pihole/gravity.list
 pihole/piholeIP
 pihole/setupVars.conf
+pihole/list.preEventHorizon
