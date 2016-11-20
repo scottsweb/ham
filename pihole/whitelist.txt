@@ -5,3 +5,6 @@ zeustracker.abuse.ch
 s3.amazonaws.com
 hosts-file.net
 ransomwaretracker.abuse.ch
+mailchimp.com
+pixel.wp.com
+stats.wp.com
