@@ -2,66 +2,106 @@
 version: 1
 services:
     caddy:
-        image:
+        build: /caddy/.
         volumes:
-            - "one:one"
+            - "/media/data/caddy/Caddyfile:/etc/Caddyfile"
+            - "/media/data/caddy/.caddy:/root/.caddy"
+            - "/media/data/caddy/sites/:/srv"
         ports:
             - "80:80"
             - "443:443"
         restart: always
+        container_name: caddy
 
     homeassistant:
-        image:
+        build: /homeassistant/.
         volumes:
-            - "one:one"
-        ports:
-            - "80:80"
-            - "443:443"
+            - "/media/data/homeassistant/:/config"
+            - "/etc/localtime:/etc/localtime:ro"
+            - "/var/log/cidcall.log:/var/log/cidcall.log"
+        devices:
+            - "/dev/ttyACM0:/zwaveusbstick:rwm"
+        network_mode: "host"
         restart: always
+        container_name: homeassistant
 
     mqtt:
-        image:
+        image: pascaldevink/rpi-mosquitto
         volumes:
-            - "one:one"
+            - "/media/data/mqtt/config:/mqtt/config:ro"
+            - "/media/data/mqtt/log:/mqtt/log"
+            - "/media/data/mqtt/data/:/mqtt/data/"
         ports:
-            - "80:80"
-            - "443:443"
+            - "1883:1883"
+            - "9001:9001"
         restart: always
+        container_name: mqtt
 
     nodered:
-        image:
+        build: /node-red/.
         volumes:
-            - "one:one"
+            - "/media/data/node-red/:/data/"
         ports:
-            - "80:80"
-            - "443:443"
+            - "1880:1880"
+        environment:
+            - FLOWS=flows.json
+        network_mode: "host"
         restart: always
+        container_name: nodered
 
     unicorn:
-        image:
+        build: /unicorn/.
         volumes:
-            - "one:one"
-        ports:
-            - "80:80"
-            - "443:443"
+            - "/media/data/unicorn/:/data/"
+        devices:
+            - "/dev/ttyAMA0:/dev/ttyAMA0"
+            - "/dev/mem:/dev/mem"
+        command: python server.py
+        privileged: true
         restart: always
+        container_name: unicorn
+
+    watchtower:
+        image: armhfbuild/watchtower
+        volumes:
+            - "/var/run/docker.sock:/var/run/docker.sock"
+        command: --interval 1800 --cleanup mqtt pihole watchtower
+        restart: always
+        container_name: watchtower
 
     # optional
     ncid:
-        image:
+        build: /ncid/.
         volumes:
-            - "one:one"
+            - "/var/log/ncidd.log:/var/log/ncidd.log"
+            - "/var/log/cidcall.log:/var/log/cidcall.log"
+            - "/media/data/ncid/:/etc/ncid/"
+        devices:
+            - "/dev/ttyACM1:/dev/ttyACM0"
         ports:
-            - "80:80"
-            - "443:443"
+            - "3333:3333"
         restart: always
+        container_name: ncid
 
     # optional
     pihole:
-        image:
+        image: diginc/pi-hole:arm
         volumes:
-            - "one:one"
+            - "/var/log/pihole.log:/var/log/pihole.log"
+            - "/media/data/pihole/:/etc/pihole/"
         ports:
-            - "80:80"
-            - "443:443"
+            - "53:53/tcp"
+            - "53:53/udp"
+            - "8053:80"
+        cap_add:
+            - NET_ADMIN
+        environment:
+            - ServerIP="192.168.11.2"a
+            - VIRTUAL_HOST="pihole.sycamore.lan"
+            - DNS1="5.9.49.12"
+            - DNS2="87.98.175.85"
+        extra_hosts:
+            - "sycamore sycamore.lan:192.168.11.2"
+            - "pihole pihole.sycamore.lan:192.168.11.2"
         restart: always
+        container_name: pihole
