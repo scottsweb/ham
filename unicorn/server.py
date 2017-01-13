@@ -355,6 +355,40 @@ def battery(r,g,b):
 	UH.off()
 	working = False
 
+def iss(r,g,b):
+	UH.off()
+	UH.rotation(180)
+	UH.brightness(0.5)
+	global working
+	working = True
+	UH.set_pixel(4,0,r,g,b)
+	UH.set_pixel(4,1,r,g,b)
+	UH.set_pixel(3,2,r,g,b)
+	UH.set_pixel(4,2,r,g,b)
+	UH.set_pixel(5,2,r,g,b)
+	UH.set_pixel(3,3,r,g,b)
+	UH.set_pixel(5,3,r,g,b)
+	UH.set_pixel(3,4,r,g,b)
+	UH.set_pixel(4,4,r,g,b)
+	UH.set_pixel(5,4,r,g,b)
+	UH.set_pixel(2,5,r,g,b)
+	UH.set_pixel(3,5,r,g,b)
+	UH.set_pixel(4,5,r,g,b)
+	UH.set_pixel(5,5,r,g,b)
+	UH.set_pixel(6,5,r,g,b)
+	UH.set_pixel(2,6,r,g,b)
+	UH.set_pixel(3,6,210,210,35)
+	UH.set_pixel(4,6,240,130,10)
+	UH.set_pixel(5,6,210,210,35)
+	UH.set_pixel(6,6,r,g,b)
+	UH.set_pixel(3,7,210,210,35)
+	UH.set_pixel(4,7,210,210,35)
+	UH.set_pixel(5,7,210,210,35)
+	UH.show()
+	time.sleep(2)
+	UH.off()
+	working = False
+
 # Handle command
 def handleRequest(req):
 
@@ -443,4 +477,3 @@ client.connect("192.168.11.2", 1883, 60)
 # Other loop*() functions are available that give a threaded interface and a
 # manual interface.
 client.loop_forever()
-
