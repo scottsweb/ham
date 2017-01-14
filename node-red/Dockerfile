@@ -17,6 +17,14 @@ RUN usermod -a -G bluetooth node-red && \
 
 USER node-red
 
-RUN npm install --quiet noble node-red-contrib-bean
+RUN npm install --quiet \
+	noble \
+	node-red-contrib-bean \
+	node-red-contrib-bean \
+	node-red-contrib-kodi \
+	node-red-contrib-moment \
+	node-red-contrib-particle \
+	node-red-node-emoncms \
+	node-red-node-pushbullet
 
 EXPOSE 1880
