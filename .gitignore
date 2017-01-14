@@ -4,6 +4,8 @@ caddy/Caddyfile
 caddy/sites/
 
 # homeassistant
+homeassistant/deps/*
+homeassistant/.uuid
 homeassistant/*.log
 homeassistant/*.db
 homeassistant/*.sqlite
