@@ -19,6 +19,7 @@ services:
             - "/media/ham/homeassistant/:/config"
             - "/etc/localtime:/etc/localtime:ro"
             - "/var/log/cidcall.log:/var/log/cidcall.log"
+            - "/home/pilot/hassdeps:/config/deps"
         devices:
             - "/dev/ttyACM0:/zwaveusbstick:rwm"
         network_mode: "host"
