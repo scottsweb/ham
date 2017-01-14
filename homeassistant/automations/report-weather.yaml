@@ -1,0 +1,10 @@
+alias: Weather Summary Automation
+trigger:
+  platform: time
+  minutes: '/15'
+  seconds: 0
+action:
+  - service: mqtt.publish
+    data_template:
+      topic: sycamore/unicorn
+      payload: '{ "opcode": "1", "text": "{{ states.sensor.dark_sky_summary.state }} {{ states.sensor.dark_sky_temperature.state }}~degrsc" }'

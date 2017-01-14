@@ -1,0 +1,20 @@
+kodi:
+  title: 'Kodi'
+  icon: 'mdi:library-music'
+  url: !secret kodi_ui_ip
+homeboy:
+  title: 'Homeboy'
+  icon: 'mdi:camera-iris'
+  url: 'https://app.homeboy.com/'
+emoncms:
+  title: 'Emoncms'
+  icon: 'mdi:counter'
+  url: !secret emoncms_url
+nodered:
+  title: 'Node-RED'
+  icon: 'mdi:vector-polyline'
+  url: !secret node_red_ip
+pihole:
+  title: 'Pi-hole'
+  icon: 'mdi:checkbox-blank-circle'
+  url: 'http://pihole.sycamore.lan/admin/'

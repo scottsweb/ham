@@ -1,0 +1,79 @@
+sensor.hallway_temperature:
+  friendly_name: 'Temp'
+sensor.hallway_target:
+  friendly_name: 'Target'
+sensor.hallway_humidity:
+  friendly_name: 'Humidity'
+sensor.downstairs_co_status:
+  friendly_name: '⬇ CO2'
+  icon: mdi:gas-cylinder
+sensor.downstairs_smoke_status:
+  friendly_name: '⬇ Smoke'
+  icon: mdi:fire
+sensor.upstairs_co_status:
+  friendly_name: '⬆ CO2'
+  icon: mdi:gas-cylinder
+sensor.upstairs_smoke_status:
+  friendly_name: '⬆ Smoke'
+  icon: mdi:fire
+sensor.dark_sky_temperature:
+  friendly_name: 'Outside Temp'
+sensor.dark_sky_humidity:
+  friendly_name: 'Outside Humidity'
+sensor.speedtest_download:
+  friendly_name: 'Download'
+  icon: mdi:speedometer
+sensor.speedtest_upload:
+  friendly_name: 'Upload'
+  icon: mdi:speedometer
+sensor.speedtest_ping:
+  friendly_name: 'Ping'
+  icon: mdi:access-point-network
+sensor.emoncms104902_feedid_104902:
+  friendly_name: 'Meter'
+  icon: mdi:counter
+sensor.emoncms104856_feedid_104856:
+  friendly_name: 'Watts'
+  icon: mdi:power-plug
+sensor.dark_sky_summary:
+  friendly_name: 'Summary'
+  icon: mdi:weather-cloudy
+sensor.dark_sky_precip_intensity:
+  friendly_name: 'Precipitation Intensity (mm)'
+  icon: mdi:weather-pouring
+climate.hallway:
+  icon: mdi:oil-temperature
+media_player.goody:
+  friendly_name: 'TV Chromecast'
+  emulated_hue_name: 'Chromecast'
+media_player.tv_kodi:
+  emulated_hue_name: 'Kodi'
+media_player.tv:
+  friendly_name: 'TV'
+  emulated_hue_name: 'TV'
+sensor.ip_address:
+  icon: mdi:account-network
+sensor.cpu_use:
+  icon: mdi:chip
+sensor.ram_use:
+  icon: mdi:chip
+sensor.cpu_temperature:
+  icon: mdi:chip
+binary_sensor.nodered:
+  friendly_name: 'Node-Red'
+  icon: mdi:nfc-tap
+sensor.pihole:
+  friendly_name: 'Pi-hole Adverts Blocked'
+  icon: 'mdi:checkbox-blank-circle'
+sensor.last_call:
+  icon: 'mdi:phone-classic'
+group.pi:
+  emulated_hue: false
+group.weather:
+  emulated_hue: false
+group.internet:
+  emulated_hue: false
+group.protect:
+  emulated_hue: false
+light.back_door:
+  emulated_hue_name: 'Back Door Light'

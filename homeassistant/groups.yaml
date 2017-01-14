@@ -1,0 +1,78 @@
+# Panels
+Internet:
+  - sensor.speedtest_ping
+  - sensor.speedtest_download
+  - sensor.speedtest_upload
+  - sensor.ip_address
+  - sensor.pihole
+Weather:
+  - sensor.dark_sky_summary
+  - sensor.dark_sky_precip_intensity
+  - sun.sun
+Protect:
+  - sensor.downstairs_co_status
+  - sensor.downstairs_smoke_status
+  - sensor.upstairs_co_status
+  - sensor.upstairs_smoke_status
+Pi:
+  - sensor.ram_use
+  - sensor.cpu_use
+  - sensor.cpu_temperature
+  - sensor.received_eth0
+  - sensor.sent_eth0
+  - sensor.since_last_boot
+  - binary_sensor.nodered
+Lights:
+  - light.back_door
+Calls:
+  - sensor.last_call
+Energy:
+  - sensor.emoncms104856_feedid_104856
+  - sensor.emoncms104902_feedid_104902
+#Allotment:
+
+# Views
+default_view:
+  name: DEFAULT
+  view: yes
+  icon: mdi:home
+  entities:
+    - device_tracker.gemma
+    - device_tracker.scott
+    - device_tracker.lund
+    - device_tracker.monk
+    - climate.hallway
+    - group.protect
+    - group.lights
+    - group.calls
+    - group.energy
+    - sensor.hallway_temperature
+    - sensor.hallway_target
+    - sensor.hallway_humidity
+media:
+  name: Media
+  view: yes
+  icon: mdi:filmstrip
+  entities:
+    - configurator.tv
+    - media_player.tv
+    - media_player.tv_kodi
+    - media_player.goody
+outdoors:
+  name: Outside
+  view: yes
+  icon: mdi:pine-tree
+  entities:
+    - group.allotment
+    - group.weather
+    - sun.sun
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_humidity
+settings:
+  name: Settings
+  view: yes
+  icon: mdi:settings
+  entities:
+    - group.internet
+    - group.pi

@@ -1,0 +1,17 @@
+alias: Leave Sycamore
+trigger:
+  platform: state
+  entity_id: group.all_devices
+  from: 'home'
+  to: 'not_home'
+action:
+  - service: climate.set_away_mode
+    data:
+      away_mode: true
+  - service: ifttt.trigger
+    data:
+      event: 'arm_sycamore'
+  - service: mqtt.publish
+    data:
+      topic: sycamore/unicorn
+      payload: '{ "opcode": "10" }'

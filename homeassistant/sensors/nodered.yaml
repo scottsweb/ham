@@ -1,0 +1,5 @@
+#platform: command_line
+#command: /bin/systemctl status node-red | grep "running" &> /dev/null && echo on || echo off
+#name: Node-Red
+#payload_on: "on"
+#payload_off: "off"
