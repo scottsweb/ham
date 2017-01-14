@@ -25,9 +25,15 @@ history:
     domains:
       - group
       - automation
-    # entities:
-      # - sensor.last_boot
-      # - sensor.date
+    entities:
+      - binary_sensor.hallway_thermostat_is_using_emergency_heat
+      - binary_sensor.hallway_thermostat_is_locked
+      - binary_sensor.upstairs_nest_protect_online
+      - binary_sensor.downstairs_nest_protect_online
+      - binary_sensor.hallway_thermostat_fan
+      - sensor.hallway_thermostat_hvac_state
+      - binary_sensor.hallway_thermostat_has_leaf
+      - binary_sensor.hallway_thermostat_online
 
 # Recorder
 recorder:
