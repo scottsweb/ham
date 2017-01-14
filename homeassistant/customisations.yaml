@@ -1,21 +1,29 @@
-sensor.hallway_temperature:
+sensor.hallway_thermostat_temperature:
   friendly_name: 'Temp'
-sensor.hallway_target:
+sensor.hallway_thermostat_target:
   friendly_name: 'Target'
-sensor.hallway_humidity:
+sensor.hallway_thermostat_humidity:
   friendly_name: 'Humidity'
-sensor.downstairs_co_status:
+hallway_thermostat_operation_mode:
+  friendly_name: 'Mode'
+sensor.downstairs_nest_protect_co_status:
   friendly_name: '⬇ CO2'
   icon: mdi:gas-cylinder
-sensor.downstairs_smoke_status:
+sensor.downstairs_nest_protect_smoke_status:
   friendly_name: '⬇ Smoke'
   icon: mdi:fire
-sensor.upstairs_co_status:
+sensor.downstairs_nest_protect_battery_health:
+  friendly_name: '⬇ Battery'
+  icon: mdi:battery-charging-40
+sensor.upstairs_nest_protect_co_status:
   friendly_name: '⬆ CO2'
   icon: mdi:gas-cylinder
-sensor.upstairs_smoke_status:
+sensor.upstairs_nest_protect_smoke_status:
   friendly_name: '⬆ Smoke'
   icon: mdi:fire
+sensor.upstairs_nest_protect_battery_health:
+  friendly_name: '⬆ Battery'
+  icon: mdi:battery-charging-40
 sensor.dark_sky_temperature:
   friendly_name: 'Outside Temp'
 sensor.dark_sky_humidity:

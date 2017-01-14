@@ -10,10 +10,12 @@ Weather:
   - sensor.dark_sky_precip_intensity
   - sun.sun
 Protect:
-  - sensor.downstairs_co_status
-  - sensor.downstairs_smoke_status
-  - sensor.upstairs_co_status
-  - sensor.upstairs_smoke_status
+  - sensor.downstairs_nest_protect_battery_health
+  - sensor.downstairs_nest_protect_co_status
+  - sensor.downstairs_nest_protect_smoke_status
+  - sensor.upstairs_nest_protect_battery_health
+  - sensor.upstairs_nest_protect_co_status
+  - sensor.upstairs_nest_protect_smoke_status
 Pi:
   - sensor.ram_use
   - sensor.cpu_use
@@ -39,16 +41,15 @@ default_view:
   entities:
     - device_tracker.gemma
     - device_tracker.scott
-    - device_tracker.lund
-    - device_tracker.monk
     - climate.hallway
     - group.protect
     - group.lights
     - group.calls
     - group.energy
-    - sensor.hallway_temperature
-    - sensor.hallway_target
-    - sensor.hallway_humidity
+    - sensor.hallway_thermostat_temperature
+    - sensor.hallway_thermostat_target
+    - sensor.hallway_thermostat_humidity
+    - sensor.hallway_thermostat_operation_mode
 media:
   name: Media
   view: yes
