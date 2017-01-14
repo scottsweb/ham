@@ -1,0 +1,10 @@
+alias: Kodi Stop
+trigger:
+  platform: state
+  entity_id: media_player.tv_kodi
+  to: 'idle'
+action:
+  - service: mqtt.publish
+    data:
+      topic: sycamore/unicorn
+      payload: '{ "icon": "stop", "r":255, "g":0, "b":0 }'
