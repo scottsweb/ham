@@ -4,7 +4,7 @@ sensor.hallway_thermostat_target:
   friendly_name: 'Target'
 sensor.hallway_thermostat_humidity:
   friendly_name: 'Humidity'
-hallway_thermostat_operation_mode:
+sensor.hallway_thermostat_operation_mode:
   friendly_name: 'Mode'
 sensor.downstairs_nest_protect_co_status:
   friendly_name: '⬇ CO2'
