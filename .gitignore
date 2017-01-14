@@ -15,6 +15,7 @@ homeassistant/bravia.conf
 homeassistant/known_devices.yaml
 homeassistant/OZW_Log.txt
 homeassistant/secrets.yaml
+homeassistant/nest.conf
 
 # mqtt
 mqtt/config/
