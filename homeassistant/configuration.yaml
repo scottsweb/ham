@@ -34,6 +34,7 @@ history:
       - sensor.hallway_thermostat_hvac_state
       - binary_sensor.hallway_thermostat_has_leaf
       - binary_sensor.hallway_thermostat_online
+      - sensor.pihole
 
 # Recorder
 recorder:
