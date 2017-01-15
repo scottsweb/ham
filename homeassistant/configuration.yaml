@@ -45,6 +45,10 @@ discovery:
 
 # View all events in a logbook
 logbook:
+  exclude:
+    entities:
+      - automation.nest_summary_automation
+      - automation.weather_summary_automation
 
 # Enables the frontend
 frontend:
