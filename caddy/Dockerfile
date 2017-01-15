@@ -1,7 +1,7 @@
 FROM resin/rpi-raspbian:jessie
 MAINTAINER Scott Evans <docker@scott.ee>
 
-LABEL caddy_version="0.9.3" architecture="ARMv7"
+LABEL caddy_version="0.9.4" architecture="ARMv7"
 
 ARG plugins=git,ipfilter,ratelimit,cloudflare,digitalocean
 
