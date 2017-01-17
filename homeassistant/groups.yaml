@@ -22,6 +22,8 @@ Pi:
   - sensor.cpu_temperature
   - sensor.received_eth0
   - sensor.sent_eth0
+  - sensor.received_eth1
+  - sensor.sent_eth1
   - sensor.since_last_boot
   - binary_sensor.nodered
 Lights:
