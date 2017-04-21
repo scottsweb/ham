@@ -89,6 +89,15 @@ nest:
 climate:
   platform: nest
 
+# Digital Ocean
+digital_ocean:
+  access_token: !secret digital_ocean
+
+binary_sensor:
+  - platform: digital_ocean
+    droplets:
+    - 'eggloo'
+
 # Zwave
 zwave:
   usb_path: /zwaveusbstick
