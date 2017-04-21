@@ -1,3 +1,3 @@
 platform: command_line
 name: Last Call
-command: "tail -n 1 /var/log/cidcall.log | grep -oP '(?<=NMBR\\*)[0-9]*+|(?<=NAME\\*)[A-Za-z\\s]*+'"
+command: "grep ^CID /var/log/cidcall.log | grep -oP '(?<=NMBR\\*)[0-9]*+|(?<=NAME\\*)[A-Za-z\\s]*+' | tail -n 2"
