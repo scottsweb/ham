@@ -4,7 +4,7 @@ resources:
   - type: memory_use_percent
   - type: processor_use
   - type: network_in
-    arg: eth1
+    arg: eth0
   - type: network_out
-    arg: eth1
-  # - type: since_last_boot
+    arg: eth0
+  - type: since_last_boot
