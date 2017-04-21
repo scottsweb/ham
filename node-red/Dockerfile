@@ -1,7 +1,7 @@
 FROM nodered/node-red-docker:rpi
 MAINTAINER Scott Evans <docker@scott.ee>
 
-LABEL nodered_version="0.16.1" description="Node-RED with Bluetooth"
+LABEL nodered_version="0.16.2" description="Node-RED with Bluetooth"
 
 USER root
 
@@ -20,12 +20,16 @@ USER node-red
 RUN npm install --quiet \
 	noble \
 	node-red-contrib-bean \
-	node-red-contrib-bean \
 	node-red-contrib-kodi \
+	node-red-contrib-plex \
 	node-red-contrib-moment \
 	node-red-contrib-particle \
 	node-red-node-emoncms \
 	node-red-node-pushbullet \
-	node-red-contrib-ifttt
+	node-red-contrib-ifttt \
+	node-red-contrib-botmaster \
+	node-red-contrib-throttle \
+	node-red-node-irc \
+	node-red-contrib-slack
 
 EXPOSE 1880
