@@ -1,7 +1,7 @@
-FROM resin/rpi-raspbian:jessie-20160831
+FROM resin/rpi-raspbian:jessie
 MAINTAINER Scott Evans <docker@scott.ee>
 
-LABEL ncid_version="1.4.1" architecture="ARMv7"
+LABEL ncid_version="1.6.1" architecture="ARMv7"
 
 # Data directory
 # RUN mkdir /data
@@ -16,8 +16,8 @@ RUN apt-get update && sudo apt-get upgrade -y && apt-get install -y \
 	--no-install-recommends && \
 	rm -rf /var/lib/apt/lists/*
 
-RUN	wget http://downloads.sourceforge.net/project/ncid/ncid/1.4/ncid_1.4-1_armhf.deb
-RUN dpkg -i ncid_1.4-1_armhf.deb
+RUN	wget http://downloads.sourceforge.net/project/ncid/ncid/1.6/ncid_1.6-1_armhf.deb
+RUN dpkg -i ncid_1.6-1_armhf.deb
 
 # Define working directory
 #WORKDIR /data
