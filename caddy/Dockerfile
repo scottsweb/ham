@@ -1,9 +1,9 @@
 FROM resin/rpi-raspbian:jessie
 MAINTAINER Scott Evans <docker@scott.ee>
 
-LABEL caddy_version="0.9.4" architecture="ARMv7"
+LABEL caddy_version="0.10.0" architecture="ARMv7"
 
-ARG plugins=git,ipfilter,ratelimit,cloudflare,digitalocean
+ARG plugins=http.awslambda,http.git,http.ipfilter,http.ratelimit,http.minify,tls.dns.cloudflare,tls.dns.digitalocean,tls.dns.gandi
 
 # install deps
 RUN apt-get update && \
@@ -13,7 +13,7 @@ RUN apt-get update && \
 # download caddy
 RUN curl --silent --show-error --fail --location \
 		--header "Accept: application/tar+gzip, application/x-gzip, application/octet-stream" -o - \
-		"https://caddyserver.com/download/build?os=linux&arch=arm&features=${plugins}" \
+		"https://caddyserver.com/download/linux/arm7?plugins=${plugins}" \
 		| tar --no-same-owner -C /usr/bin/ -xz caddy \
 	&& chmod 0755 /usr/bin/caddy \
 	&& setcap cap_net_bind_service=+ep /usr/bin/caddy \
