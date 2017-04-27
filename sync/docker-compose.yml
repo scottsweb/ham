@@ -1,0 +1,20 @@
+version: '2'
+services:
+    sync:
+        image: yangxuan8282/rpi-resilio-sync
+        volumes:
+            - "/mnt/data/Containers/sync:/mnt/sync"
+            - "/mnt/data/Scott/Documents:/mnt/mounted_folders/Documents"
+            - "/mnt/data/Scott/Linux:/mnt/mounted_folders/Linux"
+            - "/mnt/data/Scott/Pictures:/mnt/mounted_folders/Pictures"
+            - "/mnt/data/Scott/Portfolio:/mnt/mounted_folders/Portfolio"
+            - "/mnt/data/Scott/Projects:/mnt/mounted_folders/Projects"
+            - "/mnt/data/Scott/Sites:/mnt/mounted_folders/Sites"
+            - "/mnt/data/Scott/Sync:/mnt/mounted_folders/Sync"
+        ports:
+            - "8888:8888"
+            - "55555:55555"
+        restart: always
+        container_name: sync
+        cpu_shares: 512
+        mem_limit: 320m
