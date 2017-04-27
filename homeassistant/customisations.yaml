@@ -1,3 +1,5 @@
+media_player.bravia_4k_2015:
+  friendly_name: 'TV Plex'
 sensor.hallway_thermostat_temperature:
   friendly_name: 'Temp'
 sensor.hallway_thermostat_target:
@@ -70,8 +72,9 @@ sensor.cpu_temperature:
 binary_sensor.nodered:
   friendly_name: 'Node-Red'
   icon: mdi:nfc-tap
-sensor.pihole:
-  friendly_name: 'Pi-hole Adverts Blocked'
+sensor.pihole_ads_blocked_today:
+  icon: 'mdi:checkbox-blank-circle'
+sensor.pihole_ads_percentage_blocked_today:
   icon: 'mdi:checkbox-blank-circle'
 sensor.last_call:
   icon: 'mdi:phone-classic'
