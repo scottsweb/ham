@@ -1,0 +1,14 @@
+version: '2'
+services:
+    mqtt:
+        image: pascaldevink/rpi-mosquitto
+        volumes:
+            - "/mnt/data/Containers/mqtt/config:/mqtt/config:ro"
+            - "/mnt/data/Containers/mqtt/log:/mqtt/log"
+            - "/mnt/data/Containers/mqtt/data:/mqtt/data"
+        ports:
+            - "1883:1883"
+            - "9001:9001"
+        restart: always
+        container_name: mqtt
+
