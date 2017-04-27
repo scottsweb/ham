@@ -1,0 +1,13 @@
+version: '2'
+services:
+    nodered:
+        build: .
+        volumes:
+            - "/media/ham/node-red:/data"
+        ports:
+            - "1880:1880"
+        environment:
+            - FLOWS=flows.json
+        network_mode: "host"
+        restart: always
+        container_name: nodered
