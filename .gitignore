@@ -16,6 +16,9 @@ homeassistant/known_devices.yaml
 homeassistant/OZW_Log.txt
 homeassistant/secrets.yaml
 homeassistant/nest.conf
+homeassistant/source/
+homeassistant/plex.conf
+homeassistant/emulated_hue_ids.json
 
 # mqtt
 mqtt/config/
@@ -24,6 +27,8 @@ mqtt/log/
 
 # ncid
 ncid/ncidd.whitelist
+ncid/ncidd.log
+ncid/cidcall.log
 
 # node-red
 node-red/node_modules/
@@ -41,3 +46,10 @@ pihole/gravity.list
 pihole/piholeIP
 pihole/setupVars.conf
 pihole/list.preEventHorizon
+pihole/local.list
+
+# plex
+plex/config/
+
+# sync
+sync/config/
