@@ -5,6 +5,6 @@
   username: !secret asus_username
   password: !secret asus_password
   track_new_devices: false
-  consider_home: 90
+  # consider_home: 90
   # home_interval: 5
   # consider_home will be the number of seconds to wait till marking someone as not home after not being seen on scans.
