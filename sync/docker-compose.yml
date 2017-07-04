@@ -1,7 +1,7 @@
 version: '2'
 services:
     sync:
-        image: yangxuan8282/rpi-resilio-sync
+        image: sync
         volumes:
             - "/mnt/data/Containers/sync:/mnt/sync"
             - "/mnt/data/Scott/Documents:/mnt/mounted_folders/Documents"
@@ -16,5 +16,4 @@ services:
             - "55555:55555"
         restart: always
         container_name: sync
-        cpu_shares: 512
-        mem_limit: 320m
+        mem_limit: 700m
