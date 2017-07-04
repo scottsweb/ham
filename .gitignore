@@ -47,9 +47,16 @@ pihole/piholeIP
 pihole/setupVars.conf
 pihole/list.preEventHorizon
 pihole/local.list
+pihole/install.log
+pihole/pihole-FTL.db
+pihole/adlists.list
+pihole/black.list
 
 # plex
 plex/config/
 
 # sync
 sync/config/
+
+# samba
+samba/
