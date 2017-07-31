@@ -42,6 +42,7 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
+    - persistent_notification.httplogin
     - device_tracker.gemma
     - device_tracker.scott
     - climate.hallway
