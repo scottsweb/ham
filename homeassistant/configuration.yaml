@@ -39,6 +39,13 @@ history:
       - sensor.pihole_dns_queries_today
       - sensor.pihole_ads_percentage_blocked_today
       - media_player.aquaris_x5_plus
+      - sensor.pihole_dns_queries_cached
+      - sensor.pihole_dns_queries_forwarded
+      - sensor.pihole_dns_queries_today
+      - sensor.pihole_dns_unique_clients
+      - sensor.pihole_dns_unique_domains
+      - sensor.pihole_domains_blocked
+      - persistent_notification.httplogin
 
 # Recorder
 recorder:
