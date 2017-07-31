@@ -1,6 +1,6 @@
 FROM resin/rpi-raspbian:jessie
 MAINTAINER Resilio Inc. <support@resilio.com>
-LABEL com.resilio.version="2.5.3"
+LABEL com.resilio.version="2.5.5"
 
 ADD https://download-cdn.resilio.com/stable/linux-armhf/resilio-sync_armhf.tar.gz /tmp/sync.tgz
 RUN tar -xf /tmp/sync.tgz -C /usr/bin rslsync && rm -f /tmp/sync.tgz
