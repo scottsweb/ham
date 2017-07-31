@@ -1,7 +1,7 @@
 version: '2'
 services:
     caddy:
-        build: .
+        image: caddy
         volumes:
             - "/mnt/data/Containers/caddy/Caddyfile:/etc/Caddyfile"
             - "/mnt/data/Containers/caddy/.caddy:/root/.caddy"
