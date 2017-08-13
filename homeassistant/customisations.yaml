@@ -88,3 +88,9 @@ group.protect:
   emulated_hue: false
 light.back_door:
   emulated_hue_name: 'Back Door Light'
+scene.tv_time:
+  emulated_hue_name: 'TV Time'
+  emulated_hue: true
+scene.bedtime:
+  emulated_hue_name: 'Bedtime'
+  emulated_hue: true
