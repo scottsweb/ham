@@ -138,3 +138,6 @@ panel_iframe: !include panels-iframe.yaml
 
 # Automations
 automation: !include_dir_list automations
+
+# Scenes
+scene: !include_dir_list scenes
