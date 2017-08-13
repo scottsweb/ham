@@ -1,0 +1,11 @@
+- platform: tplink
+  host: !secret tplink_switch_1
+  name: "Lounge Light Tall"
+
+- platform: tplink
+  host: !secret tplink_switch_2
+  name: "Lounge Light Small"
+
+- platform: tplink
+  host: !secret tplink_switch_3
+  name: "Bedroom Light"
