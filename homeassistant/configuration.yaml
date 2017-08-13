@@ -65,7 +65,13 @@ logbook:
 frontend:
   themes:
     sycamore:
-      primary-color: "#a8122b"
+      primary-color: "#a8122b" 
+      label-badge-red: "#a8122b"
+      paper-item-icon-color: "#747474"
+      paper-item-icon-active-color: "#FDD835"
+      paper-toggle-button-checked-ink-color: "#a8122b"
+      paper-toggle-button-checked-button-color: "#a8122b"
+      paper-toggle-button-checked-bar-color: "#a8122b"
 
 # Track the sun
 sun:
