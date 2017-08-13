@@ -29,6 +29,12 @@ Sycamore:
   - binary_sensor.nodered
 Lights:
   - light.back_door
+  - switch.bedroom_light
+  - switch.lounge_light_small
+  - switch.lounge_light_tall
+Lounge Lights:
+  - switch.lounge_light_small
+  - switch.lounge_light_tall
 Calls:
   - sensor.last_call
 Energy:
@@ -48,6 +54,7 @@ default_view:
     - climate.hallway
     - group.protect
     - group.lights
+    - group.lounge_lights
     - group.calls
     - group.energy
     - sensor.hallway_thermostat_temperature
