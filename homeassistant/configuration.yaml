@@ -63,9 +63,15 @@ logbook:
 
 # Enables the frontend
 frontend:
+  themes:
+    sycamore:
+      primary-color: "#a8122b"
 
 # Track the sun
 sun:
+
+# Enable the configurator
+config:
 
 # Checks for available updates
 updater:
@@ -127,6 +133,9 @@ device_tracker: !include device-tracker.yaml
 
 # Media Players
 media_player: !include media-player.yaml
+
+# Switches
+switch: !include switches.yaml
 
 # Controls
 # input_select: !include input-selects.yaml
