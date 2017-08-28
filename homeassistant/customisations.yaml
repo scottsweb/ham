@@ -94,3 +94,9 @@ scene.tv_time:
 scene.bedtime:
   emulated_hue_name: 'Bedtime'
   emulated_hue: true
+switch.bedroom_light:
+  icon: 'mdi:lightbulb'
+switch.lounge_light_small:
+  icon: 'mdi:lightbulb'
+switch.lounge_light_tall:
+  icon: 'mdi:lightbulb'
