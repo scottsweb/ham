@@ -117,4 +117,5 @@ No Caller ID
 01340074305
 01341074323		#= SPAM (Windows PC)
 ^0134			#= SPAM (ALL)
-^0138           #= SPAM (Winter)
+^0138           	#= SPAM (Winter)
+005354990512		#= SPAM (Winter)
