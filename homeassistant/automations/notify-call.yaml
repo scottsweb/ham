@@ -1,0 +1,9 @@
+alias: Notify Call
+trigger:
+  platform: state
+  entity_id: sensor.last_call
+action:
+  - service: notify.all
+    data:
+      message: "{{ states.sensor.last_call.state }}"
+      title: 'Sycamore: Incoming Call'
