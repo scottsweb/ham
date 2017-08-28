@@ -40,6 +40,14 @@ Calls:
 Energy:
   - sensor.emoncms104856_feedid_104856
   - sensor.emoncms104902_feedid_104902
+  - sensor.energybattery
+Coins:
+  - sensor.bitcoin
+  - sensor.bitcoin_cash
+  - sensor.dash
+  - sensor.ethereum
+  - sensor.ripple
+
 #Allotment:
 
 # Views
@@ -57,6 +65,7 @@ default_view:
     - group.lounge_lights
     - group.calls
     - group.energy
+    - group.coins
     - sensor.hallway_thermostat_temperature
     - sensor.hallway_thermostat_target
     - sensor.hallway_thermostat_humidity

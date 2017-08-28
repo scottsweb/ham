@@ -1,0 +1,5 @@
+platform: scrape
+name: Dash
+resource: https://www.coinmath.com/dash/gbp
+select: 'span.price.number-with-commas'
+unit_of_measurement: '£'

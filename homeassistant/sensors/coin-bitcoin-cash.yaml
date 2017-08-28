@@ -1,0 +1,5 @@
+platform: scrape
+name: Bitcoin Cash
+resource: https://www.coinmath.com/bitcoin-cash/gbp
+select: 'span.price.number-with-commas'
+unit_of_measurement: '£'

@@ -51,6 +51,16 @@ sensor.dark_sky_summary:
 sensor.dark_sky_precip_intensity:
   friendly_name: 'Precipitation Intensity (mm)'
   icon: mdi:weather-pouring
+sensor.bitcoin:
+  icon: mdi:currency-btc
+sensor.bitcoin_cash:
+  icon: mdi:currency-btc
+sensor.dash:
+  icon: mdi:cash
+sensor.ethereum:
+  icon: mdi:currency-eth
+sensor.ripple:
+  icon: mdi:cash
 climate.hallway:
   icon: mdi:oil-temperature
 media_player.goody:
