@@ -1,0 +1,13 @@
+- name: pushbullet
+  platform: pushbullet
+  api_key: !secret pushbullet_key
+
+- name: tv
+  platform: nfandroidtv
+  host: !secret tv_ip  
+
+- name: all
+  platform: group
+  services:
+    - service: pushbullet
+    - service: tv

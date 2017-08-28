@@ -156,3 +156,6 @@ automation: !include_dir_list automations
 
 # Scenes
 scene: !include_dir_list scenes
+
+# Notifcations
+notify: !include notifications.yaml
