@@ -1,0 +1,10 @@
+alias: Notify Energy Battery
+trigger:
+  platform: numeric_state
+  entity_id: sensor.energybattery
+  below: 10
+action:
+  - service: notify.all
+    data:
+      message: "The meter battery just droped below: {{ states.sensor.energybattery.state }}%"
+      title: 'Sycamore: Low Battery'
