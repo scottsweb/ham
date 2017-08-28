@@ -71,7 +71,6 @@ default_view:
     - group.calls
     - group.energy
     - group.coins
-    - group.next_train
     - sensor.hallway_thermostat_temperature
     - sensor.hallway_thermostat_target
     - sensor.hallway_thermostat_humidity
@@ -97,6 +96,7 @@ outdoors:
     - sensor.dark_sky_summary
     - sensor.dark_sky_temperature
     - sensor.dark_sky_humidity
+    - group.next_train
 settings:
   name: Settings
   view: yes
