@@ -1,0 +1,17 @@
+platform: template
+sensors:
+  next_train_status:
+    friendly_name: 'Next train status'
+    value_template: '{{states.sensor.next_train_to_wat.attributes.next_trains[0].status}}'
+  next_trains_origin:
+    friendly_name: 'Next train origin'
+    value_template: '{{states.sensor.next_train_to_wat.attributes.next_trains[0].origin_name}}'
+  next_trains_estimated:
+    friendly_name: 'Next train estimated'
+    value_template: '{{states.sensor.next_train_to_wat.attributes.next_trains[0].estimated}}'
+  next_trains_scheduled:
+    friendly_name: 'Next train scheduled'
+    value_template: '{{states.sensor.next_train_to_wat.attributes.next_trains[0].scheduled}}'
+  next_trains_platform:
+    friendly_name: 'Next train platform'
+    value_template: '{{states.sensor.next_train_to_wat.attributes.next_trains[0].platform}}'

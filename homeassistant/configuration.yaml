@@ -46,6 +46,12 @@ history:
       - sensor.pihole_dns_unique_domains
       - sensor.pihole_domains_blocked
       - persistent_notification.httplogin
+      - sensor.next_train_status
+      - sensor.next_train_to_wat
+      - sensor.next_trains_estimated
+      - sensor.next_trains_origin
+      - sensor.next_trains_platform
+      - sensor.next_trains_scheduled
 
 # Recorder
 recorder:

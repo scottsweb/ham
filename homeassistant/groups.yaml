@@ -47,6 +47,11 @@ Coins:
   - sensor.dash
   - sensor.ethereum
   - sensor.ripple
+Next Train:
+  - sensor.next_train_status
+  - sensor.next_trains_estimated
+  - sensor.next_trains_scheduled
+  - sensor.next_trains_platform
 
 #Allotment:
 
@@ -66,6 +71,7 @@ default_view:
     - group.calls
     - group.energy
     - group.coins
+    - group.next_train
     - sensor.hallway_thermostat_temperature
     - sensor.hallway_thermostat_target
     - sensor.hallway_thermostat_humidity

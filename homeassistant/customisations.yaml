@@ -61,6 +61,18 @@ sensor.ethereum:
   icon: mdi:currency-eth
 sensor.ripple:
   icon: mdi:cash
+sensor.next_train_status:
+  icon: mdi:train
+  friendly_name: 'Status'
+sensor.next_trains_estimated:
+  icon: mdi:clock-alert
+  friendly_name: 'Estimated'
+sensor.next_trains_scheduled:
+  icon: mdi:clock
+  friendly_name: 'Scheduled'
+sensor.next_trains_platform:
+  icon: mdi:vector-line
+  friendly_name: 'Platform'
 climate.hallway:
   icon: mdi:oil-temperature
 media_player.goody:
