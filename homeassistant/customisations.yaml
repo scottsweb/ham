@@ -16,7 +16,7 @@ sensor.downstairs_nest_protect_smoke_status:
   icon: mdi:fire
 sensor.downstairs_nest_protect_battery_health:
   friendly_name: '⬇ Battery'
-  icon: mdi:battery-charging-40
+  icon: mdi:battery-charging
 sensor.upstairs_nest_protect_co_status:
   friendly_name: '⬆ CO2'
   icon: mdi:gas-cylinder
@@ -25,7 +25,7 @@ sensor.upstairs_nest_protect_smoke_status:
   icon: mdi:fire
 sensor.upstairs_nest_protect_battery_health:
   friendly_name: '⬆ Battery'
-  icon: mdi:battery-charging-40
+  icon: mdi:battery-charging
 sensor.dark_sky_temperature:
   friendly_name: 'Outside Temp'
 sensor.dark_sky_humidity:
