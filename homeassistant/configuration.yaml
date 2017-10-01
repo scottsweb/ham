@@ -128,6 +128,9 @@ mqtt:
   port: 1883
   client_id: home-assistant
 
+mqtt_statestream:
+  base_topic: homeassistant
+
 # Sensors
 sensor: !include_dir_list sensors
 
@@ -139,6 +142,9 @@ media_player: !include media-player.yaml
 
 # Switches
 switch: !include switches.yaml
+
+# Scripts
+script: !include scripts.yaml
 
 # Controls
 # input_select: !include input-selects.yaml
