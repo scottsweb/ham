@@ -1,7 +1,7 @@
 version: '2'
 services:
     homeassistant:
-        image: homeassistant
+        image: lroguet/rpi-home-assistant
         volumes:
             - "/mnt/data/Containers/homeassistant:/config"
             - "/etc/localtime:/etc/localtime:ro"
