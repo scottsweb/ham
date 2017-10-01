@@ -6,6 +6,7 @@ Internet:
   - sensor.ip_address
   - sensor.pihole_ads_blocked_today
   - sensor.pihole_ads_percentage_blocked_today
+  - switch.pihole_switch
 Weather:
   - sensor.dark_sky_summary
   - sensor.dark_sky_precip_intensity

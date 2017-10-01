@@ -98,6 +98,9 @@ sensor.pihole_ads_blocked_today:
   icon: 'mdi:checkbox-blank-circle'
 sensor.pihole_ads_percentage_blocked_today:
   icon: 'mdi:checkbox-blank-circle'
+switch.pihole_switch:
+  icon: 'mdi:checkbox-blank-circle'
+  friendly_name: 'Pi-Hole Switch'
 sensor.last_call:
   icon: 'mdi:phone-classic'
 group.pi:
