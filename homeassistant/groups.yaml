@@ -11,6 +11,9 @@ Weather:
   - sensor.dark_sky_summary
   - sensor.dark_sky_precip_intensity
   - sun.sun
+  - sensor.us_air_pollution_level
+  - sensor.us_air_quality_index
+  - sensor.us_main_pollutant
 Protect:
   - sensor.downstairs_nest_protect_battery_health
   - sensor.downstairs_nest_protect_co_status

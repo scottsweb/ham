@@ -125,3 +125,9 @@ switch.lounge_light_small:
   icon: 'mdi:lightbulb'
 switch.lounge_light_tall:
   icon: 'mdi:lightbulb'
+sensor.us_air_pollution_level:
+  friendly_name: Air Pollution Level
+sensor.us_air_quality_index:
+  friendly_name: Air Quality Index
+sensor.us_main_pollutant:
+  friendly_name: Main Pollutant
