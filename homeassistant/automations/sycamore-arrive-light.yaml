@@ -1,0 +1,13 @@
+alias: Arrive at Sycamore Light
+trigger:
+  platform: state
+  entity_id: group.all_devices
+  from: 'not_home'
+  to: 'home'
+condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+action:
+  service: homeassistant.turn_on
+  entity_id: light.back_door

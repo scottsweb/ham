@@ -1,0 +1,15 @@
+alias: Arrive at Sycamore Light Off (10 Minutes)
+trigger:
+  platform: state
+  entity_id: group.all_devices
+  from: 'not_home'
+  to: 'home'
+  for:
+    minutes: 10
+condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+action:
+  service: homeassistant.turn_off
+  entity_id: light.back_door
