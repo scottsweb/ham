@@ -55,7 +55,8 @@ history:
 
 # Recorder
 recorder:
-  purge_days: 14
+  purge_interval: 7
+  purge_keep_days: 14
 
 # Discover some devices automatically
 discovery:
