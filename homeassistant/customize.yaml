@@ -104,21 +104,31 @@ switch.pihole_switch:
 sensor.last_call:
   icon: 'mdi:phone-classic'
 group.pi:
-  emulated_hue: false
+  emulated_hue_hidden: true
+group.calls:
+  emulated_hue_hidden: true
+group.coins:
+  emulated_hue_hidden: true
 group.weather:
-  emulated_hue: false
+  emulated_hue_hidden: true
 group.internet:
-  emulated_hue: false
+  emulated_hue_hidden: true
 group.protect:
-  emulated_hue: false
+  emulated_hue_hidden: true
+group.energy:
+  emulated_hue_hidden: true
+group.sycamore:
+  emulated_hue_hidden: true
+group.next_train:
+  emulated_hue_hidden: true
 light.back_door:
   emulated_hue_name: 'Back Door Light'
 scene.tv_time:
   emulated_hue_name: 'TV Time'
-  emulated_hue: true
+  emulated_hue_hidden: false
 scene.bedtime:
   emulated_hue_name: 'Bedtime'
-  emulated_hue: true
+  emulated_hue_hidden: false
 switch.bedroom_light:
   icon: 'mdi:lightbulb'
 switch.lounge_light_small:
