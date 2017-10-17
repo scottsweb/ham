@@ -31,6 +31,7 @@ history:
       - binary_sensor.upstairs_nest_protect_online
       - binary_sensor.downstairs_nest_protect_online
       - binary_sensor.hallway_thermostat_fan
+      - binary_sensor.iss
       - sensor.hallway_thermostat_hvac_state
       - binary_sensor.hallway_thermostat_has_leaf
       - binary_sensor.hallway_thermostat_online
@@ -134,6 +135,10 @@ mqtt_statestream:
 
 # Sensors
 sensor: !include_dir_list sensors
+
+binary_sensor:
+  - platform: iss
+    show_on_map: true
 
 # Device Tracking
 device_tracker: !include device-tracker.yaml
