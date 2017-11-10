@@ -19,6 +19,7 @@ homeassistant/nest.conf
 homeassistant/source/
 homeassistant/plex.conf
 homeassistant/emulated_hue_ids.json
+homeassistant/gas-meter.jpg
 
 # mqtt
 mqtt/config/
