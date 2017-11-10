@@ -9,3 +9,4 @@ mailchimp.com
 pixel.wp.com
 stats.wp.com
 href.li
+q.stripe.com
