@@ -11,6 +11,9 @@ action:
   - service: ifttt.trigger
     data:
       event: 'disarm_sycamore'
+  - service: blink.arm_system
+    data:
+      device_armed: "False"
   - service: mqtt.publish
     data:
       topic: sycamore/unicorn

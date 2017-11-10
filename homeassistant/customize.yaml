@@ -169,3 +169,8 @@ camera.front:
   friendly_name: 'Blink Front'
 camera.back:
   friendly_name: 'Blink Back'
+script.blink_back_capture_script:
+  icon: mdi:camera
+script.blink_front_capture_script:
+  icon: mdi:camera
+

@@ -1,0 +1,13 @@
+blink_front_capture_script:
+  alias: 'Update Front at Sycamore'
+  sequence:
+    - service: blink.snap_picture
+      data:
+        friendly_name: "Front"
+
+blink_back_capture_script:
+  alias: 'Update Back at Sycamore'
+  sequence:
+    - service: blink.snap_picture
+      data:
+        friendly_name: "Back"

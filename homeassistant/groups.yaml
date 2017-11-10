@@ -65,6 +65,8 @@ Blink:
   - sensor.blink_back_battery
   - sensor.blink_back_notifications
   - sensor.blink_back_temperature
+  - script.blink_back_capture_script
+  - script.blink_front_capture_script
 
 #Allotment:
 
