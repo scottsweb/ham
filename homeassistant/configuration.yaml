@@ -85,6 +85,9 @@ frontend:
       paper-toggle-button-checked-button-color: "#a8122b"
       paper-toggle-button-checked-bar-color: "#a8122b"
 
+# Map
+map:
+
 # Track the sun
 sun:
 
