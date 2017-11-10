@@ -1,0 +1,18 @@
+alias: ISS Pass
+trigger:
+  platform: template
+  value_template: '{% set nextrise = as_timestamp(states.binary_sensor.iss.attributes.next_rise) %} {% set now = as_timestamp( now() ) %} {% if ( nextrise - 600 ) >= now %}true{% endif %}'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+    - condition: state
+      entity_id: sensor.dark_sky_summary
+      state: 'Clear'
+action:
+  - service: notify.all
+    data:
+      message: 'The space station will be passing soon: {{ as_timestamp(states.binary_sensor.iss.attributes.next_rise) | timestamp_custom("%A at %H:%M") }}'
+      title: 'Sycamore: ISS Pass!'
