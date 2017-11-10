@@ -56,6 +56,15 @@ Next Train:
   - sensor.next_trains_estimated
   - sensor.next_trains_scheduled
   - sensor.next_trains_platform
+Blink:
+  - binary_sensor.blink_back_motion_enabled
+  - binary_sensor.blink_front_motion_enabled
+  - sensor.blink_front_battery
+  - sensor.blink_front_notifications
+  - sensor.blink_front_temperature
+  - sensor.blink_back_battery
+  - sensor.blink_back_notifications
+  - sensor.blink_back_temperature
 
 #Allotment:
 
@@ -69,11 +78,14 @@ default_view:
     - device_tracker.gemma
     - device_tracker.scott
     - climate.hallway
+    - binary_sensor.blink_armed_status
     - group.lights
     - group.lounge_lights
     - group.calls
     - group.energy
     - group.coins
+    - camera.front
+    - camera.back
     - sensor.hallway_thermostat_temperature
     - sensor.hallway_thermostat_target
     - sensor.hallway_thermostat_humidity
@@ -108,3 +120,4 @@ settings:
     - group.protect
     - group.internet
     - group.sycamore
+    - group.blink

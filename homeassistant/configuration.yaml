@@ -53,6 +53,10 @@ history:
       - sensor.next_trains_origin
       - sensor.next_trains_platform
       - sensor.next_trains_scheduled
+      - binary_sensor.blink_back_motion_enabled
+      - binary_sensor.blink_front_motion_enabled
+      - sensor.blink_front_notifications
+      - sensor.blink_back_notifications
 
 # Recorder
 recorder:
@@ -100,6 +104,11 @@ light:
 # IFTTT
 ifttt:
   key: !secret ifttt_key
+  
+# blink
+blink:
+  username: !secret blink_username
+  password: !secret blink_password
 
 # Zeroconf
 zeroconf:

@@ -136,8 +136,34 @@ switch.lounge_light_small:
 switch.lounge_light_tall:
   icon: 'mdi:lightbulb'
 sensor.us_air_pollution_level:
-  friendly_name: Air Pollution Level
+  friendly_name: 'Air Pollution Level'
 sensor.us_air_quality_index:
-  friendly_name: Air Quality Index
+  friendly_name: 'Air Quality Index'
 sensor.us_main_pollutant:
-  friendly_name: Main Pollutant
+  friendly_name: 'Main Pollutant'
+binary_sensor.blink_back_motion_enabled:
+  friendly_name: 'Blink Back Motion Enabled'
+binary_sensor.blink_front_motion_enabled:
+  friendly_name: 'Blink Front Motion Enabled'
+sensor.blink_front_battery:
+  friendly_name: 'Blink Front Battery'
+  icon: mdi:battery-charging
+sensor.blink_front_notifications:
+  friendly_name: 'Blink Front Notifcations'
+  icon: mdi:comment-alert
+sensor.blink_front_temperature:
+  friendly_name: 'Blink Front Temperature'
+sensor.blink_back_battery:
+  friendly_name: 'Blink Back Battery'
+  icon: mdi:battery-charging
+sensor.blink_back_notifications:
+  friendly_name: 'Blink Back Notifcations'
+  icon: mdi:comment-alert
+sensor.blink_back_temperature:
+  friendly_name: 'Blink Back Temperature'
+binary_sensor.blink_armed_status:
+  friendly_name: 'Armed?'
+camera.front:
+  friendly_name: 'Blink Front'
+camera.back:
+  friendly_name: 'Blink Back'
