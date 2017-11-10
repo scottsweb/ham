@@ -22,8 +22,8 @@ Protect:
   - sensor.upstairs_nest_protect_co_status
   - sensor.upstairs_nest_protect_smoke_status
 Sycamore:
-  - sensor.ram_use
-  - sensor.cpu_use
+  - sensor.ram_used
+  - sensor.cpu_used
   - sensor.cpu_temperature
   - sensor.received_eth0
   - sensor.sent_eth0
@@ -42,8 +42,8 @@ Lounge Lights:
 Calls:
   - sensor.last_call
 Energy:
-  - sensor.emoncms104856_feedid_104856
-  - sensor.emoncms104902_feedid_104902
+  - sensor.emoncms104856_power_kw
+  - sensor.emoncms104902_meter_count
   - sensor.energybattery
 Coins:
   - sensor.bitcoin

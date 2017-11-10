@@ -39,10 +39,10 @@ sensor.speedtest_upload:
 sensor.speedtest_ping:
   friendly_name: 'Ping'
   icon: mdi:access-point-network
-sensor.emoncms104902_feedid_104902:
+sensor.emoncms104902_meter_count:
   friendly_name: 'Meter'
   icon: mdi:counter
-sensor.emoncms104856_feedid_104856:
+sensor.emoncms104856_power_kw:
   friendly_name: 'Watts'
   icon: mdi:power-plug
 sensor.dark_sky_summary:
@@ -85,9 +85,11 @@ media_player.tv:
   emulated_hue_name: 'TV'
 sensor.ip_address:
   icon: mdi:account-network
-sensor.cpu_use:
+sensor.cpu_used:
+  friendly_name: 'CPU'
   icon: mdi:chip
-sensor.ram_use:
+sensor.ram_used:
+  friendly_name: 'RAM'
   icon: mdi:chip
 sensor.cpu_temperature:
   icon: mdi:chip
