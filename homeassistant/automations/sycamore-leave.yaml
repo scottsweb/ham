@@ -8,9 +8,6 @@ action:
   - service: climate.set_away_mode
     data:
       away_mode: true
-  - service: ifttt.trigger
-    data:
-      event: 'arm_sycamore'
   - service: blink.arm_camera
     data:
       device_armed: "True"

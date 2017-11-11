@@ -6,10 +6,6 @@ plex:
   title: 'Plex'
   icon: 'mdi:plex'
   url: !secret plex_ui_ip
-homeboy:
-  title: 'Homeboy'
-  icon: 'mdi:camera-iris'
-  url: 'https://app.homeboy.com/'
 emoncms:
   title: 'Emoncms'
   icon: 'mdi:counter'
