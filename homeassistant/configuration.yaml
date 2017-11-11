@@ -61,6 +61,8 @@ history:
       - script.blink_front_capture_script
       - camera.front
       - camera.back
+      - sensor.blink_back_temperature
+      - sensor.blink_front_temperature
 
 # Recorder
 recorder:
