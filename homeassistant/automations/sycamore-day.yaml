@@ -1,0 +1,13 @@
+alias: Goodmorning
+trigger:
+  platform: time
+  at: '07:00:00'
+condition:
+  - condition: state
+    entity_id: group.all_devices
+    state: 'home'
+action:
+  - service: blink.arm_camera
+    data:
+      device_armed: "False"
+      friendly_name: "Back"

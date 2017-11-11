@@ -57,6 +57,10 @@ history:
       - binary_sensor.blink_front_motion_enabled
       - sensor.blink_front_notifications
       - sensor.blink_back_notifications
+      - script.blink_back_capture_script
+      - script.blink_front_capture_script
+      - camera.front
+      - camera.back
 
 # Recorder
 recorder:
