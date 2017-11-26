@@ -18,7 +18,3 @@ pihole:
   title: 'Pi-hole'
   icon: 'mdi:checkbox-blank-circle'
   url: 'http://pihole.sycamore.lan/admin/'
-sync:
-  title: 'Sync'
-  icon: 'mdi:cloud-sync'
-  url: !secret sync_ui_ip
