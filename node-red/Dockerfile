@@ -15,8 +15,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN usermod -a -G bluetooth node-red && \
 	setcap cap_net_raw+eip /usr/local/bin/node
 
-USER node-red
-
 RUN npm install --quiet \
 	noble \
 	node-red-contrib-bean \
@@ -30,7 +28,6 @@ RUN npm install --quiet \
 	node-red-contrib-ifttt \
 	node-red-contrib-botmaster \
 	node-red-contrib-throttle \
-	node-red-node-irc \
-	node-red-contrib-slack
+	node-red-node-irc
 
 EXPOSE 1880

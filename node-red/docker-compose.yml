@@ -1,9 +1,10 @@
 version: '2'
 services:
     nodered:
-        build: .
+        image: nodered
         volumes:
-            - "/media/ham/node-red:/data"
+            - "/mnt/data/Containers/node-red:/data"
+            - "/mnt/data/Containers/homeassistant:/hass"
         ports:
             - "1880:1880"
         environment:
