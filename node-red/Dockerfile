@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	bluez \
 	libbluetooth-dev \
 	libudev-dev \
-	build-essential bluez-tools
+	build-essential bluez-tools \
+	bc
 
 RUN usermod -a -G bluetooth node-red && \
 	setcap cap_net_raw+eip /usr/local/bin/node
@@ -29,5 +30,8 @@ RUN npm install --quiet \
 	node-red-contrib-botmaster \
 	node-red-contrib-throttle \
 	node-red-node-irc
+
+ADD textcleaner /usr/local/bin
+RUN chmod+x /usr/local/bin/textcleaner
 
 EXPOSE 1880
