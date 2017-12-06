@@ -1,5 +1,5 @@
 platform: scrape
 name: Bitcoin 
-resource: https://www.coinmath.com/bitcoin/gbp
-select: 'span.price.number-with-commas'
+resource: https://www.ig.com/uk/forex/markets-forex/spot-fx-xbtusd2
+select: '.sell .price'
 unit_of_measurement: '£'
