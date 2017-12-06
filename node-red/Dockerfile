@@ -31,6 +31,7 @@ RUN npm install --quiet \
 	node-red-contrib-botmaster \
 	node-red-contrib-throttle \
 	node-red-node-irc \
+	node-red-contrib-gzip \
 	Neonox31/node-red-contrib-amazondash#improvements
 
 ADD textcleaner /usr/local/bin
