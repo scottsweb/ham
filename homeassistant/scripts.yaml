@@ -11,3 +11,13 @@ blink_back_capture_script:
     - service: blink.snap_picture
       data:
         friendly_name: "Back"
+        
+dash_andrex:
+  alias: 'Amazon Dash - Andrex'
+  sequence:
+    - service: homeassistant.turn_on
+      data:
+        entity_id: light.back_door
+    - service: homeassistant.turn_on
+      data:
+        entity_id: group.lounge_lights
