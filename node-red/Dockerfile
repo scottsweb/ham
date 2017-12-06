@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	bluez \
 	libbluetooth-dev \
 	libudev-dev \
+	libpcap-dev \
 	build-essential bluez-tools \
 	bc
 
@@ -29,9 +30,10 @@ RUN npm install --quiet \
 	node-red-contrib-ifttt \
 	node-red-contrib-botmaster \
 	node-red-contrib-throttle \
-	node-red-node-irc
+	node-red-node-irc \
+	Neonox31/node-red-contrib-amazondash#improvements
 
 ADD textcleaner /usr/local/bin
-RUN chmod+x /usr/local/bin/textcleaner
+RUN chmod +x /usr/local/bin/textcleaner
 
 EXPOSE 1880

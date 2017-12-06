@@ -45,6 +45,7 @@ Energy:
   - sensor.emoncms104856_power_kw
   - sensor.emoncms104902_meter_count
   - sensor.energybattery
+  - sensor.gasmeter
 Coins:
   - sensor.bitcoin
   - sensor.bitcoin_cash
