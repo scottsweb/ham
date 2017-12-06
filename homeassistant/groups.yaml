@@ -58,6 +58,7 @@ Next Train:
   - sensor.next_trains_scheduled
   - sensor.next_trains_platform
 Blink:
+  - binary_sensor.blink_armed_status
   - binary_sensor.blink_back_motion_enabled
   - binary_sensor.blink_front_motion_enabled
   - sensor.blink_front_battery
@@ -81,7 +82,6 @@ default_view:
     - device_tracker.gemma
     - device_tracker.scott
     - climate.hallway
-    - binary_sensor.blink_armed_status
     - group.lights
     - group.lounge_lights
     - group.calls
