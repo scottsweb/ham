@@ -20,6 +20,8 @@ homeassistant/source/
 homeassistant/plex.conf
 homeassistant/emulated_hue_ids.json
 homeassistant/gas-meter.jpg
+homeassistant/gas-meter-invert.jpg
+homeassistant/gas-meter-optimised.jpg
 
 # mqtt
 mqtt/config/
