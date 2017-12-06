@@ -5,6 +5,7 @@ services:
         volumes:
             - "/mnt/data/Containers/node-red:/data"
             - "/mnt/data/Containers/homeassistant:/hass"
+            - "/mnt/data/Containers/ncid:/ncid"
         ports:
             - "1880:1880"
         environment:
