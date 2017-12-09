@@ -1,0 +1,15 @@
+version: '2'
+services:
+    ncid:
+        image: ncid
+        volumes:
+            - "/media/ham/ncid/ncidd.log:/var/log/ncidd.log"
+            - "/media/ham/ncid/cidcall.log:/var/log/cidcall.log"
+            - "/media/ham/ncid/:/etc/ncid/"
+        ports:
+            - "3333:3333"
+        devices:
+            - "/dev/ttyACM0:/dev/ttyACM0"
+        restart: always
+        container_name: ncid
+        
