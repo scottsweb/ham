@@ -1,5 +1,5 @@
 platform: scrape
 name: Bitcoin 
-resource: https://www.ig.com/uk/forex/markets-forex/spot-fx-xbtusd2
-select: '.sell .price'
+resource: https://www.coingecko.com/en/price_charts/bitcoin/gbp
+select: '.table td:nth-of-type(2)'
 unit_of_measurement: '£'

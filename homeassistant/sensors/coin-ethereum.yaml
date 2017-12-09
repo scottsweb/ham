@@ -1,5 +1,5 @@
 platform: scrape
 name: Ethereum
-resource: https://www.coinmath.com/ethereum/gbp
-select: 'span.price.number-with-commas'
+resource: https://www.coingecko.com/en/price_charts/ethereum/gbp
+select: '.table td:nth-of-type(2)'
 unit_of_measurement: '£'

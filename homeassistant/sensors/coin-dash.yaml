@@ -1,5 +1,5 @@
 platform: scrape
 name: Dash
-resource: https://www.coinmath.com/dash/gbp
-select: 'span.price.number-with-commas'
+resource: https://www.coingecko.com/en/price_charts/dash/gbp
+select: '.table td:nth-of-type(2)'
 unit_of_measurement: '£'
