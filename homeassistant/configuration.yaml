@@ -143,9 +143,12 @@ nest:
 climate:
   platform: nest
 
-# Zwave
-#zwave:
-#  usb_path: /zwaveusbstick
+# Text to Speech
+tts:
+  - platform: google
+    cache: true
+    cache_dir: /tmp/tts
+    time_memory: 300
 
 # MQTT
 mqtt:
