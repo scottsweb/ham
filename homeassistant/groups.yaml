@@ -41,6 +41,7 @@ Lounge Lights:
   - switch.lounge_light_tall
 Calls:
   - sensor.last_call
+  - sensor.last_blocked_call
 Energy:
   - sensor.emoncms104856_power_kw
   - sensor.emoncms104902_meter_count

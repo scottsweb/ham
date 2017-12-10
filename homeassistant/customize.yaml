@@ -104,7 +104,9 @@ switch.pihole_switch:
   icon: 'mdi:checkbox-blank-circle'
   friendly_name: 'Pi-Hole Switch'
 sensor.last_call:
-  icon: 'mdi:phone-classic'
+  icon: 'mdi:phone-incoming'
+sensor.last_blocked_call:
+  icon: 'mdi:phone-return'
 group.pi:
   emulated_hue_hidden: true
 group.calls:
