@@ -1,0 +1,5 @@
+platform: scrape
+name: Litecoin
+resource: https://www.coingecko.com/en/price_charts/litecoin/gbp
+select: '.table td:nth-of-type(2)'
+unit_of_measurement: '£'

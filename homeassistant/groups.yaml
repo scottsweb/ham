@@ -53,6 +53,7 @@ Coins:
   - sensor.dash
   - sensor.ethereum
   - sensor.ripple
+  - sensor.litecoin
 Next Train:
   - sensor.next_train_status
   - sensor.next_trains_estimated

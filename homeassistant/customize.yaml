@@ -61,6 +61,8 @@ sensor.ethereum:
   icon: mdi:currency-eth
 sensor.ripple:
   icon: mdi:cash
+sensor.litecoin:
+  icon: mdi:cash
 sensor.next_train_status:
   icon: mdi:train
   friendly_name: 'Status'
@@ -106,7 +108,7 @@ switch.pihole_switch:
 sensor.last_call:
   icon: 'mdi:phone-incoming'
 sensor.last_blocked_call:
-  icon: 'mdi:phone-return'
+  icon: 'mdi:phone-locked'
 group.pi:
   emulated_hue_hidden: true
 group.calls:
