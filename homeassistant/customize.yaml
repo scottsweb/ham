@@ -9,7 +9,7 @@ sensor.hallway_thermostat_humidity:
 sensor.hallway_thermostat_operation_mode:
   friendly_name: 'Mode'
 sensor.downstairs_nest_protect_co_status:
-  friendly_name: '⬇ CO2'
+  friendly_name: '⬇ CO'
   icon: mdi:gas-cylinder
 sensor.downstairs_nest_protect_smoke_status:
   friendly_name: '⬇ Smoke'
@@ -18,7 +18,7 @@ sensor.downstairs_nest_protect_battery_health:
   friendly_name: '⬇ Battery'
   icon: mdi:battery-charging
 sensor.upstairs_nest_protect_co_status:
-  friendly_name: '⬆ CO2'
+  friendly_name: '⬆ CO'
   icon: mdi:gas-cylinder
 sensor.upstairs_nest_protect_smoke_status:
   friendly_name: '⬆ Smoke'
