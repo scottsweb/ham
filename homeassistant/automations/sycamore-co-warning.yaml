@@ -9,5 +9,5 @@ trigger:
 action:
   - service: notify.all
     data:
-      message: "{{ trigger.entity_id }} switched to: {{ trigger.to_state.state }}"
+      message: "{{ trigger.entity_id }} just changed from {{ trigger.from_state.state }} to {{ trigger.to_state.state }}"
       title: 'Sycamore: CO Warning!'
