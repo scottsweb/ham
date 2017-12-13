@@ -1,0 +1,13 @@
+alias: Sycamore Smoke Warning
+trigger:
+  - platform: state
+    entity_id: sensor.downstairs_nest_protect_smoke_status
+    to: 'Warning'
+  - platform: state
+    entity_id: sensor.upstairs_nest_protect_smoke_status
+    to: 'Warning'
+action:
+  - service: notify.all
+    data:
+      message: "{{ trigger.entity_id }} switched to: {{ trigger.to_state.state }}"
+      title: 'Sycamore: Smoke Warning!'

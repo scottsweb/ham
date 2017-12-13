@@ -1,0 +1,29 @@
+alias: Sycamore CO Emergency
+trigger:
+  - platform: state
+    entity_id: sensor.downstairs_nest_protect_co_status
+    to: 'Emergency'
+  - platform: state
+    entity_id: sensor.upstairs_nest_protect_co_status
+    to: 'Emergency'
+action:
+  - service: notify.all
+    data:
+      message: "{{ trigger.entity_id }} switched to: {{ trigger.to_state.state }}"
+      title: 'Sycamore: CO Emergency!'
+  - service: light.lifx_effect_pulse
+    data:
+      entity_id: light.back_door
+      brightness: 255
+      color_name: yellow
+      period: 2
+      cycles: 50
+  - service: switch.turn_on
+    entity_id: group.all_switches
+  - service: blink.arm_camera
+    data:
+      device_armed: "True"
+      friendly_name: "Back"
+  - service: climate.set_away_mode
+    data:
+      away_mode: true
