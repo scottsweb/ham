@@ -63,14 +63,19 @@ Blink:
   - binary_sensor.blink_armed_status
   - binary_sensor.blink_back_motion_enabled
   - binary_sensor.blink_front_motion_enabled
+  - binary_sensor.blink_indoor_front_motion_enabled  
   - sensor.blink_front_battery
   - sensor.blink_front_notifications
   - sensor.blink_front_temperature
   - sensor.blink_back_battery
   - sensor.blink_back_notifications
   - sensor.blink_back_temperature
+  - sensor.blink_indoor_front_battery
+  - sensor.blink_indoor_front_notifications
+  - sensor.blink_indoor_front_temperature
   - script.blink_back_capture_script
   - script.blink_front_capture_script
+  - script.blink_indoor_front_capture_script
 
 #Allotment:
 
@@ -91,6 +96,7 @@ default_view:
     - group.coins
     - camera.front
     - camera.back
+    - camera.indoor_front
     - sensor.hallway_thermostat_temperature
     - sensor.hallway_thermostat_target
     - sensor.hallway_thermostat_humidity

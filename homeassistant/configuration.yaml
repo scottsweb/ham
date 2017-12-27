@@ -60,14 +60,18 @@ history:
       - sensor.next_trains_scheduled
       - binary_sensor.blink_back_motion_enabled
       - binary_sensor.blink_front_motion_enabled
+      - binary_sensor.blink_indoor_front_motion_enabled
       - sensor.blink_front_notifications
       - sensor.blink_back_notifications
+      - sensor.blink_indoor_front_notifications
       - script.blink_back_capture_script
       - script.blink_front_capture_script
+      - script.blink_indoor_front_capture_script
       - camera.front
       - camera.back
       - sensor.blink_back_temperature
       - sensor.blink_front_temperature
+      - sensor.blink_indoor_front_temperature
 
 # Recorder
 recorder:

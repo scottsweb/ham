@@ -12,6 +12,10 @@ action:
     data:
       device_armed: "False"
       friendly_name: "Back"
+  - service: blink.arm_camera
+    data:
+      device_armed: "False"
+      friendly_name: "Indoor Front"
   - service: mqtt.publish
     data:
       topic: sycamore/unicorn

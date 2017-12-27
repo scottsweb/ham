@@ -24,6 +24,10 @@ action:
     data:
       device_armed: "True"
       friendly_name: "Back"
+  - service: blink.arm_camera
+    data:
+      device_armed: "True"
+      friendly_name: "Indoor Front"
   - service: climate.set_away_mode
     data:
       away_mode: true
