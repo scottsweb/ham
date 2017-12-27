@@ -1,0 +1,16 @@
+alias: Blink Battery Low
+trigger:
+  - platform: state
+    entity_id: sensor.blink_front_battery
+    from: 'OK'
+  - platform: state
+    entity_id: sensor.blink_indoor_front_battery
+    from: 'OK'
+  - platform: state
+    entity_id: sensor.blink_back_battery
+    from: 'OK'
+action:
+  - service: notify.all
+    data:
+      message: "{{ trigger.entity_id }} battery state changed from {{ trigger.from_state.state }} to {{ trigger.to_state.state }}"
+      title: 'Sycamore: Camera Battery Low!'
