@@ -1,5 +1,5 @@
-platform: scrape
+platform: rest
 name: Dash
-resource: https://www.coingecko.com/en/price_charts/dash/gbp
-select: '.table td:nth-of-type(2)'
+resource: https://api.coinmarketcap.com/v1/ticker/dash/?convert=GBP
+value_template: '{{ value_json[0].price_gbp }}'
 unit_of_measurement: '£'
