@@ -2,5 +2,3 @@ name: Bedtime
 entities:
   group.lounge_lights: off
   switch.bedroom_light: on
-  media_player.tv:
-    state: off
