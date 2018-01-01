@@ -110,6 +110,7 @@ media:
   entities:
     - media_player.tv_kodi
     - media_player.aftt
+    - media_player.luther
 outdoors:
   name: Outside
   view: yes

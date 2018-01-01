@@ -1,5 +1,3 @@
-media_player.bravia_4k_2015:
-  friendly_name: 'TV Plex'
 sensor.hallway_thermostat_temperature:
   friendly_name: 'Temp'
 sensor.hallway_thermostat_target:
@@ -82,9 +80,8 @@ media_player.aftt:
   emulated_hue_name: 'Plex'
 media_player.tv_kodi:
   emulated_hue_name: 'Kodi'
-media_player.tv:
-  friendly_name: 'TV'
-  emulated_hue_name: 'TV'
+media_player.luther:
+  friendly_name: 'TV Chromecast'
 sensor.ip_address:
   icon: mdi:account-network
 sensor.cpu_used:
