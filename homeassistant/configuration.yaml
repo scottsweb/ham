@@ -88,6 +88,12 @@ logbook:
       - automation.nest_summary_automation
       - automation.weather_summary_automation
 
+# Customise Logger
+logger:
+  default: info
+  logs:
+    homeassistant.components.sensor.plex: error
+
 # Enables the frontend
 frontend:
   themes:
