@@ -1,12 +1,8 @@
-- platform: braviatv
-  host: !secret tv_ip
-  name: TV
 - platform: kodi
   host: !secret kodi_ip
   port: 8080
   name: TV Kodi
   user: kodi
-  turn_off_action: shutdown
 - platform: cast
 
 # Media Center

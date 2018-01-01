@@ -77,9 +77,9 @@ sensor.next_trains_platform:
   friendly_name: 'Platform'
 climate.hallway:
   icon: mdi:oil-temperature
-media_player.goody:
-  friendly_name: 'TV Chromecast'
-  emulated_hue_name: 'Chromecast'
+media_player.aftt:
+  friendly_name: 'TV Plex'
+  emulated_hue_name: 'Plex'
 media_player.tv_kodi:
   emulated_hue_name: 'Kodi'
 media_player.tv:

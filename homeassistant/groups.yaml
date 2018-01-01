@@ -106,11 +106,8 @@ media:
   view: yes
   icon: mdi:filmstrip
   entities:
-    - configurator.tv
-    - media_player.tv
     - media_player.tv_kodi
-    - media_player.goody
-    - media_player.bravia_4k_2015
+    - media_player.aftt
 outdoors:
   name: Outside
   view: yes
