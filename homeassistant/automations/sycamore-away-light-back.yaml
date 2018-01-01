@@ -13,6 +13,8 @@ condition:
       - condition: state
         entity_id: group.all_devices
         state: 'not_home'
+      - condition: time
+        before: '23:00:00'
 action:
   - delay: '00:{{ range(01,15) | random | int }}:{{ range(01,59) | random | int }}'
   - service: homeassistant.turn_on
