@@ -76,6 +76,8 @@ Blink:
   - script.blink_back_capture_script
   - script.blink_front_capture_script
   - script.blink_indoor_front_capture_script
+Settings:
+  - switch.presence_emulator
 
 #Allotment:
 
@@ -129,3 +131,4 @@ settings:
     - group.internet
     - group.sycamore
     - group.blink
+    - group.settings

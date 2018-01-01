@@ -1,0 +1,24 @@
+alias: Sycamore Away - Lights Back
+trigger:
+  - platform: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    below: -2
+condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: switch.presence_emulator
+        state: 'on'
+      - condition: state
+        entity_id: group.all_devices
+        state: 'not_home'
+action:
+  - delay: '00:{{ range(01,15) | random | int }}:{{ range(01,59) | random | int }}'
+  - service: homeassistant.turn_on
+    data:
+      entity_id: light.back_door
+  - delay: '00:{{ range(15,35) | random | int }}:00'
+  - service: homeassistant.turn_off
+    data:
+      entity_id: light.back_door

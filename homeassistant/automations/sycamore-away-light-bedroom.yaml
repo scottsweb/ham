@@ -1,0 +1,22 @@
+alias: Sycamore Away - Lights Bedroom
+trigger:
+  - platform: time
+    at: '21:50:00'
+condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: switch.presence_emulator
+        state: 'on'
+      - condition: state
+        entity_id: group.all_devices
+        state: 'not_home'
+action:
+  - delay: '00:{{ range(05,50) | random | int }}:{{ range(01,59) | random | int }}'
+  - service: homeassistant.turn_on
+    data:
+      entity_id: switch.bedroom_light
+  - delay: '00:{{ range(20,45) | random | int }}:00'
+  - service: homeassistant.turn_off
+    data:
+      entity_id: switch.bedroom_light

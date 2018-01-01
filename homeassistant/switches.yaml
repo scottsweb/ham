@@ -17,3 +17,11 @@
       command_off: !secret pihole_command_off
       command_state: !secret pihole_command_state
       value_template: "{{ value_json.status == 'enabled' }}"
+      
+- platform: mqtt
+  name: "Presence Emulator"
+  state_topic: "sycamore/presence/switch"
+  command_topic: "sycamore/presence/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
