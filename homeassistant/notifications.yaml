@@ -4,7 +4,10 @@
 
 - name: tv
   platform: nfandroidtv
-  host: !secret tv_ip  
+  host: !secret tv_ip
+  duration: 10
+  transparency: 50%;
+  color: black
 
 - name: all
   platform: group
