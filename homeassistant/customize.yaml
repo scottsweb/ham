@@ -102,6 +102,8 @@ sensor.pihole_ads_percentage_blocked_today:
 switch.pihole_switch:
   icon: 'mdi:checkbox-blank-circle'
   friendly_name: 'Pi-Hole Switch'
+switch.tv:
+  icon: 'mdi:television'
 sensor.last_call:
   icon: 'mdi:phone-incoming'
 sensor.last_blocked_call:

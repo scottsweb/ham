@@ -78,6 +78,8 @@ Blink:
   - script.blink_indoor_front_capture_script
 Settings:
   - switch.presence_emulator
+Media:
+  - switch.tv
 
 #Allotment:
 
@@ -96,6 +98,7 @@ default_view:
     - group.calls
     - group.energy
     - group.coins
+    - group.media
     - camera.front
     - camera.back
     - camera.indoor_front
@@ -103,14 +106,15 @@ default_view:
     - sensor.hallway_thermostat_target
     - sensor.hallway_thermostat_humidity
     - sensor.hallway_thermostat_operation_mode
-media:
-  name: Media
+entertainment:
+  name: Entertainment
   view: yes
   icon: mdi:filmstrip
   entities:
     - media_player.tv_kodi
     - media_player.aftt
     - media_player.luther
+    - media_player.luther_audio
 outdoors:
   name: Outside
   view: yes
