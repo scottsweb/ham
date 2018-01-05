@@ -5,7 +5,7 @@ trigger:
   from: 'not_home'
   to: 'home'
   for:
-    minutes: 10
+    minutes: 5
 condition:
   - condition: state
     entity_id: sun.sun

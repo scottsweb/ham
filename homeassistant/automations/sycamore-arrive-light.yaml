@@ -9,5 +9,9 @@ condition:
     entity_id: sun.sun
     state: below_horizon
 action:
-  service: homeassistant.turn_on
-  entity_id: light.back_door
+  - service: homeassistant.turn_on
+    data:
+      entity_id: light.back_door
+  - service: homeassistant.turn_on
+    data:
+      entity_id: group.lounge_lights
