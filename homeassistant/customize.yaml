@@ -124,16 +124,12 @@ group.energy:
   emulated_hue_hidden: true
 group.sycamore:
   emulated_hue_hidden: true
+group.media:
+  emulated_hue_hidden: true
 group.next_train:
   emulated_hue_hidden: true
 light.back_door:
   emulated_hue_name: 'Back Door Light'
-scene.tv_time:
-  emulated_hue_name: 'TV Time'
-  emulated_hue_hidden: false
-scene.bedtime:
-  emulated_hue_name: 'Bedtime'
-  emulated_hue_hidden: false
 switch.bedroom_light:
   icon: 'mdi:lightbulb'
 switch.lounge_light_small:
@@ -192,3 +188,17 @@ script.blink_front_capture_script:
   icon: mdi:camera
 script.blink_indoor_front_capture_script:
   icon: mdi:camera
+script.freeview:
+  icon: mdi:video-input-antenna
+  emulated_hue_name: 'Freeview'
+  emulated_hue_hidden: false
+script.hdmi:
+  icon: mdi:video-input-hdmi
+  emulated_hue_name: 'HDMI'
+  emulated_hue_hidden: false
+script.tv_time:
+  emulated_hue_name: 'TV Time'
+  emulated_hue_hidden: false
+script.bedtime:
+  emulated_hue_name: 'Bedtime'
+  emulated_hue_hidden: false
