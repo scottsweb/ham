@@ -204,3 +204,7 @@ scene: !include_dir_list scenes
 
 # Notifcations
 notify: !include notifications.yaml
+
+# Shell Commands
+shell_command: !include shell_commands.yaml
+
