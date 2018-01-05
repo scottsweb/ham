@@ -1,3 +1,35 @@
+tv_time:
+  alias: 'TV Time'
+  sequence:
+    - service: tts.google_say
+      data:
+        entity_id: media_player.luther_audio
+        message: 'What are we going to watch?'
+    - service: homeassistant.turn_on
+      data:
+        entity_id: group.lounge_lights
+    - service: switch.turn_on
+      data:
+        entity_id: switch.tv
+    - service: shell_command.luther_sound_bluetooth
+
+bedtime:
+  alias: 'Bedtime'
+  sequence:
+    - service: tts.google_say
+      data:
+        entity_id: media_player.luther_audio
+        message: 'Good night!'
+    - service: switch.turn_on
+      data:
+        entity_id: switch.bedroom_light
+    - service: homeassistant.turn_off
+      data:
+        entity_id: group.lounge_lights
+    - service: switch.turn_off
+      data:
+        entity_id: switch.tv
+
 blink_front_capture_script:
   alias: 'Update Front at Sycamore'
   sequence:
@@ -28,3 +60,25 @@ dash_andrex:
     - service: homeassistant.turn_on
       data:
         entity_id: group.lounge_lights
+
+freeview:
+  alias: 'Switch to Freeview'
+  sequence:
+    - service: broadlink.send_packet_192_168_11_39
+      data:
+        packet:
+          - JgBQAAABKJMTEhITEjcTEhMSExISExITEjcSOBI3EzcSExITEhITEhI4EjcTNxI4EhMSNxI4EjcTEhITEhMSExI3EhMSExITEgAFlwABKEoSAA0FAAAAAAAAAAA=
+          - JgBQAAABKZMSExITEjcTEhMSEhMSEhMSEzcSNxM3EzcSEhMSExITEhI3EzcTNxITEhITEhMSEhMSExISExITNxI3EzcTNhM3EwAFlQABKUkTAA0FAAAAAAAAAAA=
+          - JgBQAAABKZMSExITEjcTEhMSEhMSEhMSEzcSNxM3EzcSEhMSExITEhI3EzcTNxITEhITEhMSEhMSExISExITNxI3EzcTNhM3EwAFlQABKUkTAA0FAAAAAAAAAAA=
+          - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
+
+hdmi:
+  alias: 'Switch to HDMI'
+  sequence:
+    - service: broadlink.send_packet_192_168_11_39
+      data:
+        packet:
+          - JgBQAAABKJMTEhITEjcTEhMSExISExITEjcSOBI3EzcSExITEhITEhI4EjcTNxI4EhMSNxI4EjcTEhITEhMSExI3EhMSExITEgAFlwABKEoSAA0FAAAAAAAAAAA=
+          - JgBQAAABKZMTEhMSEzcSExISExITEhITEjcTNxI3EzcTEhITEhMSEhMSEzcSNxMSExISExITEhITNxITEhMSNRU3EjcTNxI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
+          - JgBQAAABKZMTEhMSEzcSExISExITEhITEjcTNxI3EzcTEhITEhMSEhMSEzcSNxMSExISExITEhITNxITEhMSNRU3EjcTNxI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
+          - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
