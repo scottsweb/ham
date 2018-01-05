@@ -25,3 +25,13 @@
   payload_on: "on"
   payload_off: "off"
   retain: true
+
+- platform: broadlink
+  host: !secret broadlink_ip
+  mac: !secret broadlink_mac
+  type: rm_mini
+  switches:
+    tv:
+      friendly_name: "TV"
+      command_on: 'JgBQAAABKJMTEhMSEzcSExISExITEhMSEjgSNxM3EjcTEhMSEhMSExI3ExISOBI3ExITNxISEzcTEhI3ExITEhM3EhMSNxMSEgAFlgABJ0sSAA0FAAAAAAAAAAA='
+      command_off: 'JgBQAAABKJMTEhMSEzcSExISExITEhMSEjgSNxM3EjcTEhMSEhMSExI3ExISOBI3ExITNxISEzcTEhI3ExITEhM3EhMSNxMSEgAFlgABJ0sSAA0FAAAAAAAAAAA='
