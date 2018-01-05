@@ -2,3 +2,4 @@ name: Bedtime
 entities:
   group.lounge_lights: off
   switch.bedroom_light: on
+  switch.tv: off

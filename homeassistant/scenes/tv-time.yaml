@@ -1,3 +1,4 @@
 name: TV Time
 entities:
   group.lounge_lights: on
+  switch.tv: on
