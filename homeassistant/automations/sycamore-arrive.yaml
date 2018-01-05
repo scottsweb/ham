@@ -20,3 +20,10 @@ action:
     data:
       topic: sycamore/unicorn
       payload: '{ "opcode": "11" }'
+  - delay: '00:01:00'
+  - service: tts.google_say
+    data:
+      entity_id: media_player.luther_audio
+      message: 'Welcome home!'
+
+
