@@ -80,6 +80,8 @@ Settings:
   - switch.presence_emulator
 Media:
   - switch.tv
+  - script.freeview
+  - script.hdmi
 
 #Allotment:
 
@@ -99,9 +101,6 @@ default_view:
     - group.energy
     - group.coins
     - group.media
-    - camera.front
-    - camera.back
-    - camera.indoor_front
     - sensor.hallway_thermostat_temperature
     - sensor.hallway_thermostat_target
     - sensor.hallway_thermostat_humidity
@@ -115,6 +114,14 @@ entertainment:
     - media_player.aftt
     - media_player.luther
     - media_player.luther_audio
+cameras:
+  name: Cameras
+  view: yes
+  icon: mdi:camera-iris
+  entities:
+    - camera.front
+    - camera.back
+    - camera.indoor_front
 outdoors:
   name: Outside
   view: yes
