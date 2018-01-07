@@ -190,7 +190,7 @@ script: !include scripts.yaml
 
 # Controls
 # input_select: !include input-selects.yaml
-# input_slider: !include input-sliders.yaml
+input_number: !include input-numbers.yaml
 
 # Groups and Other UIs
 group: !include groups.yaml

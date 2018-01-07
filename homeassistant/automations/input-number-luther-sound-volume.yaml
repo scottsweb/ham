@@ -1,0 +1,6 @@
+alias: Input Luther Sound Volume
+trigger:
+  platform: state
+  entity_id: input_number.luther_sound_volume
+action:
+  service: shell_command.luther_sound_vol_change

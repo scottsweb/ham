@@ -82,6 +82,7 @@ Media:
   - switch.tv
   - script.freeview
   - script.hdmi
+  - input_number.luther_sound_volume
 
 #Allotment:
 

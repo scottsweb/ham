@@ -204,3 +204,6 @@ script.tv_time:
 script.bedtime:
   emulated_hue_name: 'Bedtime'
   emulated_hue_hidden: false
+input_number.luther_sound_volume:
+  icon: mdi:volume-medium
+    
