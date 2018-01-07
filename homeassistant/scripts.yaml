@@ -1,17 +1,34 @@
+tv_on:
+  alias: 'TV On'
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.tv_ir
+    - delay: '00:00:05'
+    - service: shell_command.luther_sound_on
+    - service: shell_command.luther_sound_bluetooth
+    - delay: '00:00:03'
+    - service: broadlink.send_packet_192_168_11_39
+      data:
+        packet:
+          - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
+
+tv_off:
+  alias: 'TV Off'
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.tv_ir
+    - delay: '00:00:15'
+    - service: shell_command.luther_sound_off
+
 tv_time:
   alias: 'TV Time'
   sequence:
-    - service: tts.google_say
-      data:
-        entity_id: media_player.luther_audio
-        message: 'What are we going to watch?'
     - service: homeassistant.turn_on
       data:
         entity_id: group.lounge_lights
-    - service: switch.turn_on
-      data:
-        entity_id: switch.tv
-    - service: shell_command.luther_sound_bluetooth
+    - service: script.tv_on
 
 bedtime:
   alias: 'Bedtime'
@@ -26,9 +43,7 @@ bedtime:
     - service: homeassistant.turn_off
       data:
         entity_id: group.lounge_lights
-    - service: switch.turn_off
-      data:
-        entity_id: switch.tv
+    - service: script.tv_off
 
 blink_front_capture_script:
   alias: 'Update Front at Sycamore'

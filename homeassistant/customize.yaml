@@ -104,6 +104,8 @@ switch.pihole_switch:
   friendly_name: 'Pi-Hole Switch'
 switch.tv:
   icon: 'mdi:television'
+switch.tv_ir:
+  icon: 'mdi:television'
 sensor.last_call:
   icon: 'mdi:phone-incoming'
 sensor.last_blocked_call:

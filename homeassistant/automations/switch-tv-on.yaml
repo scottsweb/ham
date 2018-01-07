@@ -1,0 +1,7 @@
+alias: Switch TV On
+trigger:
+  platform: state
+  entity_id: switch.tv
+  to: 'on'
+action:
+  - service: script.tv_off
