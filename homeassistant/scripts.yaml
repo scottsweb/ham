@@ -7,6 +7,7 @@ tv_on:
     - delay: '00:00:05'
     - service: shell_command.luther_sound_on
     - service: shell_command.luther_sound_bluetooth
+    - service: shell_command.luther_sound_vol_reset
     - delay: '00:00:03'
     - service: broadlink.send_packet_192_168_11_39
       data:

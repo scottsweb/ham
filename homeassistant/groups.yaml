@@ -79,10 +79,13 @@ Blink:
 Settings:
   - switch.presence_emulator
 Media:
-  - switch.tv
-  - script.freeview
-  - script.hdmi
-  - input_number.luther_sound_volume
+  control: hidden
+  entities:
+    - switch.tv
+    - switch.tv_mute
+    - script.freeview
+    - script.hdmi
+    - input_number.luther_sound_volume
 
 #Allotment:
 

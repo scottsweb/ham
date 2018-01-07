@@ -106,6 +106,9 @@ switch.tv:
   icon: 'mdi:television'
 switch.tv_ir:
   icon: 'mdi:television'
+  emulated_hue_hidden: true
+switch.tv_mute:
+  icon: 'mdi:television-off'
 sensor.last_call:
   icon: 'mdi:phone-incoming'
 sensor.last_blocked_call:
