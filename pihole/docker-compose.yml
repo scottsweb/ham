@@ -1,7 +1,7 @@
 version: '2'
 services:
     pihole:
-        image: diginc/pi-hole:arm
+        image: diginc/pi-hole-multiarch:debian_armhf
         volumes:
             - "/var/log/pihole.log:/var/log/pihole.log"
             - "/mnt/data/Containers/pihole:/etc/pihole"
