@@ -29,22 +29,22 @@ tv_time:
     - service: homeassistant.turn_on
       data:
         entity_id: group.lounge_lights
-    - service: script.tv_on
+    - service: switch.turn_on
+      data:
+        entity_id: switch.tv
 
 bedtime:
   alias: 'Bedtime'
   sequence:
-    - service: tts.google_say
-      data:
-        entity_id: media_player.luther_audio
-        message: 'Good night!'
     - service: switch.turn_on
       data:
         entity_id: switch.bedroom_light
     - service: homeassistant.turn_off
       data:
         entity_id: group.lounge_lights
-    - service: script.tv_off
+    - service: switch.turn_off
+      data:
+        entity_id: switch.tv
 
 blink_front_capture_script:
   alias: 'Update Front at Sycamore'
