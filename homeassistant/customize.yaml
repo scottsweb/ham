@@ -102,6 +102,9 @@ sensor.pihole_ads_percentage_blocked_today:
 switch.pihole_switch:
   icon: 'mdi:checkbox-blank-circle'
   friendly_name: 'Pi-Hole Switch'
+switch.speaker:
+  icon: 'mdi:volume-medium'
+  friendly_name: 'Speaker'
 switch.tv:
   icon: 'mdi:television'
 switch.tv_ir:

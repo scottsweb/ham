@@ -1,0 +1,7 @@
+alias: Switch TV Speaker Off
+trigger:
+  platform: state
+  entity_id: switch.speaker
+  to: 'off'
+action:
+  - service: script.tv_speaker_off

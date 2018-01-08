@@ -34,6 +34,14 @@
   payload_off: "off"
   retain: true
 
+- platform: mqtt
+  name: "Speaker"
+  state_topic: "sycamore/tv-speaker/switch"
+  command_topic: "sycamore/tv-speaker/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+ 
 - platform: broadlink
   host: !secret broadlink_ip
   mac: !secret broadlink_mac
