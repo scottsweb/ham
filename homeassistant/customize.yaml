@@ -116,6 +116,22 @@ sensor.last_call:
   icon: 'mdi:phone-incoming'
 sensor.last_blocked_call:
   icon: 'mdi:phone-locked'
+sensor.flora_front_battery:
+  icon: 'mdi:battery-charging'
+sensor.flora_front_conductivity:
+  icon: 'mdi:emoticon-poop'
+sensor.flora_front_light_intensity:
+  icon: 'mdi:theme-light-dark'
+sensor.flora_front_moisture:
+  icon: 'mdi:water-percent'
+sensor.flora_back_battery:
+  icon: 'mdi:battery-charging'
+sensor.flora_back_conductivity:
+  icon: 'mdi:emoticon-poop'
+sensor.flora_back_light_intensity:
+  icon: 'mdi:theme-light-dark'
+sensor.flora_back_moisture:
+  icon: 'mdi:water-percent'
 group.pi:
   emulated_hue_hidden: true
 group.calls:

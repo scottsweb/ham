@@ -30,6 +30,7 @@ history:
     domains:
       - group
       - automation
+      - script
     entities:
       - binary_sensor.hallway_thermostat_is_using_emergency_heat
       - binary_sensor.hallway_thermostat_is_locked
@@ -64,14 +65,13 @@ history:
       - sensor.blink_front_notifications
       - sensor.blink_back_notifications
       - sensor.blink_indoor_front_notifications
-      - script.blink_back_capture_script
-      - script.blink_front_capture_script
-      - script.blink_indoor_front_capture_script
       - camera.front
       - camera.back
+      - camera.indoor_front
       - sensor.blink_back_temperature
       - sensor.blink_front_temperature
       - sensor.blink_indoor_front_temperature
+      - switch.tv_ir
 
 # Recorder
 recorder:

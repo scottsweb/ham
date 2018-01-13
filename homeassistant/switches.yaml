@@ -36,8 +36,8 @@
 
 - platform: mqtt
   name: "Speaker"
-  state_topic: "sycamore/tv-speaker/switch"
-  command_topic: "sycamore/tv-speaker/switch"
+  state_topic: "sycamore/tvspeaker/switch"
+  command_topic: "sycamore/tvspeaker/switch"
   payload_on: "on"
   payload_off: "off"
   retain: true

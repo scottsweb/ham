@@ -4,4 +4,4 @@ trigger:
   entity_id: switch.speaker
   to: 'off'
 action:
-  - service: script.tv_speaker_off
+  - service: shell_command.luther_sound_off
