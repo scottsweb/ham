@@ -4,4 +4,4 @@ trigger:
   entity_id: switch.tv
   to: 'on'
 action:
-  - service: script.tv_off
+  - service: script.tv_on
