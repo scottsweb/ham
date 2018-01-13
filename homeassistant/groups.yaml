@@ -87,7 +87,18 @@ Media:
     - script.hdmi
     - switch.speaker
     - input_number.luther_sound_volume
-
+Flora Back:
+  - sensor.flora_back_battery
+  - sensor.flora_back_conductivity
+  - sensor.flora_back_light_intensity
+  - sensor.flora_back_moisture
+  - sensor.flora_back_temperature
+Flora Front:
+  - sensor.flora_front_battery
+  - sensor.flora_front_conductivity
+  - sensor.flora_front_light_intensity
+  - sensor.flora_front_moisture
+  - sensor.flora_front_temperature
 #Allotment:
 
 # Views
@@ -139,6 +150,8 @@ outdoors:
     - sensor.dark_sky_temperature
     - sensor.dark_sky_humidity
     - group.next_train
+    - group.flora_front
+    - group.flora_back
 settings:
   name: Settings
   view: yes
