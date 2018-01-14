@@ -126,9 +126,8 @@ entertainment:
   view: yes
   icon: mdi:filmstrip
   entities:
-    - media_player.tv_kodi
-    - media_player.aftt
-    - media_player.luther
+    - input_text.dummy_tiles
+    - media_player.luther_tv
     - media_player.luther_audio
 cameras:
   name: Cameras

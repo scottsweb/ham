@@ -82,6 +82,8 @@ media_player.tv_kodi:
   emulated_hue_name: 'Kodi'
 media_player.luther:
   friendly_name: 'TV Chromecast'
+media_player.luther_tv:
+  friendly_name: 'Luther'
 sensor.ip_address:
   icon: mdi:account-network
 sensor.cpu_used:

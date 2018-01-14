@@ -72,6 +72,8 @@ history:
       - sensor.blink_front_temperature
       - sensor.blink_indoor_front_temperature
       - switch.tv_ir
+      - media_player.plex_web_chrome
+      - media_player.pixel_2
 
 # Recorder
 recorder:

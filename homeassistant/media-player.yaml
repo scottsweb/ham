@@ -3,11 +3,33 @@
   port: 8080
   name: TV Kodi
   user: kodi
+
 - platform: cast
 
-# Media Center
-#platform: universal
-  #name: Lounge
-  #children:
-    #- media_player.goody
-    #- media_player.goody_kodi
+- platform: universal
+  name: 'Luther (TV)'
+  children:
+    - media_player.aftt # plex
+    - media_player.luther # chromecast (app)
+    - media_player.tv_kodi # kodi
+  commands:
+    turn_on:
+      service: switch.turn_on
+      data:
+        entity_id: switch.tv
+    turn_off:
+      service: switch.turn_off
+      data:
+        entity_id: switch.tv
+    volume_up:
+      service: script.tv_vol_up
+    volume_down:
+      service: script.tv_vol_down
+    volume_mute:
+      service: switch.turn_on
+      data:
+        entity_id: switch.tv_mute
+  attributes:
+    state: switch.tv
+    is_volume_muted: switch.tv_mute
+
