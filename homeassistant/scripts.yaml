@@ -4,17 +4,17 @@ tv_on:
     - service: switch.turn_on
       data:
         entity_id: switch.tv_ir
-    - delay: '00:00:05'
+    - delay: '00:00:08'
     - service: switch.turn_on
       data:
         entity_id: switch.speaker
     - service: shell_command.luther_sound_bluetooth
-    - delay: '00:00:03'
+    - service: shell_command.luther_sound_vol_reset
+    - delay: '00:00:20'
     - service: broadlink.send_packet_192_168_11_39
       data:
         packet:
           - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-    - service: shell_command.luther_sound_vol_reset
 
 tv_off:
   alias: 'TV Off'
