@@ -54,6 +54,9 @@ pihole/install.log
 pihole/pihole-FTL.db
 pihole/adlists.list
 pihole/black.list
+pihole/GitHubVersions
+pihole/localbranches
+pihole/localversions
 
 # plex
 plex/config/
