@@ -104,6 +104,7 @@ sensor.pihole_ads_percentage_blocked_today:
 switch.pihole_sycamore_switch:
   icon: 'mdi:checkbox-blank-circle'
   friendly_name: 'Pi-Hole Switch'
+  emulated_hue_hidden: true
 sensor.pihole_ads_blocked_today_2:
   icon: 'mdi:checkbox-blank-circle'
 sensor.pihole_ads_percentage_blocked_today_2:
@@ -111,6 +112,7 @@ sensor.pihole_ads_percentage_blocked_today_2:
 switch.pihole_willow_switch:
   icon: 'mdi:checkbox-blank-circle'
   friendly_name: 'Pi-Hole Switch'
+  emulated_hue_hidden: true
 switch.speaker:
   icon: 'mdi:volume-medium'
   friendly_name: 'Speaker'

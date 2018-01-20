@@ -22,10 +22,6 @@ Sycamore:
   - sensor.ram_used
   - sensor.cpu_used
   - sensor.cpu_temperature
-  - sensor.received_eth0
-  - sensor.sent_eth0
-  - sensor.received_eth1
-  - sensor.sent_eth1
   - sensor.since_last_boot
   - binary_sensor.nodered
   - sensor.pihole_ads_blocked_today
@@ -106,6 +102,9 @@ Flora Front:
   - sensor.flora_front_light_intensity
   - sensor.flora_front_moisture
   - sensor.flora_front_temperature
+Ad Blocker:
+  - switch.pihole_sycamore_switch
+  - switch.pihole_willow_switch    
 #Allotment:
 
 # Views
@@ -169,3 +168,4 @@ settings:
     - group.willow
     - group.blink
     - group.settings
+    - group.ad_blocker
