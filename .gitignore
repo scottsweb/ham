@@ -43,7 +43,7 @@ node-red/.config.json
 node-red/.flows.json.backup
 node-red/.flows_cred.json.backup
 
-# pihole
+# pihole sycamore
 pihole-sycamore/*.domains
 pihole-sycamore/adlists.default
 pihole-sycamore/gravity.list
@@ -59,6 +59,23 @@ pihole-sycamore/GitHubVersions
 pihole-sycamore/localbranches
 pihole-sycamore/localversions
 pihole-sycamore/secrets/*
+
+# pihole willow
+pihole-willow/*.domains
+pihole-willow/adlists.default
+pihole-willow/gravity.list
+pihole-willow/piholeIP
+pihole-willow/setupVars.conf
+pihole-willow/list.preEventHorizon
+pihole-willow/local.list
+pihole-willow/install.log
+pihole-willow/pihole-FTL.db
+pihole-willow/adlists.list
+pihole-willow/black.list
+pihole-willow/GitHubVersions
+pihole-willow/localbranches
+pihole-willow/localversions
+pihole-willow/secrets/*
 
 # plex
 plex/config/
