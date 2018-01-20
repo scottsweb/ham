@@ -22,6 +22,7 @@ homeassistant/emulated_hue_ids.json
 homeassistant/gas-meter.jpg
 homeassistant/gas-meter-invert.jpg
 homeassistant/gas-meter-optimised.jpg
+homeassistant/automations/notify-coin-*
 
 # mqtt
 mqtt/config/
