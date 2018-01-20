@@ -163,6 +163,14 @@ group.media:
   emulated_hue_hidden: true
 group.next_train:
   emulated_hue_hidden: true
+group.flora_back:
+  emulated_hue_hidden: true
+group.flora_front:
+  emulated_hue_hidden: true
+group.willow:
+  emulated_hue_hidden: true
+group.settings:
+  emulated_hue_hidden: true
 light.back_door:
   emulated_hue_name: 'Back Door Light'
 switch.bedroom_light:
