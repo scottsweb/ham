@@ -16,8 +16,6 @@ services:
       - VIRTUAL_HOST=pihole.sycamore.lan
       - DNS1=208.67.222.222 # OpenDNS
       - DNS2=172.104.136.243 # opennic.org
-      - DNS3=193.183.98.66 # opennic.org
-      - DNS4=8.8.8.8 # Google
       - WEBPASSWORD='/run/secrets/web-password'
     extra_hosts:
       - "sycamore sycamore.lan:192.168.11.2"
