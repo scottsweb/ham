@@ -12,12 +12,20 @@
   
 - platform: command_line
   switches:
-    pihole_switch:
-      command_on: !secret pihole_command_on
-      command_off: !secret pihole_command_off
-      command_state: !secret pihole_command_state
+    pihole_sycamore_switch:
+      command_on: !secret pihole_sycamore_command_on
+      command_off: !secret pihole_sycamore_command_off
+      command_state: !secret pihole_sycamore_command_state
       value_template: "{{ value_json.status == 'enabled' }}"
-      
+
+- platform: command_line
+  switches:
+    pihole_willow_switch:
+      command_on: !secret pihole_willow_command_on
+      command_off: !secret pihole_willow_command_off
+      command_state: !secret pihole_willow_command_state
+      value_template: "{{ value_json.status == 'enabled' }}"
+
 - platform: mqtt
   name: "Presence Emulator"
   state_topic: "sycamore/presence/switch"

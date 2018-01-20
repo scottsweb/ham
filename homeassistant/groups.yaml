@@ -4,9 +4,6 @@ Internet:
   - sensor.speedtest_download
   - sensor.speedtest_upload
   - sensor.ip_address
-  - sensor.pihole_ads_blocked_today
-  - sensor.pihole_ads_percentage_blocked_today
-  - switch.pihole_switch
 Weather:
   - sensor.dark_sky_summary
   - sensor.dark_sky_precip_intensity
@@ -31,6 +28,16 @@ Sycamore:
   - sensor.sent_eth1
   - sensor.since_last_boot
   - binary_sensor.nodered
+  - sensor.pihole_ads_blocked_today
+  - sensor.pihole_ads_percentage_blocked_today
+  - switch.pihole_sycamore_switch
+Willow:
+  - sensor.glances_cpu_load
+  - sensor.glances_cpu_temp
+  - sensor.glances_ram_used
+  - sensor.pihole_ads_blocked_today_2
+  - sensor.pihole_ads_percentage_blocked_today_2
+  - switch.pihole_willow_switch
 Lights:
   - light.back_door
   - switch.bedroom_light
@@ -159,5 +166,6 @@ settings:
     - group.protect
     - group.internet
     - group.sycamore
+    - group.willow
     - group.blink
     - group.settings

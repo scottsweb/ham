@@ -14,7 +14,11 @@ nodered:
   title: 'Node-RED'
   icon: 'mdi:vector-polyline'
   url: !secret node_red_ip
-pihole:
-  title: 'Pi-hole'
+pihole_sycamore:
+  title: 'Pi-hole (Sycamore)'
   icon: 'mdi:checkbox-blank-circle'
   url: 'http://pihole.sycamore.lan/admin/'
+pihole_willow:
+  title: 'Pi-hole (Willow)'
+  icon: 'mdi:checkbox-blank-circle'
+  url: 'http://pihole.willow.lan/admin/'
