@@ -44,20 +44,21 @@ node-red/.flows.json.backup
 node-red/.flows_cred.json.backup
 
 # pihole
-pihole/*.domains
-pihole/adlists.default
-pihole/gravity.list
-pihole/piholeIP
-pihole/setupVars.conf
-pihole/list.preEventHorizon
-pihole/local.list
-pihole/install.log
-pihole/pihole-FTL.db
-pihole/adlists.list
-pihole/black.list
-pihole/GitHubVersions
-pihole/localbranches
-pihole/localversions
+pihole-sycamore/*.domains
+pihole-sycamore/adlists.default
+pihole-sycamore/gravity.list
+pihole-sycamore/piholeIP
+pihole-sycamore/setupVars.conf
+pihole-sycamore/list.preEventHorizon
+pihole-sycamore/local.list
+pihole-sycamore/install.log
+pihole-sycamore/pihole-FTL.db
+pihole-sycamore/adlists.list
+pihole-sycamore/black.list
+pihole-sycamore/GitHubVersions
+pihole-sycamore/localbranches
+pihole-sycamore/localversions
+pihole-sycamore/secrets/*
 
 # plex
 plex/config/
