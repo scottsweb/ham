@@ -229,5 +229,6 @@ script.bedtime:
   emulated_hue_name: 'Bedtime'
   emulated_hue_hidden: false
 input_number.luther_sound_volume:
+  friendly_name: 'Speaker'
   icon: mdi:volume-medium
     
