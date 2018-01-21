@@ -107,6 +107,11 @@ frontend:
       paper-toggle-button-checked-ink-color: "#a8122b"
       paper-toggle-button-checked-button-color: "#a8122b"
       paper-toggle-button-checked-bar-color: "#a8122b"
+  javascript_version: latest
+  extra_html_url:
+    - /local/custom_ui/state-card-tiles.html
+  extra_html_url_es5:
+    - /local/custom_ui/state-card-tiles.html
 
 # Map
 map:
@@ -193,6 +198,7 @@ script: !include scripts.yaml
 # Controls
 # input_select: !include input-selects.yaml
 input_number: !include input-numbers.yaml
+input_text : !include input-text.yaml
 
 # Groups and Other UIs
 group: !include groups.yaml

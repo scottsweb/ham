@@ -81,15 +81,6 @@ Blink:
   - script.blink_indoor_front_capture_script
 Settings:
   - switch.presence_emulator
-Media:
-  control: hidden
-  entities:
-    - switch.tv
-    - switch.tv_mute
-    - script.freeview
-    - script.hdmi
-    - switch.speaker
-    - input_number.luther_sound_volume
 Flora Back:
   - sensor.flora_back_battery
   - sensor.flora_back_conductivity
@@ -104,7 +95,15 @@ Flora Front:
   - sensor.flora_front_temperature
 Ad Blocker:
   - switch.pihole_sycamore_switch
-  - switch.pihole_willow_switch    
+  - switch.pihole_willow_switch
+Remote:
+  control: hidden
+  entities:
+    - input_text.remote_tiles
+    - switch.tv
+    - switch.speaker      
+    - input_number.luther_sound_volume
+
 #Allotment:
 
 # Views
@@ -122,7 +121,6 @@ default_view:
     - group.calls
     - group.energy
     - group.coins
-    - group.media
     - sensor.hallway_thermostat_temperature
     - sensor.hallway_thermostat_target
     - sensor.hallway_thermostat_humidity
@@ -132,7 +130,7 @@ entertainment:
   view: yes
   icon: mdi:filmstrip
   entities:
-    - input_text.dummy_tiles
+    - group.remote
     - media_player.luther_tv
     - media_player.luther_audio
 cameras:

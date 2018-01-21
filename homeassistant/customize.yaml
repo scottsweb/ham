@@ -248,4 +248,38 @@ script.bedtime:
 input_number.luther_sound_volume:
   friendly_name: 'Speaker'
   icon: mdi:volume-medium
-    
+input_text.remote_tiles:
+  custom_ui_state_card: state-card-tiles
+  config:
+    columns: 3
+    column_width: 31.5%
+    row_height: 80px
+    gap: 10px
+    color: '#747474'
+    color_on: '#437a17'
+    color_off: '#a8122b'
+    entities:       
+      - entity: switch.tv
+        icon: mdi:power
+        column_span: 2 
+        row_span: 1
+      - entity: switch.tv_mute
+        icon: mdi:volume-mute
+      - entity: script.freeview
+        label: 'Freeview'
+      - entity: script.tv_ch_up
+        icon: mdi:plus
+      - entity: script.tv_vol_up
+        icon: mdi:volume-plus  
+      - entity: script.hdmi
+        label: 'HDMI'
+      - entity: script.tv_ch_down
+        icon: mdi:minus
+      - entity: script.tv_vol_down
+        icon: mdi:volume-minus
+      - entity: script.tv_bbc_one
+        label: 'BBC One'
+      - entity: script.tv_channel_four
+        label: 'Channel 4'
+      - entity: script.tv_film_four
+        label: 'Film 4'
