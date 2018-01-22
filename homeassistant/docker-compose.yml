@@ -3,6 +3,7 @@ services:
     homeassistant:
         image: lroguet/rpi-home-assistant
         volumes:
+            - "/home/pilot/.ssh:/root/.ssh:ro"
             - "/mnt/data/Containers/homeassistant:/config"
             - "/etc/localtime:/etc/localtime:ro"
             - "/mnt/data/Containers/ncid/cidcall.log:/var/log/cidcall.log"
