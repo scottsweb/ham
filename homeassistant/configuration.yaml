@@ -31,6 +31,8 @@ history:
       - group
       - automation
       - script
+      - input_text
+      - input_number
     entities:
       - binary_sensor.hallway_thermostat_is_using_emergency_heat
       - binary_sensor.hallway_thermostat_is_locked
@@ -42,6 +44,7 @@ history:
       - binary_sensor.hallway_thermostat_has_leaf
       - binary_sensor.hallway_thermostat_online
       - sensor.since_last_boot
+      - sensor.since_last_boot_willow
       - sensor.pihole_ads_blocked_today
       - sensor.pihole_dns_queries_today
       - sensor.pihole_ads_percentage_blocked_today
@@ -74,6 +77,7 @@ history:
       - switch.tv_ir
       - media_player.plex_web_chrome
       - media_player.pixel_2
+      - switch.tv_mute
 
 # Recorder
 recorder:
@@ -82,6 +86,8 @@ recorder:
 
 # Discover some devices automatically
 discovery:
+  # ignore:
+  #  - plex_mediaserver
 
 # View all events in a logbook
 logbook:
