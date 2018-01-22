@@ -94,6 +94,18 @@ sensor.ram_used:
   icon: mdi:chip
 sensor.cpu_temperature:
   icon: mdi:chip
+sensor.ram_use_willow:
+  friendly_name: 'RAM'
+  icon: mdi:chip
+sensor.cpu_use_willow:
+  friendly_name: 'CPU'
+  icon: mdi:chip
+sensor.cpu_temperature_willow:
+  friendly_name: 'CPU Temperature'
+  icon: mdi:chip
+sensor.since_last_boot_willow:
+  friendly_name: 'Since last boot'
+  icon: mdi:clock
 binary_sensor.nodered:
   friendly_name: 'Node-Red'
   icon: mdi:nfc-tap

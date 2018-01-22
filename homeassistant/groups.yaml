@@ -28,9 +28,10 @@ Sycamore:
   - sensor.pihole_ads_percentage_blocked_today
   - switch.pihole_sycamore_switch
 Willow:
-  - sensor.glances_cpu_load
-  - sensor.glances_cpu_temp
-  - sensor.glances_ram_used
+  - sensor.ram_use_willow
+  - sensor.cpu_use_willow
+  - sensor.cpu_temperature_willow
+  - sensor.since_last_boot_willow
   - sensor.pihole_ads_blocked_today_2
   - sensor.pihole_ads_percentage_blocked_today_2
   - switch.pihole_willow_switch
