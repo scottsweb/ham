@@ -16,8 +16,8 @@ RUN apt-get update && sudo apt-get upgrade -y && apt-get install -y \
 	--no-install-recommends && \
 	rm -rf /var/lib/apt/lists/*
 
-RUN wget https://downloads.sourceforge.net/project/ncid/ncid/1.7/ncid_1.7-1_armhf.deb
-RUN dpkg -i ./ncid_1.7-1_armhf.deb
+RUN wget https://downloads.sourceforge.net/project/ncid/ncid/1.7/ncid_1.7-3_armhf.deb
+RUN dpkg -i ./ncid_1.7-3_armhf.deb
 
 # Define working directory
 #WORKDIR /data
