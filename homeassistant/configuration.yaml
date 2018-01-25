@@ -94,6 +94,7 @@ history:
       - sensor.pihole_dns_unique_domains_2
       - sensor.pihole_domains_blocked
       - sensor.pihole_domains_blocked_2
+      - sensor.plex
 
 # Recorder
 recorder:
