@@ -7,7 +7,7 @@ services:
             - "/mnt/data/Containers/homeassistant:/config"
             - "/etc/localtime:/etc/localtime:ro"
             - "/mnt/data/Containers/ncid/cidcall.log:/var/log/cidcall.log"
-            - "/mnt/data/Containers/homeassistant/deps:/config/deps"
+            #- "/mnt/data/Containers/homeassistant/deps:/config/deps"
         network_mode: "host"
         restart: always
         container_name: homeassistant
