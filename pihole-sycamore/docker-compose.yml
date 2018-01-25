@@ -24,6 +24,8 @@ services:
       - "plex plex.sycamore.lan:192.168.11.2"
       - "pihole.sycamore.lan:192.168.11.2"
       - "pihole.willow.lan:192.168.11.2"
+      - "sync.sycamore.lan:192.168.11.2"
+      - "sync.willow.lan:192.168.11.2"
       - "ziggy ziggy.lan:192.168.11.3"
     secrets:
       - web-password

@@ -28,3 +28,21 @@ http://pihole.willow.lan {
 		-X-Frame-Options
 	}
 }
+
+http://sync.sycamore.lan {
+	proxy / 192.168.11.2:8384 {
+		transparent
+	}
+	header / {
+		-X-Frame-Options
+	}
+}
+
+http://sync.willow.lan {
+	proxy / 192.168.11.4:8384 {
+		transparent
+	}
+	header / {
+		-X-Frame-Options
+	}
+}
