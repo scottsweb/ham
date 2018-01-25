@@ -11,7 +11,7 @@ tv_on:
     - service: shell_command.luther_sound_bluetooth
     - service: shell_command.luther_sound_vol_reset
     - delay: '00:00:20'
-    - service: broadlink.send_packet_192_168_11_39
+    - service: switch.broadlink_send_packet_192_168_11_39
       data:
         packet:
           - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
@@ -94,7 +94,7 @@ dash_andrex:
 freeview:
   alias: 'Switch to Freeview'
   sequence:
-    - service: broadlink.send_packet_192_168_11_39
+    - service: switch.broadlink_send_packet_192_168_11_39
       data:
         packet:
           - JgBQAAABKJMTEhITEjcTEhMSExISExITEjcSOBI3EzcSExITEhITEhI4EjcTNxI4EhMSNxI4EjcTEhITEhMSExI3EhMSExITEgAFlwABKEoSAA0FAAAAAAAAAAA=
@@ -105,7 +105,7 @@ freeview:
 hdmi:
   alias: 'Switch to HDMI'
   sequence:
-    - service: broadlink.send_packet_192_168_11_39
+    - service: switch.broadlink_send_packet_192_168_11_39
       data:
         packet:
           - JgBQAAABKJMTEhITEjcTEhMSExISExITEjcSOBI3EzcSExITEhITEhI4EjcTNxI4EhMSNxI4EjcTEhITEhMSExI3EhMSExITEgAFlwABKEoSAA0FAAAAAAAAAAA=
@@ -116,7 +116,7 @@ hdmi:
 tv_vol_up:
   alias: 'TV Volume Up'
   sequence:
-    - service: broadlink.send_packet_192_168_11_39
+    - service: switch.broadlink_send_packet_192_168_11_39
       data:
         packet:
           - JgBQAAABJpYRExITETkQFRAVEBQRFBEUETkQORE5EDkRFBEUEBUQFRAVETgRFBAVEBUQFRAUERQQOhAVEDkRORA5ETkQOhE4EQAFmAABJkwQAA0FAAAAAAAAAAA=
@@ -124,7 +124,7 @@ tv_vol_up:
 tv_vol_down:
   alias: 'TV Volume Down'
   sequence:
-    - service: broadlink.send_packet_192_168_11_39
+    - service: switch.broadlink_send_packet_192_168_11_39
       data:
         packet:
           - JgBQAAABJpURFBAVEDkRFBEUEBURFBAVEDkRORA5ETkRFBAVEBUQFBE5ETkQFBEUERQQFRAVEBQRFBEUEDoROBE5EDkRORA6EAAFmAABJkwQAA0FAAAAAAAAAAA=
@@ -132,7 +132,7 @@ tv_vol_down:
 tv_ch_up:
   alias: 'TV Channel Up'
   sequence:
-    - service: broadlink.send_packet_192_168_11_39
+    - service: switch.broadlink_send_packet_192_168_11_39
       data:
         packet:
           - JgBQAAABJ5UQFRAUETkQFRAVEBQRFBEUEDoQORE5EDoRExEUERQRFBAVERMRFBEUEBUQFRAVEBQRORA6EDkRORE5EDkRORE2EwAFmAABJkwQAA0FAAAAAAAAAAA=
@@ -140,7 +140,7 @@ tv_ch_up:
 tv_ch_down:
   alias: 'TV Channel Down'
   sequence:
-    - service: broadlink.send_packet_192_168_11_39
+    - service: switch.broadlink_send_packet_192_168_11_39
       data:
         packet: 
           - JgBQAAABJ5UQFRAVEDkRFBEUERQQFRAVEDkRORA5ETkQFRAVEBURExI4EBUQFRAVERMSExAVEBUQFRA5ETkQOhA5ETkQORE5EAAFmQABJkwQAA0FAAAAAAAAAAA=
@@ -148,7 +148,7 @@ tv_ch_down:
 tv_bbc_one:
   alias: 'BBC One'
   sequence:
-    - service: broadlink.send_packet_192_168_11_39
+    - service: switch.broadlink_send_packet_192_168_11_39
       data:
         packet:
           - JgBQAAABJpURFBEUEDoQFBEUERQQFRAVEDkRORA6EDkRFBAVEBUQFBE5EBUQFRAVEDkQFRAVEBUQFBE5EDoQOREUEDoQORE5EAAFmAABJ0sRAA0FAAAAAAAAAAA=
@@ -159,7 +159,7 @@ tv_bbc_one:
 tv_channel_four:
   alias: 'Channel 4'
   sequence:
-    - service: broadlink.send_packet_192_168_11_39
+    - service: switch.broadlink_send_packet_192_168_11_39
       data:
         packet:
           - JgBQAAABJpURFBEUEDoQFBEUERQQFRAVEDkRORA6EDkRFBAVEBUQFBE5EBUQFRAVEDkQFRAVEBUQFBE5EDoQOREUEDoQORE5EAAFmAABJ0sRAA0FAAAAAAAAAAA=
@@ -170,7 +170,7 @@ tv_channel_four:
 tv_film_four:
   alias: 'Film 4'
   sequence:
-    - service: broadlink.send_packet_192_168_11_39
+    - service: switch.broadlink_send_packet_192_168_11_39
       data:
         packet:
           - JgBQAAABJpURFBEUEDoQFBEUERQQFRAVEDkRORA6EDkRFBAVEBUQFBE5EBUQFRAVEDkQFRAVEBUQFBE5EDoQOREUEDoQORE5EAAFmAABJ0sRAA0FAAAAAAAAAAA=
