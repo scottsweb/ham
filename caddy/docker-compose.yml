@@ -3,9 +3,9 @@ services:
     caddy:
         image: caddy
         volumes:
-            - "/mnt/data/Containers/caddy/Caddyfile:/etc/Caddyfile"
-            - "/mnt/data/Containers/caddy/.caddy:/root/.caddy"
-            - "/mnt/data/Containers/caddy/sites/:/srv"
+            - "/media/data/Containers/caddy/Caddyfile:/etc/Caddyfile"
+            - "/media/data/Containers/caddy/.caddy:/root/.caddy"
+            - "/media/data/Containers/caddy/sites/:/srv"
         ports:
             - "80:80"
             - "443:443"
