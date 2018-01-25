@@ -78,6 +78,22 @@ history:
       - media_player.plex_web_chrome
       - media_player.pixel_2
       - switch.tv_mute
+      - sensor.pihole_ads_blocked_today
+      - sensor.pihole_ads_blocked_today_2
+      - sensor.pihole_ads_percentage_blocked_today
+      - sensor.pihole_ads_percentage_blocked_today_2
+      - sensor.pihole_dns_queries_cached
+      - sensor.pihole_dns_queries_cached_2
+      - sensor.pihole_dns_queries_forwarded
+      - sensor.pihole_dns_queries_forwarded_2
+      - sensor.pihole_dns_queries_today
+      - sensor.pihole_dns_queries_today_2
+      - sensor.pihole_dns_unique_clients
+      - sensor.pihole_dns_unique_clients_2
+      - sensor.pihole_dns_unique_domains
+      - sensor.pihole_dns_unique_domains_2
+      - sensor.pihole_domains_blocked
+      - sensor.pihole_domains_blocked_2
 
 # Recorder
 recorder:
