@@ -3,9 +3,9 @@ services:
     mqtt:
         image: pascaldevink/rpi-mosquitto
         volumes:
-            - "/mnt/data/Containers/mqtt/config:/mqtt/config:ro"
-            - "/mnt/data/Containers/mqtt/log:/mqtt/log"
-            - "/mnt/data/Containers/mqtt/data:/mqtt/data"
+            - "/media/data/Containers/mqtt/config:/mqtt/config:ro"
+            - "/media/data/Containers/mqtt/log:/mqtt/log"
+            - "/media/data/Containers/mqtt/data:/mqtt/data"
         ports:
             - "1883:1883"
             - "9001:9001"

@@ -3,11 +3,11 @@ services:
     plex:
         image: lsioarmhf/plex
         volumes:
-            - "/mnt/data/TV:/data/TV"
-            - "/mnt/data/Music:/data/Music"
-            - "/mnt/data/Films:/data/Films"
-            - "/mnt/data/Containers/plex/transcode:/transcode"
-            - "/mnt/data/Containers/plex/config:/config"
+            - "/media/data/TV:/data/TV"
+            - "/media/data/Music:/data/Music"
+            - "/media/data/Films:/data/Films"
+            - "/media/data/Containers/plex/transcode:/transcode"
+            - "/media/data/Containers/plex/config:/config"
         environment:
             - PUID=1001
             - PGID=1001

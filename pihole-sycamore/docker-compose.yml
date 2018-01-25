@@ -4,7 +4,7 @@ services:
     image: diginc/pi-hole-multiarch:debian_armhf
     volumes:
       - "/var/log/pihole.log:/var/log/pihole.log"
-      - "/mnt/data/Containers/pihole-sycamore:/etc/pihole"
+      - "/media/data/Containers/pihole-sycamore:/etc/pihole"
     ports:
       - "53:53/tcp"
       - "53:53/udp"
