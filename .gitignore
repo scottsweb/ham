@@ -1,22 +1,17 @@
 # caddy
 caddy/.caddy/
-caddy/Caddyfile
 caddy/sites/
 
 # homeassistant
-homeassistant/deps/*
 homeassistant/.uuid
 homeassistant/*.log
 homeassistant/*.db
 homeassistant/*.sqlite
 homeassistant/*.xml
 homeassistant/.HA_VERSION
-homeassistant/bravia.conf
 homeassistant/known_devices.yaml
-homeassistant/OZW_Log.txt
 homeassistant/secrets.yaml
 homeassistant/nest.conf
-homeassistant/source/
 homeassistant/plex.conf
 homeassistant/emulated_hue_ids.json
 homeassistant/gas-meter.jpg
@@ -82,6 +77,12 @@ plex/config/
 
 # sync
 sync/config/
+
+# syncthing-sycamore
+syncthing-sycamore/config/*
+
+# syncthing-willow
+syncthing-willow/config/*
 
 # samba
 samba/
