@@ -3,6 +3,7 @@ services:
     ncid:
         image: ncid
         volumes:
+            # Mounts directly over ssh to speed up notification time
             - "/media/sycamore/Containers/ncid/ncidd.log:/var/log/ncidd.log"
             - "/media/sycamore/Containers/ncid/cidcall.log:/var/log/cidcall.log"
             - "/media/sycamore/Containers/ncid/:/etc/ncid/"
