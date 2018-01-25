@@ -1,0 +1,30 @@
+http://sycamore.lan {
+	proxy / http://192.168.11.2:8123 {
+		transparent
+	}
+	proxy /api/websocket http://192.168.11.2:8123 {
+		websocket
+		header_upstream Sec-WebSocket-Extensions {>Sec-WebSocket-Extensions}
+		header_upstream Sec-WebSocket-Key {>Sec-WebSocket-Key}
+		header_upstream Sec-WebSocket-Version {>Sec-WebSocket-Version}
+	}
+	errors stdout
+}
+
+http://pihole.sycamore.lan {
+	proxy / 192.168.11.2:8053 {
+		transparent
+	}
+	header / {
+		-X-Frame-Options
+	}
+}
+
+http://pihole.willow.lan {
+	proxy / 192.168.11.4:8053 {
+		transparent
+	}
+	header / {
+		-X-Frame-Options
+	}
+}
