@@ -112,6 +112,11 @@ logbook:
     entities:
       - automation.nest_summary_automation
       - automation.weather_summary_automation
+      - sensor.since_last_boot
+      - sensor.since_last_boot_willow
+      - sensor.next_trains_estimated
+      - sensor.next_trains_origin
+      - sensor.next_trains_scheduled
 
 # Customise Logger
 logger:
