@@ -1,4 +1,4 @@
-alias: Sycamore Away - Light Tall
+alias: Sycamore Away - Light Small
 trigger:
   - platform: numeric_state
     entity_id: sun.sun
@@ -19,8 +19,8 @@ action:
   - delay: '00:{{ range(01,59) | random | int }}:{{ range(01,59) | random | int }}'
   - service: homeassistant.turn_on
     data:
-      entity_id: switch.lounge_light_tall
-  - delay: '0{{ range(1,3) | random | int }}:{{ range(30,59) | random | int }}:00'
+      entity_id: switch.lounge_light_small
+  - delay: '0{{ range(1,2) | random | int }}:{{ range(01,59) | random | int }}:00'
   - service: homeassistant.turn_off
     data:
-      entity_id: switch.lounge_light_tall
+      entity_id: switch.lounge_light_small
