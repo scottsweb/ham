@@ -19,6 +19,8 @@ homeassistant/gas-meter.jpg
 homeassistant/gas-meter-invert.jpg
 homeassistant/gas-meter-optimised.jpg
 homeassistant/automations/notify-coin-*
+homeassistant/home-assistant_v2.db-shm
+homeassistant/home-assistant_v2.db-wal
 
 # mqtt
 mqtt/config/
