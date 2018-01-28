@@ -35,6 +35,7 @@ ncid/cidcall.log
 # node-red
 node-red/node_modules/
 node-red/settings.js
+node-red/flows.json
 node-red/flows_cred.json
 node-red/.sessions.json
 node-red/.config.json
