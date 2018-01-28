@@ -67,19 +67,7 @@ Blink:
   - binary_sensor.blink_armed_status
   - binary_sensor.blink_back_motion_enabled
   - binary_sensor.blink_front_motion_enabled
-  - binary_sensor.blink_indoor_front_motion_enabled  
-  - sensor.blink_front_battery
-  - sensor.blink_front_notifications
-  - sensor.blink_front_temperature
-  - sensor.blink_back_battery
-  - sensor.blink_back_notifications
-  - sensor.blink_back_temperature
-  - sensor.blink_indoor_front_battery
-  - sensor.blink_indoor_front_notifications
-  - sensor.blink_indoor_front_temperature
-  - script.blink_back_capture_script
-  - script.blink_front_capture_script
-  - script.blink_indoor_front_capture_script
+  - binary_sensor.blink_indoor_front_motion_enabled
 Settings:
   - switch.presence_emulator
 Flora Back:
@@ -104,7 +92,21 @@ Remote:
     - switch.tv
     - switch.speaker      
     - input_number.luther_sound_volume
-
+Back:
+  - camera.back
+  - script.blink_back_capture_script
+  - sensor.blink_back_temperature
+  - sensor.blink_back_battery
+Front:
+  - camera.front
+  - script.blink_front_capture_script
+  - sensor.blink_front_temperature
+  - sensor.blink_front_battery
+Indoor Front:
+  - camera.indoor_front
+  - script.blink_indoor_front_capture_script
+  - sensor.blink_indoor_front_temperature
+  - sensor.blink_indoor_front_battery
 #Allotment:
 
 # Views
@@ -139,9 +141,9 @@ cameras:
   view: yes
   icon: mdi:camera-iris
   entities:
-    - camera.front
-    - camera.back
-    - camera.indoor_front
+    - group.front
+    - group.back
+    - group.indoor_front
 outdoors:
   name: Outside
   view: yes
