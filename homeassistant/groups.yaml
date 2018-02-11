@@ -19,8 +19,8 @@ Protect:
   - sensor.upstairs_nest_protect_co_status
   - sensor.upstairs_nest_protect_smoke_status
 Sycamore:
-  - sensor.ram_used
-  - sensor.cpu_used
+  - sensor.memory_use_percent
+  - sensor.load_5m
   - sensor.cpu_temperature
   - sensor.since_last_boot
   - binary_sensor.nodered

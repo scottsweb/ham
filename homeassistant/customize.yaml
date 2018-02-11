@@ -56,7 +56,7 @@ sensor.bitcoin_cash:
 sensor.dash:
   icon: mdi:cash
 sensor.ethereum:
-  icon: mdi:currency-eth
+  icon: mdi:ethereum
 sensor.ripple:
   icon: mdi:cash
 sensor.litecoin:
@@ -86,10 +86,11 @@ media_player.luther_tv:
   friendly_name: 'Luther'
 sensor.ip_address:
   icon: mdi:account-network
-sensor.cpu_used:
+sensor.load_5m:
   friendly_name: 'CPU'
   icon: mdi:chip
-sensor.ram_used:
+  unit_of_measurement: "%"
+sensor.memory_use_percent:
   friendly_name: 'RAM'
   icon: mdi:chip
 sensor.cpu_temperature:

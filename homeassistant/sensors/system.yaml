@@ -2,7 +2,7 @@ platform: systemmonitor
 resources:
   # - type: disk_use_percent
   - type: memory_use_percent
-  - type: processor_use
+  - type: load_5m
   # - type: network_in
   #  arg: eth0
   # - type: network_out
