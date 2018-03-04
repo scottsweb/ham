@@ -80,7 +80,14 @@ blink_indoor_front_capture_script:
     - service: blink.snap_picture
       data:
         friendly_name: "Indoor Front"
-        
+
+blink_indoor_back_capture_script:
+  alias: 'Update Indoor Back at Sycamore'
+  sequence:
+    - service: blink.snap_picture
+      data:
+        friendly_name: "Indoor Back"
+
 dash_andrex:
   alias: 'Amazon Dash - Andrex'
   sequence:

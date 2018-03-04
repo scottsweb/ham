@@ -238,11 +238,15 @@ camera.back:
   friendly_name: 'Blink Back'
 camera.indoor_front:
   friendly_name: 'Blink Indoor Front'
+camera.indoor_back:
+   friendly_name: 'Blink Indoor Back'
 script.blink_back_capture_script:
   icon: mdi:camera
 script.blink_front_capture_script:
   icon: mdi:camera
 script.blink_indoor_front_capture_script:
+  icon: mdi:camera
+script.blink_indoor_back_capture_script:
   icon: mdi:camera
 script.freeview:
   icon: mdi:video-input-antenna

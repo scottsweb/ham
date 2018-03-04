@@ -107,6 +107,11 @@ Indoor Front:
   - script.blink_indoor_front_capture_script
   - sensor.blink_indoor_front_temperature
   - sensor.blink_indoor_front_battery
+Indoor Back:
+  - camera.indoor_back
+  - script.blink_indoor_back_capture_script
+  - sensor.blink_indoor_back_temperature
+  - sensor.blink_indoor_back_battery
 #Allotment:
 
 # Views
@@ -144,6 +149,7 @@ cameras:
     - group.front
     - group.back
     - group.indoor_front
+    - group.indoor_back
 outdoors:
   name: Outside
   view: yes

@@ -9,6 +9,9 @@ trigger:
   - platform: state
     entity_id: sensor.blink_back_battery
     from: 'OK'
+  - platform: state
+    entity_id: sensor.blink_indoor_back_battery
+    from: 'OK'
 action:
   - service: notify.all
     data:

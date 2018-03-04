@@ -71,6 +71,7 @@ history:
       - camera.front
       - camera.back
       - camera.indoor_front
+      - camera.indoor_back
       - sensor.blink_back_temperature
       - sensor.blink_front_temperature
       - sensor.blink_indoor_front_temperature

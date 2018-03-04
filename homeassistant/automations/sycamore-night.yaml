@@ -1,7 +1,7 @@
 alias: Goodnight
 trigger:
   platform: time
-  at: '23:00:00'
+  at: '23:30:00'
 condition:
   - condition: state
     entity_id: group.all_devices
@@ -15,3 +15,7 @@ action:
     data:
       device_armed: "True"
       friendly_name: "Indoor Front"
+  - service: blink.arm_camera
+    data:
+      device_armed: "True"
+      friendly_name: "Indoor Back"
