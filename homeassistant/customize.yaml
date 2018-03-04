@@ -230,6 +230,16 @@ sensor.blink_indoor_front_notifications:
   icon: mdi:comment-alert
 sensor.blink_indoor_front_temperature:
   friendly_name: 'Blink Indoor Front Temperature'
+binary_sensor.blink_indoor_back_motion_enabled:
+  friendly_name: 'Blink Indoor Back Motion Enabled'
+sensor.blink_indoor_back_battery:
+  friendly_name: 'Blink Indoor Back Battery'
+  icon: mdi:battery-charging
+sensor.blink_indoor_back_notifications:
+  friendly_name: 'Blink Indoor Back Notifcations'
+  icon: mdi:comment-alert
+sensor.blink_indoor_back_temperature:
+  friendly_name: 'Blink Indoor Back Temperature'
 binary_sensor.blink_armed_status:
   friendly_name: 'Armed?'
 camera.front:
