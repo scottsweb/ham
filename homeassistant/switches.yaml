@@ -55,7 +55,7 @@
   mac: !secret broadlink_mac
   type: rm_mini
   switches:
-    tv:
+    tv_ir:
       friendly_name: "TV IR"
       command_on: 'JgBQAAABKJMTEhMSEzcSExISExITEhMSEjgSNxM3EjcTEhMSEhMSExI3ExISOBI3ExITNxISEzcTEhI3ExITEhM3EhMSNxMSEgAFlgABJ0sSAA0FAAAAAAAAAAA='
       command_off: 'JgBQAAABKJMTEhMSEzcSExISExITEhMSEjgSNxM3EjcTEhMSEhMSExI3ExISOBI3ExITNxISEzcTEhI3ExITEhM3EhMSNxMSEgAFlgABJ0sSAA0FAAAAAAAAAAA='
@@ -65,7 +65,7 @@
   mac: !secret broadlink_mac
   type: rm_mini
   switches:
-    tv:
+    tv_mute:
       friendly_name: "TV Mute"
       command_on: 'JgBQAAABKZMTEhITEjcTEhMSEhMSExISEzcSOBI3EzcSExITEhITEhM3EhMSEhM3ExISExITEhITEhM3EjcTEhM3EjgSNxM3EgAFlgABKEoSAA0FAAAAAAAAAAA='
       command_off: 'JgBQAAABKZMTEhITEjcTEhMSEhMSExISEzcSOBI3EzcSExITEhITEhM3EhMSEhM3ExISExITEhITEhM3EjcTEhM3EjgSNxM3EgAFlgABKEoSAA0FAAAAAAAAAAA='
