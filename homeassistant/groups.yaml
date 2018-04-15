@@ -159,8 +159,6 @@ outdoors:
   entities:
     - group.allotment
     - group.weather
-    - sun.sun
-    - sensor.dark_sky_summary
     - sensor.dark_sky_temperature
     - sensor.dark_sky_humidity
     - group.next_train
