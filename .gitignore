@@ -21,6 +21,7 @@ homeassistant/gas-meter-optimised.jpg
 homeassistant/automations/notify-coin-*
 homeassistant/home-assistant_v2.db-shm
 homeassistant/home-assistant_v2.db-wal
+homeassistant/.cloud/*
 
 # mqtt
 mqtt/config/
