@@ -141,8 +141,8 @@ entertainment:
   icon: mdi:filmstrip
   entities:
     - group.remote
-    - media_player.luther_tv
-    - media_player.luther_audio
+    - media_player.luther_universal_tv
+    - media_player.luther_universal_audio
 cameras:
   name: Cameras
   view: yes

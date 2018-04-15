@@ -7,7 +7,7 @@
 - platform: cast
 
 - platform: universal
-  name: 'Luther (TV)'
+  name: 'Luther Universal (TV)'
   children:
     - media_player.aftt # plex
     - media_player.luther # chromecast (app)
@@ -33,3 +33,9 @@
     state: switch.tv
     is_volume_muted: switch.tv_mute
 
+- platform: universal
+  name: 'Luther Universal (Audio)'
+  children:
+    - media_player.luther_audio
+    - media_player.luther_audio_2
+    
