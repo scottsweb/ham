@@ -1,7 +1,7 @@
 FROM nodered/node-red-docker:rpi
 MAINTAINER Scott Evans <docker@scott.ee>
 
-LABEL nodered_version="0.17.5" description="Node-RED with Bluetooth"
+LABEL nodered_version="0.18.4" description="Node-RED with Bluetooth"
 
 USER root
 
