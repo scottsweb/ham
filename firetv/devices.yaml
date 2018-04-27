@@ -1,0 +1,3 @@
+devices:
+  luther:
+    host: 192.168.11.40:5555

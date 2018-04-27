@@ -1,0 +1,11 @@
+version: '2'
+services:
+    sync:
+        image: firetv
+        volumes:
+            - "/media/data/Containers/firetv:/config"
+        ports:
+            - "5556:5556"
+        restart: always
+        container_name: firetv
+        mem_limit: 100m
