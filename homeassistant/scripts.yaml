@@ -2,6 +2,7 @@ tv_on:
   alias: 'TV On'
   sequence:
     - service: rest_command.kodi_start_request
+    - service: rest_command.firetv_on_request
     - service: switch.turn_on
       data:
         entity_id: switch.tv_ir
@@ -20,6 +21,7 @@ tv_on:
 tv_off:
   alias: 'TV Off'
   sequence:
+    - service: rest_command.firetv_off_request
     - service: switch.turn_off
       data:
         entity_id: switch.tv_ir

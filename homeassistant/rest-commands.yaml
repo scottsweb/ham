@@ -24,3 +24,12 @@ channel4_start_request:
 sport_start_request:
   url: !secret ftv_sport_url
   method: get
+  
+firetv_on_request:
+  url: !secret ftv_on
+  method: get
+ 
+firetv_off_request:
+  url: !secret ftv_off
+  method: get
+ 
