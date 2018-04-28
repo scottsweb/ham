@@ -1,0 +1,16 @@
+alias: Media Paused
+trigger:
+  - platform: state
+    entity_id: media_player.tv_kodi
+    to: 'paused'
+  - platform: state
+    entity_id: media_player.aftt
+    to: 'paused'
+  - platform: state
+    entity_id: media_player.luther
+    to: 'paused'
+action:
+  - service: mqtt.publish
+    data:
+      topic: sycamore/unicorn
+      payload: '{ "icon": "pause", "r":255, "g":255, "b":255 }'

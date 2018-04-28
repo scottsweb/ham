@@ -1,0 +1,16 @@
+alias: Media Play
+trigger:
+  - platform: state
+    entity_id: media_player.tv_kodi
+    to: 'playing'
+  - platform: state
+    entity_id: media_player.aftt
+    to: 'playing'
+  - platform: state
+    entity_id: media_player.luther
+    to: 'playing'
+action:
+  - service: mqtt.publish
+    data:
+      topic: sycamore/unicorn
+      payload: '{ "icon": "play", "r":0, "g":255, "b":0 }'
