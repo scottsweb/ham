@@ -11,7 +11,7 @@
   name: 'TV FireTV'
   
 - platform: plex
-  scan_interval: 4
+  scan_interval: 2
  
 - platform: universal
   name: 'Luther Universal (TV)'
