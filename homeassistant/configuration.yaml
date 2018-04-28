@@ -16,8 +16,8 @@ http:
     #- 127.0.0.1
     #- ::1
 
-# Cloud test
-# cloud:
+# Cloud
+cloud:
 
 # Allows you to issue voice commands from the frontend
 conversation:
