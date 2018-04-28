@@ -9,6 +9,9 @@
 - platform: firetv
   device: luther
   name: 'TV FireTV'
+  
+- platform: plex
+  scan_interval: 4
  
 - platform: universal
   name: 'Luther Universal (TV)'
