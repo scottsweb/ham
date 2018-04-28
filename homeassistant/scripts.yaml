@@ -1,6 +1,7 @@
 tv_on:
   alias: 'TV On'
   sequence:
+    - service: rest_command.kodi_start_request
     - service: switch.turn_on
       data:
         entity_id: switch.tv_ir

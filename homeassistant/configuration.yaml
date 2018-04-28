@@ -88,6 +88,7 @@ history:
       - media_player.luther_audio_2
       - media_player.aftt
       - media_player.luther
+      - media_player.tv_firetv
       - media_player.tv_kodi
       - switch.tv_mute
       - sensor.pihole_ads_blocked_today
@@ -234,6 +235,9 @@ switch: !include switches.yaml
 
 # Scripts
 script: !include scripts.yaml
+
+# Rest Commands
+rest_command: !include rest-commands.yaml
 
 # Controls
 # input_select: !include input-selects.yaml

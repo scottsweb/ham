@@ -13,10 +13,10 @@
 - platform: universal
   name: 'Luther Universal (TV)'
   children:
-    - media_player.aftt # plex
-    - media_player.luther # chromecast (app)
     - media_player.tv_kodi # kodi
+    - media_player.aftt # plex
     - media_player.tv_firetv # firetv (via server)
+    - media_player.luther # chromecast (app)
   commands:
     turn_on:
       service: switch.turn_on
