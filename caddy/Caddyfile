@@ -46,3 +46,12 @@ http://sync.willow.lan {
 		-X-Frame-Options
 	}
 }
+
+http://miniflux.sycamore.lan {
+	proxy / 192.168.11.2:8080 {
+		transparent
+	}
+	header / {
+		-X-Frame-Options
+	}
+}

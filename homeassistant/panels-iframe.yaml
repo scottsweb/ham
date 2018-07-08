@@ -10,6 +10,10 @@ emoncms:
   title: 'Emoncms'
   icon: 'mdi:counter'
   url: !secret emoncms_url
+emoncms_paul:
+  title: 'Emoncms (Paul)'
+  icon: 'mdi:counter'
+  url: !secret emoncms_url_paul
 nodered:
   title: 'Node-RED'
   icon: 'mdi:vector-polyline'
@@ -30,3 +34,7 @@ sync_willow:
   title: 'Syncthing (Willow)'
   icon: 'mdi:cloud-sync'
   url: !secret sync_williow_ui
+miniflux:
+  title: 'RSS'
+  icon: 'mdi:rss-box'
+  url: !secret miniflux_url

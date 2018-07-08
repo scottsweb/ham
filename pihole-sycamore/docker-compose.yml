@@ -27,6 +27,7 @@ services:
       - "sync.sycamore.lan:192.168.11.2"
       - "sync.willow.lan:192.168.11.2"
       - "ziggy ziggy.lan:192.168.11.3"
+      - "miniflux miniflux.sycamore.lan:192.168.11.2"
     secrets:
       - web-password
     restart: always
