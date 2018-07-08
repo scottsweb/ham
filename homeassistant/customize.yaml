@@ -196,11 +196,11 @@ switch.lounge_light_tall:
   icon: 'mdi:lightbulb'
 switch.presence_emulator:
   icon: 'mdi:account-multiple'
-sensor.us_air_pollution_level:
+sensor.us_air_pollution_level_2:
   friendly_name: 'Air Pollution Level'
-sensor.us_air_quality_index:
+sensor.us_air_quality_index_2:
   friendly_name: 'Air Quality Index'
-sensor.us_main_pollutant:
+sensor.us_main_pollutant_2:
   friendly_name: 'Main Pollutant'
 binary_sensor.blink_back_motion_enabled:
   friendly_name: 'Blink Back Motion Enabled'

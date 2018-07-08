@@ -8,9 +8,9 @@ Weather:
   - sensor.dark_sky_summary
   - sensor.dark_sky_precip_intensity
   - sun.sun
-  - sensor.us_air_pollution_level
-  - sensor.us_air_quality_index
-  - sensor.us_main_pollutant
+  - sensor.us_air_pollution_level_2
+  - sensor.us_air_quality_index_2
+  - sensor.us_main_pollutant_2
 Protect:
   - sensor.downstairs_nest_protect_battery_health
   - sensor.downstairs_nest_protect_co_status
