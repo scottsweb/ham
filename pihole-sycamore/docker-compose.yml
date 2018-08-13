@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   pihole:
-    image: diginc/pi-hole-multiarch:debian_armhf
+    image: pihole/pihole:v4.0_armhf
     volumes:
       - "/var/log/pihole.log:/var/log/pihole.log"
       - "/media/data/Containers/pihole-sycamore:/etc/pihole"
