@@ -4,6 +4,7 @@ services:
         image: firetv
         volumes:
             - "/media/data/Containers/firetv:/config"
+            - "/media/data/Containers/firetv/android:/root/.android:ro"
         ports:
             - "5556:5556"
         restart: always
