@@ -10,6 +10,14 @@
   host: !secret tplink_switch_3
   name: "Bedroom Light"
   
+- platform: tplink
+  host: !secret tplink_switch_4
+  name: "Office Light"
+
+- platform: tplink
+  host: !secret tplink_switch_5
+  name: "General Switch"
+  
 - platform: command_line
   switches:
     pihole_sycamore_switch:

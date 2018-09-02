@@ -40,6 +40,9 @@ Lights:
   - switch.bedroom_light
   - switch.lounge_light_small
   - switch.lounge_light_tall
+  - switch.office_light
+General:
+  - switch.general_switch
 Lounge Lights:
   - switch.lounge_light_small
   - switch.lounge_light_tall
@@ -128,6 +131,7 @@ default_view:
     - climate.hallway
     - group.lights
     - group.lounge_lights
+    - group.general
     - group.calls
     - group.energy
     - group.coins

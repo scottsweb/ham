@@ -194,6 +194,8 @@ switch.lounge_light_small:
   icon: 'mdi:lightbulb'
 switch.lounge_light_tall:
   icon: 'mdi:lightbulb'
+switch.office_light:
+  icon: 'mdi:lightbulb'
 switch.presence_emulator:
   icon: 'mdi:account-multiple'
 sensor.us_air_pollution_level_2:
