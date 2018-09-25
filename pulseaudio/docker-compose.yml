@@ -1,0 +1,23 @@
+version: '2'
+services:
+    mycroft:
+        image: woahbase/alpine-pulseaudio:armhf
+        volumes: 
+            - "/etc/asound.conf:/etc/asound.conf:ro"
+            - "/etc/localtime:/etc/localtime:ro"
+            - "/var/run/dbus:/var/run/dbus"
+        devices:
+            - "/dev/snd:/dev/snd:rwm"
+        ports:
+            - "4713:4713"
+        environment:
+            - PGID=1000 
+            - PUID=1000
+            - DISABLEBLUETOOTH=true
+        restart: always
+        privileged: true
+        network_mode: host
+        cap_add:
+            - NET_ADMIN
+        container_name: pulseaudio
+        hostname: pulseaudio
