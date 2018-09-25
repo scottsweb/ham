@@ -1,0 +1,24 @@
+version: '2.1'
+services:
+    mycroft:
+        image: mycroft
+        volumes:
+            - "/home/pi/mycroft3/data/mycroft.conf:/root/.mycroft/mycroft.conf"
+            - "/home/pi/mycroft3/data/identity:/root/.mycroft/identity"
+            - "/home/pi/mycroft3/asoundrc:/root/.asoundrc"
+            - "/etc/localtime:/etc/localtime:ro"
+            - "/etc/timezone:/etc/timezone:ro"
+            - "/etc/asound.conf:/etc/asound.conf:ro"
+        tmpfs:
+            - "/tmpfs:size=10m,uid=1000,rw"
+        devices:
+            - "/dev/snd:/dev/snd:rwm"
+        ports:
+            - "8181:8181"
+        network_mode: host
+        restart: always
+        environment:
+            - PULSE_SERVER=tcp:localhost
+            - PGID=1000 
+            - PUID=1000
+        container_name: mycroft
