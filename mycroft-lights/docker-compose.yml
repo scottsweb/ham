@@ -1,0 +1,15 @@
+version: '2'
+services:
+    mycroft:
+        image: arm32v7/node:8-stretch
+        volumes: 
+            - "/home/pi/mycroft-lights:/app"
+        devices:
+            - "/dev/ttyACM0"
+        container_name: mycroft-lights
+        working_dir: /app
+        network_mode: host
+        command: npm run start
+        stdin_open: true
+        tty: true
+
