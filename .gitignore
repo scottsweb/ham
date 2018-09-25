@@ -26,11 +26,15 @@ homeassistant/automations/notify-coin-*
 homeassistant/home-assistant_v2.db-shm
 homeassistant/home-assistant_v2.db-wal
 homeassistant/.cloud/*
+homeassistant/.storage
 
 # mqtt
 mqtt/config/
 mqtt/data/
 mqtt/log/
+
+# mycroft
+mycroft/data/identity/
 
 # ncid
 ncid/ncidd.whitelist
@@ -57,12 +61,16 @@ pihole-sycamore/list.preEventHorizon
 pihole-sycamore/local.list
 pihole-sycamore/install.log
 pihole-sycamore/pihole-FTL.db
+pihole-sycamore/pihole-FTL.conf
 pihole-sycamore/adlists.list
 pihole-sycamore/black.list
 pihole-sycamore/GitHubVersions
 pihole-sycamore/localbranches
 pihole-sycamore/localversions
 pihole-sycamore/secrets/*
+pihole-sycamore/setupVars.conf.update.bak
+pihole-sycamore/dhcp.leases
+pihole-sycamore/regex.list
 
 # pihole willow
 pihole-willow/*.domains
@@ -74,12 +82,16 @@ pihole-willow/list.preEventHorizon
 pihole-willow/local.list
 pihole-willow/install.log
 pihole-willow/pihole-FTL.db
+pihole-willow/pihole-FTL.conf
 pihole-willow/adlists.list
 pihole-willow/black.list
 pihole-willow/GitHubVersions
 pihole-willow/localbranches
 pihole-willow/localversions
 pihole-willow/secrets/*
+pihole-willow/setupVars.conf.update.bak
+pihole-willow/dhcp.leases
+pihole-willow/regex.list
 
 # plex
 plex/config/
