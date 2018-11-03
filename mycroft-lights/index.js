@@ -44,7 +44,7 @@ board.on( "ready", function() {
 					dance();
 					break;
 				case 'enclosure.notify.no_internet':
-				case 'mycroft.speech.recognition.unknown':
+				//case 'mycroft.speech.recognition.unknown': does not get cancelled, needs a timeout
 				case 'msm.install.failed':
 					kill();
 					pulse( '#ad0505');

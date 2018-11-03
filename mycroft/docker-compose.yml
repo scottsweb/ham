@@ -3,7 +3,7 @@ services:
     mycroft:
         image: mycroft
         volumes:
-            - "/home/pi/mycroft3/data/mycroft.conf:/root/.mycroft/mycroft.conf"
+            - "/home/pi/mycroft3/data/mycroft.conf:/root/.mycroft/mycroft.conf:ro"
             - "/home/pi/mycroft3/data/identity:/root/.mycroft/identity"
             - "/home/pi/mycroft3/asoundrc:/root/.asoundrc"
             - "/etc/localtime:/etc/localtime:ro"
