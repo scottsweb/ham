@@ -108,6 +108,9 @@ history:
       - sensor.pihole_domains_blocked
       - sensor.pihole_domains_blocked_2
       - sensor.plex
+      - sensor.sycamore_eta
+      - sensor.upstairs_nest_protect_color_status
+      - sensor.downstairs_nest_protect_color_status
 
 # Recorder
 recorder:
@@ -197,6 +200,8 @@ zone sycamore:
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
+  structure:
+    - Sycamore
 
 climate:
   platform: nest
