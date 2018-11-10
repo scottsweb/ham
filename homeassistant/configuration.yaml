@@ -173,8 +173,7 @@ updater:
 emulated_hue:
 
 # LIFX
-light:
-  platform: lifx
+lifx:
 
 # IFTTT
 ifttt:
@@ -184,6 +183,7 @@ ifttt:
 blink:
   username: !secret blink_username
   password: !secret blink_password
+  scan_interval: 120
 
 # Zeroconf
 zeroconf:

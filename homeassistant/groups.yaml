@@ -96,25 +96,29 @@ Remote:
     - switch.speaker      
     - input_number.luther_sound_volume
 Back:
-  - camera.back
+  - camera.blink_back
   - script.blink_back_capture_script
   - sensor.blink_back_temperature
   - sensor.blink_back_battery
+  - binary_sensor.blink_back_camera_armed
 Front:
-  - camera.front
+  - camera.blink_front
   - script.blink_front_capture_script
   - sensor.blink_front_temperature
   - sensor.blink_front_battery
+  - binary_sensor.blink_front_camera_armed
 Indoor Front:
-  - camera.indoor_front
+  - camera.blink_indoor_front
   - script.blink_indoor_front_capture_script
   - sensor.blink_indoor_front_temperature
   - sensor.blink_indoor_front_battery
+  - binary_sensor.blink_indoor_front_camera_armed
 Indoor Back:
-  - camera.indoor_back
+  - camera.blink_indoor_back
   - script.blink_indoor_back_capture_script
   - sensor.blink_indoor_back_temperature
   - sensor.blink_indoor_back_battery
+  - binary_sensor.blink_indoor_back_camera_armed
 #Allotment:
 
 # Views

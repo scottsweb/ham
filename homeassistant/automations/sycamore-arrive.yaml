@@ -8,18 +8,15 @@ action:
   - service: climate.set_away_mode
     data:
       away_mode: false
-  - service: blink.arm_camera
+  - service: camera.disable_motion_detection
     data:
-      device_armed: "False"
-      friendly_name: "Back"
-  - service: blink.arm_camera
+      entity_id: camera.blink_back
+  - service: camera.disable_motion_detection
     data:
-      device_armed: "False"
-      friendly_name: "Indoor Front"
-  - service: blink.arm_camera
+      entity_id: camera.blink_indoor_front
+  - service: camera.disable_motion_detection
     data:
-      device_armed: "False"
-      friendly_name: "Indoor Back"
+      entity_id: camera.blink_indoor_back
   - service: mqtt.publish
     data:
       topic: sycamore/unicorn

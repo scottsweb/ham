@@ -141,7 +141,7 @@ switch.tv_mute:
 sensor.last_call:
   icon: 'mdi:phone-incoming'
 sensor.last_blocked_call:
-  icon: 'mdi:phone-locked'
+  icon: 'mdi:phone-missed'
 sensor.flora_front_battery:
   icon: 'mdi:battery-charging'
 sensor.flora_front_conductivity:
@@ -216,6 +216,8 @@ sensor.blink_front_notifications:
   icon: mdi:comment-alert
 sensor.blink_front_temperature:
   friendly_name: 'Blink Front Temperature'
+binary_sensor.blink_front_camera_armed:
+  friendly_name: 'Blink Front Armed?'
 sensor.blink_back_battery:
   friendly_name: 'Blink Back Battery'
   icon: mdi:battery-charging
@@ -224,6 +226,8 @@ sensor.blink_back_notifications:
   icon: mdi:comment-alert
 sensor.blink_back_temperature:
   friendly_name: 'Blink Back Temperature'
+binary_sensor.blink_back_camera_armed:
+  friendly_name: 'Blink Back Armed?'
 binary_sensor.blink_indoor_front_motion_enabled:
   friendly_name: 'Blink Indoor Front Motion Enabled'
 sensor.blink_indoor_front_battery:
@@ -234,6 +238,8 @@ sensor.blink_indoor_front_notifications:
   icon: mdi:comment-alert
 sensor.blink_indoor_front_temperature:
   friendly_name: 'Blink Indoor Front Temperature'
+binary_sensor.blink_indoor_front_camera_armed:
+  friendly_name: 'Blink Indoor Front Armed?'
 binary_sensor.blink_indoor_back_motion_enabled:
   friendly_name: 'Blink Indoor Back Motion Enabled'
 sensor.blink_indoor_back_battery:
@@ -244,6 +250,8 @@ sensor.blink_indoor_back_notifications:
   icon: mdi:comment-alert
 sensor.blink_indoor_back_temperature:
   friendly_name: 'Blink Indoor Back Temperature'
+binary_sensor.blink_indoor_back_camera_armed:
+  friendly_name: 'Blink Indoor Back Armed?'
 binary_sensor.blink_armed_status:
   friendly_name: 'Armed?'
 camera.front:
