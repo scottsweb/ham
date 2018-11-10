@@ -66,30 +66,30 @@ bedtime:
 blink_front_capture_script:
   alias: 'Update Front at Sycamore'
   sequence:
-    - service: blink.snap_picture
+    - service: blink.trigger_camera
       data:
-        friendly_name: "Front"
+        name: "Front"
 
 blink_back_capture_script:
   alias: 'Update Back at Sycamore'
   sequence:
-    - service: blink.snap_picture
+    - service: blink.trigger_camera
       data:
-        friendly_name: "Back"
+        name: "Back"
 
 blink_indoor_front_capture_script:
   alias: 'Update Indoor Front at Sycamore'
   sequence:
-    - service: blink.snap_picture
+    - service: blink.trigger_camera
       data:
-        friendly_name: "Indoor Front"
+        name: "Indoor Front"
 
 blink_indoor_back_capture_script:
   alias: 'Update Indoor Back at Sycamore'
   sequence:
-    - service: blink.snap_picture
+    - service: blink.trigger_camera
       data:
-        friendly_name: "Indoor Back"
+        name: "Indoor Back"
 
 dash_andrex:
   alias: 'Amazon Dash - Andrex'
