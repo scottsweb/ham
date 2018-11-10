@@ -12,4 +12,5 @@ services:
         command: npm run start
         stdin_open: true
         tty: true
+        restart: always
 
