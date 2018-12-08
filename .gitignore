@@ -2,10 +2,6 @@
 caddy/.caddy/
 caddy/sites/
 
-# firetv
-firetv/android/adbkey
-firetv/android/adbkey.pub
-
 # homeassistant
 homeassistant/deps/*
 homeassistant/.uuid
