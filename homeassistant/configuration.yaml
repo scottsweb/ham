@@ -16,6 +16,14 @@ http:
     #- 127.0.0.1
     #- ::1
 
+# Asus
+asuswrt:
+  host: !secret asus_ip
+  mode: router
+  protocol: ssh
+  username: !secret asus_username
+  password: !secret asus_password
+
 # Cloud
 cloud:
 
