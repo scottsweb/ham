@@ -316,12 +316,12 @@ input_text.remote_tiles:
         icon: mdi:minus
       - entity: script.tv_vol_down
         icon: mdi:volume-minus
-      - entity: script.tv_bbc_one
-        label: 'BBC One'
+      - entity: script.tv_netflix
+        label: 'Netflix'
         color: '#7037b2'
-      - entity: script.tv_channel_four
-        label: 'Channel 4'
+      - entity: script.tv_kodi
+        label: 'Kodi'
         color: '#7037b2'
-      - entity: script.tv_film_four
-        label: 'Film 4'
+      - entity: script.tv_plex
+        label: 'Plex'
         color: '#7037b2'

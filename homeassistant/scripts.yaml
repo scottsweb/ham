@@ -193,3 +193,27 @@ tv_film_four:
           - JgBQAAABJpURFBEUEDoQFBEUERQQFRAVEDkRORA6EDkRFBAVEBUQFBE5EBUQFRAVEDkQFRAVEBUQFBE5EDoQOREUEDoQORE5EAAFmAABJ0sRAA0FAAAAAAAAAAA=
           - JgBIAAABJpURFBEUEDoQFRETERQQFRAVEDkRORA5ETkRFBAVEBUQFRA5EBUQOhAUETkQFRAVEBUQFBE5EBUQOREUETkQORE5EAANBQ==
           - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
+
+tv_netflix:
+  alias: 'Netflix'
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.tv_firetv
+        source: com.netflix.ninja
+
+tv_kodi:
+  alias: 'Kodi'
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.tv_firetv
+        source: org.xbmc.kodi
+
+tv_plex:
+  alias: 'Plex'
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.tv_firetv
+        source: com.plexapp.android
