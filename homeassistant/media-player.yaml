@@ -7,8 +7,9 @@
 - platform: cast
 
 - platform: firetv
-  device: luther
+  adbkey: "/config/android/adbkey"
   name: 'TV FireTV'
+  host: !secret tv_ip
   
 - platform: plex
   scan_interval: 2
