@@ -4,8 +4,6 @@
   name: TV Kodi
   user: kodi
 
-- platform: cast
-
 - platform: firetv
   adbkey: "/config/android/adbkey"
   name: 'TV FireTV'
