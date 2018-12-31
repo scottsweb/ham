@@ -10,9 +10,6 @@ trigger:
   - platform: state
     entity_id: media_player.luther
     to: 'idle'
-  - platform: state
-    entity_id: media_player.tv_firetv
-    to: 'idle'
 action:
   - service: mqtt.publish
     data:
