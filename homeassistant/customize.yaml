@@ -186,6 +186,26 @@ group.willow:
   emulated_hue_hidden: true
 group.settings:
   emulated_hue_hidden: true
+group.remote:
+  emulated_hue_hidden: true
+group.ad_blocker:
+  emulated_hue_hidden: true
+group.all_devices:
+  emulated_hue_hidden: true
+group.all_automations:
+  emulated_hue_hidden: true
+group.all_scripts:
+  emulated_hue_hidden: true
+group.back:
+  emulated_hue_hidden: true
+group.indoor_back:
+  emulated_hue_hidden: true
+group.front:
+  emulated_hue_hidden: true
+group.indoor_front:
+  emulated_hue_hidden: true
+group.blink:
+  emulated_hue_hidden: true
 light.back_door:
   emulated_hue_name: 'Back Door Light'
 switch.bedroom_light:

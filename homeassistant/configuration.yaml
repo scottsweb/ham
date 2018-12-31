@@ -179,6 +179,12 @@ updater:
 
 # Emulate Hue for Echo
 emulated_hue:
+  exposed_domains:
+    - switch 
+    - light
+    - input_boolean
+    - fan
+    - group
 
 # LIFX
 lifx:
