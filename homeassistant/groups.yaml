@@ -151,6 +151,7 @@ entertainment:
     - group.remote
     - media_player.luther_universal_tv
     - media_player.luther_universal_audio
+    - media_player.dot
 cameras:
   name: Cameras
   view: yes

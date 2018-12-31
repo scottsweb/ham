@@ -3,6 +3,9 @@ caddy/.caddy/
 caddy/sites/
 
 # homeassistant
+homeassistant/android
+homeassistant/alexa_media.pickle
+homeassistant/custom_components/media_player/__pycache__/
 homeassistant/deps/*
 homeassistant/.uuid
 homeassistant/*.log
