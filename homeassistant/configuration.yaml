@@ -25,7 +25,7 @@ asuswrt:
   password: !secret asus_password
 
 # Cloud
-cloud:
+# cloud:
 
 # Allows you to issue voice commands from the frontend
 conversation:
