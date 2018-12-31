@@ -206,6 +206,8 @@ group.indoor_front:
   emulated_hue_hidden: true
 group.blink:
   emulated_hue_hidden: true
+group.general:
+  emulated_hue_hidden: true
 light.back_door:
   emulated_hue_name: 'Back Door Light'
 switch.bedroom_light:
@@ -303,6 +305,15 @@ script.tv_time:
   emulated_hue_hidden: false
 script.bedtime:
   emulated_hue_name: 'Bedtime'
+  emulated_hue_hidden: false
+script.tv_netflix:
+  emulated_hue_name: 'Netflix'
+  emulated_hue_hidden: false
+script.tv_kodi:
+  emulated_hue_name: 'Kodi'
+  emulated_hue_hidden: false
+script.tv_plex:
+  emulated_hue_name: 'Plex'
   emulated_hue_hidden: false
 input_number.luther_sound_volume:
   friendly_name: 'Speaker'
