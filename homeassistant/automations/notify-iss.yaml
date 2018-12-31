@@ -1,4 +1,5 @@
 alias: ISS Pass
+initial_state: true
 trigger:
   platform: template
   value_template: '{% set nextrise = as_timestamp(states.binary_sensor.iss.attributes.next_rise) %} {% set now = as_timestamp( now() ) %} {% if ( nextrise - 600 ) >= now %}true{% endif %}'

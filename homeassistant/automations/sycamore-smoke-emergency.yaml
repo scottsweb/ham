@@ -1,4 +1,5 @@
 alias: Sycamore Smoke Emergency
+initial_state: true
 trigger:
   - platform: state
     entity_id: sensor.downstairs_nest_protect_smoke_status

@@ -1,4 +1,5 @@
 alias: Notify Call
+initial_state: true
 trigger:
   platform: state
   entity_id: sensor.last_call

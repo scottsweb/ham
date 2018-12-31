@@ -1,4 +1,5 @@
 alias: Switch TV Speaker Off
+initial_state: true
 trigger:
   platform: state
   entity_id: switch.speaker

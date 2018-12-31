@@ -1,4 +1,5 @@
 alias: Input Luther Sound Volume
+initial_state: true
 trigger:
   platform: state
   entity_id: input_number.luther_sound_volume

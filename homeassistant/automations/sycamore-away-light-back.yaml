@@ -1,4 +1,5 @@
 alias: Sycamore Away - Lights Back
+initial_state: true
 trigger:
   - platform: numeric_state
     entity_id: sun.sun

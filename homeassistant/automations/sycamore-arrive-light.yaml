@@ -1,4 +1,5 @@
 alias: Arrive at Sycamore Light
+initial_state: true
 trigger:
   platform: state
   entity_id: group.all_devices

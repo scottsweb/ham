@@ -1,4 +1,5 @@
 alias: Notify Energy Battery
+initial_state: true
 trigger:
   platform: numeric_state
   entity_id: sensor.energybattery

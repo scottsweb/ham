@@ -1,4 +1,5 @@
 alias: Nest Summary Automation
+initial_state: true
 trigger:
   - platform: state
     entity_id: sensor.hallway_temperature
