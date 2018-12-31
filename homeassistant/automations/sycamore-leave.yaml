@@ -6,6 +6,18 @@ trigger:
   from: 'home'
   to: 'not_home'
 action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id: automation.sycamore_away__light_small
+  - service: homeassistant.turn_on
+    data:
+      entity_id: automation.sycamore_away__light_tall
+  - service: homeassistant.turn_on
+    data:
+      entity_id: automation.sycamore_away__lights_back
+  - service: homeassistant.turn_on
+    data:
+      entity_id: automation.sycamore_away__lights_bedroom
   - service: climate.set_away_mode
     data:
       away_mode: true
