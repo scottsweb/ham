@@ -9,6 +9,14 @@
   transparency: '50%'
   color: black
 
+- name: telegram_group
+  platform: telegram
+  chat_id: !secret telegram_group
+
+- name: telegram_scottsweb
+  platform: telegram
+  chat_id: !secret telegram_scottsweb
+
 - name: all
   platform: group
   services:

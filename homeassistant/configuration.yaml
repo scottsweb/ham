@@ -239,6 +239,14 @@ tts:
     cache_dir: /tmp/tts
     time_memory: 300
 
+# Telegram
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_group
+      - !secret telegram_scottsweb
+
 # MQTT
 mqtt:
   broker: !secret mqtt_ip

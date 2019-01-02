@@ -1,0 +1,18 @@
+alias: 'Telegram Energy'
+initial_state: true
+hide_entity: true
+trigger:
+  platform: event
+  event_type: telegram_callback
+  event_data:
+    data: '/energy'
+action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.chat_id }}'
+      callback_query_id: '{{ trigger.event.data.id }}'
+      message: >
+        Current energy consumption is {{ states('sensor.emoncms104856_power_kw') }} watts and the meter is at: {{ states('sensor.emoncms104902_meter_count') }} kWh.
+
+
+        The battery on the meter sensor is at {{ states('sensor.energybattery') }}%.

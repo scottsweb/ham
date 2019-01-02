@@ -1,0 +1,17 @@
+alias: 'Telegram Hello'
+initial_state: true
+hide_entity: true
+trigger:
+  platform: event
+  event_type: telegram_command
+  event_data:
+    command: '/hello'
+action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.chat_id }}'
+      message: >
+        {% if now().strftime('%H')|int < 12 and now().strftime('%H')|int > 6 %}Good morning.{% elif now().strftime('%H')|int >= 12 and now().strftime('%H')|int < 17 %}Good afternoon.{% else %}Good evening.{% endif %} What would you like to do?
+      inline_keyboard: 
+        - 'Status:/status, Energy:/energy'
+        - 'Lights:/lights, Media:/media'
