@@ -316,7 +316,7 @@ script.tv_plex:
   emulated_hue_name: 'Plex'
   emulated_hue_hidden: false
 input_number.luther_sound_volume:
-  friendly_name: 'Speaker'
+  friendly_name: 'Speaker Volume'
   icon: mdi:volume-medium
 input_text.remote_tiles:
   custom_ui_state_card: state-card-tiles
