@@ -1,0 +1,9 @@
+alias: Set sycamore theme at startup
+initial_state: true
+trigger:
+  platform: homeassistant
+  event: start
+action:
+  service: frontend.set_theme
+  data:
+    name: sycamore
