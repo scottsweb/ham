@@ -15,19 +15,22 @@ action:
         Outside, it is {{ states('sensor.dark_sky_summary') }} and {{ states('sensor.dark_sky_temperature') }} degrees. The air pollution level is {{ states('sensor.us_air_pollution_level_2') }}.
 
 
+        {% if states.group.lights.state != 'off' -%}
+          There are {%- for entity_id in states.group.lights.attributes.entity_id if states(entity_id) == 'on' -%}{%- if states(entity_id) == 'on' %}{%- if loop.last %} {{ loop.index }}{% endif -%}{% endif -%}{%- endfor %} lights on right now.
+        {%- endif %} 
+
+
+        {% if is_state('switch.tv', 'on') %}The TV is on and {{ states('media_player.luther_universal_tv') }}: {% if states.media_player.luther_universal_tv.attributes['media_title'] %}{{ states.media_player.luther_universal_tv.attributes['media_title'] }}{% elif states.media_player.luther_universal_tv.attributes['source'] %}{{ states.media_player.luther_universal_tv.attributes['source'] }}{% endif %}{% endif %}
+
+
         {% for state in states.device_tracker -%}{% if state.state == 'home' %}{{ state.name }} is home. {% endif %}{%- endfor %}
 
         {% for state in states.device_tracker -%}{% if state.state == 'not_home' %}{{ state.name }} is away from home. {% endif %}{%- endfor %}
 
 
-        The last call that wasn't blocked came from: {{ states('sensor.last_call') }}
-
-
-        {% if states.group.lights.state != 'off' -%}
-          There are {% for state in states.light if state.state == 'on' -%}{%- if loop.last -%}{{ loop.index }}{%- endif -%}{%- endfor %} lights on right now.
-        {%- endif -%}
-
-
         {% if is_state('binary_sensor.iss', 'on') -%}
           Fun fact, the ISS is overhead the house right now. There are {{ states.binary_sensor.iss.attributes['number_of_people_in_space'] }} people in space.
         {% endif -%}
+
+
+        The last call that wasn't blocked came from: {{ states('sensor.last_call')|trim|striptags}}
