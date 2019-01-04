@@ -7,4 +7,3 @@ resources:
   #  arg: eth0
   # - type: network_out
   #  arg: eth0
-  - type: last_boot

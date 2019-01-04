@@ -22,7 +22,7 @@ Sycamore:
   - sensor.memory_use_percent
   - sensor.load_5m
   - sensor.cpu_temperature
-  - sensor.since_last_boot
+  - sensor.since_last_boot_sycamore
   - binary_sensor.nodered
   - sensor.pihole_ads_blocked_today
   - sensor.pihole_ads_percentage_blocked_today
@@ -66,11 +66,12 @@ Next Train:
   - sensor.next_trains_estimated
   - sensor.next_trains_scheduled
   - sensor.next_trains_platform
-Blink:
-  - binary_sensor.blink_armed_status
-  - binary_sensor.blink_back_motion_enabled
-  - binary_sensor.blink_front_motion_enabled
-  - binary_sensor.blink_indoor_front_motion_enabled
+Blink: 
+  - alarm_control_panel.blink_sync
+  - binary_sensor.blink_back_camera_armed
+  - binary_sensor.blink_front_camera_armed
+  - binary_sensor.blink_indoor_back_camera_armed
+  - binary_sensor.blink_indoor_front_camera_armed
 Settings:
   - switch.presence_emulator
 Flora Back:

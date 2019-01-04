@@ -107,7 +107,10 @@ sensor.cpu_temperature_willow:
   friendly_name: 'CPU Temperature'
   icon: mdi:chip
 sensor.since_last_boot_willow:
-  friendly_name: 'Since last boot'
+  friendly_name: 'Since Last Boot'
+  icon: mdi:clock
+sensor.since_last_boot_sycamore:
+  friendly_name: 'Since Last Boot'
   icon: mdi:clock
 binary_sensor.nodered:
   friendly_name: 'Node-Red'
@@ -284,6 +287,8 @@ camera.indoor_front:
   friendly_name: 'Blink Indoor Front'
 camera.indoor_back:
    friendly_name: 'Blink Indoor Back'
+alarm_control_panel.blink_sync:
+  friendly_name: 'Blink Sycamore'
 script.blink_back_capture_script:
   icon: mdi:camera
 script.blink_front_capture_script:

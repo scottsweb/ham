@@ -54,7 +54,7 @@ history:
       - sensor.hallway_thermostat_hvac_state
       - binary_sensor.hallway_thermostat_has_leaf
       - binary_sensor.hallway_thermostat_online
-      - sensor.last_boot
+      - sensor.since_last_boot_sycamore
       - sensor.since_last_boot_willow
       - sensor.pihole_ads_blocked_today
       - sensor.pihole_dns_queries_today
@@ -148,7 +148,7 @@ logbook:
     entities:
       - automation.nest_summary_automation
       - automation.weather_summary_automation
-      - sensor.since_last_boot
+      - sensor.since_last_boot_sycamore
       - sensor.since_last_boot_willow
       - sensor.next_trains_estimated
       - sensor.next_trains_origin
@@ -246,6 +246,7 @@ telegram_bot:
     allowed_chat_ids:
       - !secret telegram_group
       - !secret telegram_scottsweb
+      - !secret telegram_gemma
 
 # MQTT
 mqtt:
