@@ -1,0 +1,9 @@
+platform: rest
+name: Pollen Count
+resource: https://socialpollencount.co.uk/api/forecast?location=[!secret latitude, !secret longitude]
+value_template: >
+  {% for day in value_json.forecast -%}
+    {%- if now().date() | string() in day.date -%}
+      {{ day.pollen_count }}
+    {%- endif -%}
+  {%- endfor %}
