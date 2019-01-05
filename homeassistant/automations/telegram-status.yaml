@@ -7,9 +7,15 @@ trigger:
   event_data:
     data: '/status'
 action:
+  - service: telegram_bot.edit_replymarkup
+    data_template:
+      message_id: '{{ trigger.event.data.message.message_id }}'
+      chat_id: '{{ trigger.event.data.chat_id }}'
+      inline_keyboard: []
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.chat_id }}'
+      disable_notification: true
       message: >
         Inside the house it is {{ states.climate.hallway.attributes['current_temperature'] }} degrees with around {{ states('sensor.hallway_thermostat_humidity') }} percent humidity. The thermostat is set to "{{ states('sensor.hallway_thermostat_operation_mode') }}".
         Outside, it is {{ states('sensor.dark_sky_summary') }} and {{ states('sensor.dark_sky_temperature') }} degrees. The air pollution level is {{ states('sensor.us_air_pollution_level_2') }} and the UV Index {{ states('sensor.dark_sky_uv_index') }}.
@@ -28,12 +34,8 @@ action:
 
 
         {% if is_state('switch.tv', 'on') -%}
-          The TV is on and {{ states('media_player.luther_universal_tv') }}: 
-          {%- if states.media_player.luther_universal_tv.attributes['media_title'] -%}
-            {{ states.media_player.luther_universal_tv.attributes['media_title'] }}
-          {%- elif states.media_player.luther_universal_tv.attributes['source'] -%}
-            {{ states.media_player.luther_universal_tv.attributes['source'] }}
-          {%- endif -%}
+          The TV is on and {{ states('media_player.luther_universal_tv') }}:
+          {%- if states.media_player.luther_universal_tv.attributes['media_title'] %} {{ states.media_player.luther_universal_tv.attributes['media_title'] }}{%- elif states.media_player.luther_universal_tv.attributes['source'] %} {{ states.media_player.luther_universal_tv.attributes['source'] }}{%- endif -%}
         {%- else -%}
           The TV is currently switched off.
         {%- endif %}
@@ -50,3 +52,6 @@ action:
 
 
         The last call that wasn't blocked came from: {{ states('sensor.last_call')|trim|striptags}}
+
+
+        If you are home, you will find Home Assistant at http://sycamore.lan

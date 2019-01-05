@@ -14,6 +14,7 @@ action:
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.chat_id }}'
+      disable_notification: true
       message: >
         {%- if now().strftime('%H')|int < 12 and now().strftime('%H')|int > 6 -%}
           Good morning.
@@ -21,7 +22,8 @@ action:
           Good afternoon.
         {%- else -%}
           Good evening.
-        {%- endif %} What would you like to do?
+        {%- endif %} What would you like help with?
       inline_keyboard: 
         - 'Status:/status, Energy:/energy'
         - 'Lights:/lights, Media:/media'
+        - 'Cancel:/cancel'

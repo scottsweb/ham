@@ -14,6 +14,7 @@ action:
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.chat_id }}'
+      disable_notification: true
       message: >
         Hi, I am Columbo. Say /hello to get started. One more thing...
 

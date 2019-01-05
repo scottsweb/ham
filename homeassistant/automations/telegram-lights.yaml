@@ -1,0 +1,34 @@
+alias: 'Telegram Lights'
+initial_state: true
+hide_entity: true
+trigger:
+  platform: event
+  event_type: telegram_callback
+  event_data:
+    data: '/lights'
+action:
+  - service: telegram_bot.edit_replymarkup
+    data_template:
+      message_id: '{{ trigger.event.data.message.message_id }}'
+      chat_id: '{{ trigger.event.data.chat_id }}'
+      inline_keyboard: []
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.chat_id }}'
+      disable_notification: true
+      message: >
+        {% if states.group.lights.state != 'off' -%}
+          There are 
+          {%- for entity_id in states.group.lights.attributes.entity_id if states(entity_id) == 'on' -%}
+            {%- if states(entity_id) == 'on' %}
+              {%- if loop.last %} {{ loop.index }}{%- endif -%}
+            {%- endif -%}
+          {%- endfor %} lights on right now.
+        {%- else -%} 
+          The are no lights on at the moment.
+        {%- endif %}
+      inline_keyboard: >
+        {%- for entity_id in states.group.lights.attributes.entity_id -%}
+        {%- set parts = entity_id.split('.') %}
+          {{ states[parts[0]][parts[1]].name }} {{ states(entity_id) }}:/light_{{ states(entity_id) }}, 
+        {% endfor -%}"

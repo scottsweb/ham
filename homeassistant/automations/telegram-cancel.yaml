@@ -1,11 +1,11 @@
-alias: 'Telegram Energy'
+alias: 'Telegram Cancel'
 initial_state: true
 hide_entity: true
 trigger:
   platform: event
   event_type: telegram_callback
   event_data:
-    data: '/energy'
+    data: '/cancel'
 action:
   - service: telegram_bot.edit_replymarkup
     data_template:
@@ -15,10 +15,6 @@ action:
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.chat_id }}'
-      callback_query_id: '{{ trigger.event.data.id }}'
       disable_notification: true
       message: >
-        Current energy consumption is {{ states('sensor.emoncms104856_power_kw') }} watts and the meter is at: {{ states('sensor.emoncms104902_meter_count') }} kWh.
-
-
-        The battery on the meter sensor is at {{ states('sensor.energybattery') }}%.
+        No problem, I am here if you need me.
