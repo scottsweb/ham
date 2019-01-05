@@ -171,6 +171,7 @@ outdoors:
     - group.weather
     - sensor.dark_sky_temperature
     - sensor.dark_sky_humidity
+    - sensor.dark_sky_uv_index
     - group.next_train
     - group.flora_front
     - group.flora_back

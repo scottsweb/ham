@@ -28,6 +28,8 @@ sensor.dark_sky_temperature:
   friendly_name: 'Outside Temp'
 sensor.dark_sky_humidity:
   friendly_name: 'Outside Humidity'
+sensor.dark_sky_uv_index:
+  friendly_name: 'UV Index'
 sensor.speedtest_download:
   friendly_name: 'Download'
   icon: mdi:speedometer

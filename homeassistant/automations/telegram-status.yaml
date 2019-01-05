@@ -12,15 +12,31 @@ action:
       target: '{{ trigger.event.data.chat_id }}'
       message: >
         Inside the house it is {{ states.climate.hallway.attributes['current_temperature'] }} degrees with around {{ states('sensor.hallway_thermostat_humidity') }} percent humidity. The thermostat is set to "{{ states('sensor.hallway_thermostat_operation_mode') }}".
-        Outside, it is {{ states('sensor.dark_sky_summary') }} and {{ states('sensor.dark_sky_temperature') }} degrees. The air pollution level is {{ states('sensor.us_air_pollution_level_2') }}.
+        Outside, it is {{ states('sensor.dark_sky_summary') }} and {{ states('sensor.dark_sky_temperature') }} degrees. The air pollution level is {{ states('sensor.us_air_pollution_level_2') }} and the UV Index {{ states('sensor.dark_sky_uv_index') }}.
 
 
         {% if states.group.lights.state != 'off' -%}
-          There are {%- for entity_id in states.group.lights.attributes.entity_id if states(entity_id) == 'on' -%}{%- if states(entity_id) == 'on' %}{%- if loop.last %} {{ loop.index }}{% endif -%}{% endif -%}{%- endfor %} lights on right now.
-        {%- endif %} 
+          There are 
+          {%- for entity_id in states.group.lights.attributes.entity_id if states(entity_id) == 'on' -%}
+            {%- if states(entity_id) == 'on' %}
+              {%- if loop.last %} {{ loop.index }}{%- endif -%}
+            {%- endif -%}
+          {%- endfor %} lights on right now.
+        {%- else -%} 
+          The are no lights on at the moment.
+        {%- endif %}
 
 
-        {% if is_state('switch.tv', 'on') %}The TV is on and {{ states('media_player.luther_universal_tv') }}: {% if states.media_player.luther_universal_tv.attributes['media_title'] %}{{ states.media_player.luther_universal_tv.attributes['media_title'] }}{% elif states.media_player.luther_universal_tv.attributes['source'] %}{{ states.media_player.luther_universal_tv.attributes['source'] }}{% endif %}{% endif %}
+        {% if is_state('switch.tv', 'on') -%}
+          The TV is on and {{ states('media_player.luther_universal_tv') }}: 
+          {%- if states.media_player.luther_universal_tv.attributes['media_title'] -%}
+            {{ states.media_player.luther_universal_tv.attributes['media_title'] }}
+          {%- elif states.media_player.luther_universal_tv.attributes['source'] -%}
+            {{ states.media_player.luther_universal_tv.attributes['source'] }}
+          {%- endif -%}
+        {%- else -%}
+          The TV is currently switched off.
+        {%- endif %}
 
 
         {% for state in states.device_tracker -%}{% if state.state == 'home' %}{{ state.name }} is home. {% endif %}{%- endfor %}

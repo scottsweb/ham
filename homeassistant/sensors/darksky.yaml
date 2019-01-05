@@ -13,3 +13,4 @@ monitored_conditions:
   # - pressure
   # - visibility
   # - ozone
+  - uv_index
