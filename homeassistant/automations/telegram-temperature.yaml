@@ -22,7 +22,7 @@ action:
       disable_notification: true
       message: >-
         {%- if trigger.event.data.args[0] | float != 0.0 -%}
-          Setting the thermostat to {{ trigger.event.data.args[0] | string | float }} degrees.
+          Setting the thermostat to {{ trigger.event.data.args[0] | float }} degrees.
         {%- else -%}
           {{ trigger.event.data.args[0] }} doesn't look like a valid temperature.
         {%- endif -%}
