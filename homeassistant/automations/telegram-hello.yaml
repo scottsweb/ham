@@ -25,5 +25,4 @@ action:
         {%- endif %} What would you like help with?
       inline_keyboard: 
         - 'Status:/status, Energy:/energy'
-        - 'Lights:/lights, Media:/media'
         - 'Cancel:/cancel'

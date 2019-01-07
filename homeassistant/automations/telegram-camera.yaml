@@ -1,0 +1,37 @@
+alias: 'Telegram Camera'
+initial_state: true
+hide_entity: true
+trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/camera'
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/camera@columbo_bot'
+action:
+  - service: telegram_bot.send_photo
+    data_template:
+      target: '{{ trigger.event.data.chat_id }}'
+      disable_notification: true
+      url: http://sycamore.lan{{ state_attr('camera.blink_front', 'entity_picture') }}
+      caption: Front
+  - service: telegram_bot.send_photo
+    data_template:
+      target: '{{ trigger.event.data.chat_id }}'
+      disable_notification: true
+      url: http://sycamore.lan{{ state_attr('camera.blink_indoor_front', 'entity_picture') }}
+      caption: Indoor Front
+  - service: telegram_bot.send_photo
+    data_template:
+      target: '{{ trigger.event.data.chat_id }}'
+      disable_notification: true
+      url: http://sycamore.lan{{ state_attr('camera.blink_back', 'entity_picture') }}
+      caption: Back
+  - service: telegram_bot.send_photo
+    data_template:
+      target: '{{ trigger.event.data.chat_id }}'
+      disable_notification: true
+      url: http://sycamore.lan{{ state_attr('camera.blink_indoor_back', 'entity_picture') }}
+      caption: Indoor Back

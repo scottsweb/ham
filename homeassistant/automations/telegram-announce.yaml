@@ -1,0 +1,23 @@
+alias: 'Telegram Announce'
+initial_state: true
+hide_entity: true
+trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/announce'
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/announce@columbo_bot'
+action:
+  - service: media_player.alexa_tts
+    data_template:
+      entity_id: media_player.dot
+      message: '{{ trigger.event.data.args[0] | string }}'
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.chat_id }}'
+      disable_notification: true
+      message: >-
+        Your voice message was sent to the echo dot.
