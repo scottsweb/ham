@@ -20,9 +20,5 @@
 - name: all
   platform: group
   services:
-    - service: pushbullet
-      data:
-        target:
-          - !secret gemma_email
-          - !secret scott_email
     - service: tv
+    - service: telegram_group
