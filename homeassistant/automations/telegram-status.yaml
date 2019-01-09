@@ -17,7 +17,7 @@ action:
       target: '{{ trigger.event.data.chat_id }}'
       disable_notification: true
       message: >
-        Inside the house it is {{ states.climate.hallway.attributes['current_temperature'] }} degrees with around {{ states('sensor.hallway_thermostat_humidity') }} percent humidity. The thermostat is set to "{{ states('sensor.hallway_thermostat_operation_mode') }}".
+        Inside the house it is {{ states.climate.hallway.attributes['current_temperature'] }} degrees with around {{ states('sensor.hallway_thermostat_humidity') }} percent humidity. The thermostat is set to "{{ states('sensor.hallway_thermostat_operation_mode') }}" and targeting {{ states('sensor.hallway_thermostat_target') }} degress.
         Outside, it is {{ states('sensor.dark_sky_summary') }} and {{ states('sensor.dark_sky_temperature') }} degrees. The air pollution level is {{ states('sensor.us_air_pollution_level_2') }} and the UV Index {{ states('sensor.dark_sky_uv_index') }}.
 
 
