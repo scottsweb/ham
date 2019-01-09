@@ -14,7 +14,7 @@ action:
   - service: media_player.alexa_tts
     data_template:
       entity_id: media_player.dot
-      message: '{{ trigger.event.data.args[0] | string }}'
+      message: '{{ trigger.event.data.args | join(" ") }}'
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.chat_id }}'
