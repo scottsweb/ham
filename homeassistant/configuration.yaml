@@ -105,6 +105,7 @@ history:
       - media_player.tv_kodi
       - media_player.scotts_alexa_apps
       - media_player.this_device
+      - media_player.dot
       - switch.tv_mute
       - sensor.pihole_ads_blocked_today
       - sensor.pihole_ads_blocked_today_2
