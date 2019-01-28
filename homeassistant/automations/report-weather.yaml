@@ -1,9 +1,8 @@
 alias: Weather Summary Automation
 initial_state: true
 trigger:
-  platform: time
+  platform: time_pattern
   minutes: '/15'
-  seconds: 0
 action:
   - service: mqtt.publish
     data_template:
