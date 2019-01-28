@@ -5,7 +5,7 @@ trigger:
   platform: event
   event_type: telegram_callback
   event_data:
-    data: '/tv_on'
+    data: '/plex'
 action:
   - service: telegram_bot.edit_replymarkup
     data_template:
