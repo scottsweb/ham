@@ -1,2 +1,5 @@
 platform: pi_hole
 host: !secret pihole_willow_ip
+monitored_conditions:
+  - ads_blocked_today
+  - ads_percentage_today
