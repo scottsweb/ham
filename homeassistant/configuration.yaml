@@ -139,8 +139,8 @@ history:
 
 # Recorder
 recorder:
-  purge_interval: 7
-  purge_keep_days: 7
+  purge_interval: 2
+  purge_keep_days: 2
 
 # Discover some devices automatically
 discovery:
@@ -193,7 +193,7 @@ updater:
 # Emulate Hue for Echo
 emulated_hue:
   exposed_domains:
-    - switch 
+    - switch
     - light
     - input_boolean
     - fan
@@ -205,7 +205,7 @@ lifx:
 # IFTTT
 ifttt:
   key: !secret ifttt_key
-  
+
 # blink
 blink:
   username: !secret blink_username
@@ -304,4 +304,3 @@ notify: !include notifications.yaml
 
 # Shell Commands
 shell_command: !include shell_commands.yaml
-
