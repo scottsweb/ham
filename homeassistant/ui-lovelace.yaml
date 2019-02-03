@@ -1,0 +1,302 @@
+title: Sycamore
+resources:
+  - url: /local/button-card.js?v=0
+    type: module
+views:
+  - title: Home
+    icon: mdi:home
+    badges:
+      - device_tracker.ge
+      - device_tracker.sc
+      - device_tracker.ti
+      - device_tracker.gr
+      - climate.hallway
+      - sensor.hallway_thermostat_temperature
+      - sensor.hallway_thermostat_target
+      - sensor.hallway_thermostat_humidity
+      - sensor.hallway_thermostat_operation_mode
+    cards:
+      - type: entities
+        show_header_toggle: true
+        title: Lights
+        entities:
+          - light.back_door
+          - switch.bedroom_light
+          - switch.lounge_light_small
+          - switch.lounge_light_tall
+          - switch.office_light
+      - type: entities
+        show_header_toggle: true
+        title: Lounge Lights
+        entities:
+          - switch.lounge_light_small
+          - switch.lounge_light_tall
+      - type: entities
+        title: Calls
+        show_header_toggle: false
+        entities:
+          - sensor.last_call
+          - sensor.last_blocked_call
+      - type: vertical-stack
+        cards:
+          - type: sensor
+            hours_to_show: 24
+            name: Power Consumption
+            graph: line
+            entity: sensor.emoncms104856_power_kw
+            detail: 2
+          - type: sensor
+            graph: line
+            entity: sensor.emoncms104902_meter_count
+            name: Power Meter
+            hours_to_show: 24
+          - type: sensor
+            graph: line
+            entity: sensor.energybattery
+            name: Meter Battery
+            detail: 2
+      - type: entities
+        title: General
+        show_header_toggle: true
+        entities:
+          - switch.general_switch
+      - type: thermostat
+        entity: climate.hallway
+      - type: sensor
+        graph: line
+        entity: sensor.hallway_thermostat_temperature
+        name: Indoor Temperature
+        detail: 2
+
+  - title: Entertainment
+    path: entertainment
+    icon: mdi:filmstrip
+    badges:
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                icon: mdi:power
+                size: 52px
+                entity: switch.tv
+                color: rgb(82,150,28)
+                color_off: var(--primary-color)
+                color_type: card
+                name: TV
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                icon: mdi:volume-minus
+                size: 44px
+                action: service
+                service:
+                  domain: script
+                  action: turn_on
+                  data:
+                    entity_id: script.tv_vol_down
+              - type: "custom:button-card"
+                icon: mdi:volume-mute
+                size: 44px
+                entity: switch.tv_mute
+                color: rgb(82,150,28)
+                color_off: var(--primary-color)
+              - type: "custom:button-card"
+                icon: mdi:volume-plus
+                size: 44px
+                action: service
+                service:
+                  domain: script
+                  action: turn_on
+                  data:
+                    entity_id: script.tv_vol_up
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                name: Netflix
+                color: rgb(112,55,178)
+                color_type: card
+                action: service
+                service:
+                  domain: script
+                  action: turn_on
+                  data:
+                    entity_id: script.tv_netflix
+              - type: "custom:button-card"
+                name: Kodi
+                color: rgb(112,55,178)
+                color_type: card
+                action: service
+                service:
+                  domain: script
+                  action: turn_on
+                  data:
+                    entity_id: script.tv_kodi
+              - type: "custom:button-card"
+                name: Plex
+                color: rgb(112,55,178)
+                color_type: card
+                action: service
+                service:
+                  domain: script
+                  action: turn_on
+                  data:
+                    entity_id: script.tv_plex
+          - type: entities
+            title: false
+            show_header_toggle: false
+            entities:
+              - entity: switch.tv
+              - entity: switch.speaker
+              - entity: input_number.luther_sound_volume
+      - type: media-control
+        entity: media_player.luther_universal_tv
+      - type: media-control
+        entity: media_player.luther_universal_audio
+
+  - title: Cameras
+    path: cctv
+    icon: mdi:camera-iris
+    badges:
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            entity: camera.blink_front
+          - type: entities
+            title: Front
+            show_header_toggle: false
+            entities:
+              - script.blink_front_capture_script
+              - sensor.blink_front_temperature
+              - sensor.blink_front_battery
+              - binary_sensor.blink_front_camera_armed
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            entity: camera.blink_back
+          - type: entities
+            title: Back
+            show_header_toggle: false
+            entities:
+              - script.blink_back_capture_script
+              - sensor.blink_back_temperature
+              - sensor.blink_back_battery
+              - binary_sensor.blink_back_camera_armed
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            entity: camera.blink_indoor_front
+          - type: entities
+            title: Indoor Front
+            show_header_toggle: false
+            entities:
+              - script.blink_indoor_front_capture_script
+              - sensor.blink_indoor_front_temperature
+              - sensor.blink_indoor_front_battery
+              - binary_sensor.blink_indoor_front_camera_armed
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            entity: camera.blink_indoor_back
+          - type: entities
+            title: Indoor Back
+            show_header_toggle: false
+            entities:
+              - script.blink_indoor_back_capture_script
+              - sensor.blink_indoor_back_temperature
+              - sensor.blink_indoor_back_battery
+              - binary_sensor.blink_indoor_back_camera_armed
+
+  - title: Outdoors
+    path: outdoors
+    icon: mdi:pine-tree
+    badges:
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_uv_index
+    cards:
+      - type: entities
+        title: Weather
+        show_header_toggle: false
+        entities:
+          - sensor.dark_sky_summary
+          - sensor.dark_sky_precip_intensity
+          - sun.sun
+          - sensor.us_air_pollution_level_2
+          - sensor.us_air_quality_index_2
+          - sensor.us_main_pollutant_2
+      - type: entities
+        title: Next Train
+        show_header_toggle: false
+        entities:
+          - sensor.next_train_status
+          - sensor.next_trains_estimated
+          - sensor.next_trains_scheduled
+          - sensor.next_trains_platform
+
+  - title: Settings
+    path: settings
+    icon: mdi:settings
+    badges:
+    cards:
+      - type: entities
+        title: Protect
+        show_header_toggle: false
+        entities:
+          - sensor.downstairs_nest_protect_battery_health
+          - sensor.downstairs_nest_protect_co_status
+          - sensor.downstairs_nest_protect_smoke_status
+          - sensor.upstairs_nest_protect_battery_health
+          - sensor.upstairs_nest_protect_co_status
+          - sensor.upstairs_nest_protect_smoke_status
+      - type: entities
+        title: Internet
+        show_header_toggle: false
+        entities:
+          - sensor.speedtest_ping
+          - sensor.speedtest_download
+          - sensor.speedtest_upload
+          - sensor.ip_address
+      - type: entities
+        title: Sycamore
+        show_header_toggle: false
+        entities:
+          - entity: sensor.memory_use_percent
+          - entity: sensor.load_5m
+          - entity: sensor.cpu_temperature
+          - entity: sensor.since_last_boot_sycamore
+          - entity: sensor.pi_hole_ads_blocked_today
+          - entity: sensor.pi_hole_ads_percentage_blocked_today
+          - entity: switch.pihole_sycamore_switch
+      - type: entities
+        title: Willow
+        show_header_toggle: false
+        entities:
+          - entity: sensor.ram_use_willow
+          - entity: sensor.cpu_use_willow
+          - entity: sensor.cpu_temperature_willow
+          - entity: sensor.since_last_boot_willow
+          - entity: sensor.pi_hole_ads_blocked_today_2
+          - entity: sensor.pi_hole_ads_percentage_blocked_today_2
+          - entity: switch.pihole_willow_switch
+      - type: entities
+        title: Settings
+        show_header_toggle: false
+        entities:
+          - switch.presence_emulator
+      - type: entities
+        title: Ad Blocker
+        show_header_toggle: true
+        entities:
+          - switch.pihole_sycamore_switch
+          - switch.pihole_willow_switch
+      - type: entities
+        title: Blink
+        show_header_toggle: false
+        entities:
+          - binary_sensor.blink_back_camera_armed
+          - binary_sensor.blink_front_camera_armed
+          - binary_sensor.blink_indoor_back_camera_armed
+          - binary_sensor.blink_indoor_front_camera_armed

@@ -16,6 +16,10 @@ http:
     #- 127.0.0.1
     #- ::1
 
+# Lovelace
+lovelace:
+  mode: yaml
+
 # Asus
 asuswrt:
   host: !secret asus_ip
@@ -165,18 +169,14 @@ logger:
 frontend:
   themes:
     sycamore:
-      primary-color: "#a8122b" 
+      primary-color: "#a8122b"
       label-badge-red: "#a8122b"
       paper-item-icon-color: "#747474"
       paper-item-icon-active-color: "#FDD835"
       paper-toggle-button-checked-ink-color: "#a8122b"
       paper-toggle-button-checked-button-color: "#a8122b"
       paper-toggle-button-checked-bar-color: "#a8122b"
-  javascript_version: latest
-  extra_html_url:
-    - /local/custom_ui/state-card-tiles.html
-  extra_html_url_es5:
-    - /local/custom_ui/state-card-tiles_es5.html
+      accent-color: "#21aedd"
 
 # Map
 map:
@@ -287,7 +287,7 @@ rest_command: !include rest-commands.yaml
 # Controls
 # input_select: !include input-selects.yaml
 input_number: !include input-numbers.yaml
-input_text : !include input-text.yaml
+#input_text : !include input-text.yaml
 
 # Groups and Other UIs
 group: !include groups.yaml
