@@ -8,10 +8,14 @@
   adbkey: "/config/android/adbkey"
   name: 'TV FireTV'
   host: !secret tv_ip
-  
+
+- platform: songpal
+  name: 'Luther Songpal'
+  endpoint: !secret sony_api
+
 - platform: plex
   scan_interval: 2
- 
+
 - platform: universal
   name: 'Luther Universal (TV)'
   children:
@@ -45,9 +49,9 @@
   children:
     - media_player.luther_audio
     - media_player.luther_audio_2
+    - media_player.luther_songpal
 
 - platform: alexa
   email: !secret amazon_email
   password: !secret amazon_password
   url: amazon.co.uk
-    
