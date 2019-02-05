@@ -260,7 +260,7 @@ mqtt_statestream:
 
 # Mycroft
 mycroft:
-  host: 191.168.11.41
+  host: !secret mycroft_ip
 
 # Sensors
 sensor: !include_dir_list sensors

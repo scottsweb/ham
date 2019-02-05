@@ -17,6 +17,9 @@
   platform: telegram
   chat_id: !secret telegram_scottsweb
 
+- name: mycroft
+  platform: mycroft
+
 - name: all
   platform: group
   services:
