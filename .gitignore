@@ -1,6 +1,6 @@
 # caddy
 caddy/.caddy/
-caddy/sites/
+caddy/sites/nest/creds.php
 
 # homeassistant
 homeassistant/android
