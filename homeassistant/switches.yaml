@@ -9,7 +9,7 @@
 - platform: tplink
   host: !secret tplink_switch_3
   name: "Bedroom Light"
-  
+
 - platform: tplink
   host: !secret tplink_switch_4
   name: "Office Light"
@@ -17,7 +17,7 @@
 - platform: tplink
   host: !secret tplink_switch_5
   name: "General Switch"
-  
+
 - platform: command_line
   switches:
     pihole_sycamore_switch:
@@ -57,7 +57,7 @@
   payload_on: "on"
   payload_off: "off"
   retain: true
- 
+
 - platform: broadlink
   host: !secret broadlink_ip
   mac: !secret broadlink_mac
@@ -77,3 +77,9 @@
       friendly_name: "TV Mute"
       command_on: 'JgBQAAABKZMTEhITEjcTEhMSEhMSExISEzcSOBI3EzcSExITEhITEhM3EhMSEhM3ExISExITEhITEhM3EjcTEhM3EjgSNxM3EgAFlgABKEoSAA0FAAAAAAAAAAA='
       command_off: 'JgBQAAABKZMTEhITEjcTEhMSEhMSExISEzcSOBI3EzcSExITEhITEhM3EhMSEhM3ExISExITEhITEhM3EjcTEhM3EjgSNxM3EgAFlgABKEoSAA0FAAAAAAAAAAA='
+
+- platform: command_line
+  switches:
+    hot_water:
+      command_on: !secret nest_boost
+      command_off: !secret nest_cancel

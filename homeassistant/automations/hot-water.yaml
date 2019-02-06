@@ -1,0 +1,12 @@
+alias: Hot Water Cancel
+initial_state: true
+trigger:
+  - platform: state
+    entity_id: switch.hot_water
+    to: 'on'
+    for:
+      minutes: '32'
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id: switch.hot_water

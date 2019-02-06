@@ -1,7 +1,7 @@
 version: '2'
 services:
     caddy:
-        image: caddy
+        image: yobasystems/alpine-caddy:armhf-php
         volumes:
             - "/media/data/Containers/caddy/Caddyfile:/etc/Caddyfile"
             - "/media/data/Containers/caddy/.caddy:/root/.caddy"
@@ -9,6 +9,6 @@ services:
         ports:
             - "80:80"
             - "443:443"
+            - "8811:8811"
         restart: always
         container_name: caddy
-

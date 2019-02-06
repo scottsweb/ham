@@ -60,8 +60,15 @@ views:
         show_header_toggle: true
         entities:
           - switch.general_switch
-      - type: thermostat
-        entity: climate.hallway
+      - type: vertical-stack
+        cards:
+          - type: thermostat
+            entity: climate.hallway
+          - type: entities
+            title: false
+            show_header_toggle: false
+            entities:
+              - switch.hot_water
       - type: sensor
         graph: line
         entity: sensor.hallway_thermostat_temperature

@@ -55,3 +55,9 @@ http://miniflux.sycamore.lan {
 		-X-Frame-Options
 	}
 }
+
+http://sycamore.lan:8811, http://192.168.11.2:8811 {
+	root /srv/nest
+	on startup php-fpm7
+	fastcgi / 127.0.0.1:9000 php
+}
