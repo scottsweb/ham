@@ -240,24 +240,10 @@ views:
           - sensor.next_trains_estimated
           - sensor.next_trains_scheduled
           - sensor.next_trains_platform
-      - type: entities
-        title: Flora Back
-        show_header_toggle: false
-        entities:
-          - sensor.flora_back_battery
-          - sensor.flora_back_conductivity
-          - sensor.flora_back_light_intensity
-          - sensor.flora_back_moisture
-          - sensor.flora_back_temperature
-      - type: entities
-        title: Flora Front
-        show_header_toggle: false
-        entities:
-          - sensor.flora_front_battery
-          - sensor.flora_front_conductivity
-          - sensor.flora_front_light_intensity
-          - sensor.flora_front_moisture
-          - sensor.flora_front_temperature
+      - type: plant-status
+        entity: plant.flora_front_plant
+      - type: plant-status
+        entity: plant.flora_back_plant
 
   - title: Settings
     path: settings

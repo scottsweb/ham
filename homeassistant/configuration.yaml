@@ -187,6 +187,25 @@ weather:
     api_key: !secret darksky_key
     mode: daily
 
+# Plants
+plant:
+  flora_back_plant:
+    sensors:
+      moisture: sensor.flora_back_moisture
+      battery: sensor.flora_back_battery
+      temperature: sensor.flora_back_temperature
+      conductivity: sensor.flora_back_conductivity
+      brightness: sensor.flora_back_light_intensity
+    min_moisture: 20
+  flora_front_plant:
+    sensors:
+      moisture: sensor.flora_front_moisture
+      battery: sensor.flora_front_battery
+      temperature: sensor.flora_front_temperature
+      conductivity: sensor.flora_front_conductivity
+      brightness: sensor.flora_front_light_intensity
+    min_moisture: 20
+
 # Track the sun
 sun:
 

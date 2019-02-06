@@ -330,3 +330,7 @@ script.tv_plex:
 input_number.luther_sound_volume:
   friendly_name: 'Speaker Volume'
   icon: mdi:volume-medium
+plant.flora_back_plant:
+  friendly_name: 'Flora Back'
+plant.flora_front_plant:
+  friendly_name: 'Flora Front'
