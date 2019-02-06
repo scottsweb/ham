@@ -228,6 +228,7 @@ views:
         entities:
           - sensor.dark_sky_precip_intensity
           - sun.sun
+          - sensor.moon
           - sensor.dark_sky_uv_index
           - sensor.us_air_pollution_level_2
           - sensor.us_air_quality_index_2
