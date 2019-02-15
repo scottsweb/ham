@@ -1,4 +1,4 @@
-alias: Sycamore Away - Lights Bedroom
+alias: Sycamore Away Lights Bedroom
 initial_state: true
 trigger:
   - platform: time

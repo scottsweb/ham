@@ -1,4 +1,4 @@
-alias: Sycamore Away - Lights Back
+alias: Sycamore Away Lights Back
 initial_state: true
 trigger:
   - platform: numeric_state

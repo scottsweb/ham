@@ -1,4 +1,4 @@
-alias: Sycamore Away - Light Small
+alias: Sycamore Away Light Small
 initial_state: true
 trigger:
   - platform: numeric_state
