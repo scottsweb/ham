@@ -21,16 +21,18 @@ action:
   - service: climate.set_away_mode
     data:
       away_mode: false
-  - service: camera.disable_motion_detection
-    data:
-      entity_id: camera.blink_back
-  - service: camera.disable_motion_detection
-    data:
-      entity_id: camera.blink_indoor_front
-  - service: camera.disable_motion_detection
-    data:
-      entity_id: camera.blink_indoor_back
   - service: mqtt.publish
     data:
       topic: sycamore/unicorn
       payload: '{ "opcode": "11" }'
+  - service: camera.disable_motion_detection
+    data:
+      entity_id: camera.blink_back
+  - delay: '00:00:02'
+  - service: camera.disable_motion_detection
+    data:
+      entity_id: camera.blink_indoor_front
+  - delay: '00:00:02'
+  - service: camera.disable_motion_detection
+    data:
+      entity_id: camera.blink_indoor_back

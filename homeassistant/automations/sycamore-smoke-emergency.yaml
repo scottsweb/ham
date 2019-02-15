@@ -21,15 +21,17 @@ action:
       cycles: 50
   - service: switch.turn_on
     entity_id: group.all_switches
-  - service: camera.enable_motion_detection
-    data:
-      entity_id: camera.blink_back
-  - service: camera.enable_motion_detection
-    data:
-      entity_id: camera.blink_indoor_front
-  - service: camera.enable_motion_detection
-    data:
-      entity_id: camera.blink_indoor_back
   - service: climate.set_away_mode
     data:
       away_mode: true
+  - service: camera.enable_motion_detection
+    data:
+      entity_id: camera.blink_back
+  - delay: '00:00:02'
+  - service: camera.enable_motion_detection
+    data:
+      entity_id: camera.blink_indoor_front
+  - delay: '00:00:02'
+  - service: camera.enable_motion_detection
+    data:
+      entity_id: camera.blink_indoor_back
