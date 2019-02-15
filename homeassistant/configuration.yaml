@@ -147,6 +147,9 @@ discovery:
   # ignore:
   #  - plex_mediaserver
 
+# System Health
+system_health:
+
 # View all events in a logbook
 logbook:
   exclude:
@@ -235,7 +238,7 @@ ifttt:
 blink:
   username: !secret blink_username
   password: !secret blink_password
-  scan_interval: 60
+  scan_interval: 3600
 
 # Zeroconf
 zeroconf:
