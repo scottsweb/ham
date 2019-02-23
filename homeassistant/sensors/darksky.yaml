@@ -1,6 +1,6 @@
 platform: darksky
 api_key: !secret darksky_key
-update_interval:
+scan_interval:
   minutes: 3
 monitored_conditions:
   - summary

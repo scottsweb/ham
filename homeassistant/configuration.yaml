@@ -284,6 +284,15 @@ telegram_bot:
       - !secret telegram_scottsweb
       - !secret telegram_gemma
 
+# Speedtest
+speedtestdotnet:
+  scan_interval:
+    days: 1
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
 # MQTT
 mqtt:
   broker: !secret mqtt_ip
