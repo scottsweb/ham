@@ -1,6 +1,6 @@
 title: Sycamore
 resources:
-  - url: /local/button-card.js?v=0
+  - url: /local/button-card.js?v=0.0.6
     type: module
 views:
   - title: Home
