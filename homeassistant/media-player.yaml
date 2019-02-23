@@ -50,8 +50,3 @@
     - media_player.luther_audio
     - media_player.luther_audio_2
     - media_player.luther_songpal
-
-- platform: alexa
-  email: !secret amazon_email
-  password: !secret amazon_password
-  url: amazon.co.uk
