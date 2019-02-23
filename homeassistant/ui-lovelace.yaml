@@ -240,9 +240,9 @@ views:
           - sun.sun
           - sensor.moon
           - sensor.dark_sky_uv_index
-          - sensor.us_air_pollution_level_2
-          - sensor.us_air_quality_index_2
-          - sensor.us_main_pollutant_2
+          - sensor.us_air_pollution_level
+          - sensor.us_air_quality_index
+          - sensor.us_main_pollutant
       - type: entities
         title: Next Train
         show_header_toggle: false
