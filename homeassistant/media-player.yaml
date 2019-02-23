@@ -2,7 +2,6 @@
   host: !secret kodi_ip
   port: 8080
   name: TV Kodi
-  user: kodi
 
 - platform: firetv
   adbkey: "/config/android/adbkey"
