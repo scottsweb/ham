@@ -24,6 +24,7 @@ action:
   - service: climate.set_away_mode
     data:
       away_mode: true
+      entity_id: climate.hallway
   - service: camera.enable_motion_detection
     data:
       entity_id: camera.blink_back

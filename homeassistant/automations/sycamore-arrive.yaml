@@ -21,6 +21,7 @@ action:
   - service: climate.set_away_mode
     data:
       away_mode: false
+      entity_id: climate.hallway
   - service: mqtt.publish
     data:
       topic: sycamore/unicorn
