@@ -56,7 +56,7 @@ views:
             name: Meter Battery
             detail: 2
       - type: entities
-        title: false
+        title: General
         show_header_toggle: false
         entities:
           - switch.general_switch
