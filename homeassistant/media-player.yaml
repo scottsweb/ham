@@ -3,7 +3,7 @@
   port: 8080
   name: TV Kodi
 
-- platform: firetv
+- platform: androidtv
   adbkey: "/config/android/adbkey"
   name: 'TV FireTV'
   host: !secret tv_ip
@@ -20,7 +20,7 @@
   children:
     - media_player.tv_kodi # kodi
     - media_player.aftt # plex
-    - media_player.tv_firetv # firetv (via server)
+    - media_player.tv_firetv # firetv
     - media_player.luther # chromecast (app)
   commands:
     turn_on:

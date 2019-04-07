@@ -1,16 +1,16 @@
 tv_on:
   alias: 'TV On'
   sequence:
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.tv_firetv
-        source: org.xbmc.kodi
     - service: media_player.turn_on
       data:
         entity_id: media_player.tv_firetv
     - service: switch.turn_on
       data:
         entity_id: switch.tv_ir
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.tv_firetv
+        source: org.xbmc.kodi
     - delay: '00:00:08'
     - service: switch.turn_on
       data:
@@ -129,7 +129,7 @@ hdmi:
           - JgBQAAABKZMTEhMSEzcSExISExITEhITEjcTNxI3EzcTEhITEhMSEhMSEzcSNxMSExISExITEhITNxITEhMSNRU3EjcTNxI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
           - JgBQAAABKZMTEhMSEzcSExISExITEhITEjcTNxI3EzcTEhITEhMSEhMSEzcSNxMSExISExITEhITNxITEhMSNRU3EjcTNxI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
           - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-          
+
 tv_vol_up:
   alias: 'TV Volume Up'
   sequence:
@@ -153,15 +153,15 @@ tv_ch_up:
       data:
         packet:
           - JgBQAAABJ5UQFRAUETkQFRAVEBQRFBEUEDoQORE5EDoRExEUERQRFBAVERMRFBEUEBUQFRAVEBQRORA6EDkRORE5EDkRORE2EwAFmAABJkwQAA0FAAAAAAAAAAA=
-            
+
 tv_ch_down:
   alias: 'TV Channel Down'
   sequence:
     - service: switch.broadlink_send_packet_192_168_11_39
       data:
-        packet: 
+        packet:
           - JgBQAAABJ5UQFRAVEDkRFBEUERQQFRAVEDkRORA5ETkQFRAVEBURExI4EBUQFRAVERMSExAVEBUQFRA5ETkQOhA5ETkQORE5EAAFmQABJkwQAA0FAAAAAAAAAAA=
-          
+
 tv_bbc_one:
   alias: 'BBC One'
   sequence:
