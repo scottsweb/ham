@@ -14,7 +14,6 @@ views:
       - sensor.hallway_thermostat_temperature
       - sensor.hallway_thermostat_target
       - sensor.hallway_thermostat_humidity
-      - sensor.hallway_thermostat_operation_mode
     cards:
       - type: entities
         show_header_toggle: true
