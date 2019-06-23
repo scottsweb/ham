@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   pihole:
-    image: pihole/pihole:4.1.1_armhf
+    image: pihole/pihole:4.2.2-1_armhf
     volumes:
       - "/var/log/pihole.log:/var/log/pihole.log"
       - "/media/data/Containers/pihole-sycamore:/etc/pihole"
@@ -17,6 +17,9 @@ services:
       - DNS1=208.67.222.222 # OpenDNS
       - DNS2=172.104.136.243 # opennic.org
       - WEBPASSWORD='/run/secrets/web-password'
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
     extra_hosts:
       - "sycamore sycamore.lan:192.168.11.2"
       - "nodered nodered.sycamore.lan:192.168.11.2"
