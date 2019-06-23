@@ -34,6 +34,9 @@ tplink:
 # Cloud
 # cloud:
 
+# WOL
+wake_on_lan:
+
 # Allows you to issue voice commands from the frontend
 conversation:
 

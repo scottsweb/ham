@@ -166,6 +166,7 @@ views:
               - entity: switch.tv
               - entity: switch.speaker
               - entity: input_number.luther_sound_volume
+              - entity: switch.games
       - type: media-control
         entity: media_player.luther_universal_tv
       - type: media-control

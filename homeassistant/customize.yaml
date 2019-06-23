@@ -143,6 +143,8 @@ switch.tv_ir:
   emulated_hue_hidden: true
 switch.tv_mute:
   icon: 'mdi:television-off'
+switch.games:
+  icon: 'mdi:gamepad-variant'
 switch.hot_water:
   icon: 'mdi:hot-tub'
   friendly_name: 'Hot Water (30 Mins)'
@@ -327,6 +329,10 @@ script.tv_kodi:
 script.tv_plex:
   emulated_hue_name: 'Plex'
   emulated_hue_hidden: false
+script.games_on:
+  emulated_hue_hidden: true
+script.games_off:
+  emulated_hue_hidden: true
 input_number.luther_sound_volume:
   friendly_name: 'Speaker Volume'
   icon: mdi:volume-medium

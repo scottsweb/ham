@@ -38,6 +38,14 @@
   payload_off: "off"
   retain: true
 
+- platform: mqtt
+  name: "Games"
+  state_topic: "sycamore/games/switch"
+  command_topic: "sycamore/games/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
 - platform: broadlink
   host: !secret broadlink_ip
   mac: !secret broadlink_mac

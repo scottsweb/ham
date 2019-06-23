@@ -1,0 +1,8 @@
+alias: Switch Games Off
+initial_state: true
+trigger:
+  platform: state
+  entity_id: switch.games
+  to: 'off'
+action:
+  - service: script.games_off
