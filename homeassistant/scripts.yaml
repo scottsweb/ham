@@ -133,6 +133,10 @@ hdmi:
 games_on:
   alias: 'Switch Games On'
   sequence:
+    - service: wake_on_lan.send_magic_packet
+      data:
+        mac: !secret oak_mac
+    - delay: '00:00:05'
     - service: switch.broadlink_send_packet_192_168_11_39
       data:
         packet:
