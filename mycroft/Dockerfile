@@ -1,3 +1,4 @@
+# Based on https://github.com/MycroftAI/docker-mycroft
 FROM armhf/ubuntu:latest
 
 ENV VERSION 18.8.1
@@ -9,6 +10,7 @@ RUN set -x \
 	&& sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
 	&& apt-get update \
 	&& apt-get -y install git python3 python3-pip locales espeak sudo alsa-base alsa-utils pulseaudio-utils nano \
+	&& apt-get -y remove pulseaudio \
 	&& pip3 install future msm \
 	&& pip3 install git+https://github.com/GeorgeFilipkin/pulsemixer.git \
 	# Checkout Mycroft
@@ -48,4 +50,3 @@ RUN /bin/bash -c "source /opt/mycroft/.venv/bin/activate" \
 EXPOSE 8181
 
 ENTRYPOINT ["/bin/bash", "-c", "rm /.dockerenv; exec /opt/mycroft/startup.sh"]
-
