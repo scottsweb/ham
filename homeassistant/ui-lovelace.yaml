@@ -251,10 +251,10 @@ views:
           - sensor.next_trains_estimated
           - sensor.next_trains_scheduled
           - sensor.next_trains_platform
-      - type: plant-status
-        entity: plant.flora_front_plant
-      - type: plant-status
-        entity: plant.flora_back_plant
+#      - type: plant-status
+#        entity: plant.flora_front_plant
+#      - type: plant-status
+#        entity: plant.flora_back_plant
 
   - title: Settings
     path: settings
