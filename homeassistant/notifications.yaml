@@ -20,9 +20,6 @@
 - name: mycroft
   platform: mycroft
 
-- name: alexa_media
-  platform: alexa_media
-
 - name: all
   platform: group
   services:
