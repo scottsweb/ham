@@ -333,6 +333,10 @@ script.games_on:
   emulated_hue_hidden: true
 script.games_off:
   emulated_hue_hidden: true
+script.oak_on:
+  icon: mdi:play-network
+  emulated_hue_name: 'Oak'
+  emulated_hue_hidden: false
 input_number.luther_sound_volume:
   friendly_name: 'Speaker Volume'
   icon: mdi:volume-medium

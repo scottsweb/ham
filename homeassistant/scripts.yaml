@@ -256,3 +256,10 @@ tv_plex:
       data:
         entity_id: media_player.tv_firetv
         source: com.plexapp.android
+
+oak_on:
+  alias: 'Wake on LAN (WOL)'
+  sequence:
+    - service: wake_on_lan.send_magic_packet
+      data:
+        mac: !secret oak_mac
