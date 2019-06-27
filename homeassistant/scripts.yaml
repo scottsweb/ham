@@ -161,6 +161,10 @@ games_off:
           - JgBQAAABKJMTEhITEjcTEhMSExISExITEjcSOBI3EzcSExITEhITEhI4EjcTNxI4EhMSNxI4EjcTEhITEhMSExI3EhMSExITEgAFlwABKEoSAA0FAAAAAAAAAAA=
           - JgBQAAABKZMTEhMSEzcSExISExITEhITEjcTNxI3EzcTEhITEhMSEhMSEzcSNxMSExISExITEhITNxITEhMSNRU3EjcTNxI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
           - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.tv_firetv
+        source: org.xbmc.kodi
 
 tv_vol_up:
   alias: 'TV Volume Up'
