@@ -61,3 +61,12 @@ http://sycamore.lan:8811, http://192.168.11.2:8811 {
 	on startup php-fpm7
 	fastcgi / 127.0.0.1:9000 php
 }
+
+http://plex.oak.lan {
+	proxy / 192.168.11.5:32400 {
+		transparent
+	}
+	header / {
+		-X-Frame-Options
+	}
+}
