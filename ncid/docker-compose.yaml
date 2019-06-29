@@ -4,13 +4,12 @@ services:
         image: ncid
         volumes:
             # Mounts directly over ssh to speed up notification time
-            - "/media/sycamore/Containers/ncid/ncidd.log:/var/log/ncidd.log"
-            - "/media/sycamore/Containers/ncid/cidcall.log:/var/log/cidcall.log"
-            - "/media/sycamore/Containers/ncid/:/etc/ncid/"
+            - "/media/data/Containers/ncid/ncidd.log:/var/log/ncidd.log"
+            - "/media/data/Containers/ncid/cidcall.log:/var/log/cidcall.log"
+            - "/media/data/Containers/ncid/:/etc/ncid/"
         ports:
             - "3333:3333"
         devices:
             - "/dev/ttyACM0:/dev/ttyACM0"
         restart: always
         container_name: ncid
-        
