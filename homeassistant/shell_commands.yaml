@@ -1,7 +1,7 @@
-luther_sound_bluetooth: curl -i -d '{"method":"setPlayContent","id":165,"params":[{"uri":"extInput:btAudio"}],"version":"1.2"}' http://192.168.11.47:54480/sony/avContent
+luther_sound_bluetooth: curl -i -d '{"method":"setPlayContent","id":165,"params":[{"uri":"extInput:btAudio"}],"version":"1.2"}' http://192.168.11.42:54480/sony/avContent
 
-luther_sound_vol_change: curl -i -d '{"method":"setAudioVolume","id":98,"params":[{"volume":"{{ states.input_number.luther_sound_volume.state }}"}],"version":"1.1"}' http://192.168.11.47:54480/sony/audio
-luther_sound_vol_reset: curl -i -d '{"method":"setAudioVolume","id":98,"params":[{"volume":"40"}],"version":"1.1"}' http://192.168.11.47:54480/sony/audio
+luther_sound_vol_change: curl -i -d '{"method":"setAudioVolume","id":98,"params":[{"volume":"{{ states.input_number.luther_sound_volume.state }}"}],"version":"1.1"}' http://192.168.11.42:54480/sony/audio
+luther_sound_vol_reset: curl -i -d '{"method":"setAudioVolume","id":98,"params":[{"volume":"40"}],"version":"1.1"}' http://192.168.11.42:54480/sony/audio
 
-luther_sound_on: curl -i -d '{"method":"setPowerStatus","id":55,"params":[{"status":"active"}],"version":"1.1"}' http://192.168.11.47:54480/sony/system
-luther_sound_off: curl -i -d '{"method":"setPowerStatus","id":55,"params":[{"status":"off"}],"version":"1.1"}' http://192.168.11.47:54480/sony/system
+luther_sound_on: curl -i -d '{"method":"setPowerStatus","id":55,"params":[{"status":"active"}],"version":"1.1"}' http://192.168.11.42:54480/sony/system
+luther_sound_off: curl -i -d '{"method":"setPowerStatus","id":55,"params":[{"status":"off"}],"version":"1.1"}' http://192.168.11.42:54480/sony/system
