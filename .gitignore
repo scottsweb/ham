@@ -4,7 +4,7 @@ caddy/sites/nest/creds.php
 
 # homeassistant
 homeassistant/android
-homeassistant/alexa_media.pickle
+homeassistant/*.pickle
 homeassistant/custom_components/alexa_media/__pycache__/
 homeassistant/deps/*
 homeassistant/.uuid
