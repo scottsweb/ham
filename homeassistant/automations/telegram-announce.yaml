@@ -11,13 +11,17 @@ trigger:
     event_data:
       command: '/announce@columbo_bot'
 action:
-  - service: media_player.alexa_tts
+  - service: notify.alexa_media_dot
     data_template:
-      entity_id: media_player.dot
+      message: '{{ trigger.event.data.args | join(" ") }}'
+      data:
+        type: tts
+  - service: notify.mycroft
+    data_template:
       message: '{{ trigger.event.data.args | join(" ") }}'
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.chat_id }}'
       disable_notification: true
       message: >-
-        Your voice message was sent to the echo dot.
+        Your voice message was sent to all smart speakers.
