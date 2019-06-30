@@ -242,7 +242,7 @@ views:
           - sensor.dark_sky_uv_index
           - sensor.us_air_pollution_level
           - sensor.us_air_quality_index
-          - sensor.us_main_pollutant
+          #- sensor.us_main_pollutant
       - type: entities
         title: Next Train
         show_header_toggle: false
