@@ -27,6 +27,9 @@ homeassistant/home-assistant_v2.db-wal
 homeassistant/.cloud/*
 homeassistant/.storage
 
+# miniflux
+miniflux/miniflux
+
 # mqtt
 mqtt/config/
 mqtt/data/
@@ -70,6 +73,7 @@ pihole-sycamore/secrets/*
 pihole-sycamore/setupVars.conf.update.bak
 pihole-sycamore/dhcp.leases
 pihole-sycamore/regex.list
+pihole-sycamore/dns-servers.conf
 
 # pihole willow
 pihole-willow/*.domains
