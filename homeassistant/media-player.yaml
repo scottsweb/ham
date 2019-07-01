@@ -13,7 +13,6 @@
   endpoint: !secret sony_api
 
 - platform: plex
-  scan_interval: 2
 
 - platform: universal
   name: 'Luther Universal (TV)'
