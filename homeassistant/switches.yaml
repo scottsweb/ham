@@ -39,12 +39,31 @@
   retain: true
 
 - platform: mqtt
-  name: "Games"
+  name: "Game Core"
   state_topic: "sycamore/games/switch"
   command_topic: "sycamore/games/switch"
   payload_on: "on"
   payload_off: "off"
   retain: true
+
+- platform: template
+  switches:
+    games:
+      friendly_name: "Games"
+      value_template: "{{ is_state('switch.game_core','on') }}"
+      turn_on:
+        service: switch.turn_on
+        data_template:
+          entity_id: >-
+            {% if is_state('switch.tv', 'on') %}
+              switch.game_core
+            {% else %}
+              switch.null
+            {% endif %}
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.game_core
 
 - platform: broadlink
   host: !secret broadlink_ip
