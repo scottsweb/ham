@@ -26,14 +26,6 @@ pihole_willow:
   title: 'Pi-hole (Willow)'
   icon: 'mdi:checkbox-blank-circle'
   url: 'http://pihole.willow.lan/admin/'
-sync_sycamore:
-  title: 'Syncthing (Sycamore)'
-  icon: 'mdi:cloud-sync'
-  url: !secret sync_sycamore_ui
-sync_willow:
-  title: 'Syncthing (Willow)'
-  icon: 'mdi:cloud-sync'
-  url: !secret sync_williow_ui
 miniflux:
   title: 'RSS'
   icon: 'mdi:rss-box'
