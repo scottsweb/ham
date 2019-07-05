@@ -20,26 +20,8 @@ http://pihole.sycamore.lan {
 	}
 }
 
-http://pihole.willow.lan {
-	proxy / 192.168.11.4:8053 {
-		transparent
-	}
-	header / {
-		-X-Frame-Options
-	}
-}
-
-http://sync.sycamore.lan {
-	proxy / 192.168.11.2:8384 {
-		transparent
-	}
-	header / {
-		-X-Frame-Options
-	}
-}
-
-http://sync.willow.lan {
-	proxy / 192.168.11.4:8384 {
+http://pihole.mycroft.lan {
+	proxy / 192.168.11.7:8053 {
 		transparent
 	}
 	header / {

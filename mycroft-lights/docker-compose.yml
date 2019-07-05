@@ -2,8 +2,8 @@ version: '2'
 services:
     mycroft:
         image: arm32v7/node:8-stretch
-        volumes: 
-            - "/home/pi/mycroft-lights:/app"
+        volumes:
+            - "/home/pilot/mycroft-lights:/app"
         devices:
             - "/dev/ttyACM0"
         container_name: mycroft-lights
@@ -13,4 +13,3 @@ services:
         stdin_open: true
         tty: true
         restart: always
-

@@ -1,5 +1,0 @@
-platform: command_line
-name: RAM Use (Willow)
-command: !secret ssh_willow_ram
-unit_of_measurement: "%"
-value_template: '{{ ( value | round(1) ) }}'

@@ -99,16 +99,16 @@ sensor.memory_use_percent:
   icon: mdi:chip
 sensor.cpu_temperature:
   icon: mdi:chip
-sensor.ram_use_willow:
+sensor.ram_use_mycroft:
   friendly_name: 'RAM'
   icon: mdi:chip
-sensor.cpu_use_willow:
+sensor.cpu_use_mycroft:
   friendly_name: 'CPU'
   icon: mdi:chip
-sensor.cpu_temperature_willow:
+sensor.cpu_temperature_mycroft:
   friendly_name: 'CPU Temperature'
   icon: mdi:chip
-sensor.since_last_boot_willow:
+sensor.since_last_boot_mycroft:
   friendly_name: 'Since Last Boot'
   icon: mdi:clock
 sensor.since_last_boot_sycamore:
@@ -129,9 +129,9 @@ sensor.pihole_ads_blocked_today_2:
   icon: 'mdi:checkbox-blank-circle'
 sensor.pihole_ads_percentage_blocked_today_2:
   icon: 'mdi:checkbox-blank-circle'
-switch.pihole_willow_switch:
+switch.pihole_mycroft_switch:
   icon: 'mdi:checkbox-blank-circle'
-  friendly_name: 'Pi-Hole Switch (Willow)'
+  friendly_name: 'Pi-Hole Switch (Mycroft)'
   emulated_hue_hidden: true
 switch.speaker:
   icon: 'mdi:volume-medium'
@@ -194,7 +194,7 @@ group.flora_back:
   emulated_hue_hidden: true
 group.flora_front:
   emulated_hue_hidden: true
-group.willow:
+group.mycroft:
   emulated_hue_hidden: true
 group.settings:
   emulated_hue_hidden: true

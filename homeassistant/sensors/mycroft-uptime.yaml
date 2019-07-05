@@ -1,0 +1,3 @@
+platform: command_line
+name: Since last boot (Mycroft)
+command: !secret ssh_mycroft_uptime

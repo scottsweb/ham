@@ -1,5 +1,0 @@
-platform: command_line
-name: CPU Temperature (Willow)
-command: !secret ssh_willow_cpu_temp
-unit_of_measurement: "°C"
-value_template: '{{ ( value | multiply(0.001) ) | round(1) }}'

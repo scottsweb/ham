@@ -291,16 +291,16 @@ views:
           - entity: sensor.pi_hole_ads_percentage_blocked_today
           - entity: switch.pihole_sycamore_switch
       - type: entities
-        title: Willow
+        title: Mycroft
         show_header_toggle: false
         entities:
-          - entity: sensor.ram_use_willow
-          - entity: sensor.cpu_use_willow
-          - entity: sensor.cpu_temperature_willow
-          - entity: sensor.since_last_boot_willow
+          - entity: sensor.ram_use_mycroft
+          - entity: sensor.cpu_use_mycroft
+          - entity: sensor.cpu_temperature_mycroft
+          - entity: sensor.since_last_boot_mycroft
           - entity: sensor.pi_hole_ads_blocked_today_2
           - entity: sensor.pi_hole_ads_percentage_blocked_today_2
-          - entity: switch.pihole_willow_switch
+          - entity: switch.pihole_mycroft_switch
       - type: entities
         title: Oak
         show_header_toggle: false
@@ -316,7 +316,7 @@ views:
         show_header_toggle: true
         entities:
           - switch.pihole_sycamore_switch
-          - switch.pihole_willow_switch
+          - switch.pihole_mycroft_switch
       - type: entities
         title: Blink
         show_header_toggle: false

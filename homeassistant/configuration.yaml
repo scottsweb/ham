@@ -65,7 +65,7 @@ history:
       - binary_sensor.hallway_thermostat_has_leaf
       - binary_sensor.hallway_thermostat_online
       - sensor.since_last_boot_sycamore
-      - sensor.since_last_boot_willow
+      - sensor.since_last_boot_mycroft
       - sensor.pihole_ads_blocked_today
       - sensor.pihole_dns_queries_today
       - sensor.pihole_ads_percentage_blocked_today
@@ -163,7 +163,7 @@ logbook:
       - automation.nest_summary_automation
       - automation.weather_summary_automation
       - sensor.since_last_boot_sycamore
-      - sensor.since_last_boot_willow
+      - sensor.since_last_boot_mycroft
       - sensor.next_trains_estimated
       - sensor.next_trains_origin
       - sensor.next_trains_scheduled

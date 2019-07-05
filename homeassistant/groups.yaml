@@ -27,14 +27,14 @@ Sycamore:
   - sensor.pihole_ads_blocked_today
   - sensor.pihole_ads_percentage_blocked_today
   - switch.pihole_sycamore_switch
-Willow:
-  - sensor.ram_use_willow
-  - sensor.cpu_use_willow
-  - sensor.cpu_temperature_willow
-  - sensor.since_last_boot_willow
+Mycroft:
+  - sensor.ram_use_mycroft
+  - sensor.cpu_use_mycroft
+  - sensor.cpu_temperature_mycroft
+  - sensor.since_last_boot_mycroft
   - sensor.pihole_ads_blocked_today_2
   - sensor.pihole_ads_percentage_blocked_today_2
-  - switch.pihole_willow_switch
+  - switch.pihole_mycroft_switch
 Lights:
   - light.back_door
   - switch.bedroom_light
@@ -66,7 +66,7 @@ Next Train:
   - sensor.next_trains_estimated
   - sensor.next_trains_scheduled
   - sensor.next_trains_platform
-Blink: 
+Blink:
   - alarm_control_panel.blink_sync
   - binary_sensor.blink_back_camera_armed
   - binary_sensor.blink_front_camera_armed
@@ -88,13 +88,13 @@ Flora Front:
   - sensor.flora_front_temperature
 Ad Blocker:
   - switch.pihole_sycamore_switch
-  - switch.pihole_willow_switch
+  - switch.pihole_mycroft_switch
 Remote:
   control: hidden
   entities:
     - input_text.remote_tiles
     - switch.tv
-    - switch.speaker      
+    - switch.speaker
     - input_number.luther_sound_volume
 Back:
   - camera.blink_back
@@ -183,7 +183,7 @@ settings:
     - group.protect
     - group.internet
     - group.sycamore
-    - group.willow
+    - group.mycroft
     - group.blink
     - group.settings
     - group.ad_blocker

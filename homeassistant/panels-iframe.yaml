@@ -22,10 +22,10 @@ pihole_sycamore:
   title: 'Pi-hole (Sycamore)'
   icon: 'mdi:checkbox-blank-circle'
   url: 'http://pihole.sycamore.lan/admin/'
-pihole_willow:
-  title: 'Pi-hole (Willow)'
+pihole_mycroft:
+  title: 'Pi-hole (Mycroft)'
   icon: 'mdi:checkbox-blank-circle'
-  url: 'http://pihole.willow.lan/admin/'
+  url: 'http://pihole.mycroft.lan/admin/'
 miniflux:
   title: 'RSS'
   icon: 'mdi:rss-box'

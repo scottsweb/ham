@@ -3,14 +3,14 @@ services:
     mycroft:
         image: mycroft
         volumes:
-            - "/home/pi/mycroft3/data/mycroft.conf:/root/.mycroft/mycroft.conf:ro"
-            - "/home/pi/mycroft3/data/identity:/root/.mycroft/identity"
-            - "/home/pi/mycroft3/asoundrc:/root/.asoundrc"
+            - "/home/pilot/mycroft/data/mycroft.conf:/root/.mycroft/mycroft.conf:ro"
+            - "/home/pilot/mycroft/data/identity:/root/.mycroft/identity"
+            - "/home/pilot/mycroft/asoundrc:/root/.asoundrc"
             - "/etc/localtime:/etc/localtime:ro"
             - "/etc/timezone:/etc/timezone:ro"
             - "/etc/asound.conf:/etc/asound.conf:ro"
         tmpfs:
-            - "/tmpfs:size=10m,uid=1000,rw"
+            - "/tmpfs:size=10m,uid=1001,rw"
         devices:
             - "/dev/snd:/dev/snd:rwm"
         ports:
@@ -19,6 +19,6 @@ services:
         restart: always
         environment:
             - PULSE_SERVER=tcp:localhost
-            - PGID=1000 
-            - PUID=1000
+            - PGID=1001
+            - PUID=1001
         container_name: mycroft

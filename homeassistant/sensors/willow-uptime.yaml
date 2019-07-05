@@ -1,3 +1,0 @@
-platform: command_line
-name: Since last boot (Willow)
-command: !secret ssh_willow_uptime
