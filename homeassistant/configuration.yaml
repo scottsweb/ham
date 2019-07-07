@@ -172,7 +172,8 @@ logbook:
 logger:
   default: info
   logs:
-    homeassistant.components.sensor.plex: error
+    homeassistant.components.sensor.plex: critical
+    homeassistant.components.plex.media_player: error
 
 # Enables the frontend
 frontend:
