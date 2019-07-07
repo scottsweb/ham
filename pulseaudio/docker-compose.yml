@@ -1,6 +1,6 @@
 version: '2'
 services:
-    mycroft:
+    pulseaudio:
         image: woahbase/alpine-pulseaudio:armhf
         volumes:
             - "/etc/asound.conf:/etc/asound.conf:ro"
@@ -11,7 +11,7 @@ services:
         ports:
             - "4713:4713"
         environment:
-            - PGID=1001 
+            - PGID=1001
             - PUID=1001
             - DISABLEBLUETOOTH=true
         restart: always
