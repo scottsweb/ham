@@ -10,6 +10,7 @@ homeassistant:
 # Server Config
 http:
   api_password: !secret api_password
+  base_url: !secret base_url
   # server_host: sycamore.lan
   trusted_networks:
     - 192.168.11.0/24
@@ -196,6 +197,15 @@ weather:
   - platform: darksky
     api_key: !secret darksky_key
     mode: daily
+
+#  Image Processing
+#image_processing:
+#  - platform: dlib_face_detect
+#    source:
+#      - entity_id: camera.blink_front
+#      - entity_id: camera.blink_back
+#      - entity_id: camera.blink_indoor_front
+#      - entity_id: camera.blink_indoor_back
 
 # Plants
 plant:
