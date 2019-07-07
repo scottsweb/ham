@@ -55,7 +55,6 @@ node-red/.flows_cred.json.backup
 
 # pihole sycamore
 pihole-sycamore/*.domains
-pihole-sycamore/adlists.default
 pihole-sycamore/gravity.list
 pihole-sycamore/piholeIP
 pihole-sycamore/setupVars.conf
@@ -64,7 +63,6 @@ pihole-sycamore/local.list
 pihole-sycamore/install.log
 pihole-sycamore/pihole-FTL.db
 pihole-sycamore/pihole-FTL.conf
-pihole-sycamore/adlists.list
 pihole-sycamore/black.list
 pihole-sycamore/GitHubVersions
 pihole-sycamore/localbranches
