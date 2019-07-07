@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   pihole:
-    image: pihole/pihole:4.3.1-3_armhf
+    image: pihole/pihole:4.3.1-4_armhf
     volumes:
       - "/var/log/pihole.log:/var/log/pihole.log"
       - "/media/data/Containers/pihole-sycamore:/etc/pihole"
