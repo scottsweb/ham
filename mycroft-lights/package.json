@@ -10,11 +10,11 @@
   "author": "Scott Evans",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "color": "^3.0.0",
-    "johnny-five": "^1.0.0",
-    "node-pixel": "^0.10.0",
-    "serialport": "^7.0.2",
-    "temporal": "^0.7.1",
-    "ws": "^6.0.0"
+    "color": "3.0.0",
+    "johnny-five": "1.0.0",
+    "node-pixel": "0.10.0",
+    "serialport": "6.2.2",
+    "temporal": "0.7.1",
+    "ws": "6.0.0"
   }
 }

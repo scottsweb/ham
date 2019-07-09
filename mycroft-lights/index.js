@@ -34,9 +34,18 @@ board.on( "ready", function() {
 					kill();
 					pulse();
 					break;
-				case 'enclosure.mouth.viseme':
+				case 'enclosure.mouth.viseme_list':
 					kill();
-					set( '#096033', result.data.code );
+					result.data.visemes.forEach( function( visme, index, array ) {
+						setTimeout( function() {
+							set( '#096033', visme[0] );
+							if ( index === array.length - 1 ) {
+								setTimeout( function() {
+									kill();
+								}, 1000 / 11 );
+							}
+						}, index * ( 1000 / 11 ) );
+					} );
 					break;
 				case 'mycroft.skill.handler.start':
 				case 'add_context':
@@ -60,6 +69,7 @@ board.on( "ready", function() {
 				case 'mycroft.skill.handler.complete':
 				case 'msm.updated':
 				case 'msm.installed':
+				case 'enclosure.mouth.reset':
 					kill();
 					break;
 				//case 'recognizer_loop:audio_output_start':
@@ -84,11 +94,11 @@ function kill() {
 function set( colour = '#096033', level ) {
 	let col = color( colour );
 	let darken = 0.5;
-	darken = darken - (level / 10 );
+	darken = darken - ( level / 10 );
 	for ( led = 0; led < strip.length; led++ ) {
 		strip.pixel( led ).color( col.darken( darken ).hex() );
 	}
-	
+
 	strip.show();
 }
 
@@ -100,9 +110,9 @@ function flash( colour = '#096033' ) {
 		for ( led = 0; led < strip.length; led++ ) {
 			strip.pixel( led ).color( col.hex() );
 		}
-		
+
 		strip.show();
-		
+
 		if ( onOff === 'off' ) {
 			col = color( '#000' );
 			onOff = 'on';
@@ -111,7 +121,7 @@ function flash( colour = '#096033' ) {
 			onOff = 'off';
 		}
 	}, 1000 / 6 );
-	
+
 }
 
 function pulse( colour = '#096033' ) {
@@ -123,9 +133,9 @@ function pulse( colour = '#096033' ) {
 		for ( led = 0; led < 16; led++ ) {
 			strip.pixel( led ).color( col.darken( darken ).hex() );
 		}
-		
+
 		strip.show();
-		
+
 		if ( direction === 'out' ) {
 			darken = darken + 0.1;
 			if ( darken >= 0.7 ) {
@@ -133,7 +143,7 @@ function pulse( colour = '#096033' ) {
 				darken = 0.7;
 			}
 		}
-		
+
 		if ( direction === 'in' ) {
 			darken = darken - 0.1;
 			if ( darken <= 0 ) {
@@ -146,7 +156,7 @@ function pulse( colour = '#096033' ) {
 
 function spin( colour = '#096033' ) {
 	let col = color( colour );
-	
+
 	strip.pixel( 8 ).color( col.hex() );
 	strip.pixel( 7 ).color( col.darken( 0.2 ).hex() );
 	strip.pixel( 6 ).color( col.darken( 0.3 ).hex() );
@@ -165,7 +175,7 @@ function spin( colour = '#096033' ) {
 
 function dance( colour = '#096033' ) {
 	let col = color( colour );
-	
+
 	strip.pixel( 0 ).color( col.hex() );
 	strip.pixel( 1 ).color( col.hex() );
 	strip.pixel( 8 ).color( col.hex() );

@@ -1,7 +1,7 @@
 version: '2'
 services:
     mycroft:
-        image: arm32v7/node:8-stretch
+        image: arm32v7/node:8.16.0-stretch
         volumes:
             - "/home/pilot/mycroft-lights:/app"
         devices:
