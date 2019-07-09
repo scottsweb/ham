@@ -95,70 +95,94 @@ views:
             cards:
               - type: "custom:button-card"
                 icon: mdi:power
-                size: 52px
+                size: 35px
                 entity: switch.tv
                 color: rgb(82,150,28)
-                color_off: var(--primary-color)
+                color_off:
                 color_type: card
                 name: TV
+                state:
+                  - value: 'on'
+                    styles:
+                      card:
+                        - background: rgb(82,150,28)
+                      icon:
+                        - color: rgb(255,255,255)
+                      name:
+                        - color: rgb(255,255,255)
+                  - value: 'off'
+                    styles:
+                      card:
+                        - background: var(--primary-color)
+                      icon:
+                        - color: rgb(255,255,255)
+                      name:
+                        - color: rgb(255,255,255)
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
                 icon: mdi:volume-minus
                 size: 44px
-                action: service
-                service:
-                  domain: script
-                  action: turn_on
-                  data:
-                    entity_id: script.tv_vol_down
+                show_name: false
+                action: call-service
+                service: script.turn_on
+                entity: script.tv_vol_down
               - type: "custom:button-card"
                 icon: mdi:volume-mute
                 size: 44px
                 entity: switch.tv_mute
-                color: rgb(82,150,28)
-                color_off: var(--primary-color)
+                show_name: false
+                state:
+                  - value: 'on'
+                    styles:
+                      icon:
+                        - color: rgb(82,150,28)
+                  - value: 'off'
+                    styles:
+                      icon:
+                        - color: var(--primary-color)
               - type: "custom:button-card"
                 icon: mdi:volume-plus
                 size: 44px
-                action: service
-                service:
-                  domain: script
-                  action: turn_on
-                  data:
-                    entity_id: script.tv_vol_up
+                show_name: false
+                action: call-service
+                service: script.turn_on
+                entity: script.tv_vol_up
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
                 name: Netflix
-                color: rgb(112,55,178)
-                color_type: card
-                action: service
-                service:
-                  domain: script
-                  action: turn_on
-                  data:
-                    entity_id: script.tv_netflix
+                styles:
+                  card:
+                    - color: rgb(255,255,255)
+                    - background: rgb(112,55,178)
+                    - height: 56px
+                show_icon: false
+                action: call-service
+                service: script.turn_on
+                entity: script.tv_netflix
               - type: "custom:button-card"
                 name: Kodi
-                color: rgb(112,55,178)
-                color_type: card
-                action: service
-                service:
-                  domain: script
-                  action: turn_on
-                  data:
-                    entity_id: script.tv_kodi
+                styles:
+                  card:
+                    - color: rgb(255,255,255)
+                    - background: rgb(112,55,178)
+                    - height: 56px
+                show_icon: false
+                action: call-service
+                service: script.turn_on
+                entity: script.tv_kodi
               - type: "custom:button-card"
                 name: Plex
-                color: rgb(112,55,178)
-                color_type: card
-                action: service
-                service:
-                  domain: script
-                  action: turn_on
-                  data:
-                    entity_id: script.tv_plex
+                styles:
+                  card:
+                    - color: rgb(255,255,255)
+                    - background: rgb(112,55,178)
+                    - height: 56px
+                show_icon: false
+                action: call-service
+                service: script.turn_on
+                entity: script.tv_plex
           - type: entities
             title: false
             show_header_toggle: false
