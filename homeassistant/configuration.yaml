@@ -329,6 +329,7 @@ sensor: !include_dir_list sensors
 binary_sensor:
   - platform: iss
     show_on_map: true
+    scan_interval: 300
 
 # Device Tracking
 device_tracker: !include device-tracker.yaml
