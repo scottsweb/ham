@@ -12,3 +12,8 @@ href.li
 q.stripe.com
 newrelic.com
 cdn.ravenjs.com
+s1.wp.com
+s2.wp.com
+widgets.wp.com
+fonts.googleapis.com
+ocsp.apple.com
