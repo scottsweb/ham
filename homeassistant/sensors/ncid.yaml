@@ -1,3 +1,4 @@
 platform: command_line
 name: Last Call
 command: "grep ^CID /var/log/cidcall.log | grep -oP '(?<=NMBR\\*)[0-9]*+|(?<=NAME\\*)[A-Za-z\\s]*+' | tail -n 2"
+scan_interval: 10

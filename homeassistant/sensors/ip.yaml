@@ -3,4 +3,5 @@ resource: https://api.ipify.org?format=json
 value_template: '{{ value_json.ip }}'
 method: GET
 name: IP Address
+scan_interval: 600
 #unit_of_measurement: "°C"

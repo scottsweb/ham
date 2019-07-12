@@ -1,5 +1,6 @@
 platform: rest
-name: Bitcoin 
+name: Bitcoin
 resource: https://api.coinmarketcap.com/v1/ticker/bitcoin/?convert=GBP
 value_template: '{{ value_json[0].price_gbp }}'
 unit_of_measurement: '£'
+scan_interval: 300

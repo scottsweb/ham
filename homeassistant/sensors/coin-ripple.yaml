@@ -3,3 +3,4 @@ name: Ripple
 resource: https://api.coinmarketcap.com/v1/ticker/ripple/?convert=GBP
 value_template: '{{ value_json[0].price_gbp }}'
 unit_of_measurement: '£'
+scan_interval: 300
