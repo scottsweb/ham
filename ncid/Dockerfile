@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian:jessie
+FROM balenalib/rpi-raspbian:buster
 MAINTAINER Scott Evans <docker@scott.ee>
 
 LABEL ncid_version="1.7.1" architecture="ARMv7"

@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian:jessie
+FROM balenalib/rpi-raspbian:buster
 MAINTAINER Scott Evans <docker@scott.ee>
 
 LABEL unicorn_version="0.0.2" architecture="ARMv7"
