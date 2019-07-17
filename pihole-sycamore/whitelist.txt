@@ -17,3 +17,5 @@ s2.wp.com
 widgets.wp.com
 fonts.googleapis.com
 ocsp.apple.com
+rest-prde.immedia-semi.com
+rest-prod.immedia-semi.com
