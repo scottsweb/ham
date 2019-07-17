@@ -1,0 +1,13 @@
+version: '2'
+services:
+    unicorn:
+        image: unicorn
+        volumes:
+            - "/media/sycamore/Containers/unicorn/:/data/"
+        devices:
+            - "/dev/ttyAMA0:/dev/ttyAMA0"
+            - "/dev/mem:/dev/mem"
+        restart: always
+        privileged: true
+        container_name: unicorn
+        command: python -u server.py
