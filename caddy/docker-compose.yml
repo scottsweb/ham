@@ -1,7 +1,7 @@
 version: '2'
 services:
     caddy:
-        image: yobasystems/alpine-caddy:armhf-php
+        image: yobasystems/alpine-caddy:php-armhf
         volumes:
             - "/media/data/Containers/caddy/Caddyfile:/etc/Caddyfile"
             - "/media/data/Containers/caddy/.caddy:/root/.caddy"

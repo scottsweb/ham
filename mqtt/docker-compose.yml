@@ -1,7 +1,7 @@
 version: '2'
 services:
     mqtt:
-        image: pascaldevink/rpi-mosquitto
+        image: eclipse-mosquitto
         volumes:
             - "/media/data/Containers/mqtt/config:/mqtt/config:ro"
             - "/media/data/Containers/mqtt/log:/mqtt/log"
@@ -11,4 +11,3 @@ services:
             - "9001:9001"
         restart: always
         container_name: mqtt
-

@@ -1,8 +1,8 @@
 http://sycamore.lan {
-	proxy / http://192.168.11.2:8123 {
+	proxy / http://192.168.11.3:8123 {
 		transparent
 	}
-	proxy /api/websocket http://192.168.11.2:8123 {
+	proxy /api/websocket http://192.168.11.3:8123 {
 		websocket
 		header_upstream Sec-WebSocket-Extensions {>Sec-WebSocket-Extensions}
 		header_upstream Sec-WebSocket-Key {>Sec-WebSocket-Key}
@@ -12,7 +12,7 @@ http://sycamore.lan {
 }
 
 http://pihole.sycamore.lan {
-	proxy / 192.168.11.2:8053 {
+	proxy / 192.168.11.3:8053 {
 		transparent
 	}
 	header / {
@@ -30,7 +30,7 @@ http://pihole.mycroft.lan {
 }
 
 http://miniflux.sycamore.lan {
-	proxy / 192.168.11.2:8080 {
+	proxy / 192.168.11.3:8080 {
 		transparent
 	}
 	header / {
@@ -38,7 +38,7 @@ http://miniflux.sycamore.lan {
 	}
 }
 
-http://sycamore.lan:8811, http://192.168.11.2:8811 {
+http://sycamore.lan:8811, http://192.168.11.3:8811 {
 	root /srv/nest
 	on startup php-fpm7
 	fastcgi / 127.0.0.1:9000 php

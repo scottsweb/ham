@@ -1,7 +1,7 @@
 version: '3'
 services:
   miniflux:
-    image: miniflux/miniflux:2.0.12
+    image: miniflux/miniflux:2.0.15
     ports:
       - "8080:8080"
     depends_on:
