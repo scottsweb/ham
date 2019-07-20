@@ -78,6 +78,8 @@ history:
       - sensor.pihole_dns_unique_domains
       - sensor.pihole_domains_blocked
       - persistent_notification.httplogin
+      - persistent_notification.config_entry_discovery
+      - persistent_notification.python_version
       - sensor.next_train_status
       - sensor.next_train_to_wat
       - sensor.next_trains_estimated
@@ -117,6 +119,7 @@ history:
       - media_player.scotts_alexa_apps
       - media_player.this_device
       - media_player.dot
+      - media_player.scott_s_alexa_apps
       - switch.tv_mute
       - sensor.pihole_ads_blocked_today
       - sensor.pihole_ads_blocked_today_2
@@ -143,6 +146,15 @@ history:
       - sensor.asuswrt_upload
       - sensor.asuswrt_upload_speed
       - alarm_control_panel.blink_sync
+      - sensor.last_blocked_call
+      - plant.flora_front_plant
+      - plant.flora_back_plant
+      - switch.game_core
+      - alarm_control_panel.alexa_guard
+      - media_player.plex_firefox_2
+      - media_player.this_device_2
+      - media_player.this_device
+      - media_player.arnott
 
 # Recorder
 recorder:

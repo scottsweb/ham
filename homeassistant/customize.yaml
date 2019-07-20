@@ -238,10 +238,10 @@ sensor.us_air_quality_index_2:
   friendly_name: 'Air Quality Index'
 sensor.us_main_pollutant_2:
   friendly_name: 'Main Pollutant'
-binary_sensor.blink_back_motion_enabled:
-  friendly_name: 'Blink Back Motion Enabled'
-binary_sensor.blink_front_motion_enabled:
-  friendly_name: 'Blink Front Motion Enabled'
+binary_sensor.blink_back_motion_detected:
+  friendly_name: 'Blink Back Motion'
+binary_sensor.blink_front_motion_detected:
+  friendly_name: 'Blink Front Motion'
 sensor.blink_front_battery:
   friendly_name: 'Blink Front Battery'
   icon: mdi:battery-charging
@@ -262,8 +262,8 @@ sensor.blink_back_temperature:
   friendly_name: 'Blink Back Temperature'
 binary_sensor.blink_back_camera_armed:
   friendly_name: 'Blink Back Armed?'
-binary_sensor.blink_indoor_front_motion_enabled:
-  friendly_name: 'Blink Indoor Front Motion Enabled'
+binary_sensor.blink_indoor_front_motion_detected:
+  friendly_name: 'Blink Indoor Front Motion'
 sensor.blink_indoor_front_battery:
   friendly_name: 'Blink Indoor Front Battery'
   icon: mdi:battery-charging
@@ -274,8 +274,8 @@ sensor.blink_indoor_front_temperature:
   friendly_name: 'Blink Indoor Front Temperature'
 binary_sensor.blink_indoor_front_camera_armed:
   friendly_name: 'Blink Indoor Front Armed?'
-binary_sensor.blink_indoor_back_motion_enabled:
-  friendly_name: 'Blink Indoor Back Motion Enabled'
+binary_sensor.blink_indoor_back_motion_detected:
+  friendly_name: 'Blink Indoor Back Motion'
 sensor.blink_indoor_back_battery:
   friendly_name: 'Blink Indoor Back Battery'
   icon: mdi:battery-charging

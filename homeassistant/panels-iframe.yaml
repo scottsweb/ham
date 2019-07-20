@@ -19,7 +19,7 @@ nodered:
   icon: 'mdi:vector-polyline'
   url: !secret node_red_ip
 pihole_sycamore:
-  title: 'Pi-hole (Sycamore)'
+  title: 'Pi-hole (Bonsai)'
   icon: 'mdi:checkbox-blank-circle'
   url: 'http://pihole.sycamore.lan/admin/'
 pihole_mycroft:
