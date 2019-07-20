@@ -1,0 +1,12 @@
+alias: Cron Wake Oak
+initial_state: true
+trigger:
+  platform: time
+  at: '18:55'
+condition:
+  condition: template
+  value_template: '{{ now().day == "15" }}'
+action:
+  - service: wake_on_lan.send_magic_packet
+    data:
+      mac: !secret oak_mac
