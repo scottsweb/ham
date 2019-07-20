@@ -54,57 +54,30 @@ node-red/.flows.json.backup
 node-red/.flows_cred.json.backup
 
 # pihole sycamore
-pihole-sycamore/*.domains
-pihole-sycamore/gravity.list
-pihole-sycamore/piholeIP
-pihole-sycamore/setupVars.conf
-pihole-sycamore/list.preEventHorizon
-pihole-sycamore/local.list
-pihole-sycamore/install.log
-pihole-sycamore/pihole-FTL.db
-pihole-sycamore/pihole-FTL.conf
-pihole-sycamore/black.list
-pihole-sycamore/GitHubVersions
-pihole-sycamore/localbranches
-pihole-sycamore/localversions
-pihole-sycamore/secrets/*
-pihole-sycamore/setupVars.conf.update.bak
-pihole-sycamore/dhcp.leases
-pihole-sycamore/regex.list
-pihole-sycamore/dns-servers.conf
+pihole/*.domains
+pihole/gravity.list
+pihole/piholeIP
+pihole/setupVars.conf
+pihole/list.preEventHorizon
+pihole/local.list
+pihole/install.log
+pihole/pihole-FTL.db
+pihole/pihole-FTL.conf
+pihole/black.list
+pihole/GitHubVersions
+pihole/localbranches
+pihole/localversions
+pihole/secrets/*
+pihole/setupVars.conf.update.bak
+pihole/dhcp.leases
+pihole/dns-servers.conf
+pihole/logrotate
 
-# pihole willow
-pihole-willow/*.domains
-pihole-willow/adlists.default
-pihole-willow/gravity.list
-pihole-willow/piholeIP
-pihole-willow/setupVars.conf
-pihole-willow/list.preEventHorizon
-pihole-willow/local.list
-pihole-willow/install.log
-pihole-willow/pihole-FTL.db
-pihole-willow/pihole-FTL.conf
-pihole-willow/adlists.list
-pihole-willow/black.list
-pihole-willow/GitHubVersions
-pihole-willow/localbranches
-pihole-willow/localversions
-pihole-willow/secrets/*
-pihole-willow/setupVars.conf.update.bak
-pihole-willow/dhcp.leases
-pihole-willow/regex.list
+# pihole backup
+pihole-backup/
 
 # plex
 plex/config/
-
-# sync
-sync/config/
-
-# syncthing-sycamore
-syncthing-sycamore/config/*
-
-# syncthing-willow
-syncthing-willow/config/*
 
 # samba
 samba/
