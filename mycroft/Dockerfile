@@ -1,29 +1,34 @@
 # Based on https://github.com/MycroftAI/docker-mycroft
+# !!!!!!!! TODO - Use raspbian Buster for latest python3
 FROM armhf/ubuntu:latest
 
-ENV VERSION 18.8.1
+ENV VERSION 19.2.13
 ENV TERM linux
 ENV DEBIAN_FRONTEND noninteractive
+ENV IS_TRAVIS true
 
 # Install Server Dependencies for Mycroft
 RUN set -x \
 	&& sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
 	&& apt-get update \
-	&& apt-get -y install git python3 python3-pip locales espeak sudo alsa-base alsa-utils pulseaudio-utils nano \
-	&& apt-get -y remove pulseaudio \
+	&& apt-get -y install git python3 python3-pip locales espeak sudo alsa-base alsa-utils pulseaudio pulseaudio-utils nano sudo apt-get install libasound2-plugins \
+	&& pip3 install --upgrade setuptools \
 	&& pip3 install future msm \
-	&& pip3 install git+https://github.com/GeorgeFilipkin/pulsemixer.git \
+	&& pip3 install pulsemixer \
+	# && pip3 install git+https://github.com/GeorgeFilipkin/pulsemixer.git \
 	# Checkout Mycroft
 	&& git clone https://github.com/MycroftAI/mycroft-core.git /opt/mycroft \
 	&& cd /opt/mycroft \
 	&& mkdir /opt/mycroft/skills \
 	# git fetch && git checkout dev && \ this branch is now merged to master
 	&& /opt/mycroft/./dev_setup.sh --allow-root -sm \
+	# !!!!!!!! TODO - Manually install mimic as we skip it in dev_setup due to IS_TRAVIS
 	&& mkdir /opt/mycroft/scripts/logs \
 	&& touch /opt/mycroft/scripts/logs/mycroft-bus.log \
 	&& touch /opt/mycroft/scripts/logs/mycroft-voice.log \
 	&& touch /opt/mycroft/scripts/logs/mycroft-skills.log \
 	&& touch /opt/mycroft/scripts/logs/mycroft-audio.log \
+	&& apt-get -y remove pulseaudio \
 	&& apt-get -y autoremove \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
