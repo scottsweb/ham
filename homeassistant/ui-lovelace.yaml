@@ -304,7 +304,7 @@ views:
           - sensor.speedtest_upload
           - sensor.ip_address
       - type: entities
-        title: Sycamore
+        title: Bonsai
         show_header_toggle: false
         entities:
           - entity: sensor.memory_use_percent
