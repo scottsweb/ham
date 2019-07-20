@@ -1,0 +1,19 @@
+version: '3'
+services:
+  miniflux:
+    image: miniflux/miniflux:2.0.12
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - RUN_MIGRATIONS=1
+    container_name: miniflux
+    restart: always
+  db:
+    image: postgres:10.1
+    environment:
+    volumes:
+      - /media/data/Containers/miniflux/db/:/var/lib/postgresql/data
+    container_name: miniflux_db
+    restart: always
