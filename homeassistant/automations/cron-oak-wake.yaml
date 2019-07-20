@@ -5,7 +5,7 @@ trigger:
   at: '18:55'
 condition:
   condition: template
-  value_template: '{{ now().day == "15" }}'
+  value_template: '{{ now().day == 15 }}'
 action:
   - service: wake_on_lan.send_magic_packet
     data:
