@@ -1,0 +1,11 @@
+alias: Weather Raining
+initial_state: true
+trigger:
+  - platform: state
+    entity_id: sensor.dark_sky_icon
+    to: 'rain'
+action:
+  - service: mqtt.publish
+    data:
+      topic: sycamore/unicorn
+      payload: '{ "opcode": "7" }'
