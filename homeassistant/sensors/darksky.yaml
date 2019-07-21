@@ -16,3 +16,4 @@ monitored_conditions:
   # - visibility
   # - ozone
   - uv_index
+  - icon
