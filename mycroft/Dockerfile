@@ -23,6 +23,7 @@ RUN set -x \
 	# git fetch && git checkout dev && \ this branch is now merged to master
 	&& /opt/mycroft/./dev_setup.sh --allow-root -sm \
 	# !!!!!!!! TODO - Manually install mimic as we skip it in dev_setup due to IS_TRAVIS
+	# /opt/mycroft/scripts/./install-mimic.sh
 	&& mkdir /opt/mycroft/scripts/logs \
 	&& touch /opt/mycroft/scripts/logs/mycroft-bus.log \
 	&& touch /opt/mycroft/scripts/logs/mycroft-voice.log \
