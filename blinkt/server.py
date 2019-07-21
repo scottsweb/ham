@@ -94,7 +94,7 @@ def guage(target):
 	blinkt.show()
 
 def rdom(r,g,b,speed,density):
-	end = time.time() + 2 # 2 seconds
+	end = time.time() + 6 # 6 seconds
 	while time.time() <= end:
 		pixels = random.sample(range(blinkt.NUM_PIXELS), random.randint(1, density))
 		for i in range(blinkt.NUM_PIXELS):
