@@ -1,0 +1,10 @@
+version: '2'
+services:
+    blinkt:
+        image: blinkt
+        volumes:
+            - "/media/data/Containers/blinkt/:/data/"
+        restart: always
+        privileged: true
+        container_name: blinkt
+        command: python -u server.py
