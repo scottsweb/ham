@@ -20,11 +20,11 @@ RUN apt-get update && apt-get install -y \
 	rm -rf /var/lib/apt/lists/*
 
 
-#WORKDIR /root/
+WORKDIR /root/
 #RUN git clone https://github.com/pimoroni/unicorn-hat
-#WORKDIR /root/unicorn-hat/library/rpi-ws281x
-#RUN python setup.py install
 #WORKDIR /root/unicorn-hat/library/UnicornHat
+#  Change pin
+#RUN sed -i 's/=\ 18      #/=\ 12      #/g' unicornhat.py
 #RUN python setup.py install
 
 RUN pip install rpi.gpio

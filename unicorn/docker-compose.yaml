@@ -3,7 +3,7 @@ services:
     unicorn:
         image: unicorn
         volumes:
-            - "/media/sycamore/Containers/unicorn/:/data/"
+            - "/media/data/Containers/unicorn/:/data/"
         devices:
             - "/dev/ttyAMA0:/dev/ttyAMA0"
             - "/dev/mem:/dev/mem"
