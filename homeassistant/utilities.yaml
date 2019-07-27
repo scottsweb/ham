@@ -1,0 +1,6 @@
+daily_energy:
+  source: sensor.emoncms104856_power_kw
+  cycle: daily
+monthly_energy:
+  source: sensor.emoncms104856_power_kw
+  cycle: monthly
