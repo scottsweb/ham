@@ -87,3 +87,4 @@ samba/
 utilities/cron-films.sh
 utilities/cron-music.sh
 utilities/cron-tv.sh
+utilities/tv-switch.sh
