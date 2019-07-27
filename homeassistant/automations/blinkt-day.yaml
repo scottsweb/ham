@@ -1,0 +1,9 @@
+alias: Blinkt Goodmorning
+initial_state: true
+trigger:
+  platform: time
+  at: '08:00:00'
+action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id: switch.dockermon_blinkt

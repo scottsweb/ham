@@ -2,6 +2,9 @@
 caddy/.caddy/
 caddy/sites/nest/creds.php
 
+# dockermon
+dockermon/config
+
 # homeassistant
 homeassistant/android
 homeassistant/*.pickle

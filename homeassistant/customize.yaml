@@ -150,6 +150,15 @@ switch.hot_water:
   friendly_name: 'Hot Water (30 Mins)'
   emulated_hue_name: 'Hot Water'
   assumed_state: false
+switch.dockermon_ncid:
+  friendly_name: 'NCID'
+  icon: 'mdi:phone-log'
+switch.dockermon_blinkt:
+  friendly_name: 'Blinkt'
+  icon: 'mdi:led-on'
+switch.dockermon_nodered:
+  friendly_name: 'Node-RED'
+  icon: 'mdi:tournament'
 sensor.last_call:
   icon: 'mdi:phone-incoming'
 sensor.last_blocked_call:
