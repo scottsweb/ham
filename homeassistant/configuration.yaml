@@ -36,6 +36,9 @@ wake_on_lan:
 # Allows you to issue voice commands from the frontend
 conversation:
 
+# Lightning
+wwlln:
+
 # DuckDNS
 duckdns:
   domain: !secret duck_domain
