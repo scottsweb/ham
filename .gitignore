@@ -87,7 +87,5 @@ plex/config/
 samba/
 
 # utilities
-utilities/cron-films.sh
-utilities/cron-music.sh
-utilities/cron-tv.sh
+utilities/cron-music-sync.sh
 utilities/tv-switch.sh
