@@ -159,6 +159,9 @@ switch.dockermon_blinkt:
 switch.dockermon_nodered:
   friendly_name: 'Node-RED'
   icon: 'mdi:tournament'
+switch.dockermon_watchtower:
+  friendly_name: 'Watchtower'
+  icon: 'mdi:tower-beach'
 sensor.last_call:
   icon: 'mdi:phone-incoming'
 sensor.last_blocked_call:

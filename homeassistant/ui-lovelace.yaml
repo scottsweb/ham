@@ -319,6 +319,7 @@ views:
           - entity: switch.dockermon_blinkt
           - entity: switch.dockermon_ncid
           - entity: switch.dockermon_nodered
+          - entity: switch.dockermon_watchtower
       - type: entities
         title: Mycroft
         show_header_toggle: false
