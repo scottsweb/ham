@@ -14,4 +14,4 @@ action:
   - service: mqtt.publish
     data:
       topic: sycamore/unicorn
-      payload: '{ "icon": "stop", "r":255, "g":0, "b":0 }'
+      payload: '{ "opcode": "20" }'

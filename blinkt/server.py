@@ -11,7 +11,18 @@ blinkt.set_clear_on_exit(True)
 
 def show(r, g, b):
 	blinkt.set_brightness(0.05)
-	blinkt.set_all(255,0,0)
+	blinkt.set_all(r,g,b)
+	blinkt.show()
+	time.sleep(2)
+	blinkt.clear()
+	blinkt.show()
+
+def pause(r, g, b):
+	blinkt.set_brightness(0.05)
+	blinkt.set_pixel(1, r, g, b)
+	blinkt.set_pixel(2, r, g, b)
+	blinkt.set_pixel(5, r, g, b)
+	blinkt.set_pixel(6, r, g, b)
 	blinkt.show()
 	time.sleep(2)
 	blinkt.clear()
@@ -136,6 +147,12 @@ def handleRequest(req):
 			guage(5) # medium power
 		elif (req['opcode'] == '15'):
 			rdom(245,245,255,0.8,2) # Snow
+		elif (req['opcode'] == '20'):
+			show(255,0,0) # Stop
+		elif (req['opcode'] == '21'):
+			show(0,255,0) # Play
+		elif (req['opcode'] == '22'):
+			pause(255,255,255) # Pause
 		elif (req['opcode'] == '99'):
 			blinkt.clear()
 			print ("Exit request received")
