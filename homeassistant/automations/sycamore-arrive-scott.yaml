@@ -1,0 +1,11 @@
+alias: Arrive Sycamore Scott
+initial_state: true
+trigger:
+  platform: state
+  entity_id: device_tracker.sc
+  from: 'not_home'
+  to: 'home'
+action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id: switch.dockermon_watchtower
