@@ -311,8 +311,8 @@ views:
           - entity: sensor.load_5m
           - entity: sensor.cpu_temperature
           - entity: sensor.since_last_boot_sycamore
-          - entity: sensor.pi_hole_ads_blocked_today_2
-          - entity: sensor.pi_hole_ads_percentage_blocked_today_2
+          - entity: sensor.pi_hole_ads_blocked_today
+          - entity: sensor.pi_hole_ads_percentage_blocked_today
           - entity: switch.pihole_sycamore_switch
           - type: section
             label: Containers
@@ -328,8 +328,8 @@ views:
           - entity: sensor.cpu_use_mycroft
           - entity: sensor.cpu_temperature_mycroft
           - entity: sensor.since_last_boot_mycroft
-          - entity: sensor.pi_hole_ads_blocked_today
-          - entity: sensor.pi_hole_ads_percentage_blocked_today
+          - entity: sensor.pi_hole_ads_blocked_today_2
+          - entity: sensor.pi_hole_ads_percentage_blocked_today_2
           - entity: switch.pihole_mycroft_switch
       - type: entities
         title: Oak
