@@ -1,7 +1,7 @@
 platform: rest
 name: Pollen Count
-resource: https://socialpollencount.co.uk/api/forecast?location=[!secret latitude, !secret longitude]
-scan_interval: 1800
+resource: !secret pollen_api
+scan_interval: 3600
 value_template: >
   {%- for day in value_json.forecast -%}
     {%- if now().date() | string() in day.date -%}
