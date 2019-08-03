@@ -6,6 +6,10 @@ plex:
   title: 'Plex'
   icon: 'mdi:plex'
   url: !secret plex_ui_ip
+plex_music:
+  title: 'Plex (Music)'
+  icon: 'mdi:plex'
+  url: !secret plex_ui_bonsai_ip
 emoncms:
   title: 'Emoncms'
   icon: 'mdi:counter'

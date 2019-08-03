@@ -162,6 +162,9 @@ switch.dockermon_nodered:
 switch.dockermon_watchtower:
   friendly_name: 'Watchtower'
   icon: 'mdi:tower-beach'
+switch.dockermon_plex:
+  friendly_name: 'Plex'
+  icon: 'mdi:plex'
 sensor.last_call:
   icon: 'mdi:phone-incoming'
 sensor.last_blocked_call:
