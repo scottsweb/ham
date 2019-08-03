@@ -261,6 +261,7 @@ views:
         show_header_toggle: false
         entities:
           - sensor.dark_sky_precip_intensity
+          - sensor.pollen_count
           - sun.sun
           - sensor.moon
           - sensor.dark_sky_uv_index

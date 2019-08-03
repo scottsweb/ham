@@ -182,6 +182,9 @@ sensor.flora_back_light_intensity:
   icon: 'mdi:theme-light-dark'
 sensor.flora_back_moisture:
   icon: 'mdi:water-percent'
+sensor.pollen_count:
+  icon: 'mdi:flower'
+  friendly_name: 'Pollen'
 group.pi:
   emulated_hue_hidden: true
 group.calls:
