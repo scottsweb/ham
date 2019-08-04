@@ -22,7 +22,7 @@ do
     if [ "$LC" -ne "$OLD_LC" ]; then
         # Could handle WAN vs LAN different if I wanted. Just do the same thing on either for now...
         # Matching DEST ( DST=$TARGET .* ) doesn't always work - removed from egrep
-        LINE=`tail -$NEWLINES /tmp/syslog.log | egrep "PLEX .* DPT=$PORTS" | tail -1`
+        LINE=`tail -$NEWLINES /tmp/syslog.log | egrep "PLEX .* DST=$TARGET .* DPT=$PORTS" | tail -1`
         SRC=`echo $LINE | awk '{print $10}' | sed -e "s/SRC=//g"`
         if [ "$SRC" != "" ]; then
             # Found a matching line. Try to ping the server
