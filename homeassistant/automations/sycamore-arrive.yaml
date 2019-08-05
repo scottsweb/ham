@@ -18,9 +18,8 @@ action:
   - service: homeassistant.turn_off
     data:
       entity_id: automation.sycamore_away__lights_bedroom
-  - service: climate.set_away_mode
+  - service: climate.turn_on
     data:
-      away_mode: false
       entity_id: climate.hallway
   - service: mqtt.publish
     data:

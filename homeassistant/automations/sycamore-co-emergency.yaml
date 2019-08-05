@@ -21,9 +21,8 @@ action:
       cycles: 50
   - service: switch.turn_on
     entity_id: group.all_switches
-  - service: climate.set_away_mode
+  - service: climate.turn_off
     data:
-      away_mode: true
       entity_id: climate.hallway
   - service: camera.enable_motion_detection
     data:
