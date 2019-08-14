@@ -21,10 +21,11 @@ action:
       cycles: 50
   - service: switch.turn_on
     entity_id: group.all_switches
-  - service: climate.set_away_mode
+  - service: nest.set_away_mode
     data:
-      away_mode: true
-      entity_id: climate.hallway
+      away_mode: away
+      structure:
+        - Sycamore
   - service: camera.enable_motion_detection
     data:
       entity_id: camera.blink_back

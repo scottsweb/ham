@@ -8,20 +8,24 @@ trigger:
 action:
   - service: homeassistant.turn_on
     data:
-      entity_id: automation.sycamore_away__light_small
+      entity_id: automation.sycamore_away_light_small
   - service: homeassistant.turn_on
     data:
-      entity_id: automation.sycamore_away__light_tall
+      entity_id: automation.sycamore_away_light_tall
   - service: homeassistant.turn_on
     data:
-      entity_id: automation.sycamore_away__lights_back
+      entity_id: automation.sycamore_away_lights_back
   - service: homeassistant.turn_on
     data:
-      entity_id: automation.sycamore_away__lights_bedroom
-  - service: climate.set_away_mode
+      entity_id: automation.sycamore_away_lights_bedroom
+  - service: homeassistant.turn_on
     data:
-      away_mode: true
-      entity_id: climate.hallway
+      entity_id: automation.sycamore_away_lights_office
+  - service: nest.set_away_mode
+    data:
+      away_mode: away
+      structure:
+        - Sycamore
   - service: mqtt.publish
     data:
       topic: sycamore/unicorn
