@@ -12,7 +12,7 @@
     "node-red-contrib-bean": "^0.5.2",
     "node-red-contrib-kodi": "^0.2.7",
     "node-red-contrib-moment": "^2.0.0",
-    "node-red-contrib-particle": "0.0.4",
+    "node-red-contrib-particle": "1.1.0",
     "node-red-node-emoncms": "0.0.10",
     "node-red-node-pushbullet": "0.0.9"
   }
