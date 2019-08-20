@@ -1,8 +1,7 @@
 # Based on https://github.com/MycroftAI/docker-mycroft
-# !!!!!!!! TODO - Use raspbian Buster for latest python3
-FROM armhf/ubuntu:latest
+FROM arm32v7/ubuntu:eoan
 
-ENV VERSION 19.2.13
+ENV VERSION 19.2.14
 ENV TERM linux
 ENV DEBIAN_FRONTEND noninteractive
 ENV IS_TRAVIS true
@@ -11,20 +10,22 @@ ENV IS_TRAVIS true
 RUN set -x \
 	&& sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
 	&& apt-get update \
-	&& apt-get -y install git python3 python3-pip locales espeak sudo alsa-base alsa-utils pulseaudio pulseaudio-utils nano sudo apt-get install libasound2-plugins \
+	&& apt-get -y install git python3 python3-pip locales espeak sudo alsa-base alsa-utils pulseaudio pulseaudio-utils nano libasound2-plugins ca-certificates \
 	&& pip3 install --upgrade setuptools \
 	&& pip3 install future msm \
-	&& pip3 install pulsemixer \
-	# && pip3 install git+https://github.com/GeorgeFilipkin/pulsemixer.git \
-	# Checkout Mycroft
-	&& git clone https://github.com/MycroftAI/mycroft-core.git /opt/mycroft \
+	&& pip3 install pulsemixer
+
+# Checkout Mycroft
+RUN git clone https://github.com/MycroftAI/mycroft-core.git /opt/mycroft \
 	&& cd /opt/mycroft \
+	&& git fetch && git checkout master \
 	&& mkdir /opt/mycroft/skills \
-	# git fetch && git checkout dev && \ this branch is now merged to master
-	&& /opt/mycroft/./dev_setup.sh --allow-root -sm \
-	# !!!!!!!! TODO - Manually install mimic as we skip it in dev_setup due to IS_TRAVIS
-	# /opt/mycroft/scripts/./install-mimic.sh
-	&& mkdir /opt/mycroft/scripts/logs \
+	&& /opt/mycroft/./dev_setup.sh --allow-root -sm
+
+# Manually install mimic as we skip it in dev_setup due to IS_TRAVIS
+RUN cd /opt/mycroft && scripts/./install-mimic.sh 1 --allow-root
+
+RUN mkdir /opt/mycroft/scripts/logs \
 	&& touch /opt/mycroft/scripts/logs/mycroft-bus.log \
 	&& touch /opt/mycroft/scripts/logs/mycroft-voice.log \
 	&& touch /opt/mycroft/scripts/logs/mycroft-skills.log \
@@ -49,7 +50,7 @@ COPY asoundrc /root/.asoundrc
 ENV PYTHONPATH $PYTHONPATH:/mycroft/ai
 
 RUN /bin/bash -c "source /opt/mycroft/.venv/bin/activate" \
-    chmod +x /opt/mycroft/start-mycroft.sh \
+	chmod +x /opt/mycroft/start-mycroft.sh \
 	&& chmod +x /opt/mycroft/startup.sh \
 	&& /bin/bash /opt/mycroft/start-mycroft.sh all
 
