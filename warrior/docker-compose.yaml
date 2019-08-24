@@ -1,0 +1,14 @@
+version: '2'
+services:
+    warrior:
+        image: archiveteam/warrior-dockerfile
+        volumes:
+            - "/media/oak/Media/Containers/warrior/data:/data/data"
+        ports:
+          - "8001:8001"
+        environment:
+          - CONCURRENT_ITEMS=4
+          - SELECTED_PROJECT=auto
+        restart: always
+        privileged: true
+        container_name: warrior
