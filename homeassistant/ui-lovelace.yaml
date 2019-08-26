@@ -338,6 +338,11 @@ views:
         show_header_toggle: false
         entities:
           - entity: script.oak_on
+          - type: section
+            label: Containers
+          - entity: switch.dockermon_plex_oak
+          - entity: switch.dockermon_warrior
+          - entity: switch.dockermon_watchtower_oak
       - type: entities
         title: Settings
         show_header_toggle: false

@@ -165,6 +165,17 @@ switch.dockermon_watchtower:
 switch.dockermon_plex:
   friendly_name: 'Plex'
   icon: 'mdi:plex'
+switch.dockermon_watchtower_oak:
+  friendly_name: 'Watchtower'
+  emulated_hue_name: 'Watchtower Oak'
+  icon: 'mdi:tower-beach'
+switch.dockermon_plex_oak:
+  friendly_name: 'Plex'
+  emulated_hue_name: 'Plex Oak'
+  icon: 'mdi:plex'
+switch.dockermon_warrior:
+  friendly_name: 'Warrior'
+  icon: 'mdi:archive'
 sensor.last_call:
   icon: 'mdi:phone-incoming'
 sensor.last_blocked_call:

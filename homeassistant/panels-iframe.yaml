@@ -34,3 +34,7 @@ miniflux:
   title: 'RSS'
   icon: 'mdi:rss-box'
   url: !secret miniflux_url
+warrior:
+  title: 'Warrior'
+  icon: 'mdi:archive'
+  url: !secret warrior_url
