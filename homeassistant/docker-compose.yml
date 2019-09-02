@@ -4,6 +4,7 @@ services:
         image: lroguet/rpi-home-assistant
         volumes:
             - "/home/pilot/.ssh:/root/.ssh:ro"
+            - "/etc/ssl/certs:/etc/ssl/certs:ro"
             - "/media/data/Containers/homeassistant:/config"
             - "/etc/localtime:/etc/localtime:ro"
             - "/media/data/Containers/ncid/cidcall.log:/var/log/cidcall.log"
