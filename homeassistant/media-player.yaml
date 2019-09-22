@@ -12,8 +12,6 @@
   name: 'Luther Songpal'
   endpoint: !secret sony_api
 
-- platform: plex
-
 - platform: universal
   name: 'Luther Universal (TV)'
   children:

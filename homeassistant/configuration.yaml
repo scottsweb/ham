@@ -310,6 +310,12 @@ mqtt_statestream:
 mycroft:
   host: !secret mycroft_ip
 
+# Plex
+plex:
+  host: !secret plex_server_ip
+  token: !secret plex_token
+  server: oak
+
 # Sensors
 sensor: !include_dir_list sensors
 
