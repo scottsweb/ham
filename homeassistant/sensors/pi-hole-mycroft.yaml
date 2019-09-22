@@ -1,5 +1,0 @@
-platform: pi_hole
-host: !secret pihole_mycroft_ip
-monitored_conditions:
-  - ads_blocked_today
-  - ads_percentage_today

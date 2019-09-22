@@ -117,18 +117,10 @@ sensor.since_last_boot_sycamore:
 binary_sensor.nodered:
   friendly_name: 'Node-Red'
   icon: mdi:nfc-tap
-sensor.pihole_ads_blocked_today:
-  icon: 'mdi:checkbox-blank-circle'
-sensor.pihole_ads_percentage_blocked_today:
-  icon: 'mdi:checkbox-blank-circle'
 switch.pihole_sycamore_switch:
   icon: 'mdi:checkbox-blank-circle'
   friendly_name: 'Pi-Hole Switch (Bonsai)'
   emulated_hue_hidden: true
-sensor.pihole_ads_blocked_today_2:
-  icon: 'mdi:checkbox-blank-circle'
-sensor.pihole_ads_percentage_blocked_today_2:
-  icon: 'mdi:checkbox-blank-circle'
 switch.pihole_mycroft_switch:
   icon: 'mdi:checkbox-blank-circle'
   friendly_name: 'Pi-Hole Switch (Mycroft)'

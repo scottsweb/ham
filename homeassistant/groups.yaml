@@ -24,16 +24,12 @@ Sycamore:
   - sensor.cpu_temperature
   - sensor.since_last_boot_sycamore
   - binary_sensor.nodered
-  - sensor.pihole_ads_blocked_today
-  - sensor.pihole_ads_percentage_blocked_today
   - switch.pihole_sycamore_switch
 Mycroft:
   - sensor.ram_use_mycroft
   - sensor.cpu_use_mycroft
   - sensor.cpu_temperature_mycroft
   - sensor.since_last_boot_mycroft
-  - sensor.pihole_ads_blocked_today_2
-  - sensor.pihole_ads_percentage_blocked_today_2
   - switch.pihole_mycroft_switch
 Lights:
   - light.back_door
