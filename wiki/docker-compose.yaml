@@ -1,0 +1,10 @@
+version: '3'
+services:
+  wiki:
+    image: wiki
+    ports:
+      - "9090:8080"
+    volumes:
+      - /media/data/Containers/wiki/data:/var/lib/tiddlywiki
+    container_name: wiki
+    restart: always
