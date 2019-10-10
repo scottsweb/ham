@@ -38,3 +38,7 @@ warrior:
   title: 'Warrior'
   icon: 'mdi:archive'
   url: !secret warrior_url
+wiki:
+  title: 'Wiki'
+  icon: 'mdi:note'
+  url: !secret wiki_url
