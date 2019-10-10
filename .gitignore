@@ -90,3 +90,7 @@ samba/
 # utilities
 utilities/cron-music-sync.sh
 utilities/tv-switch.sh
+
+# wiki
+wiki/data/users.csv
+wiki/data/mywiki/*
