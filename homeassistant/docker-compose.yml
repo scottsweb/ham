@@ -1,7 +1,7 @@
 version: '2'
 services:
     homeassistant:
-        image: lroguet/rpi-home-assistant
+        image: lroguet/rpi-home-assistant:0.99.2
         volumes:
             - "/home/pilot/.ssh:/root/.ssh:ro"
             - "/etc/ssl/certs:/etc/ssl/certs:ro"
