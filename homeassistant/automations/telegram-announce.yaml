@@ -11,11 +11,6 @@ trigger:
     event_data:
       command: '/announce@columbo_bot'
 action:
-  - service: notify.alexa_media_dot
-    data_template:
-      message: '{{ trigger.event.data.args | join(" ") }}'
-      data:
-        type: tts
   - service: notify.mycroft
     data_template:
       message: '{{ trigger.event.data.args | join(" ") }}'
