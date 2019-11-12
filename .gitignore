@@ -9,7 +9,6 @@ dockermon-oak/config
 # homeassistant
 homeassistant/android
 homeassistant/*.pickle
-homeassistant/custom_components/alexa_media/__pycache__/
 homeassistant/deps/*
 homeassistant/.uuid
 homeassistant/*.log
