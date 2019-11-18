@@ -20,4 +20,4 @@
 # git push origin gh-pages
 # git checkout master
 
-docker exec -it wiki sh -c 'tiddlywiki ./mywiki --savetiddlers [is[image]] images --setfield [is[image]] _canonical_uri $:/core/templates/canonical-uri-external-image text/plain --setfield [is[image]] text "" text/plain --rendertiddler "$:/export" index.html text/plain "" publishFilter "-[tag[private]] -[has[draft.of]]"'
+docker exec -it wiki sh -c 'tiddlywiki ./mywiki --savetiddler "$:/favicon.ico" favicon.ico --savetiddlers [is[image]] images --setfield [is[image]] _canonical_uri $:/core/templates/canonical-uri-external-image text/plain --setfield [is[image]] text "" text/plain --rendertiddler "$:/export" index.html text/plain "" publishFilter "-[tag[private]] -[has[draft.of]]"'
