@@ -2,7 +2,7 @@ homeassistant:
   name: Sycamore
   latitude: !secret latitude
   longitude: !secret longitude
-  elevation: 94
+  elevation: 50
   unit_system: metric
   time_zone: !secret timezone
   customize: !include customize.yaml
@@ -25,7 +25,7 @@ asuswrt:
   password: !secret asus_password
 
 # tplink
-tplink:
+# tplink:
 
 # Cloud
 # cloud:
@@ -54,27 +54,12 @@ history:
       - input_text
       - input_number
     entities:
-      - binary_sensor.hallway_thermostat_is_using_emergency_heat
-      - binary_sensor.hallway_thermostat_is_locked
-      - binary_sensor.upstairs_nest_protect_online
-      - binary_sensor.downstairs_nest_protect_online
-      - binary_sensor.hallway_thermostat_fan
       - binary_sensor.iss
-      - sensor.hallway_thermostat_hvac_state
-      - binary_sensor.hallway_thermostat_has_leaf
-      - binary_sensor.hallway_thermostat_online
       - sensor.since_last_boot_sycamore
       - sensor.since_last_boot_mycroft
-      - media_player.aquaris_x5_plus
       - persistent_notification.httplogin
       - persistent_notification.config_entry_discovery
       - persistent_notification.python_version
-      - sensor.next_train_status
-      - sensor.next_train_to_wat
-      - sensor.next_trains_estimated
-      - sensor.next_trains_origin
-      - sensor.next_trains_platform
-      - sensor.next_trains_scheduled
       - binary_sensor.blink_back_motion_enabled
       - binary_sensor.blink_front_motion_enabled
       - binary_sensor.blink_indoor_front_motion_enabled
@@ -97,7 +82,6 @@ history:
       - sensor.blink_indoor_front_wifi_signal
       - switch.tv_ir
       - media_player.plex_web_chrome
-      - media_player.pixel_2
       - media_player.luther_audio
       - media_player.luther_audio_2
       - media_player.aftt
@@ -109,9 +93,6 @@ history:
       - media_player.dot
       - switch.tv_mute
       - sensor.plex
-      - sensor.sycamore_eta
-      - sensor.upstairs_nest_protect_color_status
-      - sensor.downstairs_nest_protect_color_status
       - sensor.asuswrt_download
       - sensor.asuswrt_download_speed
       - sensor.asuswrt_upload
@@ -127,6 +108,8 @@ history:
       - media_player.arnott
       - sensor.daily_energy
       - sensor.monthly_energy
+      - sensor.gbp_sek
+      - sensor.sek_gbp
 
 # Recorder
 recorder:
@@ -138,6 +121,8 @@ discovery:
   # ignore:
   #  - plex_mediaserver
 
+mobile_app:
+
 # System Health
 system_health:
 
@@ -145,13 +130,9 @@ system_health:
 logbook:
   exclude:
     entities:
-      - automation.nest_summary_automation
       - automation.weather_summary_automation
       - sensor.since_last_boot_sycamore
       - sensor.since_last_boot_mycroft
-      - sensor.next_trains_estimated
-      - sensor.next_trains_origin
-      - sensor.next_trains_scheduled
 
 # Customise Logger
 logger:
@@ -229,7 +210,7 @@ emulated_hue:
     - group
 
 # LIFX
-lifx:
+# lifx:
 
 # IFTTT
 ifttt:
@@ -244,22 +225,12 @@ blink:
 zeroconf:
 
 # Zones
-zone sycamore:
-  name: Home
-  latitude: !secret latitude
-  longitude: !secret longitude
-  radius: 100
-  icon: mdi:home-map-marker
-
-# Nest
-nest:
-  client_id: !secret nest_client_id
-  client_secret: !secret nest_client_secret
-  structure:
-    - Sycamore
-
-climate:
-  platform: nest
+# zone:
+#   - name: Home
+#     latitude: !secret latitude
+#     longitude: !secret longitude
+#     radius: 100
+#     icon: mdi:home-map-marker
 
 # Text to Speech
 tts:
@@ -311,7 +282,7 @@ sensor: !include_dir_list sensors
 
 binary_sensor:
   - platform: iss
-    show_on_map: true
+    show_on_map: false
     scan_interval: 300
 
 # Utility Meters

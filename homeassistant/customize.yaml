@@ -1,29 +1,3 @@
-sensor.hallway_thermostat_temperature:
-  friendly_name: 'Temp'
-sensor.hallway_thermostat_target:
-  friendly_name: 'Target'
-sensor.hallway_thermostat_humidity:
-  friendly_name: 'Humidity'
-sensor.hallway_thermostat_operation_mode:
-  friendly_name: 'Mode'
-sensor.downstairs_nest_protect_co_status:
-  friendly_name: '⬇ CO'
-  icon: mdi:gas-cylinder
-sensor.downstairs_nest_protect_smoke_status:
-  friendly_name: '⬇ Smoke'
-  icon: mdi:fire
-sensor.downstairs_nest_protect_battery_health:
-  friendly_name: '⬇ Battery'
-  icon: mdi:battery-charging
-sensor.upstairs_nest_protect_co_status:
-  friendly_name: '⬆ CO'
-  icon: mdi:gas-cylinder
-sensor.upstairs_nest_protect_smoke_status:
-  friendly_name: '⬆ Smoke'
-  icon: mdi:fire
-sensor.upstairs_nest_protect_battery_health:
-  friendly_name: '⬆ Battery'
-  icon: mdi:battery-charging
 sensor.dark_sky_temperature:
   friendly_name: 'Outside Temp'
 sensor.dark_sky_humidity:
@@ -39,12 +13,12 @@ sensor.speedtest_upload:
 sensor.speedtest_ping:
   friendly_name: 'Ping'
   icon: mdi:access-point-network
-sensor.emoncms104902_meter_count:
-  friendly_name: 'Meter'
-  icon: mdi:counter
-sensor.emoncms104856_power_kw:
-  friendly_name: 'Watts'
-  icon: mdi:power-plug
+# sensor.emoncms104902_meter_count:
+#   friendly_name: 'Meter'
+#   icon: mdi:counter
+# sensor.emoncms104856_power_kw:
+#   friendly_name: 'Watts'
+#   icon: mdi:power-plug
 sensor.dark_sky_summary:
   friendly_name: 'Summary'
   icon: mdi:weather-cloudy
@@ -63,20 +37,6 @@ sensor.ripple:
   icon: mdi:cash
 sensor.litecoin:
   icon: mdi:cash
-sensor.next_train_status:
-  icon: mdi:train
-  friendly_name: 'Status'
-sensor.next_trains_estimated:
-  icon: mdi:clock-alert
-  friendly_name: 'Estimated'
-sensor.next_trains_scheduled:
-  icon: mdi:clock
-  friendly_name: 'Scheduled'
-sensor.next_trains_platform:
-  icon: mdi:vector-line
-  friendly_name: 'Platform'
-climate.hallway:
-  icon: mdi:oil-temperature
 media_player.aftt:
   friendly_name: 'TV Plex'
   emulated_hue_name: 'Plex'
@@ -84,10 +44,6 @@ media_player.tv_kodi:
   emulated_hue_name: 'Kodi'
 media_player.luther:
   friendly_name: 'TV Chromecast'
-media_player.luther_universal_tv:
-  friendly_name: 'Luther'
-media_player.luther_universal_audio:
-  friendly_name: 'Luther Audio'
 sensor.ip_address:
   icon: mdi:account-network
 sensor.load_5m:
@@ -105,6 +61,12 @@ sensor.ram_use_mycroft:
 sensor.cpu_use_mycroft:
   friendly_name: 'CPU'
   icon: mdi:chip
+sensor.gbp_sek:
+  friendly_name: 'GBP → SEK'
+  icon: 'mdi:bank-transfer-in'
+sensor.sek_gbp:
+  friendly_name: 'SEK → GBP'
+  icon: 'mdi:bank-transfer-out'
 sensor.cpu_temperature_mycroft:
   friendly_name: 'CPU Temperature'
   icon: mdi:chip
@@ -137,11 +99,6 @@ switch.tv_mute:
   icon: 'mdi:television-off'
 switch.games:
   icon: 'mdi:gamepad-variant'
-switch.hot_water:
-  icon: 'mdi:hot-tub'
-  friendly_name: 'Hot Water (30 Mins)'
-  emulated_hue_name: 'Hot Water'
-  assumed_state: false
 switch.dockermon_ncid:
   friendly_name: 'NCID'
   icon: 'mdi:phone-log'
@@ -168,10 +125,10 @@ switch.dockermon_plex_oak:
 switch.dockermon_warrior:
   friendly_name: 'Warrior'
   icon: 'mdi:archive'
-sensor.last_call:
-  icon: 'mdi:phone-incoming'
-sensor.last_blocked_call:
-  icon: 'mdi:phone-missed'
+# sensor.last_call:
+#   icon: 'mdi:phone-incoming'
+# sensor.last_blocked_call:
+#   icon: 'mdi:phone-missed'
 sensor.flora_front_battery:
   icon: 'mdi:battery-charging'
 sensor.flora_front_conductivity:
@@ -188,9 +145,6 @@ sensor.flora_back_light_intensity:
   icon: 'mdi:theme-light-dark'
 sensor.flora_back_moisture:
   icon: 'mdi:water-percent'
-sensor.pollen_count:
-  icon: 'mdi:flower'
-  friendly_name: 'Pollen'
 group.pi:
   emulated_hue_hidden: true
 group.calls:
@@ -243,21 +197,13 @@ group.general:
   emulated_hue_hidden: true
 light.back_door:
   emulated_hue_name: 'Back Door Light'
-switch.bedroom_light:
-  icon: 'mdi:lightbulb'
-switch.lounge_light_small:
-  icon: 'mdi:lightbulb'
-switch.lounge_light_tall:
-  icon: 'mdi:lightbulb'
-switch.office_light:
-  icon: 'mdi:lightbulb'
 switch.presence_emulator:
   icon: 'mdi:account-multiple'
-sensor.us_air_pollution_level_2:
+sensor.u_s_air_pollution_level:
   friendly_name: 'Air Pollution Level'
-sensor.us_air_quality_index_2:
+sensor.u_s_air_quality_index:
   friendly_name: 'Air Quality Index'
-sensor.us_main_pollutant_2:
+sensor.u_s_main_pollutant:
   friendly_name: 'Main Pollutant'
 binary_sensor.blink_back_motion_detected:
   friendly_name: 'Blink Back Motion'

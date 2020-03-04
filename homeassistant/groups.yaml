@@ -11,13 +11,6 @@ Weather:
   - sensor.us_air_pollution_level_2
   - sensor.us_air_quality_index_2
   - sensor.us_main_pollutant_2
-Protect:
-  - sensor.downstairs_nest_protect_battery_health
-  - sensor.downstairs_nest_protect_co_status
-  - sensor.downstairs_nest_protect_smoke_status
-  - sensor.upstairs_nest_protect_battery_health
-  - sensor.upstairs_nest_protect_co_status
-  - sensor.upstairs_nest_protect_smoke_status
 Sycamore:
   - sensor.memory_use_percent
   - sensor.load_5m
@@ -53,15 +46,9 @@ Energy:
 Coins:
   - sensor.bitcoin
   - sensor.bitcoin_cash
-  - sensor.dash
   - sensor.ethereum
   - sensor.ripple
   - sensor.litecoin
-Next Train:
-  - sensor.next_train_status
-  - sensor.next_trains_estimated
-  - sensor.next_trains_scheduled
-  - sensor.next_trains_platform
 Blink:
   - alarm_control_panel.blink_sync
   - binary_sensor.blink_back_camera_armed
@@ -86,7 +73,6 @@ Ad Blocker:
   - switch.pihole_sycamore_switch
   - switch.pihole_mycroft_switch
 Remote:
-  control: hidden
   entities:
     - input_text.remote_tiles
     - switch.tv
@@ -116,12 +102,16 @@ Indoor Back:
   - sensor.blink_indoor_back_temperature
   - sensor.blink_indoor_back_battery
   - binary_sensor.blink_indoor_back_camera_armed
+All Devices:
+  - device_tracker.ge
+  - device_tracker.se
+  - device_tracker.ti
+  - device_tracker.gr
 #Allotment:
 
 # Views
 default_view:
   name: DEFAULT
-  view: yes
   icon: mdi:home
   entities:
     - persistent_notification.httplogin
@@ -142,7 +132,6 @@ default_view:
     - sensor.hallway_thermostat_operation_mode
 entertainment:
   name: Entertainment
-  view: yes
   icon: mdi:filmstrip
   entities:
     - group.remote
@@ -151,7 +140,6 @@ entertainment:
     - media_player.dot
 cameras:
   name: Cameras
-  view: yes
   icon: mdi:camera-iris
   entities:
     - group.front
@@ -160,7 +148,6 @@ cameras:
     - group.indoor_back
 outdoors:
   name: Outside
-  view: yes
   icon: mdi:pine-tree
   entities:
     - group.allotment
@@ -173,7 +160,6 @@ outdoors:
     - group.flora_back
 settings:
   name: Settings
-  view: yes
   icon: mdi:settings
   entities:
     - group.protect
