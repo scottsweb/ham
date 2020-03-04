@@ -42,3 +42,7 @@ wiki:
   title: 'Wiki'
   icon: 'mdi:note'
   url: !secret wiki_url
+deconz:
+  title: 'Deconz'
+  icon: 'mdi:usb-flash-drive'
+  url: !secret deconz_url
