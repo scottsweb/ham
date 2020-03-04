@@ -1,6 +1,9 @@
 # caddy
 caddy/.caddy/
 
+# deconz
+deconz/data
+
 # dockermon
 dockermon/config
 dockermon-oak/config
