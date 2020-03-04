@@ -1,11 +1,11 @@
-alias: Leave Sycamore Scott
+alias: Arrive Scott
 initial_state: true
 trigger:
   platform: state
   entity_id: device_tracker.sc
-  from: 'home'
-  to: 'not_home'
+  from: 'not_home'
+  to: 'home'
 action:
-  - service: homeassistant.turn_off
+  - service: homeassistant.turn_on
     data:
       entity_id: switch.dockermon_watchtower

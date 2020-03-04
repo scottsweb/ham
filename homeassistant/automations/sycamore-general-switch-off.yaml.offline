@@ -1,0 +1,10 @@
+alias: Sycamore General Switch Off
+initial_state: true
+trigger:
+  - platform: time
+    at: "22:30:00"
+action:
+  - delay: '00:{{ range(01,59) | random | int }}:{{ range(01,59) | random | int }}'
+  - service: homeassistant.turn_off
+    data:
+      entity_id: switch.general_switch

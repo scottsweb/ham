@@ -1,0 +1,42 @@
+alias: Leave
+initial_state: true
+trigger:
+  platform: state
+  entity_id: group.all_devices
+  from: 'home'
+  to: 'not_home'
+action:
+#   - service: homeassistant.turn_on
+#     data:
+#       entity_id: automation.sycamore_away_light_small
+#   - service: homeassistant.turn_on
+#     data:
+#       entity_id: automation.sycamore_away_light_tall
+#   - service: homeassistant.turn_on
+#     data:
+#       entity_id: automation.sycamore_away_lights_back
+#   - service: homeassistant.turn_on
+#     data:
+#       entity_id: automation.sycamore_away_lights_bedroom
+#   - service: homeassistant.turn_on
+#     data:
+#       entity_id: automation.sycamore_away_lights_office
+  - service: mqtt.publish
+    data:
+      topic: sycamore/unicorn
+      payload: '{ "opcode": "10" }'
+  - service: camera.enable_motion_detection
+    data:
+      entity_id: camera.blink_front
+  - delay: '00:00:02'
+  - service: camera.enable_motion_detection
+    data:
+      entity_id: camera.blink_back
+  - delay: '00:00:02'
+  - service: camera.enable_motion_detection
+    data:
+      entity_id: camera.blink_indoor_front
+  - delay: '00:00:02'
+  - service: camera.enable_motion_detection
+    data:
+      entity_id: camera.blink_indoor_back

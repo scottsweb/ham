@@ -16,7 +16,7 @@ action:
   - service: notify.all
     data:
       message: 'The space station will be passing soon: {{ as_timestamp(states.binary_sensor.iss.attributes.next_rise) | timestamp_custom("%A at %H:%M") }}'
-      title: 'Sycamore: ISS Pass!'
+      title: 'ISS Pass!'
   - service: mqtt.publish
     data:
       topic: sycamore/unicorn

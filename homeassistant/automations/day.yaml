@@ -10,6 +10,10 @@ condition:
 action:
   - service: camera.disable_motion_detection
     data:
+      entity_id: camera.blink_front
+  - delay: '00:00:02'
+  - service: camera.disable_motion_detection
+    data:
       entity_id: camera.blink_back
   - delay: '00:00:02'
   - service: camera.disable_motion_detection

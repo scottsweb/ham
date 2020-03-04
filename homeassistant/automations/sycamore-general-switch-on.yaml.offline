@@ -1,0 +1,10 @@
+alias: Sycamore General Switch On
+initial_state: true
+trigger:
+  - platform: sun
+    event: sunset
+    offset: "-00:05:00"
+action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id: switch.general_switch
