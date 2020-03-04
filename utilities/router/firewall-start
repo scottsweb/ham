@@ -1,14 +1,12 @@
 #!/bin/sh
 
-#ppp0=WAN
-#eth0=ETH0
+#eth0=WAN
 #br0=bridge
-#eth1=Wifi 2,5GHz
-#eth2=Wifi 5Ghz
-#vlan1=Lan Switch
+#eth5=Wifi 2,5GHz
+#eth6=Wifi 5Ghz
 #br0 is vlan1, eth1, eth2, basically whole LAN
 
 #Rule to log all new connections on LAN for the plex server for the WOL script to trigger
 iptables -I FORWARD -i br0 -p tcp --dport 32400 -m state --state NEW,RELATED -j LOG --log-prefix "PLEX LAN Connection "
 #Rule to log all new connections on WAN for the plex server
-iptables -I FORWARD -i ppp0 -p tcp --dport 32400 -m state --state NEW,RELATED -j LOG --log-prefix "PLEX WAN Connection "
+iptables -I FORWARD -i $1 -p tcp --dport 32400 -m state --state NEW,RELATED -j LOG --log-prefix "PLEX WAN Connection "
