@@ -32,6 +32,8 @@ homeassistant/home-assistant_v2.db-shm
 homeassistant/home-assistant_v2.db-wal
 homeassistant/.cloud/*
 homeassistant/.storage
+homeassistant/custom_components/**/__pycache__/
+homeassistant/custom_components/**/.translations/
 
 # miniflux
 miniflux/miniflux
