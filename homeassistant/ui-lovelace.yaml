@@ -10,76 +10,77 @@ views:
       - device_tracker.sc
       - device_tracker.ti
       - device_tracker.gr
-      - climate.hallway
-      - sensor.hallway_thermostat_temperature
-      - sensor.hallway_thermostat_target
-      - sensor.hallway_thermostat_humidity
     cards:
+#      - type: entities
+#        show_header_toggle: true
+#        title: Lights
+#        entities:
+#          - light.back_door
+#          - switch.bedroom_light
+#          - switch.lounge_light_small
+#          - switch.lounge_light_tall
+#          - switch.office_light
+#      - type: entities
+#        show_header_toggle: true
+#        title: Lounge Lights
+#        entities:
+#          - switch.lounge_light_small
+#          - switch.lounge_light_tall
+#      - type: entities
+#        title: Calls
+#        show_header_toggle: false
+#        entities:
+#          - sensor.last_call
+#          - sensor.last_blocked_call
+#      - type: vertical-stack
+#        cards:
+#          - type: sensor
+#            hours_to_show: 24
+#            name: Power Consumption
+#            graph: line
+#            entity: sensor.emoncms104856_power_kw
+#            detail: 2
+#          - type: sensor
+#            graph: line
+#            entity: sensor.emoncms104902_meter_count
+#            name: Power Meter
+#            hours_to_show: 24
+#          - type: sensor
+#            graph: line
+#            entity: sensor.energybattery
+#            name: Meter Battery
+#            detail: 2
+#      - type: entities
+#        title: General
+#        show_header_toggle: false
+#        entities:
+#          - switch.general_switch
+#      - type: vertical-stack
+#        cards:
+#          - type: thermostat
+#            entity: climate.hallway
+#          - type: entities
+#            title: false
+#            show_header_toggle: false
+#            entities:
+#              - switch.hot_water
+#      - type: sensor
+#        graph: line
+#        entity: sensor.hallway_thermostat_temperature
+#        name: Indoor Temperature
+#        detail: 2
       - type: entities
-        show_header_toggle: true
-        title: Lights
-        entities:
-          - light.back_door
-          - switch.bedroom_light
-          - switch.lounge_light_small
-          - switch.lounge_light_tall
-          - switch.office_light
-      - type: entities
-        show_header_toggle: true
-        title: Lounge Lights
-        entities:
-          - switch.lounge_light_small
-          - switch.lounge_light_tall
-      - type: entities
-        title: Calls
+        title: Exchange Rates
         show_header_toggle: false
         entities:
-          - sensor.last_call
-          - sensor.last_blocked_call
-      - type: vertical-stack
-        cards:
-          - type: sensor
-            hours_to_show: 24
-            name: Power Consumption
-            graph: line
-            entity: sensor.emoncms104856_power_kw
-            detail: 2
-          - type: sensor
-            graph: line
-            entity: sensor.emoncms104902_meter_count
-            name: Power Meter
-            hours_to_show: 24
-          - type: sensor
-            graph: line
-            entity: sensor.energybattery
-            name: Meter Battery
-            detail: 2
-      - type: entities
-        title: General
-        show_header_toggle: false
-        entities:
-          - switch.general_switch
-      - type: vertical-stack
-        cards:
-          - type: thermostat
-            entity: climate.hallway
-          - type: entities
-            title: false
-            show_header_toggle: false
-            entities:
-              - switch.hot_water
-      - type: sensor
-        graph: line
-        entity: sensor.hallway_thermostat_temperature
-        name: Indoor Temperature
-        detail: 2
+          - sensor.gbp_sek
+          - sensor.sek_gbp
       - type: entities
         title: Coins
         show_header_toggle: false
         entities:
           - sensor.bitcoin
           - sensor.bitcoin_cash
-          - sensor.dash
           - sensor.ethereum
           - sensor.ripple
           - sensor.litecoin
@@ -188,13 +189,13 @@ views:
             show_header_toggle: false
             entities:
               - entity: switch.tv
-              - entity: switch.speaker
-              - entity: input_number.luther_sound_volume
+#               - entity: switch.speaker
+#               - entity: input_number.luther_sound_volume
               - entity: switch.games
       - type: media-control
         entity: media_player.luther_universal_tv
-      - type: media-control
-        entity: media_player.luther_universal_audio
+#       - type: media-control
+#         entity: media_player.luther_universal_audio
 
   - title: Cameras
     path: cctv
@@ -261,21 +262,26 @@ views:
         show_header_toggle: false
         entities:
           - sensor.dark_sky_precip_intensity
-          - sensor.pollen_count
           - sun.sun
           - sensor.moon
           - sensor.dark_sky_uv_index
-          - sensor.us_air_pollution_level
-          - sensor.us_air_quality_index
-          - sensor.us_main_pollutant
-      - type: entities
-        title: Next Train
-        show_header_toggle: false
-        entities:
-          - sensor.next_train_status
-          - sensor.next_trains_estimated
-          - sensor.next_trains_scheduled
-          - sensor.next_trains_platform
+          - sensor.u_s_air_pollution_level
+          - sensor.u_s_air_quality_index
+          - sensor.u_s_main_pollutant
+#      - type: map
+#        title: Space Station
+#        aspect_ratio: 16:9
+#        default_zoom: 8
+#        entities:
+#          - binary_sensor.iss
+#      - type: entities
+#        title: Next Train
+#        show_header_toggle: false
+#        entities:
+#          - sensor.next_train_status
+#          - sensor.next_trains_estimated
+#          - sensor.next_trains_scheduled
+#          - sensor.next_trains_platform
 #      - type: plant-status
 #        entity: plant.flora_front_plant
 #      - type: plant-status
@@ -286,16 +292,16 @@ views:
     icon: mdi:settings
     badges:
     cards:
-      - type: entities
-        title: Protect
-        show_header_toggle: false
-        entities:
-          - sensor.downstairs_nest_protect_battery_health
-          - sensor.downstairs_nest_protect_co_status
-          - sensor.downstairs_nest_protect_smoke_status
-          - sensor.upstairs_nest_protect_battery_health
-          - sensor.upstairs_nest_protect_co_status
-          - sensor.upstairs_nest_protect_smoke_status
+#      - type: entities
+#        title: Protect
+#        show_header_toggle: false
+#        entities:
+#          - sensor.downstairs_nest_protect_battery_health
+#          - sensor.downstairs_nest_protect_co_status
+#          - sensor.downstairs_nest_protect_smoke_status
+#          - sensor.upstairs_nest_protect_battery_health
+#          - sensor.upstairs_nest_protect_co_status
+#          - sensor.upstairs_nest_protect_smoke_status
       - type: entities
         title: Internet
         show_header_toggle: false
@@ -316,7 +322,6 @@ views:
           - type: section
             label: Containers
           - entity: switch.dockermon_blinkt
-          - entity: switch.dockermon_ncid
           - entity: switch.dockermon_nodered
           - entity: switch.dockermon_plex
           - entity: switch.dockermon_watchtower
