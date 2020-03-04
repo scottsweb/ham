@@ -1,0 +1,9 @@
+platform: alpha_vantage
+api_key: !secret alpha_vantage_api_key
+foreign_exchange:
+  - name: GBP_SEK
+    from: GBP
+    to: SEK
+  - name: SEK_GBP
+    from: SEK
+    to: GBP
