@@ -1,6 +1,5 @@
 alias: 'Telegram Media'
 initial_state: true
-hide_entity: true
 trigger:
   - platform: event
     event_type: telegram_command
@@ -22,7 +21,7 @@ action:
         {%- else -%}
           The TV is currently switched off.
         {%- endif %}
-      inline_keyboard: 
+      inline_keyboard:
         - 'TV On:/tv_on, TV Off:/tv_off'
         - 'Kodi:/kodi, Netflix:/netflix, Plex:/plex'
         - 'Cancel:/cancel'

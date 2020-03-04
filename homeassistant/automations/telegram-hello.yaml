@@ -1,6 +1,5 @@
 alias: 'Telegram Hello'
 initial_state: true
-hide_entity: true
 trigger:
   - platform: event
     event_type: telegram_command
@@ -23,6 +22,6 @@ action:
         {%- else -%}
           Good evening.
         {%- endif %} What would you like help with?
-      inline_keyboard: 
+      inline_keyboard:
         - 'Status:/status, Energy:/energy'
         - 'Cancel:/cancel'

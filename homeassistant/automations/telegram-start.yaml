@@ -1,6 +1,5 @@
 alias: 'Telegram Start'
 initial_state: true
-hide_entity: true
 trigger:
   - platform: event
     event_type: telegram_command
@@ -19,4 +18,4 @@ action:
         Hi, I am Columbo. Say /hello to get started. One more thing...
 
 
-        My wife thinks your great. 
+        My wife thinks your great.

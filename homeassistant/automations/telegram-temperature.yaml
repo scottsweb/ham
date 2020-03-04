@@ -1,6 +1,5 @@
 alias: 'Telegram Temperature'
 initial_state: true
-hide_entity: true
 trigger:
   - platform: event
     event_type: telegram_command
