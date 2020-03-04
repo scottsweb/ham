@@ -38,6 +38,15 @@ http://miniflux.sycamore.lan {
 	}
 }
 
+http://deconz.sycamore.lan {
+	proxy / 192.168.11.3:8020 {
+		transparent
+	}
+	header / {
+		-X-Frame-Options
+	}
+}
+
 http://sycamore.lan:8811, http://192.168.11.3:8811 {
 	root /srv/nest
 	on startup php-fpm7
