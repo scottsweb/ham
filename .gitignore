@@ -1,6 +1,5 @@
 # caddy
 caddy/.caddy/
-caddy/sites/nest/creds.php
 
 # dockermon
 dockermon/config
