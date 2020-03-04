@@ -1,6 +1,0 @@
-platform: rest
-name: Dash
-resource: https://api.coinmarketcap.com/v1/ticker/dash/?convert=GBP
-value_template: '{{ value_json[0].price_gbp }}'
-unit_of_measurement: '£'
-scan_interval: 300
