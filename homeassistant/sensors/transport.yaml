@@ -1,7 +1,0 @@
-platform: uk_transport
-app_id: !secret transport_app_id
-app_key: !secret transport_app_key
-queries:
-  - mode: train
-    origin: !secret transport_train_home
-    destination: !secret transport_train_desitnation

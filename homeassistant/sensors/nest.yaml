@@ -1,8 +1,0 @@
-platform: nest
-monitored_conditions:
-  - 'temperature'
-  - 'target'
-  - 'humidity'
-  - 'operation_mode'
-  - 'co_status'
-  - 'smoke_status'
