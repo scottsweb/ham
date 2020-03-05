@@ -24,6 +24,12 @@ asuswrt:
   username: !secret asus_username
   password: !secret asus_password
 
+# Google
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_secret
+  track_new_calendar: false
+
 # tplink
 # tplink:
 
@@ -153,16 +159,8 @@ logger:
 
 # Enables the frontend
 frontend:
-  themes:
-    sycamore:
-      primary-color: "#a8122b"
-      label-badge-red: "#a8122b"
-      paper-item-icon-color: "#747474"
-      paper-item-icon-active-color: "#FDD835"
-      paper-toggle-button-checked-ink-color: "#a8122b"
-      paper-toggle-button-checked-button-color: "#a8122b"
-      paper-toggle-button-checked-bar-color: "#a8122b"
-      accent-color: "#21aedd"
+  themes: !include themes.yaml
+
 
 # Map
 map:

@@ -17,6 +17,7 @@ homeassistant/*.log
 homeassistant/*.db
 homeassistant/*.sqlite
 homeassistant/*.xml
+homeassistant/.google.token
 homeassistant/.HA_VERSION
 homeassistant/known_devices.yaml
 homeassistant/secrets.yaml
@@ -34,6 +35,7 @@ homeassistant/.cloud/*
 homeassistant/.storage
 homeassistant/custom_components/**/__pycache__/
 homeassistant/custom_components/**/.translations/
+homeassistant/google_calendars.yaml
 
 # miniflux
 miniflux/miniflux
