@@ -110,6 +110,14 @@ history:
       - sensor.monthly_energy
       - sensor.gbp_sek
       - sensor.sek_gbp
+      - sensor.time
+      - sensor.date
+      - sensor.wilson
+      - media_player.wilson
+      - light.wilson
+      - sensor.arnott
+      - media_player.arnott
+      - light.arnott
 
 # Recorder
 recorder:
@@ -133,6 +141,8 @@ logbook:
       - automation.weather_summary_automation
       - sensor.since_last_boot_sycamore
       - sensor.since_last_boot_mycroft
+      - sensor.date
+      - sensor.time
 
 # Customise Logger
 logger:
