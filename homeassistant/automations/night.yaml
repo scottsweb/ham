@@ -8,6 +8,8 @@ condition:
     entity_id: group.all_devices
     state: 'home'
 action:
+  - service: switch.turn_off
+    entity_id: switch.fullykiosk_screen
   - service: camera.enable_motion_detection
     data:
       entity_id: camera.blink_front

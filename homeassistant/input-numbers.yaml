@@ -6,3 +6,11 @@ luther_sound_volume:
   step: 1
   mode: slider
 
+fullykiosk_brightness_slider:
+  name: Wilson Brightness
+  icon: 'mdi:brightness-percent'
+  initial: 20
+  min: 0
+  max: 100
+  step: 1
+  unit_of_measurement: "%"

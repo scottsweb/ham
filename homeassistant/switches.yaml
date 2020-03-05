@@ -14,6 +14,15 @@
       command_state: !secret pihole_mycroft_command_state
       value_template: "{{ value_json.status == 'enabled' }}"
 
+- platform: command_line
+  switches:
+    fullykiosk_screen:
+      command_on: !secret fullykiosk_screen_on
+      command_off: !secret fullykiosk_screen_off
+      command_state: !secret fullykiosk_screen_state
+      value_template: '{{ value == "on" }}'
+      friendly_name: Fullykiosk Screen
+
 - platform: mqtt
   name: "Presence Emulator"
   state_topic: "sycamore/presence/switch"

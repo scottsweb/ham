@@ -1,0 +1,7 @@
+alias: Wilson Brightness Slider
+initial_state: true
+trigger:
+  platform: state
+  entity_id: input_number.fullykiosk_brightness_slider
+action:
+  service: shell_command.fullykiosk_brightness_slider

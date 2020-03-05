@@ -21,6 +21,8 @@ action:
 #   - service: homeassistant.turn_on
 #     data:
 #       entity_id: automation.sycamore_away_lights_office
+  - service: switch.turn_off
+    entity_id: switch.fullykiosk_screen
   - service: mqtt.publish
     data:
       topic: sycamore/unicorn
