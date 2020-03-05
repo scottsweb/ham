@@ -6,4 +6,4 @@ trigger:
 action:
   service: frontend.set_theme
   data:
-    name: sycamore
+    name: slate
