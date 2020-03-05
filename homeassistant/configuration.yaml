@@ -287,6 +287,17 @@ plex:
   token: !secret plex_token
   server: oak
 
+# Browser Mod
+browser_mod:
+  prefix: "browser_"
+  devices:
+    08adfc81-9c485d86:
+      name: arnott
+    f8632809_a3647f84:
+      name: wilson
+  disable:
+    - all
+
 # Sensors
 sensor: !include_dir_list sensors
 
