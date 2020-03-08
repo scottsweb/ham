@@ -1,0 +1,20 @@
+alias: Postbox post detected
+initial_state: true
+trigger:
+  platform: state
+  entity_id: binary_sensor.post
+  to: 'on'
+condition:
+  condition: time
+  after: '09:00:00'
+  before: '12:45:00'
+  weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.post_visibility

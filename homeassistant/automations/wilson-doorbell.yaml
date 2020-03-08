@@ -1,0 +1,12 @@
+alias: Wilson Doorbell
+initial_state: true
+trigger:
+  platform: state
+  entity_id: binary_sensor.post
+  to: 'on'
+action:
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.wilson
+      media_content_id: /local/doorbell.m4a
+      media_content_type: music
