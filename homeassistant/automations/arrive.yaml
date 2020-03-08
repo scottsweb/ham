@@ -2,8 +2,7 @@ alias: Arrive
 initial_state: true
 trigger:
   platform: state
-  entity_id: group.all_devices
-  from: 'not_home'
+  entity_id: group.people
   to: 'home'
 action:
 #   - service: homeassistant.turn_off

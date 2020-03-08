@@ -5,7 +5,7 @@ trigger:
   at: '23:30:00'
 condition:
   - condition: state
-    entity_id: group.all_devices
+    entity_id: group.people
     state: 'home'
 action:
   - service: switch.turn_off

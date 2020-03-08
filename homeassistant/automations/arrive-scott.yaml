@@ -2,8 +2,7 @@ alias: Arrive Scott
 initial_state: true
 trigger:
   platform: state
-  entity_id: device_tracker.sc
-  from: 'not_home'
+  entity_id: person.scott
   to: 'home'
 action:
   - service: homeassistant.turn_on

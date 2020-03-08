@@ -2,9 +2,8 @@ alias: Leave Scott
 initial_state: true
 trigger:
   platform: state
-  entity_id: device_tracker.sc
+  entity_id: person.scott
   from: 'home'
-  to: 'not_home'
 action:
   - service: homeassistant.turn_off
     data:
