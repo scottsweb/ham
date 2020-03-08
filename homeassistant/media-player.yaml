@@ -8,9 +8,9 @@
   name: 'TV FireTV'
   host: !secret tv_ip
 
-- platform: songpal
-  name: 'Luther Songpal'
-  endpoint: !secret sony_api
+# - platform: songpal
+#   name: 'Luther Songpal'
+#   endpoint: !secret sony_api
 
 - platform: universal
   name: 'Luther Universal (TV)'
@@ -19,30 +19,30 @@
     - media_player.aftt # plex
     - media_player.tv_firetv # firetv
     - media_player.luther # chromecast (app)
-  commands:
-    turn_on:
-      service: switch.turn_on
-      data:
-        entity_id: switch.tv
-    turn_off:
-      service: switch.turn_off
-      data:
-        entity_id: switch.tv
-    volume_up:
-      service: script.tv_vol_up
-    volume_down:
-      service: script.tv_vol_down
-    volume_mute:
-      service: switch.turn_on
-      data:
-        entity_id: switch.tv_mute
-  attributes:
-    state: switch.tv
-    is_volume_muted: switch.tv_mute
+#   commands:
+#     turn_on:
+#       service: switch.turn_on
+#       data:
+#         entity_id: switch.tv
+#     turn_off:
+#       service: switch.turn_off
+#       data:
+#         entity_id: switch.tv
+#     volume_up:
+#       service: script.tv_vol_up
+#     volume_down:
+#       service: script.tv_vol_down
+#     volume_mute:
+#       service: switch.turn_on
+#       data:
+#         entity_id: switch.tv_mute
+#   attributes:
+#     state: switch.tv
+#     is_volume_muted: switch.tv_mute
 
-- platform: universal
-  name: 'Luther Universal (Audio)'
-  children:
-    - media_player.luther_audio
-    - media_player.luther_audio_2
-    - media_player.luther_songpal
+# - platform: universal
+#   name: 'Luther Universal (Audio)'
+#   children:
+#     - media_player.luther_audio
+#     - media_player.luther_audio_2
+#     - media_player.luther_songpal
