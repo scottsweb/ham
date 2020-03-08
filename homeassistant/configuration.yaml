@@ -52,78 +52,66 @@ duckdns:
 
 # Enables support for tracking state changes over time.
 history:
-  exclude:
-    domains:
-      - group
-      - automation
-      - script
-      - input_text
-      - input_number
+  include:
     entities:
-      - binary_sensor.iss
-      - sensor.since_last_boot_sycamore
-      - sensor.since_last_boot_mycroft
-      - persistent_notification.httplogin
-      - persistent_notification.config_entry_discovery
-      - persistent_notification.python_version
-      - binary_sensor.blink_back_motion_enabled
-      - binary_sensor.blink_front_motion_enabled
-      - binary_sensor.blink_indoor_front_motion_enabled
-      - binary_sensor.blink_indoor_back_motion_enabled
-      - sensor.blink_front_notifications
-      - sensor.blink_back_notifications
-      - sensor.blink_indoor_front_notifications
-      - sensor.blink_indoor_back_notifications
-      - camera.blink_front
-      - camera.blink_back
-      - camera.blink_indoor_front
-      - camera.blink_indoor_back
-      - sensor.blink_back_temperature
-      - sensor.blink_front_temperature
-      - sensor.blink_indoor_front_temperature
-      - sensor.blink_indoor_back_temperature
-      - sensor.blink_back_wifi_signal
-      - sensor.blink_front_wifi_signal
-      - sensor.blink_indoor_back_wifi_signal
-      - sensor.blink_indoor_front_wifi_signal
-      - switch.tv_ir
-      - media_player.plex_web_chrome
-      - media_player.luther_audio
-      - media_player.luther_audio_2
-      - media_player.aftt
-      - media_player.luther
-      - media_player.luther_2
-      - media_player.tv_firetv
-      - media_player.tv_kodi
-      - media_player.this_device
-      - media_player.dot
-      - switch.tv_mute
-      - sensor.plex
-      - sensor.asuswrt_download
-      - sensor.asuswrt_download_speed
-      - sensor.asuswrt_upload
-      - sensor.asuswrt_upload_speed
-      - alarm_control_panel.blink_sync
-      - sensor.last_blocked_call
-      - plant.flora_front_plant
-      - plant.flora_back_plant
-      - switch.game_core
-      - media_player.plex_firefox_2
-      - media_player.this_device_2
-      - media_player.this_device
-      - media_player.arnott
-      - sensor.daily_energy
-      - sensor.monthly_energy
-      - sensor.gbp_sek
-      - sensor.sek_gbp
-      - sensor.time
-      - sensor.date
-      - sensor.wilson
-      - media_player.wilson
-      - light.wilson
-      - sensor.arnott
-      - media_player.arnott
-      - light.arnott
+      - person.scott
+      - person.gemma
+
+      - calendar.washing
+
+      - binary_sensor.blink_front_motion_detected
+      - binary_sensor.blink_front_camera_armed
+      - sensor.blink_front_battery
+
+      - binary_sensor.blink_back_motion_detected
+      - binary_sensor.blink_back_camera_armed
+      - sensor.blink_back_battery
+
+      - binary_sensor.blink_indoor_front_motion_detected
+      - binary_sensor.blink_indoor_front_camera_armed
+      - sensor.blink_indoor_front_battery
+
+      - binary_sensor.blink_indoor_back_motion_detected
+      - binary_sensor.blink_indoor_back_camera_armed
+      - sensor.blink_indoor_back_battery
+
+      - weather.dark_sky
+      - sun.sun
+      - sensor.moon
+      - sensor.u_s_air_pollution_level
+      - sensor.u_s_main_pollutant
+
+      - media_player.luther_universal_tv
+
+      - sensor.ip_address
+
+      - switch.dockermon_blinkt
+      - switch.dockermon_nodered
+      - switch.dockermon_plex
+      - switch.dockermon_plex_oak
+      - switch.dockermon_warrior
+      - switch.dockermon_watchtower_oak
+      - switch.dockermon_watchtower
+
+      - binary_sensor.post
+      - input_boolean.post_visibility
+
+      - sensor.u_s_air_quality_index
+      - sensor.dark_sky_uv_index
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_temperature
+
+      - sensor.battery_level_post
+      - sensor.lounge_switch_battery_level
+      - sensor.tradfri_motion_sensor_battery_level
+      - sensor.fp3_battery_level
+      - sensor.cpu_use_mycroft
+      - sensor.load_5m
+      - sensor.cpu_temperature
+      - sensor.cpu_temperature_mycroft
+      - sensor.ram_use_mycroft
+      - sensor.memory_use_percent
 
 # Recorder
 recorder:
@@ -149,6 +137,10 @@ logbook:
       - sensor.since_last_boot_mycroft
       - sensor.date
       - sensor.time
+      - sensor.scott_last_changed
+      - sensor.gemma_last_changed
+      - sensor.scott_last_changed_h
+      - sensor.gemma_last_changed_h
 
 # Customise Logger
 logger:
@@ -296,6 +288,12 @@ browser_mod:
   disable:
     - all
 
+# Timers
+timer:
+  washing:
+    duration: '01:00:00'
+    icon: 'mdi:washing-machine'
+
 # persons
 person: !include persons.yaml
 
@@ -329,6 +327,7 @@ rest_command: !include rest-commands.yaml
 # input_select: !include input-selects.yaml
 input_number: !include input-numbers.yaml
 #input_text : !include input-text.yaml
+input_boolean: !include input-booleans.yaml
 
 # Groups and Other UIs
 group: !include groups.yaml
