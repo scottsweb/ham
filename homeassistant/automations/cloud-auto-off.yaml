@@ -1,0 +1,14 @@
+alias: Turn off cloud lamp 10 minutes after last movement
+trigger:
+  platform: state
+  entity_id: binary_sensor.tradfri_motion_sensor
+  to: 'off'
+  for:
+    minutes: 10
+condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+action:
+  service: switch.turn_off
+  entity_id: switch.cloud
