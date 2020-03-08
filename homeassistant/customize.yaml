@@ -47,19 +47,19 @@ media_player.luther:
 sensor.ip_address:
   icon: mdi:account-network
 sensor.load_5m:
-  friendly_name: 'CPU'
+  friendly_name: 'Bonsai CPU'
   icon: mdi:chip
   unit_of_measurement: "%"
 sensor.memory_use_percent:
-  friendly_name: 'RAM'
+  friendly_name: 'Bonsai RAM'
   icon: mdi:chip
 sensor.cpu_temperature:
   icon: mdi:chip
 sensor.ram_use_mycroft:
-  friendly_name: 'RAM'
+  friendly_name: 'Mycroft RAM'
   icon: mdi:chip
 sensor.cpu_use_mycroft:
-  friendly_name: 'CPU'
+  friendly_name: 'Mycroft CPU'
   icon: mdi:chip
 sensor.gbp_sek:
   friendly_name: 'GBP → SEK'
@@ -311,3 +311,15 @@ plant.flora_back_plant:
   friendly_name: 'Flora Back'
 plant.flora_front_plant:
   friendly_name: 'Flora Front'
+person.scott:
+  entity_picture: https://s.gravatar.com/avatar/c887eb86967863cf7e9002277fa6f625?s=360&r=g
+person.gemma:
+  entity_picture: https://s.gravatar.com/avatar/82a51cc36379aaaaf44e045acd89a3b3?s=360&r=g
+binary_sensor.post:
+  friendly_name: 'Post Motion'
+input_boolean.post_visibility:
+  friendly_name: 'Post?'
+switch.fullykiosk_screen:
+  friendly_name: 'Wilson Screen'
+sensor.fp3_battery_level:
+  friendly_name: 'Fairphone Battery'

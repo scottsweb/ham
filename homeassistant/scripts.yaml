@@ -267,3 +267,11 @@ oak_on:
     - service: wake_on_lan.send_magic_packet
       data:
         mac: !secret oak_mac
+
+restart_washing_timer:
+  alias: 'Restart Washing Timer'
+  sequence:
+    - service: timer.cancel
+      entity_id: timer.washing
+    - service: timer.start
+      entity_id: timer.washing

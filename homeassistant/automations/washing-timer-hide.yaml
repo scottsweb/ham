@@ -1,0 +1,9 @@
+alias: Washing Timer Hide
+initial_state: true
+trigger:
+  - platform: state
+    entity_id: calendar.washing
+    to: 'off'
+action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.washing_timer_visibility

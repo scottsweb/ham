@@ -1,0 +1,23 @@
+alias: Wilson Click Off
+initial_state: true
+trigger:
+  - platform: state
+    entity_id:
+      - input_boolean.post_visibility
+      - switch.presence_emulator
+      - script.blink_front_capture_script
+
+      - switch.pihole_sycamore_switch
+      - switch.dockermon_blinkt
+    from: 'on'
+    to: 'off'
+condition:
+  - condition: state
+    entity_id: switch.fullykiosk_screen
+    state: 'on'
+action:
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.wilson
+      media_content_id: /local/off.m4a
+      media_content_type: music

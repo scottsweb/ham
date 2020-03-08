@@ -1,0 +1,105 @@
+platform: template
+sensors:
+
+  placeholder:
+    value_template: " "
+
+  day:
+    entity_id: sensor.date
+    value_template: >
+      {% set days = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"] %}
+      {{ days[now().weekday()] }}
+
+  date_se:
+    value_template: >
+      {% set months = ["Januari", "Februari", "Mars", "April", "Maj", "Juni",
+      "Juli", "Augusti", "September", "Oktober", "November", "December"] %}
+      {{ strptime(states('sensor.date'), '%Y-%m-%d').day }}
+      {{ months[now().month-1] }}
+
+  washing_countdown:
+    entity_id: sensor.time
+    friendly_name: Washing Countdown
+    value_template: >-
+      {% if state_attr('calendar.washing', 'start_time') ==  null or
+        state_attr('calendar.washing', 'start_time') == None %}
+      {% else %}
+        {% set calendar_washingid = state_attr('calendar.washing', 'start_time') %}
+        {% set now = now() %}
+        {% set dag = strptime(calendar_washingid, "%Y-%m-%d %H:%M:%S").strftime("%A")
+        | replace('Monday', 'Måndag') | replace('Tuesday', 'Tisdag')
+        | replace('Wednesday', 'Onsdag') | replace('Thursday', 'Torsdag')
+        | replace('Friday', 'Fredag') | replace('Saturday', 'Lördag') | replace('Sunday', 'Söndag') %}
+        {% set tid = as_timestamp(calendar_washingid) | timestamp_custom('%H:%M') %}
+        {% set sub_timer = as_timestamp(calendar_washingid) | timestamp_custom('%H') | int / 24 %}
+        {% set count = (as_timestamp(calendar_washingid) - as_timestamp(now)) / 86400 - sub_timer %}
+        {% if count <= -1.0 %}
+          Set a new washing time
+        {% elif count <= 0.0 %}
+          {{'\U0001F4A6'}} Washing today at {{ tid }}.
+        {% elif count <= 1.0 %}
+          Washing tomorrow at {{ tid }}.
+        {% elif count <= 2.0 %}
+          Washing the day after tomorrow at {{ tid }}.
+        {% else %}
+          Washing in {{ (count + sub_timer) | round }} days: {{ dag }} at {{ tid }}.
+        {% endif %}
+      {% endif %}
+
+  scott_last_changed:
+    entity_id: sensor.time
+    value_template: >-
+      {%- set time = (as_timestamp(now()) -
+      as_timestamp(states.person.scott.last_changed)) | int %}
+      {%- set minutes = ((time % 3600) // 60) %}
+      {%- set hours = ((time % 86400) // 3600) %}
+      {%- set days = (time // 86400) %}
+      {% if time <= 60 %} 0m
+      {% elif time <= 3600 %} {{ minutes }}m
+      {% elif time <= 86400 %} {{ hours }}h
+      {% elif time > 86400 %} {{ days }}d
+      {% endif %}
+
+  gemma_last_changed:
+    entity_id: sensor.time
+    value_template: >-
+      {%- set time = (as_timestamp(now()) -
+      as_timestamp(states.person.gemma.last_changed)) | int %}
+      {%- set minutes = ((time % 3600) // 60) %}
+      {%- set hours = ((time % 86400) // 3600) %}
+      {%- set days = (time // 86400) %}
+      {% if time <= 60 %} 0m
+      {% elif time <= 3600 %} {{ minutes }}m
+      {% elif time <= 86400 %} {{ hours }}h
+      {% elif time > 86400 %} {{ days }}d
+      {% endif %}
+
+  scott_last_changed_h:
+    entity_id: sensor.time
+    value_template: >-
+      {%- set time = (as_timestamp(now()) -
+      as_timestamp(states.person.scott.last_changed)) | int %}
+      {%- set minutes = ((time % 3600) // 60) %}
+      {%- set hours = ((time % 86400) // 3600) %}
+      {%- set days = (time // 86400) %}
+      {% if time <= 60 %} mindre än 1m
+      {% elif time <= 3600 %} {{ minutes }}m
+      {% elif time <= 86400 and minutes == 0 %} {{ hours }}h
+      {% elif time <= 86400 %} {{ hours }}h och {{ minutes }}m
+      {% elif time > 86400 %} {{ days }}d
+      {% endif %}
+
+  gemma_last_changed_h:
+    entity_id: sensor.time
+    value_template: >-
+      {%- set time = (as_timestamp(now()) -
+      as_timestamp(states.person.gemma.last_changed)) | int %}
+      {%- set minutes = ((time % 3600) // 60) %}
+      {%- set hours = ((time % 86400) // 3600) %}
+      {%- set days = (time // 86400) %}
+      {% if time <= 60 %} mindre än 1m
+      {% elif time <= 3600 %} {{ minutes }}m
+      {% elif time <= 86400 and minutes == 0 %} {{ hours }}h
+      {% elif time <= 86400 %} {{ hours }}h och {{ minutes }}m
+      {% elif time > 86400 %} {{ days }}d
+      {% endif %}

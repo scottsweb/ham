@@ -1,0 +1,43 @@
+            action: call-service
+            service: browser_mod.popup
+            service_data:
+              deviceID:
+                - this
+              title: Gemma
+              style:
+                '--ha-card-border-radius': 0vw 0vw 0.8vw 0.8vw
+                border-radius: 0.8vw
+              card:
+                type: custom:vertical-stack-in-card
+                cards:
+                  - type: entities
+                    entities:
+                      - entity: person.gemma
+                        secondary_info: last-changed
+                    style: |
+                      ha-card {
+                        margin-bottom: -1vw;
+                      }
+                  - type: entities
+                    entities:
+                      - entity: sensor.placeholder
+                        icon: 'mdi:'
+                        name: History
+                    style: |
+                      ha-card {
+                        margin-top: -9%;
+                        margin-left: -12.2%;
+                        background-color: #FFFFFF00;
+                        opacity: 0.9;
+                        font-weight: 500;
+                      }
+                  - type: history-graph
+                    entities:
+                      - entity: person.gemma
+                    hours_to_show: 24
+                    refresh_interval: 0
+                    style: |
+                      ha-card {
+                        margin-top: -10.5%;
+                        padding-left: 2.2%;
+                      }

@@ -1,0 +1,58 @@
+            action: call-service
+            service: browser_mod.popup
+            service_data:
+              deviceID:
+                - this
+              title: Post
+              style:
+                '--ha-card-border-radius': 0vw 0vw 0.8vw 0.8vw
+                border-radius: 0.8vw
+              card:
+                type: custom:vertical-stack-in-card
+                cards:
+                  - type: entities
+                    entities:
+                      - entity: sensor.placeholder
+                        icon: 'mdi:'
+                        name: History
+                    style: |
+                      ha-card {
+                        margin-top: -2%;
+                        margin-left: -12.2%;
+                        background-color: #FFFFFF00;
+                        opacity: 0.9;
+                        font-weight: 500;
+                      }
+                  - type: history-graph
+                    entities:
+                      - entity: input_boolean.post_visibility
+                    hours_to_show: 6
+                    refresh_interval: 0
+                    style: |
+                      ha-card {
+                        margin-top: -10.5%;
+                        padding-left: 2.2%;
+                      }
+                  - type: entities
+                    entities:
+                      - entity: sensor.placeholder
+                        icon: 'mdi:'
+                        name: Motion
+                    style: |
+                      ha-card {
+                        margin-top: -18%;
+                        margin-left: -12.2%;
+                        background-color: #FFFFFF00;
+                        opacity: 0.9;
+                        font-weight: 500;
+                      }
+                  - type: history-graph
+                    entities:
+                      - entity: binary_sensor.post
+                    hours_to_show: 6
+                    refresh_interval: 0
+                    style: |
+                      ha-card {
+                        margin-top: -10.5%;
+                        padding-left: 2.2%;
+                      }

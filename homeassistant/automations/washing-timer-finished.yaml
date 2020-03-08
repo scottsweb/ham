@@ -1,0 +1,33 @@
+alias: Washing Timer Finished
+initial_state: true
+trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.washing
+condition:
+  condition: state
+  entity_id: input_boolean.washing_timer_visibility
+  state: 'on'
+action:
+  - service: switch.turn_on
+    entity_id: switch.fullykiosk_screen
+  - delay: 00:00:02
+  - service: shell_command.fullykiosk_screensaver_off
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.wilson
+      media_content_id: /local/timer.mp3
+      media_content_type: music
+  - delay: 00:00:02
+  - service: media_player.play_media
+    data_template:
+      entity_id: media_player.wilson
+      media_content_id: >
+        {{ ['/local/tts_custom/timer_tvatten_ar_fardig.mp3',
+            '/local/tts_custom/timer_tvatten_ar_klar.mp3',
+            '/local/tts_custom/timer_dags_att_ga_ner.mp3'] | random }}
+      media_content_type: music
+  - service: notify.all
+    data:
+      message: 'The washing is ready!'

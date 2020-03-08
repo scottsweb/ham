@@ -1,0 +1,15 @@
+alias: Washing Timer Show
+initial_state: true
+trigger:
+  - platform: state
+    entity_id: calendar.washing
+    to: 'on'
+#  - platform: state
+#    entity_id: sensor.washing_countdown_timer_trigger
+#    to: 'true'
+action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.washing_timer_visibility
+#  - delay: 04:00:00
+#  - service: input_boolean.turn_off
+#    entity_id: input_boolean.washing_timer_visibility

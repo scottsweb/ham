@@ -17,3 +17,5 @@ monitored_conditions:
   # - ozone
   - uv_index
   - icon
+  - precip_probability
+  - apparent_temperature
