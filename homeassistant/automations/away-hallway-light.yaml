@@ -1,10 +1,10 @@
-alias: Sycamore Away Lights Office
+alias: Away Hallway Light
 initial_state: true
 trigger:
   - platform: numeric_state
     entity_id: sun.sun
     value_template: '{{ state.attributes.elevation }}'
-    below: -4
+    below: -2
 condition:
     condition: and
     conditions:
@@ -12,16 +12,17 @@ condition:
         entity_id: switch.presence_emulator
         state: 'on'
       - condition: state
-        entity_id: group.all_devices
+        entity_id: group.people
         state: 'not_home'
       - condition: time
         before: '23:00:00'
 action:
-  - delay: '00:{{ range(01,30) | random | int }}:{{ range(01,59) | random | int }}'
-  - service: homeassistant.turn_on
+  - delay: '00:{{ range(01,15) | random | int }}:{{ range(01,59) | random | int }}'
+  - service: light.turn_on
     data:
-      entity_id: switch.office_light
-  - delay: '0{{ range(1,2) | random | int }}:{{ range(01,50) | random | int }}:00'
-  - service: homeassistant.turn_off
+      entity_id: light.back_door
+      brightness: 255
+  - delay: '00:{{ range(15,35) | random | int }}:00'
+  - service: light.turn_off
     data:
-      entity_id: switch.office_light
+      entity_id: light.back_door

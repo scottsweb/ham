@@ -1,8 +1,8 @@
-alias: Leave Sycamore Light Off (10 Minutes)
+alias: Leave Hallyway Light Off (10 Minutes)
 initial_state: true
 trigger:
   platform: state
-  entity_id: group.all_devices
+  entity_id: group.people
   from: 'home'
   to: 'not_home'
   for:
@@ -12,5 +12,5 @@ condition:
     entity_id: sun.sun
     state: below_horizon
 action:
-  service: homeassistant.turn_off
-  entity_id: light.back_door
+  service: light.turn_off
+  entity_id: light.hallway

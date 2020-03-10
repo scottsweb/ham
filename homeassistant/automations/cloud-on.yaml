@@ -6,7 +6,7 @@ trigger:
 condition:
   - condition: sun
     after: sunset
-    after_offset: "-00:30:00"
+    after_offset: "-00:45:00"
 action:
   service: switch.turn_on
   entity_id: switch.cloud

@@ -1,4 +1,4 @@
-alias: Sycamore Away Light Tall
+alias: Away Lounge Light Small
 initial_state: true
 trigger:
   - platform: numeric_state
@@ -12,16 +12,17 @@ condition:
         entity_id: switch.presence_emulator
         state: 'on'
       - condition: state
-        entity_id: group.all_devices
+        entity_id: group.people
         state: 'not_home'
       - condition: time
-        before: '21:30:00'
+        before: '22:30:00'
 action:
   - delay: '00:{{ range(01,59) | random | int }}:{{ range(01,59) | random | int }}'
-  - service: homeassistant.turn_on
+  - service: light.turn_on
     data:
-      entity_id: switch.lounge_light_tall
-  - delay: '0{{ range(1,3) | random | int }}:{{ range(30,59) | random | int }}:00'
-  - service: homeassistant.turn_off
+      entity_id: switch.lounge_light_small
+      brightness: 125
+  - delay: '0{{ range(1,2) | random | int }}:{{ range(01,59) | random | int }}:00'
+  - service: light.turn_off
     data:
-      entity_id: switch.lounge_light_tall
+      entity_id: switch.lounge_light_small

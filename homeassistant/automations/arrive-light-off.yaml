@@ -1,0 +1,15 @@
+alias: Arrive Light Off (10 Minutes)
+initial_state: true
+trigger:
+  platform: state
+  entity_id: group.people
+  to: 'home'
+  for:
+    minutes: 10
+condition:
+  - condition: sun
+    after: sunset
+    after_offset: "-00:45:00"
+action:
+  service: light.turn_off
+  entity_id: light.hallway
