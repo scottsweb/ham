@@ -30,6 +30,12 @@ google:
   client_secret: !secret google_client_secret
   track_new_calendar: false
 
+# Xiaomi
+vacuum:
+  - platform: xiaomi_miio
+    host: !secret monk_ip
+    token: !secret monk_token
+
 # tplink
 # tplink:
 
