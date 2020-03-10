@@ -1,4 +1,4 @@
-alias: Leave Hallyway Light Off (10 Minutes)
+alias: Leave Hallyway Light Off (5 Minutes)
 initial_state: true
 trigger:
   platform: state
@@ -6,7 +6,7 @@ trigger:
   from: 'home'
   to: 'not_home'
   for:
-    minutes: 10
+    minutes: 5
 condition:
   - condition: state
     entity_id: sun.sun

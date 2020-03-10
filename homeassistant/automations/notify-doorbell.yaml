@@ -1,0 +1,14 @@
+alias: Notify Doorbell
+initial_state: true
+trigger:
+  platform: state
+  entity_id: binary_sensor.post
+  to: 'on'
+condition:
+  - condition: state
+    entity_id: group.people
+    state: 'not_home'
+action:
+  - service: notify.telegram_group
+    data:
+      message: "{{'\U0001F6AA'}} Post? Zombies? Time to check the cameras..."
