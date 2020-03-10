@@ -236,7 +236,13 @@ views:
               {% else %} <b>God kväll</b> {{'\U0001F974'}}
               {% endif %}
 
-              <font color='#6a7377'>
+              <font color='#879296'>
+              {% if is_state('vacuum.xiaomi_vacuum_cleaner', 'cleaning') %}
+                <b>Monk städar</b>
+              {% elif is_state('vacuum.xiaomi_vacuum_cleaner', 'returning') %}
+                <b>Monk är färdig</b>
+              {% endif %}
+
               {% if is_state('sensor.dark_sky_temperature', 'unknown') or is_state('sensor.dark_sky_precip_probability', 'unknown') %}
               {% else %}
                 {% if states('sensor.dark_sky_temperature') | float <= 0.0 %}
