@@ -91,6 +91,11 @@ history:
 
       - sensor.ip_address
 
+      - light.lounge_light_tall
+      - light.hallway
+      - light.lounge_light_small
+      - switch.cloud
+
       - switch.dockermon_blinkt
       - switch.dockermon_nodered
       - switch.dockermon_plex

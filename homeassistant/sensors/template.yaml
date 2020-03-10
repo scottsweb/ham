@@ -103,3 +103,18 @@ sensors:
       {% elif time <= 86400 %} {{ hours }}h och {{ minutes }}m
       {% elif time > 86400 %} {{ days }}d
       {% endif %}
+
+  light_hallway_brightness:
+    value_template: >-
+      {% if is_state('light.hallway', 'on') %}
+      {{ (state_attr('light.hallway', 'brightness') / 2.54) | round }}{% endif %}
+
+  light_lounge_tall_brightness:
+    value_template: >-
+      {% if is_state('light.lounge_light_tall', 'on') %}
+      {{ (state_attr('light.lounge_light_tall', 'brightness') / 2.54) | round }}{% endif %}
+
+  light_lounge_small_brightness:
+    value_template: >-
+      {% if is_state('light.lounge_light_small', 'on') %}
+      {{ (state_attr('light.lounge_light_small', 'brightness') / 2.54) | round }}{% endif %}

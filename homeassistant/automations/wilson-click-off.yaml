@@ -6,6 +6,10 @@ trigger:
       - input_boolean.post_visibility
       - switch.presence_emulator
       - script.blink_front_capture_script
+      - switch.cloud
+      - light.hallway
+      - light.lounge_light_tall
+      - light.lounge_light_small
 
       - switch.pihole_sycamore_switch
       - switch.dockermon_blinkt

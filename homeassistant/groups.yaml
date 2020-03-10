@@ -1,9 +1,8 @@
 Lights:
-  - light.back_door
-  - switch.bedroom_light
-  - switch.lounge_light_small
-  - switch.lounge_light_tall
-  - switch.office_light
+  - light.lounge_light_tall
+  - light.hallway
+  - light.lounge_light_small
+  - switch.cloud
 General:
   - switch.general_switch
 Lounge Lights:

@@ -25,6 +25,10 @@ resources:
     type: module
   - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
     type: module
+  - url: /community_plugin/mini-media-player/mini-media-player-bundle.js?v=1.6.0
+    type: module
+  - url: /community_plugin/light-slider-card/light-slider-card.js?v=3.2.4
+    type: js
 views:
   - title: Home
     icon: mdi:home
@@ -44,6 +48,22 @@ views:
             {% set bg_on = '#cfd0d1' %}
             {% set colour_off = '#666869' %}
             {% set colour_on = '#464646' %}
+
+            --bg-light-hallway: {% if is_state('light.hallway', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-light-hallway: {% if is_state('light.hallway', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+            --animation-light-hallway: {% if is_state('light.hallway', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
+
+            --bg-light-cloud: {% if is_state('switch.cloud', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-light-cloud: {% if is_state('switch.cloud', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+            --animation-light-cloud: {% if is_state('switch.cloud', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
+
+            --bg-light-lounge-small: {% if is_state('light.lounge_light_small', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-light-lounge-small: {% if is_state('light.lounge_light_small', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+            --animation-light-lounge-small: {% if is_state('light.lounge_light_small', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
+
+            --bg-light-lounge-tall: {% if is_state('light.lounge_light_tall', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-light-lounge-tall: {% if is_state('light.lounge_light_tall', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+            --animation-light-lounge-tall: {% if is_state('light.lounge_light_tall', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
 
             --bg-camera-front: {% if is_state('binary_sensor.blink_front_camera_armed', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
             --colour-camera-front: {% if is_state('binary_sensor.blink_front_camera_armed', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
@@ -378,10 +398,10 @@ views:
               top: 53.4%
               cursor: default
 
-          # Heading Sovrum
+          # Heading Lampor
           - type: state-label
             entity: sensor.placeholder
-            prefix: Sovrum
+            prefix: Lampor
             tap_action:
               action: none
             hold_action:
@@ -411,6 +431,330 @@ views:
               max-width: 1px
               top: 53.4%
               cursor: default
+
+          # Lights / Lampor
+          # Hallway
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Hallway
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 80.05%
+              top: 20.35%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-light-hallway)'
+              color: 'var(--colour-light-hallway)'
+              border-radius: 0.7vw
+              font-size: 1.3vw
+              display: flex
+              align-items: flex-end
+              padding: 0.5% 0.8%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: state-icon
+            entity: light.hallway
+            icon: mdi:ceiling-light
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 75.9%
+              top: 13.6%
+              box-sizing: border-box
+              color: '#939697'
+              animation: 'var(--animation-light-hallway)'
+              transform: scale(1)
+              --iron-icon-height: 2.3vw
+              --iron-icon-width: 2.3vw
+          - type: conditional
+            conditions:
+              - entity: light.hallway
+                state: 'on'
+            elements:
+              - type: custom:circle-sensor-card
+                entity: sensor.light_hallway_brightness
+                fill: '#FFFFFF10'
+                font_style:
+                  color: '#7d7e80'
+                  font-size: 1.0vw
+                  font-weight: 400
+                  margin-left: '-0.8%'
+                  margin-top: 1.9%
+                gradient: true
+                max: 100
+                min: 0
+                stroke_color: '#aaabad'
+                stroke_width: 6
+                style:
+                  height: 3.15vw
+                  left: 82.3%
+                  opacity: 0.7
+                  top: 16.5%
+                  width: 3.15vw
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: call-service
+              service: light.toggle
+              service_data:
+                entity_id: light.hallway
+            hold_action: !include popups/light-hallway.yaml
+            style:
+              left: 80.05%
+              top: 20.35%
+              width: 10%
+              height: 16%
+
+          # Cloud
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Cloud
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 91.05%
+              top: 20.35%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-light-cloud)'
+              color: 'var(--colour-light-cloud)'
+              border-radius: 0.7vw
+              font-size: 1.3vw
+              display: flex
+              align-items: flex-end
+              padding: 0.5% 0.8%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: state-icon
+            entity: switch.cloud
+            icon: mdi:cloud
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 86.9%
+              top: 13.3%
+              box-sizing: border-box
+              color: '#939697'
+              animation: 'var(--animation-light-cloud)'
+              transform: scale(1)
+              --iron-icon-height: 2.3vw
+              --iron-icon-width: 2.3vw
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: call-service
+              service: switch.toggle
+              service_data:
+                entity_id: switch.cloud
+            hold_action:
+              action: none
+            style:
+              left: 91.05%
+              top: 20.35%
+              width: 10%
+              height: 16%
+
+          # Lounge Small
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Small Lamp
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 80.05%
+              top: 37.9%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-light-lounge-small)'
+              color: 'var(--colour-light-lounge-small)'
+              border-radius: 0.7vw
+              font-size: 1.3vw
+              display: flex
+              align-items: flex-end
+              padding: 0.5% 0.8%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: state-icon
+            entity: light.lounge_light_small
+            icon: mdi:desk-lamp
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 75.9%
+              top: 31.41%
+              box-sizing: border-box
+              color: '#939697'
+              animation: 'var(--animation-light-lounge-small)'
+              transform: scale(1)
+              --iron-icon-height: 2.3vw
+              --iron-icon-width: 2.3vw
+          - type: conditional
+            conditions:
+              - entity: light.lounge_light_small
+                state: 'on'
+            elements:
+              - type: custom:circle-sensor-card
+                entity: sensor.light_lounge_small_brightness
+                fill: '#FFFFFF10'
+                font_style:
+                  color: '#7d7e80'
+                  font-size: 1.0vw
+                  font-weight: 400
+                  margin-left: '-0.8%'
+                  margin-top: 1.9%
+                gradient: true
+                max: 100
+                min: 0
+                stroke_color: '#aaabad'
+                stroke_width: 6
+                style:
+                  height: 3.15vw
+                  left: 82.3%
+                  opacity: 0.7
+                  top: 34.25%
+                  width: 3.15vw
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: call-service
+              service: light.toggle
+              service_data:
+                entity_id: light.lounge_light_small
+            hold_action: !include popups/light-lounge-small.yaml
+            style:
+              left: 80.05%
+              top: 37.9%
+              width: 10%
+              height: 16%
+
+          # Lounge Tall
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Tall Lamp
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 91.05%
+              top: 37.9%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-light-lounge-tall)'
+              color: 'var(--colour-light-lounge-tall)'
+              border-radius: 0.7vw
+              font-size: 1.3vw
+              display: flex
+              align-items: flex-end
+              padding: 0.5% 0.8%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: state-icon
+            entity: light.lounge_light_tall
+            icon: mdi:floor-lamp
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 86.9%
+              top: 31.41%
+              box-sizing: border-box
+              color: '#939697'
+              animation: 'var(--animation-light-lounge-tall)'
+              transform: scale(1)
+              --iron-icon-height: 2.3vw
+              --iron-icon-width: 2.3vw
+          - type: conditional
+            conditions:
+              - entity: light.lounge_light_tall
+                state: 'on'
+            elements:
+              - type: custom:circle-sensor-card
+                entity: sensor.light_lounge_tall_brightness
+                fill: '#FFFFFF10'
+                font_style:
+                  color: '#7d7e80'
+                  font-size: 1.0vw
+                  font-weight: 400
+                  margin-left: '-0.8%'
+                  margin-top: 1.9%
+                gradient: true
+                max: 100
+                min: 0
+                stroke_color: '#aaabad'
+                stroke_width: 6
+                style:
+                  height: 3.15vw
+                  left: 93.3%
+                  opacity: 0.7
+                  top: 34.25%
+                  width: 3.15vw
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: call-service
+              service: light.toggle
+              service_data:
+                entity_id: light.lounge_light_tall
+            hold_action: !include popups/light-lounge-tall.yaml
+            style:
+              left: 91.05%
+              top: 37.9%
+              width: 10%
+              height: 16%
+
+          # Media
+#          - type: custom:mini-media-player
+#            entity: media_player.luther_universal_tv
+#            artwork: full-cover-fit
+#            hide:
+#            #  controls: true
+#            #  power: true
+#            #  volume: true
+#            #  icon: true
+#            #  name: true
+#            #  info: true
+#            #  progress: true
+#            #  source: true
+#            style:
+#              --ha-card-background: none
+#              --ha-card-border-radius: 0.75vw
+#              --ha-card-box-shadow: none
+#              height: 1px
+#              top: 50%
+#              left: 50%
+#              width: 100%
+#              left: 50%
+#              padding: 0
+#              width: 100%
+#          - type: image
+#            image: /local/media_overlay_large.svg
+#            style:
+#              left: 40%
+#              top: 64.5%
+#              width: 20%
 
           # Cameras
           # Front Camera
