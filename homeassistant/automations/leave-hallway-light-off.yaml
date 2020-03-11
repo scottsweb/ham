@@ -7,10 +7,6 @@ trigger:
   to: 'not_home'
   for:
     minutes: 5
-condition:
-  - condition: state
-    entity_id: sun.sun
-    state: below_horizon
 action:
   service: light.turn_off
   entity_id: light.hallway
