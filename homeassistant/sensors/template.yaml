@@ -46,6 +46,7 @@ sensors:
         {% endif %}
       {% endif %}
 
+  # people
   scott_last_changed:
     entity_id: sensor.time
     value_template: >-
@@ -104,6 +105,7 @@ sensors:
       {% elif time > 86400 %} {{ days }}d
       {% endif %}
 
+  # lights
   light_hallway_brightness:
     value_template: >-
       {% if is_state('light.hallway', 'on') %}
@@ -118,3 +120,67 @@ sensors:
     value_template: >-
       {% if is_state('light.lounge_light_small', 'on') %}
       {{ (state_attr('light.lounge_light_small', 'brightness') / 2.54) | round }}{% endif %}
+
+  # vacuum
+  monk_battery_level:
+    friendly_name: Battery
+    unit_of_measurement: '%'
+    value_template: "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'battery_level') }}"
+    icon_template: "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'battery_icon') }}"
+
+  monk_state:
+    friendly_name: Monk
+    value_template: >-
+      {% if is_state('vacuum.xiaomi_vacuum_cleaner', 'docked') %}
+      Dockad
+      {% elif is_state('vacuum.xiaomi_vacuum_cleaner', 'cleaning') %}
+      Städar
+      {% elif is_state('vacuum.xiaomi_vacuum_cleaner', 'returning') %}
+      Återvänder
+      {% else %}
+      {{ states('vacuum.xiaomi_vacuum_cleaner') }}
+      {% endif %}
+    icon_template: 'mdi:robot-vacuum'
+
+  monk_fan_speed:
+    value_template: "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'fan_speed') }}"
+
+  monk_filter:
+    friendly_name: Filter
+    unit_of_measurement: '%'
+    value_template: "{{ (state_attr('vacuum.xiaomi_vacuum_cleaner', 'filter_left') / 1.5) | round }}"
+    icon_template: 'mdi:air-filter'
+
+  monk_brush:
+    friendly_name: Brush
+    unit_of_measurement: '%'
+    value_template: "{{ (state_attr('vacuum.xiaomi_vacuum_cleaner', 'main_brush_left') / 3) | round }}"
+    icon_template: 'mdi:broom'
+
+  monk_sensor:
+    friendly_name: Sensor
+    unit_of_measurement: '%'
+    value_template: "{{ (state_attr('vacuum.xiaomi_vacuum_cleaner', 'sensor_dirty_left') / 0.3) | round }}"
+    icon_template: 'mdi:leak'
+
+  monk_side_brush:
+    friendly_name: Side Brush
+    unit_of_measurement: '%'
+    value_template: "{{ (state_attr('vacuum.xiaomi_vacuum_cleaner', 'side_brush_left') / 2) | round }}"
+    icon_template: 'mdi:brush'
+
+  monk_last_clean:
+    entity_id: sensor.time
+    friendly_name: Last Clean
+    icon_template: 'mdi:clock'
+    value_template: >
+      {% set clean_stop =
+      (as_timestamp(now()) - as_timestamp(state_attr('vacuum.xiaomi_vacuum_cleaner', 'clean_stop') | default(0))) %}
+      {% if clean_stop | timestamp_custom("%d") | int-1 == 1 %}{{ clean_stop | timestamp_custom("%d") | int-1}} dag sedan
+      {% elif clean_stop | timestamp_custom("%d") | int-1 >= 2 %}{{ clean_stop | timestamp_custom("%d") | int-1}} dagar sedan
+      {% elif clean_stop | timestamp_custom("%H") | int-1 == 1 %}{{ clean_stop | timestamp_custom("%H") | int-1}} timme sedan
+      {% elif clean_stop | timestamp_custom("%H") | int-1 >= 2 %}{{ clean_stop | timestamp_custom("%H") | int-1}} timmar sedan
+      {% elif clean_stop | timestamp_custom("%M")|int == 1 %}{{ clean_stop | timestamp_custom("%M") | int}} minut sedan
+      {% elif clean_stop | timestamp_custom("%M")|int >= 2 %}{{ clean_stop | timestamp_custom("%M") | int}} minuter sedan
+      {% else %}Minde än 1 minut sedan
+      {% endif %}
