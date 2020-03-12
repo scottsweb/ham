@@ -1,0 +1,28 @@
+alias: Away Monk Clean
+initial_state: true
+trigger:
+  platform: state
+  entity_id: group.people
+  from: 'home'
+  to: 'not_home'
+  for:
+    minutes: 15
+condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: '10:00:00'
+        before: '19:00:00'
+      - condition: template
+        value_template: '{{ (as_timestamp(now()) - as_timestamp(states.vacuum.xiaomi_vacuum_cleaner.attributes.clean_stop | default(0)) | int > 43200)}}'
+action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id:
+        - input_boolean.monk_clean_kitchen
+        - input_boolean.monk_clean_bedroom
+        - input_boolean.monk_clean_hall
+        - input_boolean.monk_clean_office_gemma
+        - input_boolean.monk_clean_office_scott
+  - delay: '00:00:10'
+  - service: script.monk_clean
