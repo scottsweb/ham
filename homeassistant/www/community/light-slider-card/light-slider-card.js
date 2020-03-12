@@ -339,15 +339,15 @@ var xt="adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prot
       display: flex;
       justify-content:center;
       padding: 0;
-      height: 17em;
-      padding-top: 6.5em;
+      height: 12em;
+      padding-top: 2.5em;
     }
   input[type='range'] {
     -webkit-appearance: none;
     background-color: rgba(25, 25, 25, 0.9);
-    height: 8em;
+    height: 7em;
     overflow: hidden;
-    width: 100%;
+    width: 65%;
     border-radius: 1.5em;
     transform: rotate(-90deg);
     font-size: 0.9em;
@@ -376,7 +376,6 @@ var xt="adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prot
     }
   .percent {
     color:rgba(255, 255, 255, 0.7);
-    margin-top: -0.3em;
     font-size: 1em;
     z-index: 1;
     display: flex;
