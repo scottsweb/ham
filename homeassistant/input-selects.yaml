@@ -1,0 +1,10 @@
+monk_fan_speed:
+  name: Fan Speed
+  initial: Standard
+  options:
+    - Silent
+    - Standard
+    - Medium
+    - Turbo
+    - Gentle
+  icon: mdi:fan

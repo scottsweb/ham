@@ -11,6 +11,8 @@ custom_header:
 
 title: Sycamore
 resources:
+  - url: /community_plugin/bar-card/bar-card.js
+    type: js
   - url: /community_plugin/button-card/button-card.js
     type: module
   - url: /community_plugin/custom-header/custom-header.js
@@ -27,6 +29,9 @@ resources:
     type: module
   - url: /community_plugin/mini-media-player/mini-media-player-bundle.js?v=1.6.0
     type: module
+  - url: /community_plugin/lovelace-layout-card/layout-card.js
+    type: module
+# ----------
   - url: /community_plugin/light-slider-card/light-slider-card.js?v=3.2.4
     type: js
 views:
@@ -306,13 +311,13 @@ views:
 
           # Buttons
           - type: icon
-            icon: mdi:cogs
-            #tap_action: !include popup/sidebar_vacuum.yaml
+            icon: mdi:robot-vacuum
+            tap_action: !include popups/vacuum-monk.yaml
             title: null
             style:
               '--iron-icon-height': 4vw
               '--iron-icon-width': 4vw
-              color: 'rgba(255, 255, 255, 0.10)'
+              color: 'rgba(255, 255, 255, 0.20)'
               left: 4.8%
               top: 91.41%
           - type: icon
@@ -322,7 +327,7 @@ views:
             style:
               '--iron-icon-height': 4vw
               '--iron-icon-width': 4vw
-              color: 'rgba(255, 255, 255, 0.10)'
+              color: 'rgba(255, 255, 255, 0.20)'
               left: 10.7%
               top: 91.41%
           - type: icon
@@ -332,14 +337,14 @@ views:
             style:
               '--iron-icon-height': 4.6vw
               '--iron-icon-width': 4.6vw
-              color: 'rgba(255, 255, 255, 0.10)'
+              color: 'rgba(255, 255, 255, 0.20)'
               left: 16.55%
               top: 91.55%
 
-          # Heading Vardagsrum
+          # Heading Environment (Vardagsrum)
           - type: state-label
             entity: sensor.placeholder
-            prefix: Vardagsrum
+            prefix: Environment
             tap_action:
               action: none
             hold_action:
@@ -370,10 +375,10 @@ views:
               top: 53.4%
               cursor: default
 
-          # Heading Kök
+          # Heading Tools
           - type: state-label
             entity: sensor.placeholder
-            prefix: Kök
+            prefix: Tools (ad block, hover etc)
             tap_action:
               action: none
             hold_action:
@@ -1425,7 +1430,6 @@ views:
                width: 10%
                height: 16%
 
-          #
 #          - type: image
 #            title: null
 #            image: /local/overlay.svg

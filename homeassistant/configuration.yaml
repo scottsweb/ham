@@ -7,6 +7,9 @@ homeassistant:
   time_zone: !secret timezone
   customize: !include customize.yaml
 
+# Python Scripts
+python_script:
+
 # Server Config
 http:
   base_url: !secret base_url
@@ -123,6 +126,8 @@ history:
       - sensor.cpu_temperature_mycroft
       - sensor.ram_use_mycroft
       - sensor.memory_use_percent
+
+      - vacuum.xiaomi_vacuum_cleaner
 
 # Recorder
 recorder:
@@ -335,7 +340,7 @@ script: !include scripts.yaml
 rest_command: !include rest-commands.yaml
 
 # Controls
-# input_select: !include input-selects.yaml
+input_select: !include input-selects.yaml
 input_number: !include input-numbers.yaml
 #input_text : !include input-text.yaml
 input_boolean: !include input-booleans.yaml

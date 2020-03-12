@@ -16,4 +16,11 @@ All Devices:
 People:
   - person.scott
   - person.gemma
+Monk Zones:
+  - input_boolean.monk_clean_lounge
+  - input_boolean.monk_clean_kitchen
+  - input_boolean.monk_clean_bedroom
+  - input_boolean.monk_clean_hall
+  - input_boolean.monk_clean_office_gemma
+  - input_boolean.monk_clean_office_scott
 #Allotment:

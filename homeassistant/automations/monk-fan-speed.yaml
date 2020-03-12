@@ -1,0 +1,16 @@
+alias: Monk Set Cleaning Fan Speed
+initial_state: true
+trigger:
+  - platform: state
+    entity_id: input_select.monk_fan_speed
+action:
+  - service: vacuum.set_fan_speed
+    data_template:
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      fan_speed: >-
+        {% if is_state('input_select.monk_fan_speed', 'Gentle') %} Gentle
+        {% elif is_state('input_select.monk_fan_speed', 'Silent') %} 101
+        {% elif is_state('input_select.monk_fan_speed', 'Medium') %} 103
+        {% elif is_state('input_select.monk_fan_speed', 'Turbo') %} 104
+        {% else %} 102
+        {% endif %}

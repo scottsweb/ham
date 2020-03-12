@@ -275,3 +275,15 @@ restart_washing_timer:
       entity_id: timer.washing
     - service: timer.start
       entity_id: timer.washing
+
+monk_clean:
+  alias: 'Monk Cleaning Routine'
+  sequence:
+    - service: python_script.monk
+      data_template:
+       input_boolean.monk_clean_lounge: '{{ states.input_boolean.monk_clean_lounge.state }}'
+       input_boolean.monk_clean_kitchen: '{{ states.input_boolean.monk_clean_kitchen.state }}'
+       input_boolean.monk_clean_bedroom: '{{ states.input_boolean.monk_clean_bedroom.state }}'
+       input_boolean.monk_clean_hall: '{{ states.input_boolean.monk_clean_hall.state }}'
+       input_boolean.monk_clean_office_gemma: '{{ states.input_boolean.monk_clean_office_gemma.state }}'
+       input_boolean.monk_clean_office_scott: '{{ states.input_boolean.monk_clean_office_scott.state }}'

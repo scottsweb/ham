@@ -1,0 +1,11 @@
+alias: Monk Finished Cleaning
+trigger:
+  - platform: state
+    entity_id: sensor.monk_clean_count
+action:
+  - service: notify.telegram_group
+    data:
+      message: "{{'\U0001F9F9'}} Monk finished cleaning. Cleaned {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaned_area }}m² in {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_time }} minutes. Battery level: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.battery_level }}%."
+  - service: homeassistant.turn_off
+    data:
+      entity_id: group.monk_zones

@@ -132,11 +132,13 @@ sensors:
     friendly_name: Monk
     value_template: >-
       {% if is_state('vacuum.xiaomi_vacuum_cleaner', 'docked') %}
-      Dockad
+      Docked
       {% elif is_state('vacuum.xiaomi_vacuum_cleaner', 'cleaning') %}
-      Städar
+      Cleaning
       {% elif is_state('vacuum.xiaomi_vacuum_cleaner', 'returning') %}
-      Återvänder
+      Returning
+      {% elif is_state('vacuum.xiaomi_vacuum_cleaner', 'paused') %}
+      Paused
       {% else %}
       {{ states('vacuum.xiaomi_vacuum_cleaner') }}
       {% endif %}
@@ -157,8 +159,8 @@ sensors:
     value_template: "{{ (state_attr('vacuum.xiaomi_vacuum_cleaner', 'main_brush_left') / 3) | round }}"
     icon_template: 'mdi:broom'
 
-  monk_sensor:
-    friendly_name: Sensor
+  monk_sensors:
+    friendly_name: Sensors
     unit_of_measurement: '%'
     value_template: "{{ (state_attr('vacuum.xiaomi_vacuum_cleaner', 'sensor_dirty_left') / 0.3) | round }}"
     icon_template: 'mdi:leak'
@@ -176,11 +178,16 @@ sensors:
     value_template: >
       {% set clean_stop =
       (as_timestamp(now()) - as_timestamp(state_attr('vacuum.xiaomi_vacuum_cleaner', 'clean_stop') | default(0))) %}
-      {% if clean_stop | timestamp_custom("%d") | int-1 == 1 %}{{ clean_stop | timestamp_custom("%d") | int-1}} dag sedan
-      {% elif clean_stop | timestamp_custom("%d") | int-1 >= 2 %}{{ clean_stop | timestamp_custom("%d") | int-1}} dagar sedan
-      {% elif clean_stop | timestamp_custom("%H") | int-1 == 1 %}{{ clean_stop | timestamp_custom("%H") | int-1}} timme sedan
-      {% elif clean_stop | timestamp_custom("%H") | int-1 >= 2 %}{{ clean_stop | timestamp_custom("%H") | int-1}} timmar sedan
-      {% elif clean_stop | timestamp_custom("%M")|int == 1 %}{{ clean_stop | timestamp_custom("%M") | int}} minut sedan
-      {% elif clean_stop | timestamp_custom("%M")|int >= 2 %}{{ clean_stop | timestamp_custom("%M") | int}} minuter sedan
-      {% else %}Minde än 1 minut sedan
+      {% if clean_stop | timestamp_custom("%d") | int-1 == 1 %}{{ clean_stop | timestamp_custom("%d") | int-1}} day ago
+      {% elif clean_stop | timestamp_custom("%d") | int-1 >= 2 %}{{ clean_stop | timestamp_custom("%d") | int-1}} days ago
+      {% elif clean_stop | timestamp_custom("%H") | int-1 == 1 %}{{ clean_stop | timestamp_custom("%H") | int-1}} hour ago
+      {% elif clean_stop | timestamp_custom("%H") | int-1 >= 2 %}{{ clean_stop | timestamp_custom("%H") | int-1}} hours ago
+      {% elif clean_stop | timestamp_custom("%M")|int == 1 %}{{ clean_stop | timestamp_custom("%M") | int}} minute ago
+      {% elif clean_stop | timestamp_custom("%M")|int >= 2 %}{{ clean_stop | timestamp_custom("%M") | int}} minutes ago
+      {% else %}Less than 1 minute ago
       {% endif %}
+
+  monk_clean_count:
+    friendly_name: Cleaning Count
+    icon_template: 'mdi:robot-vacuum'
+    value_template: "{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_count }}"

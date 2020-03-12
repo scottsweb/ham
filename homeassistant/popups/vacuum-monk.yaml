@@ -1,0 +1,518 @@
+            action: call-service
+            service: browser_mod.popup
+            service_data:
+              deviceID:
+                - this
+              title: Close
+              style:
+                background: none
+                box-shadow: none
+                width: auto
+                margin-top: -4.8vw
+              card:
+                type: custom:layout-card
+                column_num: 2
+                column_width: [390, 390]
+                layout: vertical
+                cards:
+                  - type: custom:hui-vertical-stack-card
+                    cards:
+                      - type: entities
+                        title: " ‍  ‍ Dammsugare"
+                        show_header_toggle: false
+                        entities:
+                          - entity: sensor.monk_state
+                          - entity: sensor.monk_battery_level
+                          - entity: sensor.monk_last_clean
+                          - entity: sensor.monk_filter
+                            type: custom:bar-card
+                            title: Filter
+                            title_style:
+                              color: '#e0e1e1'
+                              margin-left: 0.95em
+                            background_style:
+                              background: >-
+                                radial-gradient(circle, rgba(45,45,45,1) 0%,
+                                rgba(0,0,0,1) 100%)
+                            card_style:
+                              background: '#FFFFFF00'
+                              box-shadow: none
+                            height: 2.1em
+                            width: 50%
+                            icon: 'mdi:filter-variant'
+                            icon_position: left
+                            icon_style:
+                              color: '#9e9e9e'
+                              margin-left: '-0.38em'
+                              filter: none
+                            max: 100
+                            min: 0
+                            rounding: 0.3em
+                            severity:
+                              - color: '#303435'
+                                value: 100
+                              - color: '#6d2525'
+                                value: 10
+                            value_style:
+                              color: '#e0e1e1'
+                              font-size: 0.95em
+                              font-weight: 400
+                            tap_action: service
+                            service_options:
+                              domain: vacuum
+                              service: send_command
+                              data:
+                                entity_id: vacuum.xiaomi_vacuum_cleaner
+                                command: reset_consumable
+                                params: ['filter_work_time']
+                            style: |
+                              ha-card {
+                                background-color: #FFFFFF00;
+                                margin-left: -0.35em;
+                                margin-right: -0.5em;
+                                margin-top: 0.1em;
+                              }
+                          - entity: sensor.monk_brush
+                            type: custom:bar-card
+                            title: Brush
+                            title_style:
+                              color: '#e0e1e1'
+                              margin-left: 0.95em
+                            background_style:
+                              background: >-
+                                radial-gradient(circle, rgba(45,45,45,1) 0%,
+                                rgba(0,0,0,1) 100%)
+                            card_style:
+                              background: '#FFFFFF00'
+                              box-shadow: none
+                            height: 2.1em
+                            width: 50%
+                            icon: 'mdi:broom'
+                            icon_position: left
+                            icon_style:
+                              color: '#9e9e9e'
+                              margin-left: '-0.38em'
+                              filter: none
+                            max: 100
+                            min: 0
+                            rounding: 0.3em
+                            severity:
+                              - color: '#303435'
+                                value: 100
+                              - color: '#6d2525'
+                                value: 10
+                            value_style:
+                              color: '#e0e1e1'
+                              font-size: 0.95em
+                              font-weight: 400
+                            tap_action: service
+                            service_options:
+                              domain: vacuum
+                              service: send_command
+                              data:
+                                entity_id: vacuum.xiaomi_vacuum_cleaner
+                                command: reset_consumable
+                                params: ['main_brush_work_time']
+                            style: |
+                              ha-card {
+                                background-color: #FFFFFF00;
+                                margin-left: -0.35em;
+                                margin-right: -0.5em;
+                                margin-top: 0.1em;
+                              }
+                          - entity: sensor.monk_side_brush
+                            type: custom:bar-card
+                            title: Side Brush
+                            title_style:
+                              color: '#e0e1e1'
+                              margin-left: 0.95em
+                            background_style:
+                              background: >-
+                                radial-gradient(circle, rgba(45,45,45,1) 0%,
+                                rgba(0,0,0,1) 100%)
+                            card_style:
+                              background: '#FFFFFF00'
+                              box-shadow: none
+                            height: 2.1em
+                            width: 50%
+                            icon: 'mdi:tools'
+                            icon_position: left
+                            icon_style:
+                              color: '#9e9e9e'
+                              margin-left: '-0.38em'
+                              filter: none
+                            max: 100
+                            min: 0
+                            rounding: 0.3em
+                            severity:
+                              - color: '#303435'
+                                value: 100
+                              - color: '#6d2525'
+                                value: 10
+                            value_style:
+                              color: '#e0e1e1'
+                              font-size: 0.95em
+                              font-weight: 400
+                            tap_action: service
+                            service_options:
+                              domain: vacuum
+                              service: send_command
+                              data:
+                                entity_id: vacuum.xiaomi_vacuum_cleaner
+                                command: reset_consumable
+                                params: ['side_brush_work_time']
+                            style: |
+                              ha-card {
+                                background-color: #FFFFFF00;
+                                margin-left: -0.35em;
+                                margin-right: -0.5em;
+                                margin-top: 0.1em;
+                              }
+                          - entity: sensor.monk_sensors
+                            type: custom:bar-card
+                            title: Sensors
+                            title_style:
+                              color: '#e0e1e1'
+                              margin-left: 0.95em
+                            background_style:
+                              background: >-
+                                radial-gradient(circle, rgba(45,45,45,1) 0%,
+                                rgba(0,0,0,1) 100%)
+                            card_style:
+                              background: '#FFFFFF00'
+                              box-shadow: none
+                            height: 2.1em
+                            width: 50%
+                            icon: 'mdi:spray-bottle'
+                            icon_position: left
+                            icon_style:
+                              color: '#9e9e9e'
+                              margin-left: '-0.38em'
+                              filter: none
+                            max: 100
+                            min: 0
+                            rounding: 0.3em
+                            severity:
+                              - color: '#303435'
+                                value: 100
+                              - color: '#6d2525'
+                                value: 10
+                            value_style:
+                              color: '#e0e1e1'
+                              font-size: 0.95em
+                              font-weight: 400
+                            tap_action: service
+                            service_options:
+                              domain: vacuum
+                              service: send_command
+                              data:
+                                entity_id: vacuum.xiaomi_vacuum_cleaner
+                                command: reset_consumable
+                                params: ['sensor_dirty_time']
+                            style: |
+                              ha-card {
+                                background-color: #FFFFFF00;
+                                margin-left: -0.35em;
+                                margin-right: -0.5em;
+                                margin-top: 0.1em;
+                              }
+                        style: |
+                          ha-card {
+                            box-shadow: none;
+                            border-radius: 1em;
+                            background: rgba(36, 42, 43, 0.88);
+                            padding-right: 0.7em;
+                          }
+                  - break
+                  - type: custom:hui-vertical-stack-card
+                    cards:
+                      - type: entities
+                        title: " ‍   Uppstartng"
+                        entities:
+                          - entity: input_boolean.monk_clean_lounge
+                          - entity: input_boolean.monk_clean_kitchen
+                          - entity: input_boolean.monk_clean_bedroom
+                          - entity: input_boolean.monk_clean_hall
+                          - entity: input_boolean.monk_clean_office_gemma
+                          - entity: input_boolean.monk_clean_office_scott
+                          - entity: input_select.monk_fan_speed
+                        style: |
+                          ha-card {
+                            background: rgba(36, 42, 43, 0.88);
+                            box-shadow: none;
+                            border-radius: 1em;
+                            height: 32.3em;
+                          }
+                          #states hui-input-select-entity-row {
+                            margin-top: -10px;
+                          }
+                  - break
+                  - type: horizontal-stack
+                    cards:
+                      - type: conditional
+                        conditions:
+                          - entity: vacuum.xiaomi_vacuum_cleaner
+                            state: 'docked'
+                        card:
+                          type: custom:button-card
+                          entity: group.monk_zones
+                          name: Start
+                          show_icon: true
+                          icon: mdi:play
+                          show_name: false
+                          lock:
+                            exemptions: []
+                            enabled: >
+                             [[[
+                                if ((entity.state == 'on') && (states['vacuum.xiaomi_vacuum_cleaner'].state == 'docked'))
+                                  return false
+                                else
+                                  return true
+                             ]]]
+                          styles:
+                            card:
+                              #232728
+                              - color: rgb(255,255,255)
+                              - background: '#303435'
+                              - height: 56px
+                              - border-radius: 0.5em
+                              - padding: 0.7vw
+                            lock:
+                              - width: 18px
+                              - color: '#879094'
+                              - right: 0
+                              - left: auto
+                          state:
+                            - value: 'on'
+                              styles:
+                                card:
+                                  - background: '#cfd0d1'
+                          tap_action:
+                            action: call-service
+                            service: script.monk_clean
+                      - type: conditional
+                        conditions:
+                          - entity: vacuum.xiaomi_vacuum_cleaner
+                            state_not: 'docked'
+                        card:
+                          type: custom:button-card
+                          entity: group.monk_zones
+                          name: Resume
+                          show_icon: true
+                          icon: mdi:play
+                          show_name: false
+                          lock:
+                            exemptions: []
+                            enabled: >
+                             [[[
+                                if (states['vacuum.xiaomi_vacuum_cleaner'].state != 'idle' && states['vacuum.xiaomi_vacuum_cleaner'].state != 'cleaning')
+                                  return false
+                                else
+                                  return true
+                             ]]]
+                          styles:
+                            card:
+                              #232728
+                              - color: rgb(255,255,255)
+                              - background: '#303435'
+                              - height: 56px
+                              - border-radius: 0.5em
+                              - padding: 0.7vw
+                            lock:
+                              - width: 18px
+                              - color: '#879094'
+                              - right: 0
+                              - left: auto
+                          state:
+                            - value: 'on'
+                              styles:
+                                card:
+                                  - background: '#cfd0d1'
+                          tap_action:
+                            action: call-service
+                            service: vacuum.start_pause
+                            service_data:
+                              entity_id: vacuum.xiaomi_vacuum_cleaner
+                      - type: custom:button-card
+                        entity: group.monk_zones
+                        name: Pause
+                        show_icon: true
+                        icon: mdi:pause
+                        show_name: false
+                        lock:
+                          exemptions: []
+                          enabled: >
+                           [[[
+                             if ((entity.state == 'on') && (states['vacuum.xiaomi_vacuum_cleaner'].state == 'cleaning'))
+                               return false
+                             else
+                               return true
+                           ]]]
+                        styles:
+                          card:
+                            #232728
+                            - color: rgb(255,255,255)
+                            - background: '#303435'
+                            - height: 56px
+                            - border-radius: 0.5em
+                            - padding: 0.7vw
+                          lock:
+                            - width: 18px
+                            - color: '#879094'
+                            - right: 0
+                            - left: auto
+                        state:
+                          - operator: template
+                            value: >
+                              [[[
+                                if ((entity.state == 'on') && (states['vacuum.xiaomi_vacuum_cleaner'].state == 'cleaning'))
+                                  return false
+                                else
+                                  return true
+                              ]]]
+                          - value: 'on'
+                            styles:
+                              card:
+                                - background: '#cfd0d1'
+                        tap_action:
+                          action: call-service
+                          service: vacuum.pause
+                          service_data:
+                            entity_id: vacuum.xiaomi_vacuum_cleaner
+                      - type: custom:button-card
+                        entity: group.monk_zones
+                        name: Stop
+                        show_icon: true
+                        icon: mdi:stop
+                        show_name: false
+                        lock:
+                          exemptions: []
+                          enabled: >
+                           [[[
+                             if ((entity.state == 'on') && (states['vacuum.xiaomi_vacuum_cleaner'].state == 'cleaning' || states['vacuum.xiaomi_vacuum_cleaner'].state == 'paused'))
+                               return false
+                             else
+                               return true
+                           ]]]
+                        styles:
+                          card:
+                            #232728
+                            - color: rgb(255,255,255)
+                            - background: '#303435'
+                            - height: 56px
+                            - border-radius: 0.5em
+                            - padding: 0.7vw
+                          lock:
+                            - width: 18px
+                            - color: '#879094'
+                            - right: 0
+                            - left: auto
+                        state:
+                          - operator: template
+                            value: >
+                              [[[
+                                if ((entity.state == 'on') && (states['vacuum.xiaomi_vacuum_cleaner'].state == 'cleaning' || states['vacuum.xiaomi_vacuum_cleaner'].state == 'paused'))
+                                  return false
+                                else
+                                  return true
+                              ]]]
+                          - value: 'on'
+                            styles:
+                              card:
+                                - background: '#cfd0d1'
+                        tap_action:
+                          action: call-service
+                          service: vacuum.stop
+                          service_data:
+                            entity_id: vacuum.xiaomi_vacuum_cleaner
+                      - type: "custom:button-card"
+                        color_type: blank-card
+                  - break
+                  - type: horizontal-stack
+                    cards:
+                      - type: "custom:button-card"
+                        color_type: blank-card
+                      - type: "custom:button-card"
+                        color_type: blank-card
+                      - type: custom:button-card
+                        entity: sensor.monk_state
+                        name: Return to Base
+                        show_icon: true
+                        icon: mdi:home
+                        show_name: false
+                        lock:
+                          exemptions: []
+                          enabled: >
+                           [[[
+                             if (states['vacuum.xiaomi_vacuum_cleaner'].state != 'docked')
+                               return false
+                             else
+                               return true
+                           ]]]
+                        styles:
+                          card:
+                            #232728
+                            - background: '#cfd0d1'
+                            - height: 56px
+                            - border-radius: 0.5em
+                            - padding: 0.7vw
+                          icon:
+                            - color: '#3182b7'
+                          lock:
+                            - width: 18px
+                            - color: '#879094'
+                            - right: 0
+                            - left: auto
+                        state:
+                          - value: 'Docked'
+                            styles:
+                              card:
+                                - background: '#303435'
+                              icon:
+                                - color: '#9da0a2'
+                        tap_action:
+                          action: call-service
+                          service: vacuum.return_to_base
+                          service_data:
+                            entity_id: vacuum.xiaomi_vacuum_cleaner
+                      - type: custom:button-card
+                        entity: sensor.monk_state
+                        name: Locate
+                        show_icon: true
+                        icon: mdi:map-marker-question
+                        show_name: false
+                        lock:
+                          exemptions: []
+                          enabled: >
+                           [[[
+                             if (states['vacuum.xiaomi_vacuum_cleaner'].state != 'docked')
+                               return false
+                             else
+                               return true
+                           ]]]
+                        styles:
+                          card:
+                            #232728
+                            - background: '#cfd0d1'
+                            - height: 56px
+                            - border-radius: 0.5em
+                            - padding: 0.7vw
+                          icon:
+                            - color: '#3182b7'
+                          lock:
+                            - width: 18px
+                            - color: '#879094'
+                            - right: 0
+                            - left: auto
+                        state:
+                          - value: 'Docked'
+                            styles:
+                              card:
+                                - background: '#303435'
+                              icon:
+                                - color: '#9da0a2'
+                        tap_action:
+                          action: call-service
+                          service: vacuum.locate
+                          service_data:
+                            entity_id: vacuum.xiaomi_vacuum_cleaner

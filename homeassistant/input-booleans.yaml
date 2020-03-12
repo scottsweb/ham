@@ -1,3 +1,22 @@
 washing_timer_visibility:
 krisinformation_visibility:
 post_visibility:
+
+monk_clean_lounge:
+  name: Vardagsrum
+  icon: mdi:sofa
+monk_clean_kitchen:
+  name: Kök
+  icon: mdi:chef-hat
+monk_clean_bedroom:
+  name: Sovrum
+  icon: mdi:bed-king
+monk_clean_hall:
+  name: Hall
+  icon: mdi:ceiling-light
+monk_clean_office_gemma:
+  name: Gemma's Office
+  icon: mdi:desk    
+monk_clean_office_scott:
+  name: Scotts's Office
+  icon: mdi:desk 
