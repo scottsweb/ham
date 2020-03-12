@@ -30,4 +30,4 @@ action:
       media_content_type: music
   - service: notify.all
     data:
-      message: 'The washing is ready!'
+      message: "{{'\U0001F455'}} The washing is ready!"
