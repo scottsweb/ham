@@ -31,6 +31,8 @@ resources:
     type: module
   - url: /community_plugin/lovelace-layout-card/layout-card.js
     type: module
+  - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+    type: module
 # ----------
   - url: /community_plugin/light-slider-card/light-slider-card.js?v=3.2.4
     type: js
@@ -322,7 +324,7 @@ views:
               top: 91.41%
           - type: icon
             icon: 'mdi:information-outline'
-            #tap_action: !include popup/sidebar_information.yaml
+            tap_action: !include popups/information.yaml
             title: null
             style:
               '--iron-icon-height': 4vw

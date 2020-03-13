@@ -1,0 +1,144 @@
+            action: call-service
+            service: browser_mod.popup
+            service_data:
+              deviceID:
+                - this
+              title: Close
+              style:
+                background: none
+                box-shadow: none
+                width: auto
+              card:
+                type: custom:layout-card
+                column_num: 3
+                column_width: [320, 320, 320]
+                layout: vertical
+                cards:
+                  - type: custom:hui-vertical-stack-card
+                    cards:
+                      - type: entities
+                        title: " ‍  ‍ Bonsai"
+                        show_header_toggle: false
+                        entities:
+                          - entity: sensor.memory_use_percent
+                            name: RAM
+                          - entity: sensor.load_5m
+                            name: CPU
+                          - entity: sensor.cpu_temperature
+                          - entity: sensor.since_last_boot_sycamore
+                          - entity: switch.pihole_sycamore_switch
+                            name: Pi-Hole
+                          - type: section
+                            label: Containers
+                          - entity: switch.dockermon_blinkt
+                          - entity: switch.dockermon_nodered
+                          - entity: switch.dockermon_plex
+                          - entity: switch.dockermon_watchtower
+                        style: |
+                          ha-card {
+                            box-shadow: none;
+                            border-radius: 1em;
+                            background: rgba(36, 42, 43, 0.88);
+                            padding-right: 0.7em;
+                          }
+                  - break
+                  - type: custom:hui-vertical-stack-card
+                    cards:
+                      - type: entities
+                        title: " ‍   Mycroft"
+                        show_header_toggle: false
+                        entities:
+                          - entity: sensor.ram_use_mycroft
+                            name: RAM
+                          - entity: sensor.cpu_use_mycroft
+                            name: CPU
+                          - entity: sensor.cpu_temperature_mycroft
+                          - entity: sensor.since_last_boot_mycroft
+                          - entity: switch.pihole_mycroft_switch
+                            name: Pi-Hole
+                        style: |
+                          ha-card {
+                            background: rgba(36, 42, 43, 0.88);
+                            box-shadow: none;
+                            border-radius: 1em;
+                          }
+                  - type: custom:hui-vertical-stack-card
+                    cards:
+                      - type: entities
+                        title: " ‍   Internet"
+                        show_header_toggle: false
+                        entities:
+                          - sensor.speedtest_ping
+                          - sensor.ip_address
+                        style: |
+                          ha-card {
+                            background: rgba(36, 42, 43, 0.88);
+                            box-shadow: none;
+                            border-radius: 1em;
+                            height: 18.2em;
+                          }
+                      - type: 'custom:mini-graph-card'
+                        group: false
+                        align_state: left
+                        points_per_hour: 0.1
+                        line_width: 2.5
+                        hour24: true
+                        hours_to_show: 48
+                        show:
+                          fill: fade
+                          icon: false
+                          name: false
+                          state: false
+                          name_adaptive_color: true
+                          labels: hover
+                          legend: false
+                        style: |
+                          ha-card {
+                            border-radius: 1em;
+                            background: none;
+                            box-shadow: none;
+                            margin-top: -7.4em;
+                            flex: none !important;
+                          }
+                        entities:
+                          - color: '#385581'
+                            entity: sensor.speedtest_upload
+                            name: Uppladdning
+                          - color: green
+                            entity: sensor.speedtest_download
+                            name: Nedladdning
+                  - break
+                  - type: custom:hui-vertical-stack-card
+                    cards:
+                      - type: entities
+                        title: " ‍   Oak"
+                        show_header_toggle: false
+                        entities:
+                          - entity: script.oak_on
+                          - type: section
+                            label: Containers
+                          - entity: switch.dockermon_plex_oak
+                          - entity: switch.dockermon_warrior
+                          - entity: switch.dockermon_watchtower_oak
+                        style: |
+                          ha-card {
+                            background: rgba(36, 42, 43, 0.88);
+                            box-shadow: none;
+                            border-radius: 1em;
+                          }
+                      - type: custom:hui-vertical-stack-card
+                        cards:
+                          - type: entities
+                            title: "Home Assistant"
+                            show_header_toggle: false
+                            entities:
+                              - entity: sensor.hass_version_template
+                              - entity: sensor.hacs
+                                name: HACS
+                            style: |
+                              ha-card {
+                                background: rgba(36, 42, 43, 0.88);
+                                box-shadow: none;
+                                border-radius: 1em;
+                                height: 18.2em;
+                              }

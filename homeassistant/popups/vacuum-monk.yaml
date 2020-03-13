@@ -12,7 +12,7 @@
               card:
                 type: custom:layout-card
                 column_num: 2
-                column_width: [390, 390]
+                column_width: [320, 320]
                 layout: vertical
                 cards:
                   - type: custom:hui-vertical-stack-card

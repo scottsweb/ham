@@ -9,9 +9,23 @@ trigger:
       - light.hallway
       - light.lounge_light_tall
       - light.lounge_light_small
-
-      - switch.pihole_sycamore_switch
+      - input_boolean.monk_clean_lounge
+      - input_boolean.monk_clean_kitchen
+      - input_boolean.monk_clean_bedroom
+      - input_boolean.monk_clean_hall
+      - input_boolean.monk_clean_office_gemma
+      - input_boolean.monk_clean_office_scott
       - switch.dockermon_blinkt
+      - switch.dockermon_nodered
+      - switch.dockermon_watchtower
+      - switch.dockermon_plex
+      - switch.dockermon_plex_oak
+      - switch.dockermon_warrior
+      - switch.dockermon_watchtower_oak
+      - switch.presence_emulator
+
+      #- switch.pihole_sycamore_switch
+      #- switch.pihole_mycroft_switch
     from: 'off'
     to: 'on'
 condition:

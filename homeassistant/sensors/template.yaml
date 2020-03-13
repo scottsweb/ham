@@ -191,3 +191,14 @@ sensors:
     friendly_name: Cleaning Count
     icon_template: 'mdi:robot-vacuum'
     value_template: "{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_count }}"
+
+  # hass
+  hass_version_template:
+    icon_template: 'mdi:home-assistant'
+    friendly_name: Version
+    value_template: >-
+      {% if states('sensor.hass_version_installed') == states('sensor.hass_version_latest') %}
+        {{ states('sensor.hass_version_installed') }}
+      {% else %}
+        {{ states('sensor.hass_version_installed') }} < {{ states('sensor.hass_version_latest') }}
+      {% endif %}
