@@ -9,3 +9,7 @@ action:
   - service: homeassistant.turn_off
     data:
       entity_id: group.monk_zones
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.monk_fan_speed
+      option: 'Standard'
