@@ -39,6 +39,10 @@ vacuum:
     host: !secret monk_ip
     token: !secret monk_token
 
+# UPnP
+upnp:
+  sensors: true
+
 # tplink
 # tplink:
 
