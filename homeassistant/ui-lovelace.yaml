@@ -1071,106 +1071,184 @@ views:
               text-rendering: optimizeLegibility
               font-smoothing: none
             cards:
-              - type: picture-elements
-                image: /local/overlay.svg
-                elements:
-                  - type: conditional
-                    conditions:
-                      - entity: media_player.luther_universal_tv
-                        state_not: "idle"
-                      - entity: media_player.luther_universal_tv
-                        state_not: "stopped"
-                      - entity: media_player.luther_universal_tv
-                        state_not: "on"
-                      - entity: media_player.luther_universal_tv
-                        state_not: "off"
-                      - entity: media_player.luther_universal_tv
-                        state_not: "unknown"
-                      - entity: media_player.luther_universal_tv
-                        state_not: "standby"
-                    elements:
-                      - type: custom:mini-media-player
-                        entity: media_player.luther_universal_tv
-                        artwork: full-cover-fit
-                        hide:
-                          controls: true
-                          power: true
-                          volume: true
-                          icon: true
-                          name: true
-                          info: true
-                          progress: true
-                        tap_action: none
-                        style:
-                          '--ha-card-background': none
-                          '--ha-card-border-radius': 0.75vw
-                          '--ha-card-box-shadow': none
-                          height: 100%
-                          left: 50%
-                          padding: 0
-                          top: 0%
-                          width: 200%
-                          z-index: -2
-                          #filter: grayscale(100%)
-                      - type: image
-                        image: /local/media_overlay_large.svg
-                        tap_action:
-                          action: none
-                        hold_action:
-                          action: none
-                        style:
-                          left: 50%
-                          top: 50%
-                          width: 100%
-                          background: rgba(0,0,0,0.3)
-                      - type: state-label
-                        prefix: Luther / TV
-                        entity: sensor.placeholder
-                        tap_action:
-                          action: none
-                        hold_action:
-                          action: none
-                        style:
-                          font-size: 1vw
-                          font-weight: 400
-                          left: 2%
-                          max-width: 1px
-                          letter-spacing: 0.031vw
-                          top: 84.8%
-                          text-rendering: optimizeLegibility
-                          font-smoothing: none
-                          cursor: default
-                      - type: state-label
-                        entity: sensor.media_luther_title_truncate
-                        tap_action:
-                          action: none
-                        hold_action:
-                          action: none
-                        style:
-                          font-size: 1.29vw
-                          font-weight: 600
-                          left: 2%
-                          max-width: 1px
-                          letter-spacing: 0.031vw
-                          top: 92%
-                          text-rendering: optimizeLegibility
-                          font-smoothing: none
-                          cursor: default
-                      - type: image
-                        entity: switch.media_play_pause_luther
-                        title: null
-                        state_image:
-                          'off': /local/mediaplay.gif
-                          'on': /local/mediapause.gif
-                        tap_action:
-                          action: toggle
-                        hold_action:
-                          action: none
-                        style:
-                          left: 50%
-                          top: 45%
-                          width: 20%
-                          filter: 'drop-shadow(0px 0px 10px #11151790)'
+              - type: conditional
+                conditions:
+                  - entity: media_player.luther_universal_tv
+                    state_not: "playing"
+                  - entity: media_player.luther_universal_tv
+                    state_not: "paused"
+                card:
+                  # Media - Recently Added
+                  type: picture-elements
+                  image: /local/overlay.svg
+                  elements:
+                    - type: custom:upcoming-media-card
+                      accent_color: none
+                      all_shadows: false
+                      border_color: none
+                      entity: sensor.plex_recently_added
+                      image_style: fanart
+                      flag: false
+                      line1_text: $empty
+                      line2_text: $empty
+                      line3_text: $empty
+                      line4_text: $empty
+                      max: 1
+                      title_text: $empty
+                      style:
+                        '--ha-card-background': none
+                        '--ha-card-box-shadow': none
+                        height: 1px
+                        left: -36%
+                        padding: 0
+                        top: -3%
+                        width: 360%
+                        filter: grayscale(100%)
+                    - type: image
+                      image: /local/media_overlay_large.svg
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      style:
+                        left: 50%
+                        top: 50%
+                        width: 100%
+                        background: rgba(0,0,0,0.3)
+                    - type: state-label
+                      prefix: Senast Nedladdat
+                      entity: sensor.placeholder
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      style:
+                        font-size: 1vw
+                        font-weight: 400
+                        left: 2%
+                        max-width: 1px
+                        letter-spacing: 0.031vw
+                        top: 84.8%
+                        text-rendering: optimizeLegibility
+                        font-smoothing: none
+                        cursor: default
+                    - type: state-label
+                      entity: sensor.plex_title_truncate
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      style:
+                        font-size: 1.29vw
+                        font-weight: 600
+                        left: 2%
+                        max-width: 1px
+                        letter-spacing: 0.031vw
+                        top: 92%
+                        text-rendering: optimizeLegibility
+                        font-smoothing: none
+                        cursor: default
+              # Media - Currently Playing
+              - type: conditional
+                conditions:
+                  - entity: media_player.luther_universal_tv
+                    state_not: "idle"
+                  - entity: media_player.luther_universal_tv
+                    state_not: "stopped"
+                  - entity: media_player.luther_universal_tv
+                    state_not: "on"
+                  - entity: media_player.luther_universal_tv
+                    state_not: "off"
+                  - entity: media_player.luther_universal_tv
+                    state_not: "unknown"
+                  - entity: media_player.luther_universal_tv
+                    state_not: "standby"
+                card:
+                  type: picture-elements
+                  image: /local/overlay.svg
+                  elements:
+                    - type: custom:mini-media-player
+                      entity: media_player.luther_universal_tv
+                      artwork: full-cover-fit
+                      hide:
+                        controls: true
+                        power: true
+                        volume: true
+                        icon: true
+                        name: true
+                        info: true
+                        progress: true
+                      tap_action: none
+                      style:
+                        '--ha-card-background': none
+                        '--ha-card-border-radius': 0.75vw
+                        '--ha-card-box-shadow': none
+                        height: 100%
+                        left: 50%
+                        padding: 0
+                        top: 0%
+                        width: 200%
+                        z-index: -2
+                        #filter: grayscale(100%)
+                    - type: image
+                      image: /local/media_overlay_large.svg
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      style:
+                        left: 50%
+                        top: 50%
+                        width: 100%
+                        background: rgba(0,0,0,0.3)
+                    - type: state-label
+                      prefix: Luther / TV
+                      entity: sensor.placeholder
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      style:
+                        font-size: 1vw
+                        font-weight: 400
+                        left: 2%
+                        max-width: 1px
+                        letter-spacing: 0.031vw
+                        top: 84.8%
+                        text-rendering: optimizeLegibility
+                        font-smoothing: none
+                        cursor: default
+                    - type: state-label
+                      entity: sensor.media_luther_title_truncate
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      style:
+                        font-size: 1.29vw
+                        font-weight: 600
+                        left: 2%
+                        max-width: 1px
+                        letter-spacing: 0.031vw
+                        top: 92%
+                        text-rendering: optimizeLegibility
+                        font-smoothing: none
+                        cursor: default
+                    - type: image
+                      entity: switch.media_play_pause_luther
+                      title: null
+                      state_image:
+                        'off': /local/mediaplay.gif
+                        'on': /local/mediapause.gif
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: none
+                      style:
+                        left: 50%
+                        top: 45%
+                        width: 20%
+                        filter: 'drop-shadow(0px 0px 10px #11151790)'
 
               - type: picture-elements
                 image: /local/overlay.svg
@@ -1217,10 +1295,11 @@ views:
                     image: /local/overlay.svg
                     entity: sensor.placeholder
                     title: null
-                    action: call-service
-                    service: script.turn_on
-                    service_data:
-                      entity_id: script.tv_netflix
+                    tap_action:
+                      action: call-service
+                      service: script.turn_on
+                      service_data:
+                        entity_id: script.tv_netflix
                     hold_action:
                       action: none
                     style:
@@ -1270,10 +1349,11 @@ views:
                     image: /local/overlay.svg
                     entity: sensor.placeholder
                     title: null
-                    action: call-service
-                    service: script.turn_on
-                    service_data:
-                      entity_id: script.tv_kodi
+                    tap_action:
+                      action: call-service
+                      service: script.turn_on
+                      service_data:
+                        entity_id: script.tv_kodi
                     hold_action:
                       action: none
                     style:
@@ -1322,10 +1402,11 @@ views:
                     image: /local/overlay.svg
                     entity: sensor.placeholder
                     title: null
-                    action: call-service
-                    service: script.turn_on
-                    service_data:
-                      entity_id: script.tv_plex
+                    tap_action:
+                      action: call-service
+                      service: script.turn_on
+                      service_data:
+                        entity_id: script.tv_plex
                     hold_action:
                       action: none
                     style:
@@ -1374,10 +1455,11 @@ views:
                     image: /local/overlay.svg
                     entity: sensor.placeholder
                     title: null
-                    action: call-service
-                    service: script.turn_on
-                    service_data:
-                      entity_id: script.tv_youtube
+                    tap_action:
+                      action: call-service
+                      service: script.turn_on
+                      service_data:
+                        entity_id: script.tv_youtube
                     hold_action:
                       action: none
                     style:

@@ -210,6 +210,17 @@ sensors:
         {% if is_state_attr('media_player.luther_universal_tv', 'media_title', 'Nothing playing') %} Inget spelas
         {% elif is_state_attr('media_player.luther_universal_tv', 'media_title', 'No title') %} Ingen titel
         {% elif is_state('media_player.luther_universal_tv', 'idle') %} Viloläge
-        {% else %} {{ state_attr('media_player.luther_universal_tv', 'media_title') 
+        {% else %} {{ state_attr('media_player.luther_universal_tv', 'media_title')
         | truncate(30, True, '...', 0) }} {% endif %}
       {% endif %}
+
+  plex_title:
+    value_template: >
+      {% set data = state_attr('sensor.plex_recently_added', 'data') | from_json %}
+      {{ data[1].title }}
+      {% if data[1].number is none %} ({{ data[1].aired.split('-')[0] }})
+      {% else %} {{ data[1].number }} {% endif %}
+
+  plex_title_truncate:
+    value_template: >
+      {{ states('sensor.plex_title') | truncate(30, True, '...', 0) }}
