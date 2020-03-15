@@ -36,6 +36,7 @@ homeassistant/.storage
 homeassistant/custom_components/**/__pycache__/
 homeassistant/custom_components/**/.translations/
 homeassistant/google_calendars.yaml
+homeassistant/www/plex/
 
 # miniflux
 miniflux/miniflux
