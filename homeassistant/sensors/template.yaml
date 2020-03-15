@@ -210,8 +210,9 @@ sensors:
         {% if is_state_attr('media_player.luther_universal_tv', 'media_title', 'Nothing playing') %} Inget spelas
         {% elif is_state_attr('media_player.luther_universal_tv', 'media_title', 'No title') %} Ingen titel
         {% elif is_state('media_player.luther_universal_tv', 'idle') %} Viloläge
-        {% else %} {{ state_attr('media_player.luther_universal_tv', 'media_title')
-        | truncate(30, True, '...', 0) }} {% endif %}
+        {% elif state_attr('media_player.luther_universal_tv', 'media_title') != None %} {{ state_attr('media_player.luther_universal_tv', 'media_title') | truncate(30, True, '...', 0) }}
+        {% else %} {{ state_attr('media_player.luther_universal_tv', 'app_name') }}
+        {% endif %}
       {% endif %}
 
   plex_title:

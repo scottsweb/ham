@@ -688,7 +688,7 @@ views:
           # Heading Tools
           - type: state-label
             entity: sensor.placeholder
-            prefix: Tools (ad block, hover etc)
+            prefix: Tools (ad block?)
             tap_action:
               action: none
             hold_action:
@@ -770,7 +770,7 @@ views:
               background: 'var(--bg-light-hallway)'
               color: 'var(--colour-light-hallway)'
               border-radius: 0.7vw
-              font-size: 1.2vw
+              font-size: 1.25vw
               display: flex
               align-items: flex-end
               padding: 0.5% 0.8%
@@ -849,7 +849,7 @@ views:
               background: 'var(--bg-light-cloud)'
               color: 'var(--colour-light-cloud)'
               border-radius: 0.7vw
-              font-size: 1.2vw
+              font-size: 1.25vw
               display: flex
               align-items: flex-end
               padding: 0.5% 0.8%
@@ -904,7 +904,7 @@ views:
               background: 'var(--bg-light-lounge-small)'
               color: 'var(--colour-light-lounge-small)'
               border-radius: 0.7vw
-              font-size: 1.2vw
+              font-size: 1.25vw
               display: flex
               align-items: flex-end
               padding: 0.5% 0.8%
@@ -983,7 +983,7 @@ views:
               background: 'var(--bg-light-lounge-tall)'
               color: 'var(--colour-light-lounge-tall)'
               border-radius: 0.7vw
-              font-size: 1.2vw
+              font-size: 1.25vw
               display: flex
               align-items: flex-end
               padding: 0.5% 0.8%
@@ -1270,7 +1270,7 @@ views:
                       border-radius: 0.75vw
                       background: '#E50914'
                       color: '#ffffff'
-                      font-size: 1.2vw
+                      font-size: 1.25vw
                       display: flex
                       align-items: flex-end
                       padding: 2.3% 3%
@@ -1324,7 +1324,7 @@ views:
                       border-radius: 0.75vw
                       background: '#12b2e7'
                       color: '#ffffff'
-                      font-size: 1.2vw
+                      font-size: 1.25vw
                       display: flex
                       align-items: flex-end
                       padding: 2.3% 3%
@@ -1377,7 +1377,7 @@ views:
                       border-radius: 0.75vw
                       background: '#e5a00d'
                       color: '#ffffff'
-                      font-size: 1.2vw
+                      font-size: 1.25vw
                       display: flex
                       align-items: flex-end
                       padding: 2.3% 3%
@@ -1430,7 +1430,7 @@ views:
                       border-radius: 0.75vw
                       background: '#ff0000'
                       color: '#ffffff'
-                      font-size: 1.2vw
+                      font-size: 1.25vw
                       display: flex
                       align-items: flex-end
                       padding: 2.3% 3%
@@ -1485,7 +1485,7 @@ views:
               background: 'var(--bg-camera-front)'
               color: 'var(--colour-camera-front)'
               border-radius: 0.7vw
-              font-size: 1.2vw
+              font-size: 1.25vw
               display: flex
               align-items: flex-end
               padding: 0.4% 0.7%
@@ -1574,7 +1574,7 @@ views:
               background: 'var(--bg-camera-back)'
               color: 'var(--colour-camera-back)'
               border-radius: 0.7vw
-              font-size: 1.2vw
+              font-size: 1.25vw
               display: flex
               align-items: flex-end
               padding: 0.4% 0.7%
@@ -1663,7 +1663,7 @@ views:
               background: 'var(--bg-camera-indoor-front)'
               color: 'var(--colour-camera-indoor-front)'
               border-radius: 0.7vw
-              font-size: 1.2vw
+              font-size: 1.25vw
               display: flex
               align-items: flex-end
               padding: 0.4% 0.7%
@@ -1752,7 +1752,7 @@ views:
               background: 'var(--bg-camera-indoor-back)'
               color: 'var(--colour-camera-indoor-back)'
               border-radius: 0.7vw
-              font-size: 1.2vw
+              font-size: 1.25vw
               display: flex
               align-items: flex-end
               padding: 0.4% 0.7%
@@ -1842,7 +1842,7 @@ views:
                background: 'var(--bg-scott)'
                color: 'var(--colour-scott)'
                border-radius: 0.7vw
-               font-size: 1.2vw
+               font-size: 1.25vw
                display: flex
                align-items: flex-end
                padding: 0.5% 0.8%
@@ -1940,7 +1940,7 @@ views:
                background: 'var(--bg-gemma)'
                color: 'var(--colour-gemma)'
                border-radius: 0.7vw
-               font-size: 1.2vw
+               font-size: 1.25vw
                display: flex
                align-items: flex-end
                padding: 0.5% 0.8%
@@ -2038,7 +2038,7 @@ views:
                background: 'var(--bg-post)'
                color: 'var(--colour-post)'
                border-radius: 0.7vw
-               font-size: 1.2vw
+               font-size: 1.25vw
                display: flex
                align-items: flex-end
                padding: 0.5% 0.8%
@@ -2092,7 +2092,7 @@ views:
                background: 'var(--bg-presence)'
                color: 'var(--colour-presence)'
                border-radius: 0.7vw
-               font-size: 1.2vw
+               font-size: 1.25vw
                display: flex
                align-items: flex-end
                padding: 0.5% 0.8%
