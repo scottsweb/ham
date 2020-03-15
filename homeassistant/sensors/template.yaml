@@ -202,3 +202,14 @@ sensors:
       {% else %}
         {{ states('sensor.hass_version_installed') }} < {{ states('sensor.hass_version_latest') }}
       {% endif %}
+
+  # media
+  media_luther_title_truncate:
+    value_template: >
+      {% if states('media_player.luther_universal_tv') == null %} {% else %}
+        {% if is_state_attr('media_player.luther_universal_tv', 'media_title', 'Nothing playing') %} Inget spelas
+        {% elif is_state_attr('media_player.luther_universal_tv', 'media_title', 'No title') %} Ingen titel
+        {% elif is_state('media_player.luther_universal_tv', 'idle') %} Viloläge
+        {% else %} {{ state_attr('media_player.luther_universal_tv', 'media_title') 
+        | truncate(30, True, '...', 0) }} {% endif %}
+      {% endif %}

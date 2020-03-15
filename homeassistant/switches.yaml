@@ -74,6 +74,15 @@
         data:
           entity_id: switch.game_core
 
+    media_play_pause_luther:
+        value_template: "{% if is_state('media_player.luther_universal_tv', 'playing') %}on{% else %}off{% endif %}"
+        turn_on:
+          service: media_player.media_play
+          entity_id: media_player.luther_universal_tv
+        turn_off:
+          service: media_player.media_pause
+          entity_id: media_player.luther_universal_tv
+
 # - platform: broadlink
 #   host: !secret broadlink_ip
 #   mac: !secret broadlink_mac

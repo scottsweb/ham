@@ -261,6 +261,14 @@ tv_plex:
         entity_id: media_player.tv_firetv
         source: com.plexapp.android
 
+tv_youtube:
+  alias: 'YouTube'
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.tv_firetv
+        source: com.google.android.youtube
+
 oak_on:
   alias: 'Wake on LAN (WOL)'
   sequence:

@@ -33,19 +33,324 @@ resources:
     type: module
   - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
     type: module
+  - url: /community_plugin/swipe-card/swipe-card.js
+    type: module
+  - url: /community_plugin/upcoming-media-card/upcoming-media-card.js
+    type: js
 # ----------
   - url: /community_plugin/light-slider-card/light-slider-card.js?v=3.2.4
     type: js
 views:
+# Home
   - title: Home
     icon: mdi:home
     path: default_view
-    panel: true
     badges:
-      - device_tracker.ge
-      - device_tracker.sc
-      - device_tracker.ti
-      - device_tracker.gr
+      - person.gemma
+      - person.scott
+    cards:
+      - type: entities
+        title: Exchange Rates
+        show_header_toggle: false
+        entities:
+          - sensor.gbp_sek
+          - sensor.sek_gbp
+      - type: entities
+        title: Coins
+        show_header_toggle: false
+        entities:
+          - sensor.bitcoin
+          - sensor.bitcoin_cash
+          - sensor.ethereum
+          - sensor.ripple
+          - sensor.litecoin
+
+  - title: Entertainment
+    path: entertainment
+    icon: mdi:filmstrip
+    badges:
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                icon: mdi:power
+                size: 35px
+                entity: switch.tv
+                color: rgb(82,150,28)
+                color_off:
+                color_type: card
+                name: TV
+                state:
+                  - value: 'on'
+                    styles:
+                      card:
+                        - background: rgb(82,150,28)
+                      icon:
+                        - color: rgb(255,255,255)
+                      name:
+                        - color: rgb(255,255,255)
+                  - value: 'off'
+                    styles:
+                      card:
+                        - background: var(--primary-color)
+                      icon:
+                        - color: rgb(255,255,255)
+                      name:
+                        - color: rgb(255,255,255)
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                icon: mdi:volume-minus
+                size: 44px
+                show_name: false
+                action: call-service
+                service: script.turn_on
+                entity: script.tv_vol_down
+              - type: "custom:button-card"
+                icon: mdi:volume-mute
+                size: 44px
+                entity: switch.tv_mute
+                show_name: false
+                state:
+                  - value: 'on'
+                    styles:
+                      icon:
+                        - color: rgb(82,150,28)
+                  - value: 'off'
+                    styles:
+                      icon:
+                        - color: var(--primary-color)
+              - type: "custom:button-card"
+                icon: mdi:volume-plus
+                size: 44px
+                show_name: false
+                action: call-service
+                service: script.turn_on
+                entity: script.tv_vol_up
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                name: Netflix
+                styles:
+                  card:
+                    - color: rgb(255,255,255)
+                    - background: rgb(112,55,178)
+                    - height: 56px
+                show_icon: false
+                action: call-service
+                service: script.turn_on
+                entity: script.tv_netflix
+              - type: "custom:button-card"
+                name: Kodi
+                styles:
+                  card:
+                    - color: rgb(255,255,255)
+                    - background: rgb(112,55,178)
+                    - height: 56px
+                show_icon: false
+                action: call-service
+                service: script.turn_on
+                entity: script.tv_kodi
+              - type: "custom:button-card"
+                name: Plex
+                styles:
+                  card:
+                    - color: rgb(255,255,255)
+                    - background: rgb(112,55,178)
+                    - height: 56px
+                show_icon: false
+                action: call-service
+                service: script.turn_on
+                entity: script.tv_plex
+          - type: entities
+            title: false
+            show_header_toggle: false
+            entities:
+              - entity: switch.tv
+ #               - entity: switch.speaker
+ #               - entity: input_number.luther_sound_volume
+              - entity: switch.games
+      - type: media-control
+        entity: media_player.luther_universal_tv
+ #       - type: media-control
+ #         entity: media_player.luther_universal_audio
+
+  - title: Cameras
+    path: cctv
+    icon: mdi:camera-iris
+    badges:
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            entity: camera.blink_front
+          - type: entities
+            title: Front
+            show_header_toggle: false
+            entities:
+              - script.blink_front_capture_script
+              - sensor.blink_front_temperature
+              - sensor.blink_front_battery
+              - binary_sensor.blink_front_camera_armed
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            entity: camera.blink_back
+          - type: entities
+            title: Back
+            show_header_toggle: false
+            entities:
+              - script.blink_back_capture_script
+              - sensor.blink_back_temperature
+              - sensor.blink_back_battery
+              - binary_sensor.blink_back_camera_armed
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            entity: camera.blink_indoor_front
+          - type: entities
+            title: Indoor Front
+            show_header_toggle: false
+            entities:
+              - script.blink_indoor_front_capture_script
+              - sensor.blink_indoor_front_temperature
+              - sensor.blink_indoor_front_battery
+              - binary_sensor.blink_indoor_front_camera_armed
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            entity: camera.blink_indoor_back
+          - type: entities
+            title: Indoor Back
+            show_header_toggle: false
+            entities:
+              - script.blink_indoor_back_capture_script
+              - sensor.blink_indoor_back_temperature
+              - sensor.blink_indoor_back_battery
+              - binary_sensor.blink_indoor_back_camera_armed
+
+  - title: Outdoors
+    path: outdoors
+    icon: mdi:pine-tree
+    cards:
+      - type: weather-forecast
+        entity: weather.dark_sky
+      - type: entities
+        title: Weather
+        show_header_toggle: false
+        entities:
+          - sensor.dark_sky_precip_intensity
+          - sun.sun
+          - sensor.moon
+          - sensor.dark_sky_uv_index
+          - sensor.u_s_air_pollution_level
+          - sensor.u_s_air_quality_index
+          - sensor.u_s_main_pollutant
+ #      - type: map
+ #        title: Space Station
+ #        aspect_ratio: 16:9
+ #        default_zoom: 8
+ #        entities:
+ #          - binary_sensor.iss
+ #      - type: entities
+ #        title: Next Train
+ #        show_header_toggle: false
+ #        entities:
+ #          - sensor.next_train_status
+ #          - sensor.next_trains_estimated
+ #          - sensor.next_trains_scheduled
+ #          - sensor.next_trains_platform
+ #      - type: plant-status
+ #        entity: plant.flora_front_plant
+ #      - type: plant-status
+ #        entity: plant.flora_back_plant
+
+  - title: Settings
+    path: settings
+    icon: mdi:settings
+    badges:
+    cards:
+ #      - type: entities
+ #        title: Protect
+ #        show_header_toggle: false
+ #        entities:
+ #          - sensor.downstairs_nest_protect_battery_health
+ #          - sensor.downstairs_nest_protect_co_status
+ #          - sensor.downstairs_nest_protect_smoke_status
+ #          - sensor.upstairs_nest_protect_battery_health
+ #          - sensor.upstairs_nest_protect_co_status
+ #          - sensor.upstairs_nest_protect_smoke_status
+      - type: entities
+        title: Internet
+        show_header_toggle: false
+        entities:
+          - sensor.speedtest_ping
+          - sensor.speedtest_download
+          - sensor.speedtest_upload
+          - sensor.ip_address
+      - type: entities
+        title: Bonsai
+        show_header_toggle: false
+        entities:
+          - entity: sensor.memory_use_percent
+          - entity: sensor.load_5m
+          - entity: sensor.cpu_temperature
+          - entity: sensor.since_last_boot_sycamore
+          - entity: switch.pihole_sycamore_switch
+          - type: section
+            label: Containers
+          - entity: switch.dockermon_blinkt
+          - entity: switch.dockermon_nodered
+          - entity: switch.dockermon_plex
+          - entity: switch.dockermon_watchtower
+      - type: entities
+        title: Mycroft
+        show_header_toggle: false
+        entities:
+          - entity: sensor.ram_use_mycroft
+          - entity: sensor.cpu_use_mycroft
+          - entity: sensor.cpu_temperature_mycroft
+          - entity: sensor.since_last_boot_mycroft
+          - entity: switch.pihole_mycroft_switch
+      - type: entities
+        title: Oak
+        show_header_toggle: false
+        entities:
+          - entity: script.oak_on
+          - type: section
+            label: Containers
+          - entity: switch.dockermon_plex_oak
+          - entity: switch.dockermon_warrior
+          - entity: switch.dockermon_watchtower_oak
+      - type: entities
+        title: Settings
+        show_header_toggle: false
+        entities:
+          - switch.presence_emulator
+      - type: entities
+        title: Ad Blocker
+        show_header_toggle: true
+        entities:
+          - switch.pihole_sycamore_switch
+          - switch.pihole_mycroft_switch
+      - type: entities
+        title: Blink
+        show_header_toggle: false
+        entities:
+          - binary_sensor.blink_back_camera_armed
+          - binary_sensor.blink_front_camera_armed
+          - binary_sensor.blink_indoor_back_camera_armed
+          - binary_sensor.blink_indoor_front_camera_armed
+
+# Tablet / full screen UI
+  - title: Tablet
+    icon: mdi:tablet
+    path: tablet
+    panel: true
+    theme: slate
+    badges: []
     cards:
       - type: picture-elements
         image: /local/uibg.png
@@ -55,6 +360,9 @@ views:
             {% set bg_on = '#cfd0d1' %}
             {% set colour_off = '#666869' %}
             {% set colour_on = '#464646' %}
+
+            --bg-off: {{bg_off}};
+            --colour-off: {{colour_off}};
 
             --bg-light-hallway: {% if is_state('light.hallway', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
             --colour-light-hallway: {% if is_state('light.hallway', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
@@ -333,12 +641,12 @@ views:
               left: 10.7%
               top: 91.41%
           - type: icon
-            icon: 'mdi:home-heart'
+            icon: 'mdi:emoticon-lol-outline'
             #tap_action: !include popup/sidebar_scenarier.yaml
             title: null
             style:
-              '--iron-icon-height': 4.6vw
-              '--iron-icon-width': 4.6vw
+              '--iron-icon-height': 4vw
+              '--iron-icon-width': 4vw
               color: 'rgba(255, 255, 255, 0.20)'
               left: 16.55%
               top: 91.55%
@@ -406,7 +714,7 @@ views:
               color: '#bcbebf'
               font-size: 1.8vw
               font-weight: 500
-              left: 24.75%
+              left: 25%
               max-width: 1px
               top: 53.4%
               cursor: default
@@ -739,35 +1047,344 @@ views:
               height: 16%
 
           # Media
-#          - type: custom:mini-media-player
-#            entity: media_player.luther_universal_tv
-#            artwork: full-cover-fit
-#            hide:
-#            #  controls: true
-#            #  power: true
-#            #  volume: true
-#            #  icon: true
-#            #  name: true
-#            #  info: true
-#            #  progress: true
-#            #  source: true
-#            style:
-#              --ha-card-background: none
-#              --ha-card-border-radius: 0.75vw
-#              --ha-card-box-shadow: none
-#              height: 1px
-#              top: 50%
-#              left: 50%
-#              width: 100%
-#              left: 50%
-#              padding: 0
-#              width: 100%
-#          - type: image
-#            image: /local/media_overlay_large.svg
-#            style:
-#              left: 40%
-#              top: 64.5%
-#              width: 20%
+          - type: custom:swipe-card
+            start_card: 1
+            parameters:
+              effect: 'coverflow'
+              speed: 450
+              spaceBetween: 10
+              threshold: 30
+              coverflowEffect:
+                rotate: 70
+                stretch: 0
+                depth: 300
+                modifier: 1
+                slideShadows : true
+            style:
+              '--ha-card-background': none
+              '--ha-card-border-radius': 0.75vw
+              '--ha-card-box-shadow': none
+              left: 35.8%
+              padding: 0
+              top: 73.4%
+              width: 20.95%
+              text-rendering: optimizeLegibility
+              font-smoothing: none
+            cards:
+              - type: picture-elements
+                image: /local/overlay.svg
+                elements:
+                  - type: conditional
+                    conditions:
+                      - entity: media_player.luther_universal_tv
+                        state_not: "idle"
+                      - entity: media_player.luther_universal_tv
+                        state_not: "stopped"
+                      - entity: media_player.luther_universal_tv
+                        state_not: "on"
+                      - entity: media_player.luther_universal_tv
+                        state_not: "off"
+                      - entity: media_player.luther_universal_tv
+                        state_not: "unknown"
+                      - entity: media_player.luther_universal_tv
+                        state_not: "standby"
+                    elements:
+                      - type: custom:mini-media-player
+                        entity: media_player.luther_universal_tv
+                        artwork: full-cover-fit
+                        hide:
+                          controls: true
+                          power: true
+                          volume: true
+                          icon: true
+                          name: true
+                          info: true
+                          progress: true
+                        tap_action: none
+                        style:
+                          '--ha-card-background': none
+                          '--ha-card-border-radius': 0.75vw
+                          '--ha-card-box-shadow': none
+                          height: 100%
+                          left: 50%
+                          padding: 0
+                          top: 0%
+                          width: 200%
+                          z-index: -2
+                          #filter: grayscale(100%)
+                      - type: image
+                        image: /local/media_overlay_large.svg
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+                        style:
+                          left: 50%
+                          top: 50%
+                          width: 100%
+                          background: rgba(0,0,0,0.3)
+                      - type: state-label
+                        prefix: Luther / TV
+                        entity: sensor.placeholder
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+                        style:
+                          font-size: 1vw
+                          font-weight: 400
+                          left: 2%
+                          max-width: 1px
+                          letter-spacing: 0.031vw
+                          top: 84.8%
+                          text-rendering: optimizeLegibility
+                          font-smoothing: none
+                          cursor: default
+                      - type: state-label
+                        entity: sensor.media_luther_title_truncate
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+                        style:
+                          font-size: 1.29vw
+                          font-weight: 600
+                          left: 2%
+                          max-width: 1px
+                          letter-spacing: 0.031vw
+                          top: 92%
+                          text-rendering: optimizeLegibility
+                          font-smoothing: none
+                          cursor: default
+                      - type: image
+                        entity: switch.media_play_pause_luther
+                        title: null
+                        state_image:
+                          'off': /local/mediaplay.gif
+                          'on': /local/mediapause.gif
+                        tap_action:
+                          action: toggle
+                        hold_action:
+                          action: none
+                        style:
+                          left: 50%
+                          top: 45%
+                          width: 20%
+                          filter: 'drop-shadow(0px 0px 10px #11151790)'
+
+              - type: picture-elements
+                image: /local/overlay.svg
+                elements:
+                  # Netflix
+                  - type: state-label
+                    entity: sensor.placeholder
+                    prefix: Netflix
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    title: null
+                    style:
+                      left: 24%
+                      top: 23.5%
+                      width: 47%
+                      height: 47%
+                      border-radius: 0.75vw
+                      background: '#E50914'
+                      color: '#ffffff'
+                      font-size: 1.3vw
+                      display: flex
+                      align-items: flex-end
+                      padding: 2.3% 3%
+                      box-sizing: border-box
+                      transition: all 0.5s ease-in-out
+                  - type: state-icon
+                    entity: sensor.placeholder
+                    icon: mdi:netflix
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    style:
+                      left: 3.5%
+                      top: 5%
+                      box-sizing: border-box
+                      transform: scale(1)
+                      --iron-icon-fill-color: '#ffffff'
+                      --iron-icon-height: 2.3vw
+                      --iron-icon-width: 2.3vw
+                  - type: image
+                    image: /local/overlay.svg
+                    entity: sensor.placeholder
+                    title: null
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.tv_netflix
+                    hold_action:
+                      action: none
+                    style:
+                      left: 24%
+                      top: 23.5%
+                      width: 47%
+                      height: 47%
+                  # Kodi
+                  - type: state-label
+                    entity: sensor.placeholder
+                    prefix: Kodi
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    title: null
+                    style:
+                      left: 76%
+                      top: 23.5%
+                      width: 47%
+                      height: 47%
+                      border-radius: 0.75vw
+                      background: '#12b2e7'
+                      color: '#ffffff'
+                      font-size: 1.3vw
+                      display: flex
+                      align-items: flex-end
+                      padding: 2.3% 3%
+                      box-sizing: border-box
+                      transition: all 0.5s ease-in-out
+                  - type: state-icon
+                    entity: sensor.placeholder
+                    icon: mdi:kodi
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    style:
+                      left: 58.3%
+                      top: 5.5%
+                      box-sizing: border-box
+                      transform: scale(1)
+                      --iron-icon-fill-color: '#ffffff'
+                      --iron-icon-height: 2.3vw
+                      --iron-icon-width: 2.3vw
+                  - type: image
+                    image: /local/overlay.svg
+                    entity: sensor.placeholder
+                    title: null
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.tv_kodi
+                    hold_action:
+                      action: none
+                    style:
+                      left: 76%
+                      top: 23.5%
+                      width: 47%
+                      height: 47%
+                  # Plex
+                  - type: state-label
+                    entity: sensor.placeholder
+                    prefix: Plex
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    style:
+                      left: 24%
+                      top: 77%
+                      width: 46.5%
+                      height: 47%
+                      border-radius: 0.75vw
+                      background: '#e5a00d'
+                      color: '#ffffff'
+                      font-size: 1.3vw
+                      display: flex
+                      align-items: flex-end
+                      padding: 2.3% 3%
+                      box-sizing: border-box
+                      transition: all 0.5s ease-in-out
+                  - type: state-icon
+                    entity: sensor.placeholder
+                    icon: mdi:plex
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    style:
+                      left: 4.3%
+                      top: 57.5%
+                      box-sizing: border-box
+                      transform: scale(1)
+                      --iron-icon-fill-color: '#ffffff'
+                      --iron-icon-height: 2.3vw
+                      --iron-icon-width: 2.3vw
+                  - type: image
+                    image: /local/overlay.svg
+                    entity: sensor.placeholder
+                    title: null
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.tv_plex
+                    hold_action:
+                      action: none
+                    style:
+                      left: 24%
+                      top: 77%
+                      width: 46.5%
+                      height: 47%
+                  # YouTube
+                  - type: state-label
+                    entity: sensor.placeholder
+                    prefix: YouTube
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    style:
+                      left: 76%
+                      top: 77%
+                      width: 46.5%
+                      height: 47%
+                      border-radius: 0.75vw
+                      background: '#ff0000'
+                      color: '#ffffff'
+                      font-size: 1.3vw
+                      display: flex
+                      align-items: flex-end
+                      padding: 2.3% 3%
+                      box-sizing: border-box
+                      transition: all 0.5s ease-in-out
+                  - type: state-icon
+                    entity: sensor.placeholder
+                    icon: mdi:youtube-tv
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    style:
+                      left: 58.3%
+                      top: 57.5%
+                      box-sizing: border-box
+                      transform: scale(1)
+                      --iron-icon-fill-color: '#ffffff'
+                      --iron-icon-height: 2.3vw
+                      --iron-icon-width: 2.3vw
+                  - type: image
+                    image: /local/overlay.svg
+                    entity: sensor.placeholder
+                    title: null
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.tv_youtube
+                    hold_action:
+                      action: none
+                    style:
+                      left: 76%
+                      top: 77%
+                      width: 46.5%
+                      height: 47%
 
           # Cameras
           # Front Camera
@@ -1504,297 +2121,3 @@ views:
 #        entity: sensor.hallway_thermostat_temperature
 #        name: Indoor Temperature
 #        detail: 2
-      - type: entities
-        title: Exchange Rates
-        show_header_toggle: false
-        entities:
-          - sensor.gbp_sek
-          - sensor.sek_gbp
-      - type: entities
-        title: Coins
-        show_header_toggle: false
-        entities:
-          - sensor.bitcoin
-          - sensor.bitcoin_cash
-          - sensor.ethereum
-          - sensor.ripple
-          - sensor.litecoin
-
-  - title: Entertainment
-    path: entertainment
-    icon: mdi:filmstrip
-    badges:
-    cards:
-      - type: vertical-stack
-        cards:
-          - type: horizontal-stack
-            cards:
-              - type: "custom:button-card"
-                icon: mdi:power
-                size: 35px
-                entity: switch.tv
-                color: rgb(82,150,28)
-                color_off:
-                color_type: card
-                name: TV
-                state:
-                  - value: 'on'
-                    styles:
-                      card:
-                        - background: rgb(82,150,28)
-                      icon:
-                        - color: rgb(255,255,255)
-                      name:
-                        - color: rgb(255,255,255)
-                  - value: 'off'
-                    styles:
-                      card:
-                        - background: var(--primary-color)
-                      icon:
-                        - color: rgb(255,255,255)
-                      name:
-                        - color: rgb(255,255,255)
-          - type: horizontal-stack
-            cards:
-              - type: "custom:button-card"
-                icon: mdi:volume-minus
-                size: 44px
-                show_name: false
-                action: call-service
-                service: script.turn_on
-                entity: script.tv_vol_down
-              - type: "custom:button-card"
-                icon: mdi:volume-mute
-                size: 44px
-                entity: switch.tv_mute
-                show_name: false
-                state:
-                  - value: 'on'
-                    styles:
-                      icon:
-                        - color: rgb(82,150,28)
-                  - value: 'off'
-                    styles:
-                      icon:
-                        - color: var(--primary-color)
-              - type: "custom:button-card"
-                icon: mdi:volume-plus
-                size: 44px
-                show_name: false
-                action: call-service
-                service: script.turn_on
-                entity: script.tv_vol_up
-          - type: horizontal-stack
-            cards:
-              - type: "custom:button-card"
-                name: Netflix
-                styles:
-                  card:
-                    - color: rgb(255,255,255)
-                    - background: rgb(112,55,178)
-                    - height: 56px
-                show_icon: false
-                action: call-service
-                service: script.turn_on
-                entity: script.tv_netflix
-              - type: "custom:button-card"
-                name: Kodi
-                styles:
-                  card:
-                    - color: rgb(255,255,255)
-                    - background: rgb(112,55,178)
-                    - height: 56px
-                show_icon: false
-                action: call-service
-                service: script.turn_on
-                entity: script.tv_kodi
-              - type: "custom:button-card"
-                name: Plex
-                styles:
-                  card:
-                    - color: rgb(255,255,255)
-                    - background: rgb(112,55,178)
-                    - height: 56px
-                show_icon: false
-                action: call-service
-                service: script.turn_on
-                entity: script.tv_plex
-          - type: entities
-            title: false
-            show_header_toggle: false
-            entities:
-              - entity: switch.tv
-#               - entity: switch.speaker
-#               - entity: input_number.luther_sound_volume
-              - entity: switch.games
-      - type: media-control
-        entity: media_player.luther_universal_tv
-#       - type: media-control
-#         entity: media_player.luther_universal_audio
-
-  - title: Cameras
-    path: cctv
-    icon: mdi:camera-iris
-    badges:
-    cards:
-      - type: vertical-stack
-        cards:
-          - type: picture-entity
-            entity: camera.blink_front
-          - type: entities
-            title: Front
-            show_header_toggle: false
-            entities:
-              - script.blink_front_capture_script
-              - sensor.blink_front_temperature
-              - sensor.blink_front_battery
-              - binary_sensor.blink_front_camera_armed
-      - type: vertical-stack
-        cards:
-          - type: picture-entity
-            entity: camera.blink_back
-          - type: entities
-            title: Back
-            show_header_toggle: false
-            entities:
-              - script.blink_back_capture_script
-              - sensor.blink_back_temperature
-              - sensor.blink_back_battery
-              - binary_sensor.blink_back_camera_armed
-      - type: vertical-stack
-        cards:
-          - type: picture-entity
-            entity: camera.blink_indoor_front
-          - type: entities
-            title: Indoor Front
-            show_header_toggle: false
-            entities:
-              - script.blink_indoor_front_capture_script
-              - sensor.blink_indoor_front_temperature
-              - sensor.blink_indoor_front_battery
-              - binary_sensor.blink_indoor_front_camera_armed
-      - type: vertical-stack
-        cards:
-          - type: picture-entity
-            entity: camera.blink_indoor_back
-          - type: entities
-            title: Indoor Back
-            show_header_toggle: false
-            entities:
-              - script.blink_indoor_back_capture_script
-              - sensor.blink_indoor_back_temperature
-              - sensor.blink_indoor_back_battery
-              - binary_sensor.blink_indoor_back_camera_armed
-
-  - title: Outdoors
-    path: outdoors
-    icon: mdi:pine-tree
-    cards:
-      - type: weather-forecast
-        entity: weather.dark_sky
-      - type: entities
-        title: Weather
-        show_header_toggle: false
-        entities:
-          - sensor.dark_sky_precip_intensity
-          - sun.sun
-          - sensor.moon
-          - sensor.dark_sky_uv_index
-          - sensor.u_s_air_pollution_level
-          - sensor.u_s_air_quality_index
-          - sensor.u_s_main_pollutant
-#      - type: map
-#        title: Space Station
-#        aspect_ratio: 16:9
-#        default_zoom: 8
-#        entities:
-#          - binary_sensor.iss
-#      - type: entities
-#        title: Next Train
-#        show_header_toggle: false
-#        entities:
-#          - sensor.next_train_status
-#          - sensor.next_trains_estimated
-#          - sensor.next_trains_scheduled
-#          - sensor.next_trains_platform
-#      - type: plant-status
-#        entity: plant.flora_front_plant
-#      - type: plant-status
-#        entity: plant.flora_back_plant
-
-  - title: Settings
-    path: settings
-    icon: mdi:settings
-    badges:
-    cards:
-#      - type: entities
-#        title: Protect
-#        show_header_toggle: false
-#        entities:
-#          - sensor.downstairs_nest_protect_battery_health
-#          - sensor.downstairs_nest_protect_co_status
-#          - sensor.downstairs_nest_protect_smoke_status
-#          - sensor.upstairs_nest_protect_battery_health
-#          - sensor.upstairs_nest_protect_co_status
-#          - sensor.upstairs_nest_protect_smoke_status
-      - type: entities
-        title: Internet
-        show_header_toggle: false
-        entities:
-          - sensor.speedtest_ping
-          - sensor.speedtest_download
-          - sensor.speedtest_upload
-          - sensor.ip_address
-      - type: entities
-        title: Bonsai
-        show_header_toggle: false
-        entities:
-          - entity: sensor.memory_use_percent
-          - entity: sensor.load_5m
-          - entity: sensor.cpu_temperature
-          - entity: sensor.since_last_boot_sycamore
-          - entity: switch.pihole_sycamore_switch
-          - type: section
-            label: Containers
-          - entity: switch.dockermon_blinkt
-          - entity: switch.dockermon_nodered
-          - entity: switch.dockermon_plex
-          - entity: switch.dockermon_watchtower
-      - type: entities
-        title: Mycroft
-        show_header_toggle: false
-        entities:
-          - entity: sensor.ram_use_mycroft
-          - entity: sensor.cpu_use_mycroft
-          - entity: sensor.cpu_temperature_mycroft
-          - entity: sensor.since_last_boot_mycroft
-          - entity: switch.pihole_mycroft_switch
-      - type: entities
-        title: Oak
-        show_header_toggle: false
-        entities:
-          - entity: script.oak_on
-          - type: section
-            label: Containers
-          - entity: switch.dockermon_plex_oak
-          - entity: switch.dockermon_warrior
-          - entity: switch.dockermon_watchtower_oak
-      - type: entities
-        title: Settings
-        show_header_toggle: false
-        entities:
-          - switch.presence_emulator
-      - type: entities
-        title: Ad Blocker
-        show_header_toggle: true
-        entities:
-          - switch.pihole_sycamore_switch
-          - switch.pihole_mycroft_switch
-      - type: entities
-        title: Blink
-        show_header_toggle: false
-        entities:
-          - binary_sensor.blink_back_camera_armed
-          - binary_sensor.blink_front_camera_armed
-          - binary_sensor.blink_indoor_back_camera_armed
-          - binary_sensor.blink_indoor_front_camera_armed

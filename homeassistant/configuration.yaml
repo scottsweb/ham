@@ -301,9 +301,9 @@ plex:
 browser_mod:
   prefix: "browser_"
   devices:
-    08adfc81-9c485d86:
+    f2f7f59f-59355108:
       name: arnott
-    f8632809_a3647f84:
+    fc0145b0_c697cef7:
       name: wilson
   disable:
     - all

@@ -1,0 +1,6 @@
+platform: plex_recently_added
+token: !secret plex_token
+host: !secret plex_server_ip
+port: !secret plex_server_port
+max: 1
+img_dir: '/plex/'
