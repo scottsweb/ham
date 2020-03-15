@@ -1,0 +1,12 @@
+alias: Start Warrior with Plex
+initial_state: true
+trigger:
+  platform: numeric_state
+  entity_id: sensor.plex
+  above: 0
+  for:
+    minites: 5
+action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id: switch.dockermon_warrior

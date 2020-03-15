@@ -1249,7 +1249,7 @@ views:
                         top: 45%
                         width: 20%
                         filter: 'drop-shadow(0px 0px 10px #11151790)'
-
+              # Second panel
               - type: picture-elements
                 image: /local/overlay.svg
                 elements:

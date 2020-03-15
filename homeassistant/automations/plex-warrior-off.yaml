@@ -1,0 +1,11 @@
+alias: Stop Warrior with Plex
+initial_state: true
+trigger:
+  platform: template
+  value_template: "{{ states('sensor.plex') | int == 0 }}"
+  for:
+    minutes: 10
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id: switch.dockermon_warrior
