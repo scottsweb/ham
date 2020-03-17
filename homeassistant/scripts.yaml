@@ -267,7 +267,7 @@ tv_youtube:
     - service: media_player.select_source
       data:
         entity_id: media_player.tv_firetv
-        source: com.google.android.youtube
+        source: com.amazon.firetv.youtube
 
 oak_on:
   alias: 'Wake on LAN (WOL)'
