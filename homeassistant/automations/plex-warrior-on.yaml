@@ -5,7 +5,7 @@ trigger:
   entity_id: sensor.plex
   above: 0
   for:
-    minites: 5
+    minutes: 5
 action:
   - service: homeassistant.turn_on
     data:
