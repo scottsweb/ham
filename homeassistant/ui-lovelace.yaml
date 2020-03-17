@@ -55,15 +55,15 @@ views:
         entities:
           - sensor.gbp_sek
           - sensor.sek_gbp
-      - type: entities
-        title: Coins
-        show_header_toggle: false
-        entities:
-          - sensor.bitcoin
-          - sensor.bitcoin_cash
-          - sensor.ethereum
-          - sensor.ripple
-          - sensor.litecoin
+#      - type: entities
+#        title: Coins
+#        show_header_toggle: false
+#        entities:
+#          - sensor.bitcoin
+#          - sensor.bitcoin_cash
+#          - sensor.ethereum
+#          - sensor.ripple
+#          - sensor.litecoin
 
   - title: Entertainment
     path: entertainment
