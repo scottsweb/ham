@@ -5,23 +5,18 @@ trigger:
   entity_id: group.people
   from: 'home'
 action:
-#   - service: homeassistant.turn_on
-#     data:
-#       entity_id: automation.sycamore_away_light_small
-#   - service: homeassistant.turn_on
-#     data:
-#       entity_id: automation.sycamore_away_light_tall
-#   - service: homeassistant.turn_on
-#     data:
-#       entity_id: automation.sycamore_away_lights_back
-#   - service: homeassistant.turn_on
-#     data:
-#       entity_id: automation.sycamore_away_lights_bedroom
-#   - service: homeassistant.turn_on
-#     data:
-#       entity_id: automation.sycamore_away_lights_office
+  - service: homeassistant.turn_on
+    data:
+      entity_id: automation.away_hallway_light
+  - service: homeassistant.turn_on
+    data:
+      entity_id: automation.away_lounge_light_small
+  - service: homeassistant.turn_on
+    data:
+      entity_id: automation.away_lounge_light_tall
   - service: switch.turn_off
-    entity_id: switch.fullykiosk_screen
+    data:
+      entity_id: switch.fullykiosk_screen
   - service: mqtt.publish
     data:
       topic: sycamore/unicorn
@@ -29,15 +24,15 @@ action:
   - service: camera.enable_motion_detection
     data:
       entity_id: camera.blink_front
-  - delay: '00:00:04'
+  - delay: '00:00:05'
   - service: camera.enable_motion_detection
     data:
       entity_id: camera.blink_back
-  - delay: '00:00:04'
+  - delay: '00:00:05'
   - service: camera.enable_motion_detection
     data:
       entity_id: camera.blink_indoor_front
-  - delay: '00:00:04'
+  - delay: '00:00:05'
   - service: camera.enable_motion_detection
     data:
       entity_id: camera.blink_indoor_back
