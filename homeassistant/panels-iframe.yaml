@@ -10,14 +10,6 @@ plex_music:
   title: 'Plex (Music)'
   icon: 'mdi:plex'
   url: !secret plex_ui_bonsai_ip
-emoncms:
-  title: 'Emoncms'
-  icon: 'mdi:counter'
-  url: !secret emoncms_url
-emoncms_paul:
-  title: 'Emoncms (Paul)'
-  icon: 'mdi:counter'
-  url: !secret emoncms_url_paul
 nodered:
   title: 'Node-RED'
   icon: 'mdi:vector-polyline'
