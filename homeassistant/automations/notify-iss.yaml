@@ -13,7 +13,12 @@ condition:
       entity_id: sensor.dark_sky_summary
       state: 'Clear'
 action:
-  - service: notify.all
+  - service: notify.tv
+    data:
+      message: "{{'\U00002604'}} The space station will be passing soon: {{ as_timestamp(states.binary_sensor.iss.attributes.next_rise) | timestamp_custom('%A at %H:%M') }}"
+      data:
+        displaytime: 15000
+  - service: notify.telegram_group
     data:
       message: "{{'\U00002604'}} The space station will be passing soon: {{ as_timestamp(states.binary_sensor.iss.attributes.next_rise) | timestamp_custom('%A at %H:%M') }}"
   - service: mqtt.publish

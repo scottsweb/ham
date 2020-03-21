@@ -55,6 +55,14 @@ views:
         entities:
           - sensor.gbp_sek
           - sensor.sek_gbp
+      - type: entities
+        title: Lights
+        show_header_toggle: true
+        entities:
+          - light.lounge_light_tall
+          - light.lounge_light_small
+          - light.hallway
+          - switch.cloud
 #      - type: entities
 #        title: Coins
 #        show_header_toggle: false
@@ -140,8 +148,13 @@ views:
                     - height: 56px
                 show_icon: false
                 action: call-service
-                service: script.turn_on
-                entity: script.tv_netflix
+                service: kodi.call_method
+                service_data:
+                  entity_id: media_player.tv_kodi
+                  method: Addons.ExecuteAddon
+                  addonid: plugin.video.netflix
+                  params:
+                    command: activate
               - type: "custom:button-card"
                 name: Kodi
                 styles:
@@ -151,8 +164,10 @@ views:
                     - height: 56px
                 show_icon: false
                 action: call-service
-                service: script.turn_on
-                entity: script.tv_kodi
+                service: kodi.call_method
+                service_data:
+                  entity_id: media_player.tv_kodi
+                  method: Input.Home
               - type: "custom:button-card"
                 name: Plex
                 styles:
@@ -162,8 +177,13 @@ views:
                     - height: 56px
                 show_icon: false
                 action: call-service
-                service: script.turn_on
-                entity: script.tv_plex
+                service: kodi.call_method
+                service_data:
+                  entity_id: media_player.tv_kodi
+                  method: Addons.ExecuteAddon
+                  addonid: script.plex
+                  params:
+                    command: activate
           - type: entities
             title: false
             show_header_toggle: false
@@ -1202,7 +1222,7 @@ views:
                         width: 100%
                         background: rgba(0,0,0,0.3)
                     - type: state-label
-                      prefix: Luther / TV
+                      prefix: Oak / TV
                       entity: sensor.placeholder
                       tap_action:
                         action: none
@@ -1297,9 +1317,13 @@ views:
                     title: null
                     tap_action:
                       action: call-service
-                      service: script.turn_on
+                      service: kodi.call_method
                       service_data:
-                        entity_id: script.tv_netflix
+                        entity_id: media_player.tv_kodi
+                        method: Addons.ExecuteAddon
+                        addonid: plugin.video.netflix
+                        params:
+                          command: activate
                     hold_action:
                       action: none
                     style:
@@ -1351,9 +1375,10 @@ views:
                     title: null
                     tap_action:
                       action: call-service
-                      service: script.turn_on
+                      service: kodi.call_method
                       service_data:
-                        entity_id: script.tv_kodi
+                        entity_id: media_player.tv_kodi
+                        method: Input.Home
                     hold_action:
                       action: none
                     style:
@@ -1404,9 +1429,13 @@ views:
                     title: null
                     tap_action:
                       action: call-service
-                      service: script.turn_on
+                      service: kodi.call_method
                       service_data:
-                        entity_id: script.tv_plex
+                        entity_id: media_player.tv_kodi
+                        method: Addons.ExecuteAddon
+                        addonid: script.plex
+                        params:
+                          command: activate
                     hold_action:
                       action: none
                     style:
@@ -1457,9 +1486,13 @@ views:
                     title: null
                     tap_action:
                       action: call-service
-                      service: script.turn_on
+                      service: kodi.call_method
                       service_data:
-                        entity_id: script.tv_youtube
+                        entity_id: media_player.tv_kodi
+                        method: Addons.ExecuteAddon
+                        addonid: plugin.video.youtube
+                        params:
+                          command: activate
                     hold_action:
                       action: none
                     style:
