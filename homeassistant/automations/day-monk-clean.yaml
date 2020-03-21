@@ -1,0 +1,24 @@
+alias: Scheduled Monk Clean
+initial_state: true
+trigger:
+  platform: time
+  at: '12:00:00'
+condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.people
+        state: 'not_home'
+      - condition: template
+        value_template: '{{ (as_timestamp(now()) - as_timestamp(states.vacuum.xiaomi_vacuum_cleaner.attributes.clean_stop | default(0)) | int > 216000)}}'
+action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id:
+        - input_boolean.monk_clean_kitchen
+        - input_boolean.monk_clean_bedroom
+        - input_boolean.monk_clean_hall
+        - input_boolean.monk_clean_office_gemma
+        - input_boolean.monk_clean_office_scott
+  - delay: '00:00:10'
+  - service: script.monk_clean
