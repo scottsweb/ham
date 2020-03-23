@@ -6,8 +6,8 @@ Lights:
 General:
   - switch.general_switch
 Lounge Lights:
-  - switch.lounge_light_small
-  - switch.lounge_light_tall
+  - light.lounge_light_small
+  - light.lounge_light_tall
 All Devices:
   - device_tracker.ge
   - device_tracker.se
