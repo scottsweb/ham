@@ -20,7 +20,7 @@ RUN git clone https://github.com/MycroftAI/mycroft-core.git /opt/mycroft \
 	&& cd /opt/mycroft \
 	&& git fetch && git checkout master \
 	&& mkdir /opt/mycroft/skills \
-	&& /opt/mycroft/./dev_setup.sh --allow-root -sm
+	&& CI=true /opt/mycroft/./dev_setup.sh --allow-root -sm
 
 # Manually install mimic as we skip it in dev_setup due to IS_TRAVIS
 RUN cd /opt/mycroft && scripts/./install-mimic.sh 1 --allow-root
