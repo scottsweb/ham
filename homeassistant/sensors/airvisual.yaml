@@ -1,5 +1,0 @@
-platform: airvisual
-api_key: !secret airvisual_key
-monitored_conditions:
-  - us
-show_on_map: false
