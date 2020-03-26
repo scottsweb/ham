@@ -120,6 +120,7 @@
                           - entity: switch.dockermon_plex_oak
                           - entity: switch.dockermon_warrior
                           - entity: switch.dockermon_watchtower_oak
+                          - entity: switch.dockermon_f_h
                         style: |
                           ha-card {
                             background: rgba(36, 42, 43, 0.88);
@@ -140,5 +141,5 @@
                                 background: rgba(36, 42, 43, 0.88);
                                 box-shadow: none;
                                 border-radius: 1em;
-                                height: 18.2em;
+                                height: 14.35em;
                               }

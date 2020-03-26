@@ -110,6 +110,7 @@ history:
       - switch.dockermon_warrior
       - switch.dockermon_watchtower_oak
       - switch.dockermon_watchtower
+      - switch.dockermon_f_h
 
       - binary_sensor.post
       - input_boolean.post_visibility
@@ -132,6 +133,8 @@ history:
       - sensor.memory_use_percent
 
       - vacuum.xiaomi_vacuum_cleaner
+
+      - sensor.steam_76561197969853112
 
 # Recorder
 recorder:

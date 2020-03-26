@@ -38,3 +38,7 @@ deconz:
   title: 'Deconz'
   icon: 'mdi:usb-flash-drive'
   url: !secret deconz_url
+folding:
+  title: F@H
+  icon: 'mdi:pill'
+  url: !secret folding_url

@@ -125,6 +125,9 @@ switch.dockermon_plex_oak:
 switch.dockermon_warrior:
   friendly_name: 'Warrior'
   icon: 'mdi:archive'
+switch.dockermon_f_h:
+  friendly_name: 'F@H'
+  icon: 'mdi:pill'
 # sensor.last_call:
 #   icon: 'mdi:phone-incoming'
 # sensor.last_blocked_call:

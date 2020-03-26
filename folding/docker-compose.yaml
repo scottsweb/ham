@@ -1,0 +1,14 @@
+version: '2'
+services:
+    foldingathome:
+        image: linuxserver/foldingathome
+        volumes:
+            - "/media/oak/Media/Containers/folding/data:/config"
+        environment:
+            - PUID=1001
+            - PGID=1001
+            - TZ=Europe/Stockholm
+        ports:
+            - 7396:7396
+        restart: unless-stopped
+        container_name: folding
