@@ -109,6 +109,22 @@ dash_andrex:
       data:
         entity_id: group.lounge_lights
 
+dash_doorbell:
+  alias: 'Amazon Dash - Doorbell'
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.fullykiosk_screen
+    - delay: '00:00:02'
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.wilson
+        media_content_id: /local/doorbell.mp3
+        media_content_type: music
+    - service: notify.telegram_group
+      data:
+        message: "{{'\U0000270A'}} Ding dong! someone... or something is at the door."
+
 freeview:
   alias: 'Switch to Freeview'
   sequence:

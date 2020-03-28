@@ -1,4 +1,4 @@
-alias: Notify Doorbell
+alias: Notify Door Motion
 initial_state: true
 trigger:
   platform: state
