@@ -17,7 +17,7 @@
                   - type: custom:hui-vertical-stack-card
                     cards:
                       - type: entities
-                        title: " ‍  ‍ Bonsai"
+                        title: " ‍  Bonsai"
                         show_header_toggle: false
                         entities:
                           - entity: sensor.memory_use_percent
@@ -75,7 +75,7 @@
                             background: rgba(36, 42, 43, 0.88);
                             box-shadow: none;
                             border-radius: 1em;
-                            height: 18.2em;
+                            height: 16.85em;
                           }
                       - type: 'custom:mini-graph-card'
                         group: false
@@ -130,7 +130,7 @@
                       - type: custom:hui-vertical-stack-card
                         cards:
                           - type: entities
-                            title: "Home Assistant"
+                            title: " ‍  Home Assistant"
                             show_header_toggle: false
                             entities:
                               - entity: sensor.hass_version_template
@@ -141,5 +141,5 @@
                                 background: rgba(36, 42, 43, 0.88);
                                 box-shadow: none;
                                 border-radius: 1em;
-                                height: 14.35em;
+                                height: 13em;
                               }

@@ -8,7 +8,6 @@
                 background: none
                 box-shadow: none
                 width: auto
-                margin-top: -4.8vw
               card:
                 type: custom:layout-card
                 column_num: 2
@@ -18,7 +17,7 @@
                   - type: custom:hui-vertical-stack-card
                     cards:
                       - type: entities
-                        title: " ‍  ‍ Dammsugare"
+                        title: " ‍  Dammsugare"
                         show_header_toggle: false
                         entities:
                           - entity: sensor.monk_state
@@ -241,7 +240,7 @@
                             background: rgba(36, 42, 43, 0.88);
                             box-shadow: none;
                             border-radius: 1em;
-                            height: 32.3em;
+                            height: 31.45em;
                           }
                           #states hui-input-select-entity-row {
                             margin-top: -10px;
