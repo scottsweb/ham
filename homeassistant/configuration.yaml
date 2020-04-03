@@ -7,6 +7,9 @@ homeassistant:
   time_zone: !secret timezone
   customize: !include customize.yaml
 
+# API
+api:
+
 # Python Scripts
 python_script:
 

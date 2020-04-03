@@ -1,0 +1,13 @@
+version: '2'
+services:
+    esphome:
+        image: esphome/esphome-armv7
+        volumes:
+            - "/media/data/Containers/esphome/data:/config"
+            - "/media/data/Containers/homeassistant/secrets.yaml:/config/secrets.yaml:ro"
+            - "/etc/localtime:/etc/localtime:ro"
+        environment:
+            - TZ=Europe/Stockholm
+        network_mode: host
+        restart: unless-stopped
+        container_name: esphome

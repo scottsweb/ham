@@ -42,3 +42,7 @@ folding:
   title: F@H
   icon: 'mdi:pill'
   url: !secret folding_url
+esphome:
+  title: ESPHome
+  icon: 'mdi:chip'
+  url: !secret esphome_url
