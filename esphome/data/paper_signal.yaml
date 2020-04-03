@@ -1,0 +1,43 @@
+esphome:
+  name: paper_signal
+  platform: ESP8266
+  board: huzzah
+
+wifi:
+  ssid: !secret esphome_wifi
+  password: !secret esphome_wifipassword
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Paper Signal Fallback Hotspot"
+    password: !secret esphome_appassword
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret esphome_adminpassword
+  services:
+    - service: control_servo
+      variables:
+        level: float
+      then:
+        - servo.write:
+            id: paper_servo
+            level: !lambda 'return level / 100.0;'
+
+ota:
+  password: !secret esphome_adminpassword
+
+servo:
+  - id: paper_servo
+    output: pwm_output
+
+output:
+  - platform: esp8266_pwm
+    id: pwm_output
+    pin: GPIO14
+    frequency: 50 Hz

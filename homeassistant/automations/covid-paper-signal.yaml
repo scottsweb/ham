@@ -1,0 +1,14 @@
+alias: Coronavirus Active Cases Paper Signal
+trigger:
+  - platform: state
+    entity_id: sensor.sweden_coronavirus_current
+action:
+  - service: esphome.paper_signal_control_servo
+    data_template:
+      level: >
+        {% set diff = (trigger.to_state.state | int) - (trigger.from_state.state | int) %}
+        {% if diff > 0 %}
+          100
+        {% else %}
+          -100
+        {% endif %}
