@@ -24,7 +24,7 @@ slate:
   paper-grey-50: 'var(--primary-text-color)'
   paper-grey-200: '#222222'
   # Paper card
-  paper-card-header-color: '#252b2d'
+  paper-card-header-color: '#e0e1e1'
   paper-card-background-color: '#222627'
   paper-dialog-background-color: '#2d3538'
   paper-item-icon-color: '#9da0a2'
@@ -40,7 +40,10 @@ slate:
   switch-checked-color: '#7a7d7f'
   switch-unchecked-button-color: '#3b4041'
   switch-unchecked-track-color: '#0c0d0d'
-  # paper-toggle-button-checked-bar-color: '#009FFF'
+
+  paper-toggle-button-checked-ink-color: "#3182b7"
+  paper-toggle-button-checked-button-color: "#3182b7"
+  paper-toggle-button-checked-bar-color: "#3182b7"
   # Sliders
   paper-slider-knob-color: '#a4abb1'
   paper-slider-knob-start-color: '#a4abb1'
