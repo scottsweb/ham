@@ -17,7 +17,7 @@
                   - type: custom:hui-vertical-stack-card
                     cards:
                       - type: entities
-                        title: " ‍  Dammsugare"
+                        title: "  Dammsugare"
                         show_header_toggle: false
                         entities:
                           - entity: sensor.monk_state
@@ -26,36 +26,17 @@
                           - entity: sensor.monk_filter
                             type: custom:bar-card
                             title: Filter
-                            title_style:
-                              color: '#e0e1e1'
-                              margin-left: 0.95em
-                            background_style:
-                              background: >-
-                                radial-gradient(circle, rgba(45,45,45,1) 0%,
-                                rgba(0,0,0,1) 100%)
-                            card_style:
-                              background: '#FFFFFF00'
-                              box-shadow: none
-                            height: 2.1em
-                            width: 50%
+                            height: 2em
+                            width: 45%
                             icon: 'mdi:filter-variant'
                             icon_position: left
-                            icon_style:
-                              color: '#9e9e9e'
-                              margin-left: '-0.38em'
-                              filter: none
                             max: 100
                             min: 0
-                            rounding: 0.3em
                             severity:
                               - color: '#303435'
                                 value: 100
                               - color: '#6d2525'
                                 value: 10
-                            value_style:
-                              color: '#e0e1e1'
-                              font-size: 0.95em
-                              font-weight: 400
                             tap_action: service
                             service_options:
                               domain: vacuum
@@ -64,46 +45,61 @@
                                 entity_id: vacuum.xiaomi_vacuum_cleaner
                                 command: reset_consumable
                                 params: ['filter_work_time']
-                            style: |
+                            style: &bar-card-style |
                               ha-card {
-                                background-color: #FFFFFF00;
-                                margin-left: -0.35em;
-                                margin-right: -0.5em;
-                                margin-top: 0.1em;
+                                box-shadow: none;
+                                background: none;
+                                margin: 12px 0px 16px 0px;
+                              }
+                              ha-icon {
+                                color: #9e9e9e;
+                                filter: none;
+                              }
+                              .card-content {
+                                padding: 0;
+                              }
+                              .card-header {
+                                display: none;
+                              }
+                              bar-card-title {
+                                color: #e0e1e1;
+                                margin-left: -6.5em;
+                              }
+                              bar-card-card {
+                                margin: 2px 0 !important;
+                              }
+                              bar-card-backgroundbar, bar-card-current {
+                                border-radius: 0.3em;
+                              }
+                              bar-card-value {
+                                color: #e0e1e1;
+                                text-shadow: none;
+                                font-size: 0.95em;
+                                font-weight: 400;
+                                margin-right: 0.6em;
+                              }
+                              bar-card-background {
+                                background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(17,18,18,0.3) 75%);
+                                box-shadow: inset 0 0 25px #00000030;
+                                border-radius: 0.3em;
+                              }
+                              bar-card-backgroundbar {
+                                background: none;
                               }
                           - entity: sensor.monk_brush
                             type: custom:bar-card
                             title: Brush
-                            title_style:
-                              color: '#e0e1e1'
-                              margin-left: 0.95em
-                            background_style:
-                              background: >-
-                                radial-gradient(circle, rgba(45,45,45,1) 0%,
-                                rgba(0,0,0,1) 100%)
-                            card_style:
-                              background: '#FFFFFF00'
-                              box-shadow: none
-                            height: 2.1em
-                            width: 50%
+                            height: 2em
+                            width: 45%
                             icon: 'mdi:broom'
                             icon_position: left
-                            icon_style:
-                              color: '#9e9e9e'
-                              margin-left: '-0.38em'
-                              filter: none
                             max: 100
                             min: 0
-                            rounding: 0.3em
                             severity:
                               - color: '#303435'
                                 value: 100
                               - color: '#6d2525'
                                 value: 10
-                            value_style:
-                              color: '#e0e1e1'
-                              font-size: 0.95em
-                              font-weight: 400
                             tap_action: service
                             service_options:
                               domain: vacuum
@@ -112,46 +108,21 @@
                                 entity_id: vacuum.xiaomi_vacuum_cleaner
                                 command: reset_consumable
                                 params: ['main_brush_work_time']
-                            style: |
-                              ha-card {
-                                background-color: #FFFFFF00;
-                                margin-left: -0.35em;
-                                margin-right: -0.5em;
-                                margin-top: 0.1em;
-                              }
+                            style: *bar-card-style
                           - entity: sensor.monk_side_brush
                             type: custom:bar-card
                             title: Side Brush
-                            title_style:
-                              color: '#e0e1e1'
-                              margin-left: 0.95em
-                            background_style:
-                              background: >-
-                                radial-gradient(circle, rgba(45,45,45,1) 0%,
-                                rgba(0,0,0,1) 100%)
-                            card_style:
-                              background: '#FFFFFF00'
-                              box-shadow: none
-                            height: 2.1em
-                            width: 50%
+                            height: 2em
+                            width: 45%
                             icon: 'mdi:tools'
                             icon_position: left
-                            icon_style:
-                              color: '#9e9e9e'
-                              margin-left: '-0.38em'
-                              filter: none
                             max: 100
                             min: 0
-                            rounding: 0.3em
                             severity:
                               - color: '#303435'
                                 value: 100
                               - color: '#6d2525'
                                 value: 10
-                            value_style:
-                              color: '#e0e1e1'
-                              font-size: 0.95em
-                              font-weight: 400
                             tap_action: service
                             service_options:
                               domain: vacuum
@@ -160,46 +131,21 @@
                                 entity_id: vacuum.xiaomi_vacuum_cleaner
                                 command: reset_consumable
                                 params: ['side_brush_work_time']
-                            style: |
-                              ha-card {
-                                background-color: #FFFFFF00;
-                                margin-left: -0.35em;
-                                margin-right: -0.5em;
-                                margin-top: 0.1em;
-                              }
+                            style: *bar-card-style
                           - entity: sensor.monk_sensors
                             type: custom:bar-card
                             title: Sensors
-                            title_style:
-                              color: '#e0e1e1'
-                              margin-left: 0.95em
-                            background_style:
-                              background: >-
-                                radial-gradient(circle, rgba(45,45,45,1) 0%,
-                                rgba(0,0,0,1) 100%)
-                            card_style:
-                              background: '#FFFFFF00'
-                              box-shadow: none
-                            height: 2.1em
-                            width: 50%
+                            height: 2em
+                            width: 45%
                             icon: 'mdi:spray-bottle'
                             icon_position: left
-                            icon_style:
-                              color: '#9e9e9e'
-                              margin-left: '-0.38em'
-                              filter: none
                             max: 100
                             min: 0
-                            rounding: 0.3em
                             severity:
                               - color: '#303435'
                                 value: 100
                               - color: '#6d2525'
                                 value: 10
-                            value_style:
-                              color: '#e0e1e1'
-                              font-size: 0.95em
-                              font-weight: 400
                             tap_action: service
                             service_options:
                               domain: vacuum
@@ -208,19 +154,22 @@
                                 entity_id: vacuum.xiaomi_vacuum_cleaner
                                 command: reset_consumable
                                 params: ['sensor_dirty_time']
-                            style: |
-                              ha-card {
-                                background-color: #FFFFFF00;
-                                margin-left: -0.35em;
-                                margin-right: -0.5em;
-                                margin-top: 0.1em;
-                              }
+                            style: *bar-card-style
                         style: |
                           ha-card {
                             box-shadow: none;
                             border-radius: 1em;
-                            background: rgba(36, 42, 43, 0.88);
+                            background: rgba(34, 38, 39, 0.9);
                             padding-right: 0.7em;
+                            height: 30.45em
+                          }
+                          .card-header {
+                            margin-left: 0.4em;
+                            letter-spacing: 0.005em;
+                          }
+                          ha-card > div.card-header > div {
+                            padding-top: 2px;
+                            margin-bottom: -2px;
                           }
                   - break
                   - type: custom:hui-vertical-stack-card
@@ -240,7 +189,7 @@
                             background: rgba(36, 42, 43, 0.88);
                             box-shadow: none;
                             border-radius: 1em;
-                            height: 31.45em;
+                            height: 30.45em;
                           }
                           #states hui-input-select-entity-row {
                             margin-top: -10px;
