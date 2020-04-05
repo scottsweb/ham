@@ -161,7 +161,7 @@
                             border-radius: 1em;
                             background: rgba(34, 38, 39, 0.9);
                             padding-right: 0.7em;
-                            height: 30.45em
+                            height: 30.60em
                           }
                           .card-header {
                             margin-left: 0.4em;
@@ -189,7 +189,7 @@
                             background: rgba(36, 42, 43, 0.88);
                             box-shadow: none;
                             border-radius: 1em;
-                            height: 30.45em;
+                            height: 30.60em;
                           }
                           #states hui-input-select-entity-row {
                             margin-top: -10px;
