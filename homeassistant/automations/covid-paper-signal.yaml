@@ -4,6 +4,10 @@ trigger:
     entity_id: sensor.sweden_coronavirus_current
 action:
   - service: esphome.paper_signal_control_servo
+    data:
+      level: 0
+  - delay: '00:00:05' 
+  - service: esphome.paper_signal_control_servo
     data_template:
       level: >
         {% set diff = (trigger.to_state.state | int) - (trigger.from_state.state | int) %}
