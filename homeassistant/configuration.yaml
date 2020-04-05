@@ -51,7 +51,7 @@ lovelace:
     - url: /hacsfiles/lovelace-card-preloader/lovelace-card-preloader.js
       type: module
   # ----------
-    - url: /community_plugin/light-slider-card/light-slider-card.js?v=3.2.4
+    - url: /hacsfiles/light-slider-card/light-slider-card.js?v=3.2.4
       type: js
 
 # Asus
