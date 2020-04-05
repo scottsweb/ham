@@ -1,4 +1,4 @@
-console.info(`%cBAR-CARD\n%cVersion: 3.0.0`, 'color: green; font-weight: bold;', '');
+console.info(`%cBAR-CARD\n%cVersion: 3.0.1`, 'color: green; font-weight: bold;', '');
 class BarCard extends HTMLElement {
     constructor() {
         super();
@@ -455,6 +455,7 @@ class BarCard extends HTMLElement {
         position: absolute;
       }
       bar-card-iconbar {
+        color: var(--icon-color, var(--paper-item-icon-color));
         align-items: center;
         align-self: center;
         display: flex;
@@ -768,12 +769,6 @@ class BarCard extends HTMLElement {
             entityState = Math.min(entityState, configMax);
             entityState = Math.max(entityState, configMin);
         }
-        if (config.decimal == 0) {
-            entityState = entityState.toFixed(0);
-        }
-        if (config.decimal) {
-            entityState = entityState.toFixed(config.decimal);
-        }
         if (config.positions.icon != 'off') {
             if (!config.icon) {
                 root.getElementById('icon_' + id).icon = entityObject.attributes.icon;
@@ -803,8 +798,25 @@ class BarCard extends HTMLElement {
             this._currentAnimation = {};
         if (!this._animationDirection)
             this._animationDirection = {};
+        let barColor = this._computeBarColor(config, entityState);
+        if (entityObject.state == 'unavailable') {
+            entityState = 'Unavailable';
+            measurement = '';
+            if (config.positions.icon !== 'off')
+                root.getElementById('iconBar_' + id).style.setProperty('--icon-color', 'var(--disabled-text-color)');
+            barColor = 'var(--switch-unchecked-button-color)';
+        }
+        else {
+            if (config.positions.icon !== 'off')
+                root.getElementById('iconBar_' + id).style.removeProperty('--icon-color');
+        }
+        if (!isNaN(entityState)) {
+            if (config.decimal == 0)
+                entityState = entityState.toFixed(0);
+            else if (config.decimal)
+                entityState = entityState.toFixed(config.decimal);
+        }
         if (entityState !== this._entityState[id]) {
-            const barColor = this._computeBarColor(config, entityState);
             this._updateBar(entityState, hass, id, entity, index);
             this._updateTargetBar(entityState, configTarget, barColor, id, entity, index);
             this._entityTarget[id] = configTarget;
@@ -833,7 +845,6 @@ class BarCard extends HTMLElement {
                 }
             }
             if (config.animation.state == 'on') {
-                const barColor = this._computeBarColor(config, entityState);
                 root.getElementById('animationBar_' + id).style.setProperty('--bar-color', barColor);
                 if (entityState > this._entityState[id]) {
                     this._animationDirection[id] = 'normal';
@@ -851,7 +862,6 @@ class BarCard extends HTMLElement {
         }
         if (config.target) {
             if (configTarget != this._entityTarget[id]) {
-                const barColor = this._computeBarColor(config, entityState);
                 this._updateTargetBar(entityState, configTarget, barColor, id, entity, index);
                 this._entityTarget[id] = configTarget;
                 if (this._currentAnimation[id] && config.animation.state !== 'off')
@@ -862,7 +872,6 @@ class BarCard extends HTMLElement {
             this._updateBar(entityState, hass, id, entity, index);
             this._currentMin[id] = configMin;
             if (config.target) {
-                const barColor = this._computeBarColor(config, entityState);
                 this._updateTargetBar(entityState, configTarget, barColor, id, entity, index);
                 this._currentMin[id] = configMin;
             }
@@ -873,7 +882,6 @@ class BarCard extends HTMLElement {
             this._updateBar(entityState, hass, id, entity, index);
             this._currentMax[id] = configMax;
             if (config.target) {
-                const barColor = this._computeBarColor(config, entityState);
                 this._updateTargetBar(entityState, configTarget, barColor, id, entity, index);
                 this._currentMax[id] = configMax;
             }
