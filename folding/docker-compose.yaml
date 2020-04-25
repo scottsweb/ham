@@ -10,5 +10,8 @@ services:
             - TZ=Europe/Stockholm
         ports:
             - 7396:7396
+            - 36330:36330
+        devices:
+           - /dev/dri:/dev/dri
         restart: unless-stopped
         container_name: folding
