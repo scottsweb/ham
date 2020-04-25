@@ -19,3 +19,14 @@ fonts.googleapis.com
 ocsp.apple.com
 rest-prde.immedia-semi.com
 rest-prod.immedia-semi.com
+forms.gle
+10up.com
+api.particle.io
+s.wp.com
+googleadapis.l.google.com
+sitelock.com
+api.coinmarketcap.com
+s.w.org
+jetpack.wordpress.com
+api.telegram.org
+api.ipify.org
