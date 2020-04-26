@@ -53,6 +53,14 @@ lovelace:
   # ----------
     - url: /hacsfiles/light-slider-card/light-slider-card.js?v=3.2.4
       type: js
+  dashboards:
+    lovelace-tablet:
+      mode: yaml
+      filename: ui-tablet.yaml
+      title: Tablet
+      icon: mdi:tablet
+      show_in_sidebar: false
+      require_admin: true
 
 # Asus
 asuswrt:
@@ -174,7 +182,10 @@ history:
       - sensor.ram_use_mycroft
       - sensor.memory_use_percent
 
+      - sensor.indoor_temperature
+
       - vacuum.xiaomi_vacuum_cleaner
+      - fan.fan
 
       - sensor.steam_76561197969853112
 
