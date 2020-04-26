@@ -1,0 +1,1922 @@
+custom_header:
+  kiosk_mode: true
+preload_cards:
+  - markdown
+  - conditional
+  - map
+  - entities
+  - iframe
+
+title: Sycamore
+views:
+# Tablet / full screen UI
+  - title: Tablet
+    icon: mdi:tablet
+    path: default_view
+    panel: true
+    theme: slate
+    badges: []
+    cards:
+      - type: picture-elements
+        image: /local/uibg.png
+        style: |
+          ha-card {
+            {% set bg_off = '#242a2b' %}
+            {% set bg_on = '#cfd0d1' %}
+            {% set colour_off = '#666869' %}
+            {% set colour_on = '#464646' %}
+
+            --bg-off: {{bg_off}};
+            --colour-off: {{colour_off}};
+
+            --bg-light-hallway: {% if is_state('light.hallway', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-light-hallway: {% if is_state('light.hallway', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+            --animation-light-hallway: {% if is_state('light.hallway', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
+
+            --bg-light-cloud: {% if is_state('switch.cloud', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-light-cloud: {% if is_state('switch.cloud', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+            --animation-light-cloud: {% if is_state('switch.cloud', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
+
+            --bg-light-lounge-small: {% if is_state('light.lounge_light_small', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-light-lounge-small: {% if is_state('light.lounge_light_small', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+            --animation-light-lounge-small: {% if is_state('light.lounge_light_small', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
+
+            --bg-light-lounge-tall: {% if is_state('light.lounge_light_tall', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-light-lounge-tall: {% if is_state('light.lounge_light_tall', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+            --animation-light-lounge-tall: {% if is_state('light.lounge_light_tall', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
+
+            --bg-camera-front: {% if is_state('binary_sensor.blink_front_camera_armed', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-camera-front: {% if is_state('binary_sensor.blink_front_camera_armed', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+
+            --bg-camera-back: {% if is_state('binary_sensor.blink_back_camera_armed', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-camera-back: {% if is_state('binary_sensor.blink_back_camera_armed', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+
+            --bg-camera-indoor-front: {% if is_state('binary_sensor.blink_indoor_front_camera_armed', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-camera-indoor-front: {% if is_state('binary_sensor.blink_indoor_front_camera_armed', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+
+            --bg-camera-indoor-back: {% if is_state('binary_sensor.blink_indoor_back_camera_armed', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-camera-indoor-back: {% if is_state('binary_sensor.blink_indoor_back_camera_armed', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+
+            --bg-post: {% if is_state('input_boolean.post_visibility', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-post: {% if is_state('input_boolean.post_visibility', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+            --animation-post: {% if is_state('input_boolean.post_visibility', 'on') %}icon-shake 2s ease-in-out infinite{% else %}none{% endif %};
+
+            --bg-scott: {% if is_state('person.scott', 'home') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-scott: {% if is_state('person.scott', 'home') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+
+            --bg-gemma: {% if is_state('person.gemma', 'home') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-gemma: {% if is_state('person.gemma', 'home') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+
+            --bg-presence: {% if is_state('switch.presence_emulator', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-presence: {% if is_state('switch.presence_emulator', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+            --animation-presence: {% if is_state('switch.presence_emulator', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
+          }
+
+          @keyframes icon-shake {
+            from,
+            to {
+              transform: translate3d(0, 0, 0);
+            }
+
+            10%,
+            30% {
+              transform: translate3d(-5px, 0, 0);
+            }
+
+            20%,
+            40% {
+              transform: translate3d(5px, 0, 0);
+            }
+
+            50%,
+            100% {
+              transform: translate3d(0, 0, 0);
+            }
+          }
+
+          @keyframes icon-ping {
+            from,
+            20%,
+            40%,
+            60%,
+            to {
+              animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            }
+
+            0% {
+              opacity: 0;
+              transform: scale3d(0.6, 0.6, 0.6);
+            }
+
+            20% {
+              transform: scale3d(1.2, 1.2, 1.2);
+            }
+
+            40% {
+              opacity: 1;
+              transform: scale3d(0.9, 0.9, 0.9);
+            }
+
+            60% {
+              opacity: 1;
+              transform: scale3d(1, 1, 1);
+            }
+
+            to {
+              opacity: 1;
+              transform: scale3d(1, 1, 1);
+            }
+          }
+
+          @keyframes icon-pulse {
+            0% {
+              opacity: 0;
+            }
+
+            100% {
+              opacity: 1;
+            }
+          }
+        elements:
+         # Sidebar
+          - type: image
+            image: local/sidebar.png
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 10.6%
+              top: 50%
+              width: 21.5%
+          - type: image
+            image: local/sidebar_line.svg
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 10.6%
+              top: 50%
+              width: 21.5%
+              opacity: 0.75
+
+          # Clock
+          - type: state-label
+            entity: sensor.time
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              color: 'rgba(255, 255, 255, 0.7)'
+              font-size: 5.41vw
+              font-weight: 200
+              left: 2%
+              letter-spacing: '-0.05vw'
+              max-width: 1px
+              top: 10.8%
+              cursor: default
+
+          # Markdown
+          - type: custom:hui-markdown-card
+            style:
+              '--ha-card-background': none
+              '--ha-card-box-shadow': none
+              '--primary-text-color': 'rgba(255, 255, 255, 0.9)'
+              font-size: 1.55vw
+              font-weight: 300
+              height: 1px
+              max-height: 4vw
+              left: 10%
+              letter-spacing: 0.06vw
+              line-height: 2.1vw
+              max-width: 18vw
+              opacity: 0.65
+              position: absolute
+              top: 16%
+              width: 18vw
+            content: >
+              <font color='#6a7377'><b>{{ states('sensor.day') }}</b><br>
+              <b>{{ states('sensor.date_se') }}</b> </font><br>
+
+              {% set t = now().hour %}
+              {% if t <= 1 %} <b>God natt</b> {{'\U0001F611'}}
+              {% elif t <= 3 %} <b>God natt</b> {{'\U0001F62A'}}
+              {% elif t <= 5 %} <b>God natt</b> {{'\U0001F634'}}
+              {% elif t <= 7 %} <b>God morgon</b> {{'\U0001F4A9'}}
+              {% elif t <= 9 %} <b>God morgon</b> {{'\u2615\uFE0F'}}
+              {% elif t <= 10.5 %} <b>God morgon</b> {{'\U0001F642'}}
+              {% elif t <= 13 %} <b>God dag</b> {{'\U0001F60A'}}
+              {% elif t <= 15 %} <b>God dag</b> {{'\U0001F60E'}}
+              {% elif t <= 17 %} <b>God dag</b> {{'\U0001F44B\U0001F3FB'}}
+              {% elif t <= 19 %} <b>God kväll</b> {{'\U0001F44B\U0001F3FB'}}
+              {% elif t <= 22 %} <b>God kväll</b> {{'\U0001F60C'}}
+              {% elif t <= 23 %} <b>God kväll</b> {{'\U0001F974'}}
+              {% else %} <b>God kväll</b> {{'\U0001F974'}}
+              {% endif %}
+
+              <font color='#879296'>
+              {% if is_state('vacuum.xiaomi_vacuum_cleaner', 'cleaning') %}
+                <b>Monk städar</b>
+              {% elif is_state('vacuum.xiaomi_vacuum_cleaner', 'returning') %}
+                <b>Monk är färdig</b>
+              {% endif %}
+
+              {% if is_state('sensor.dark_sky_temperature', 'unknown') or is_state('sensor.dark_sky_precip_probability', 'unknown') %}
+              {% else %}
+                {% if states('sensor.dark_sky_temperature') | float <= 0.0 %}
+                Känns som {{ states('sensor.dark_sky_apparent_temperature') | round }}° {{'\u2744\uFE0F'}} med {{ states('sensor.dark_sky_precip_probability') | round }}% risk för snö.
+                {% elif states('sensor.dark_sky_temperature') | float > 0.0 %}
+                Känns som {{ states('sensor.dark_sky_apparent_temperature') | round }}° med {{ states('sensor.dark_sky_precip_probability') | round }}% risk för regn. {% if states('sensor.dark_sky_precip_probability') | float > 30.0 %} {{'\u2614\uFE0F' }} {% endif %}
+                {% elif states('sensor.dark_sky_temperature') | float > 19.0 and states('sensor.dark_sky_precip_probability') | float < 5.0 %}
+                Känns som {{ states('sensor.dark_sky_apparent_temperature') | round }}° {{'\U0001F60E' }} med {{ states('sensor.dark_sky_precip_probability') | round }}% risk för regn.
+                {% endif %}
+              {% endif %}
+
+              {% if is_state('sensor.u_s_air_pollution_level', 'unknown') %}
+              {% else %}
+                {% if states('sensor.u_s_air_pollution_level') != 'Good' %}
+                {{'\U0001F3ED'}} Air quality is {{states('sensor.u_s_air_pollution_level')}} (AQI: {{states('sensor.u_s_air_quality_index')}}). The main pollutant is {{states('sensor.u_s_main_pollutant')}}.
+                {% endif %}
+              {% endif %}
+
+              {{ states('sensor.washing_countdown') }}
+              </font>
+
+          # Washing Timer
+          - type: conditional
+            conditions:
+              - entity: input_boolean.washing_timer_visibility
+                state: 'on'
+            elements:
+              - type: "custom:button-card"
+                entity: timer.washing
+                show_icon: false
+                show_name: false
+                show_state: true
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.restart_washing_timer
+                hold_action:
+                  action: call-service
+                  service: input_boolean.turn_off
+                  service_data:
+                    entity_id: input_boolean.washing_timer_visibility
+                double_tap_action:
+                  action: none
+                styles:
+                  card:
+                    - background: '#202a2f30'
+                    - border-radius: 0.7vw
+                    - box-shadow: none
+                    - border: '0.1vw solid #292c2e'
+                  state:
+                    - font-size: 2.5vw
+                    - font-weight: 500
+                    - letter-spacing: 0.09vw
+                    - opacity: 0.65
+                    - padding: 0.5vw 1vw 0.5vw 1vw
+                style:
+                  left: 10.8%
+                  top: 80%
+                  font-size: 1.6vw
+
+          # Buttons
+          - type: icon
+            icon: mdi:robot-vacuum
+            tap_action: !include popups/vacuum-monk.yaml
+            title: null
+            style:
+              '--iron-icon-height': 4vw
+              '--iron-icon-width': 4vw
+              color: 'rgba(255, 255, 255, 0.20)'
+              left: 4.8%
+              top: 92.1%
+          - type: icon
+            icon: 'mdi:information-outline'
+            tap_action: !include popups/information.yaml
+            title: null
+            style:
+              '--iron-icon-height': 4vw
+              '--iron-icon-width': 4vw
+              color: 'rgba(255, 255, 255, 0.20)'
+              left: 10.7%
+              top: 92.1%
+          - type: icon
+            icon: 'mdi:emoticon-lol-outline'
+            #tap_action: !include popup/sidebar_scenarier.yaml
+            title: null
+            style:
+              '--iron-icon-height': 4vw
+              '--iron-icon-width': 4vw
+              color: 'rgba(255, 255, 255, 0.20)'
+              left: 16.55%
+              top: 92.1%
+
+          # Heading Environment (Vardagsrum)
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Environment
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              color: '#bcbebf'
+              font-size: 1.8vw
+              font-weight: 500
+              left: 24.85%
+              max-width: 1px
+              top: 9.15%
+              cursor: default
+
+          # Heading Hemma
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Hemma
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              color: '#bcbebf'
+              font-size: 1.8vw
+              font-weight: 500
+              left: 74.5%
+              max-width: 1px
+              top: 53.4%
+              cursor: default
+
+          # Heading Tools
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Tools (ad block?)
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              color: '#bcbebf'
+              font-size: 1.8vw
+              font-weight: 500
+              left: 49.65%
+              max-width: 1px
+              top: 9.15%
+              cursor: default
+
+          # Heading Media
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Media
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              color: '#bcbebf'
+              font-size: 1.8vw
+              font-weight: 500
+              left: 25%
+              max-width: 1px
+              top: 53.4%
+              cursor: default
+
+          # Heading Lampor
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Lampor
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              color: '#bcbebf'
+              font-size: 1.8vw
+              font-weight: 500
+              left: 74.55%
+              max-width: 1px
+              top: 9.15%
+              cursor: default
+
+          # Heading - Cameras
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Kameror
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              color: '#bcbebf'
+              font-size: 1.8vw
+              font-weight: 500
+              left: 49.6%
+              max-width: 1px
+              top: 53.4%
+              cursor: default
+
+          # Lights / Lampor
+          # Hallway
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Hallway
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 80.05%
+              top: 20.35%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-light-hallway)'
+              color: 'var(--colour-light-hallway)'
+              border-radius: 0.7vw
+              font-size: 1.25vw
+              display: flex
+              align-items: flex-end
+              padding: 0.5% 0.8%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: state-icon
+            entity: light.hallway
+            icon: mdi:ceiling-light
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 75.9%
+              top: 13.6%
+              box-sizing: border-box
+              color: '#939697'
+              animation: 'var(--animation-light-hallway)'
+              transform: scale(1)
+              --iron-icon-height: 2.3vw
+              --iron-icon-width: 2.3vw
+          - type: conditional
+            conditions:
+              - entity: light.hallway
+                state: 'on'
+            elements:
+              - type: custom:circle-sensor-card
+                entity: sensor.light_hallway_brightness
+                fill: '#FFFFFF10'
+                font_style:
+                  color: '#7d7e80'
+                  font-size: 1.0vw
+                  font-weight: 400
+                  margin-left: '-0.8%'
+                  margin-top: 1.9%
+                gradient: true
+                max: 100
+                min: 0
+                stroke_color: '#aaabad'
+                stroke_width: 6
+                style:
+                  height: 3.15vw
+                  left: 82.3%
+                  opacity: 0.7
+                  top: 16.5%
+                  width: 3.15vw
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: call-service
+              service: light.toggle
+              service_data:
+                entity_id: light.hallway
+            hold_action: !include popups/light-hallway.yaml
+            style:
+              left: 80.05%
+              top: 20.35%
+              width: 10%
+              height: 16%
+
+          # Cloud
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Cloud
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 91.05%
+              top: 20.35%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-light-cloud)'
+              color: 'var(--colour-light-cloud)'
+              border-radius: 0.7vw
+              font-size: 1.25vw
+              display: flex
+              align-items: flex-end
+              padding: 0.5% 0.8%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: state-icon
+            entity: switch.cloud
+            icon: mdi:cloud
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 86.9%
+              top: 13.3%
+              box-sizing: border-box
+              color: '#939697'
+              animation: 'var(--animation-light-cloud)'
+              transform: scale(1)
+              --iron-icon-height: 2.3vw
+              --iron-icon-width: 2.3vw
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: call-service
+              service: switch.toggle
+              service_data:
+                entity_id: switch.cloud
+            hold_action:
+              action: none
+            style:
+              left: 91.05%
+              top: 20.35%
+              width: 10%
+              height: 16%
+
+          # Lounge Small
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Small Lamp
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 80.05%
+              top: 37.9%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-light-lounge-small)'
+              color: 'var(--colour-light-lounge-small)'
+              border-radius: 0.7vw
+              font-size: 1.25vw
+              display: flex
+              align-items: flex-end
+              padding: 0.5% 0.8%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: state-icon
+            entity: light.lounge_light_small
+            icon: mdi:desk-lamp
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 75.9%
+              top: 31.41%
+              box-sizing: border-box
+              color: '#939697'
+              animation: 'var(--animation-light-lounge-small)'
+              transform: scale(1)
+              --iron-icon-height: 2.3vw
+              --iron-icon-width: 2.3vw
+          - type: conditional
+            conditions:
+              - entity: light.lounge_light_small
+                state: 'on'
+            elements:
+              - type: custom:circle-sensor-card
+                entity: sensor.light_lounge_small_brightness
+                fill: '#FFFFFF10'
+                font_style:
+                  color: '#7d7e80'
+                  font-size: 1.0vw
+                  font-weight: 400
+                  margin-left: '-0.8%'
+                  margin-top: 1.9%
+                gradient: true
+                max: 100
+                min: 0
+                stroke_color: '#aaabad'
+                stroke_width: 6
+                style:
+                  height: 3.15vw
+                  left: 82.3%
+                  opacity: 0.7
+                  top: 34.25%
+                  width: 3.15vw
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: call-service
+              service: light.toggle
+              service_data:
+                entity_id: light.lounge_light_small
+            hold_action: !include popups/light-lounge-small.yaml
+            style:
+              left: 80.05%
+              top: 37.9%
+              width: 10%
+              height: 16%
+
+          # Lounge Tall
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Tall Lamp
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 91.05%
+              top: 37.9%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-light-lounge-tall)'
+              color: 'var(--colour-light-lounge-tall)'
+              border-radius: 0.7vw
+              font-size: 1.25vw
+              display: flex
+              align-items: flex-end
+              padding: 0.5% 0.8%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: state-icon
+            entity: light.lounge_light_tall
+            icon: mdi:floor-lamp
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 86.9%
+              top: 31.41%
+              box-sizing: border-box
+              color: '#939697'
+              animation: 'var(--animation-light-lounge-tall)'
+              transform: scale(1)
+              --iron-icon-height: 2.3vw
+              --iron-icon-width: 2.3vw
+          - type: conditional
+            conditions:
+              - entity: light.lounge_light_tall
+                state: 'on'
+            elements:
+              - type: custom:circle-sensor-card
+                entity: sensor.light_lounge_tall_brightness
+                fill: '#FFFFFF10'
+                font_style:
+                  color: '#7d7e80'
+                  font-size: 1.0vw
+                  font-weight: 400
+                  margin-left: '-0.8%'
+                  margin-top: 1.9%
+                gradient: true
+                max: 100
+                min: 0
+                stroke_color: '#aaabad'
+                stroke_width: 6
+                style:
+                  height: 3.15vw
+                  left: 93.3%
+                  opacity: 0.7
+                  top: 34.25%
+                  width: 3.15vw
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: call-service
+              service: light.toggle
+              service_data:
+                entity_id: light.lounge_light_tall
+            hold_action: !include popups/light-lounge-tall.yaml
+            style:
+              left: 91.05%
+              top: 37.9%
+              width: 10%
+              height: 16%
+
+          # Media
+          - type: custom:swipe-card
+            start_card: 1
+            parameters:
+              #effect: 'coverflow'
+              speed: 450
+              spaceBetween: 10
+              threshold: 30
+              coverflowEffect:
+                rotate: 70
+                stretch: 0
+                depth: 300
+                modifier: 1
+                slideShadows : true
+            style:
+              '--ha-card-background': none
+              '--ha-card-border-radius': 0.75vw
+              '--ha-card-box-shadow': none
+              left: 35.8%
+              padding: 0
+              top: 73.4%
+              width: 20.95%
+              text-rendering: optimizeLegibility
+              font-smoothing: none
+            cards:
+              - type: conditional
+                conditions:
+                  - entity: media_player.luther_universal_tv
+                    state_not: "playing"
+                  - entity: media_player.luther_universal_tv
+                    state_not: "paused"
+                card:
+                  # Media - Recently Added
+                  type: picture-elements
+                  image: /local/overlay.svg
+                  elements:
+                    - type: custom:upcoming-media-card
+                      accent_color: none
+                      all_shadows: false
+                      border_color: none
+                      entity: sensor.plex_recently_added
+                      image_style: fanart
+                      flag: false
+                      line1_text: $empty
+                      line2_text: $empty
+                      line3_text: $empty
+                      line4_text: $empty
+                      max: 1
+                      title_text: $empty
+                      style:
+                        '--ha-card-background': none
+                        '--ha-card-box-shadow': none
+                        height: 1px
+                        left: -36%
+                        padding: 0
+                        top: -3%
+                        width: 360%
+                        filter: grayscale(100%)
+                    - type: image
+                      image: /local/media_overlay_large.svg
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      style:
+                        left: 50%
+                        top: 50%
+                        width: 100%
+                        background: rgba(0,0,0,0.3)
+                    - type: state-label
+                      prefix: Senast Nedladdat
+                      entity: sensor.placeholder
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      style:
+                        font-size: 1vw
+                        font-weight: 400
+                        left: 2%
+                        max-width: 1px
+                        letter-spacing: 0.031vw
+                        top: 84.8%
+                        text-rendering: optimizeLegibility
+                        font-smoothing: none
+                        cursor: default
+                    - type: state-label
+                      entity: sensor.plex_title_truncate
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      style:
+                        font-size: 1.29vw
+                        font-weight: 600
+                        left: 2%
+                        max-width: 1px
+                        letter-spacing: 0.031vw
+                        top: 92%
+                        text-rendering: optimizeLegibility
+                        font-smoothing: none
+                        cursor: default
+              # Media - Currently Playing
+              - type: conditional
+                conditions:
+                  - entity: media_player.luther_universal_tv
+                    state_not: "idle"
+                  - entity: media_player.luther_universal_tv
+                    state_not: "stopped"
+                  - entity: media_player.luther_universal_tv
+                    state_not: "on"
+                  - entity: media_player.luther_universal_tv
+                    state_not: "off"
+                  - entity: media_player.luther_universal_tv
+                    state_not: "unknown"
+                  - entity: media_player.luther_universal_tv
+                    state_not: "standby"
+                card:
+                  type: picture-elements
+                  image: /local/overlay.svg
+                  elements:
+                    - type: custom:mini-media-player
+                      entity: media_player.luther_universal_tv
+                      artwork: full-cover-fit
+                      hide:
+                        controls: true
+                        power: true
+                        volume: true
+                        icon: true
+                        name: true
+                        info: true
+                        progress: true
+                      tap_action: none
+                      style:
+                        '--ha-card-background': none
+                        '--ha-card-border-radius': 0.75vw
+                        '--ha-card-box-shadow': none
+                        height: 100%
+                        left: 50%
+                        padding: 0
+                        top: 0%
+                        width: 200%
+                        z-index: -2
+                        #filter: grayscale(100%)
+                    - type: image
+                      image: /local/media_overlay_large.svg
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      style:
+                        left: 50%
+                        top: 50%
+                        width: 100%
+                        background: rgba(0,0,0,0.3)
+                    - type: state-label
+                      prefix: Oak / TV
+                      entity: sensor.placeholder
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      style:
+                        font-size: 1vw
+                        font-weight: 400
+                        left: 2%
+                        max-width: 1px
+                        letter-spacing: 0.031vw
+                        top: 84.8%
+                        text-rendering: optimizeLegibility
+                        font-smoothing: none
+                        cursor: default
+                    - type: state-label
+                      entity: sensor.media_luther_title_truncate
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      style:
+                        font-size: 1.29vw
+                        font-weight: 600
+                        left: 2%
+                        max-width: 1px
+                        letter-spacing: 0.031vw
+                        top: 92%
+                        text-rendering: optimizeLegibility
+                        font-smoothing: none
+                        cursor: default
+                    - type: image
+                      entity: switch.media_play_pause_luther
+                      title: null
+                      state_image:
+                        'off': /local/mediaplay.gif
+                        'on': /local/mediapause.gif
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: none
+                      style:
+                        left: 50%
+                        top: 45%
+                        width: 20%
+                        filter: 'drop-shadow(0px 0px 10px #11151790)'
+              # Second panel
+              - type: picture-elements
+                image: /local/overlay.svg
+                elements:
+                  # Netflix
+                  - type: state-label
+                    entity: sensor.placeholder
+                    prefix: Netflix
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    title: null
+                    style:
+                      left: 24%
+                      top: 23.5%
+                      width: 47%
+                      height: 47%
+                      border-radius: 0.75vw
+                      background: '#E50914'
+                      color: '#ffffff'
+                      font-size: 1.25vw
+                      display: flex
+                      align-items: flex-end
+                      padding: 2.3% 3%
+                      box-sizing: border-box
+                      transition: all 0.5s ease-in-out
+                  - type: state-icon
+                    entity: sensor.placeholder
+                    icon: mdi:netflix
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    style:
+                      left: 3.5%
+                      top: 5%
+                      box-sizing: border-box
+                      transform: scale(1)
+                      --iron-icon-fill-color: '#ffffff'
+                      --iron-icon-height: 2.3vw
+                      --iron-icon-width: 2.3vw
+                  - type: image
+                    image: /local/overlay.svg
+                    entity: sensor.placeholder
+                    title: null
+                    tap_action:
+                      action: call-service
+                      service: kodi.call_method
+                      service_data:
+                        entity_id: media_player.tv_kodi
+                        method: Addons.ExecuteAddon
+                        addonid: plugin.video.netflix
+                        params:
+                          command: activate
+                    hold_action:
+                      action: none
+                    style:
+                      left: 24%
+                      top: 23.5%
+                      width: 47%
+                      height: 47%
+                  # Kodi
+                  - type: state-label
+                    entity: sensor.placeholder
+                    prefix: Kodi
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    title: null
+                    style:
+                      left: 76%
+                      top: 23.5%
+                      width: 47%
+                      height: 47%
+                      border-radius: 0.75vw
+                      background: '#12b2e7'
+                      color: '#ffffff'
+                      font-size: 1.25vw
+                      display: flex
+                      align-items: flex-end
+                      padding: 2.3% 3%
+                      box-sizing: border-box
+                      transition: all 0.5s ease-in-out
+                  - type: state-icon
+                    entity: sensor.placeholder
+                    icon: mdi:kodi
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    style:
+                      left: 58.3%
+                      top: 5.5%
+                      box-sizing: border-box
+                      transform: scale(1)
+                      --iron-icon-fill-color: '#ffffff'
+                      --iron-icon-height: 2.3vw
+                      --iron-icon-width: 2.3vw
+                  - type: image
+                    image: /local/overlay.svg
+                    entity: sensor.placeholder
+                    title: null
+                    tap_action:
+                      action: call-service
+                      service: kodi.call_method
+                      service_data:
+                        entity_id: media_player.tv_kodi
+                        method: Input.Home
+                    hold_action:
+                      action: none
+                    style:
+                      left: 76%
+                      top: 23.5%
+                      width: 47%
+                      height: 47%
+                  # Plex
+                  - type: state-label
+                    entity: sensor.placeholder
+                    prefix: Plex
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    style:
+                      left: 24%
+                      top: 77%
+                      width: 46.5%
+                      height: 47%
+                      border-radius: 0.75vw
+                      background: '#e5a00d'
+                      color: '#ffffff'
+                      font-size: 1.25vw
+                      display: flex
+                      align-items: flex-end
+                      padding: 2.3% 3%
+                      box-sizing: border-box
+                      transition: all 0.5s ease-in-out
+                  - type: state-icon
+                    entity: sensor.placeholder
+                    icon: mdi:plex
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    style:
+                      left: 4.3%
+                      top: 57.5%
+                      box-sizing: border-box
+                      transform: scale(1)
+                      --iron-icon-fill-color: '#ffffff'
+                      --iron-icon-height: 2.3vw
+                      --iron-icon-width: 2.3vw
+                  - type: image
+                    image: /local/overlay.svg
+                    entity: sensor.placeholder
+                    title: null
+                    tap_action:
+                      action: call-service
+                      service: kodi.call_method
+                      service_data:
+                        entity_id: media_player.tv_kodi
+                        method: Addons.ExecuteAddon
+                        addonid: script.plex
+                        params:
+                          command: activate
+                    hold_action:
+                      action: none
+                    style:
+                      left: 24%
+                      top: 77%
+                      width: 46.5%
+                      height: 47%
+                  # YouTube
+                  - type: state-label
+                    entity: sensor.placeholder
+                    prefix: YouTube
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    style:
+                      left: 76%
+                      top: 77%
+                      width: 46.5%
+                      height: 47%
+                      border-radius: 0.75vw
+                      background: '#ff0000'
+                      color: '#ffffff'
+                      font-size: 1.25vw
+                      display: flex
+                      align-items: flex-end
+                      padding: 2.3% 3%
+                      box-sizing: border-box
+                      transition: all 0.5s ease-in-out
+                  - type: state-icon
+                    entity: sensor.placeholder
+                    icon: mdi:youtube-tv
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    style:
+                      left: 58.3%
+                      top: 57.5%
+                      box-sizing: border-box
+                      transform: scale(1)
+                      --iron-icon-fill-color: '#ffffff'
+                      --iron-icon-height: 2.3vw
+                      --iron-icon-width: 2.3vw
+                  - type: image
+                    image: /local/overlay.svg
+                    entity: sensor.placeholder
+                    title: null
+                    tap_action:
+                      action: call-service
+                      service: kodi.call_method
+                      service_data:
+                        entity_id: media_player.tv_kodi
+                        method: Addons.ExecuteAddon
+                        addonid: plugin.video.youtube
+                        params:
+                          command: activate
+                    hold_action:
+                      action: none
+                    style:
+                      left: 76%
+                      top: 77%
+                      width: 46.5%
+                      height: 47%
+
+          # Cameras
+          # Front Camera
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Front
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 55.18%
+              top: 64.5%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-camera-front)'
+              color: 'var(--colour-camera-front)'
+              border-radius: 0.7vw
+              font-size: 1.25vw
+              display: flex
+              align-items: flex-end
+              padding: 0.4% 0.7%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: image
+            title: null
+            camera_image: camera.blink_front
+            style:
+              left: 55.18%
+              top: 61.5%
+              width: 10%
+              height: 6.2vw
+              filter: grayscale(100%)
+              border-radius: 0.7vw
+              overflow: hidden
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 55.18%
+              top: 61.1%
+              width: 10%
+              height: 5.7vw
+              box-shadow: inset 0 0 6.2vw black
+              opacity: 0.9
+              border-radius: 0.7vw 0.7vw 0 0
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.blink_front_camera_armed
+                state: 'on'
+            elements:
+              - type: state-icon
+                entity: binary_sensor.blink_front_camera_armed
+                icon: mdi:motion-sensor
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                state_color: false
+                style:
+                  left: 51%
+                  top: 57.9%
+                  box-sizing: border-box
+                  fill: red
+                  transform: scale(1)
+                  animation: icon-pulse 2s ease-in-out infinite alternate
+                  --paper-item-icon-color: '#cfd0d1'
+                  --iron-icon-height: 2.3vw
+                  --iron-icon-width: 2.3vw
+          - type: image
+            image: /local/overlay.svg
+            entity: camera.blink_front
+            title: null
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.blink_front_capture_script
+            hold_action:
+              action: more-info
+            style:
+              left: 55.18%
+              top: 64.5%
+              width: 10%
+              height: 16%
+
+          # Back Camera
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Back
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 66.14%
+              top: 64.5%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-camera-back)'
+              color: 'var(--colour-camera-back)'
+              border-radius: 0.7vw
+              font-size: 1.25vw
+              display: flex
+              align-items: flex-end
+              padding: 0.4% 0.7%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: image
+            title: null
+            camera_image: camera.blink_back
+            style:
+              left: 66.14%
+              top: 61.5%
+              width: 10%
+              height: 6.2vw
+              filter: grayscale(100%)
+              border-radius: 0.7vw
+              overflow: hidden
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 66.14%
+              top: 61.1%
+              width: 10%
+              height: 5.7vw
+              box-shadow: inset 0 0 6.2vw black
+              opacity: 0.9
+              border-radius: 0.7vw 0.7vw 0 0
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.blink_back_camera_armed
+                state: 'on'
+            elements:
+              - type: state-icon
+                entity: binary_sensor.blink_back_camera_armed
+                icon: mdi:motion-sensor
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                state_color: false
+                style:
+                  left: 62%
+                  top: 57.9%
+                  box-sizing: border-box
+                  fill: red
+                  transform: scale(1)
+                  animation: icon-pulse 2s ease-in-out infinite alternate
+                  --paper-item-icon-color: '#cfd0d1'
+                  --iron-icon-height: 2.3vw
+                  --iron-icon-width: 2.3vw
+          - type: image
+            image: /local/overlay.svg
+            entity: camera.blink_back
+            title: null
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.blink_back_capture_script
+            hold_action:
+              action: more-info
+            style:
+              left: 66.14%
+              top: 64.5%
+              width: 10%
+              height: 16%
+
+          # Indoor Front Camera
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Indoor Front
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 55.18%
+              top: 82.17%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-camera-indoor-front)'
+              color: 'var(--colour-camera-indoor-front)'
+              border-radius: 0.7vw
+              font-size: 1.25vw
+              display: flex
+              align-items: flex-end
+              padding: 0.4% 0.7%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: image
+            title: null
+            camera_image: camera.blink_indoor_front
+            style:
+              left: 55.18%
+              top: 79.2%
+              width: 10%
+              height: 6.2vw
+              filter: grayscale(100%)
+              border-radius: 0.7vw
+              overflow: hidden
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 55.18%
+              top: 78.8%
+              width: 10%
+              height: 5.7vw
+              box-shadow: inset 0 0 6.2vw black
+              opacity: 0.9
+              border-radius: 0.7vw 0.7vw 0 0
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.blink_indoor_front_camera_armed
+                state: 'on'
+            elements:
+              - type: state-icon
+                entity: binary_sensor.blink_indoor_front_camera_armed
+                icon: mdi:motion-sensor
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                state_color: false
+                style:
+                  left: 51.3%
+                  top: 75.7%
+                  box-sizing: border-box
+                  fill: red
+                  transform: scale(1)
+                  animation: icon-pulse 2s ease-in-out infinite alternate
+                  --paper-item-icon-color: '#cfd0d1'
+                  --iron-icon-height: 2.3vw
+                  --iron-icon-width: 2.3vw
+          - type: image
+            image: /local/overlay.svg
+            entity: camera.blink_indoor_front
+            title: null
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.blink_indoor_front_capture_script
+            hold_action:
+              action: more-info
+            style:
+              left: 55.18%
+              top: 82.17%
+              width: 10%
+              height: 16%
+
+          # Indoor Back Camera
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Indoor Back
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 66.14%
+              top: 82.17%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-camera-indoor-back)'
+              color: 'var(--colour-camera-indoor-back)'
+              border-radius: 0.7vw
+              font-size: 1.25vw
+              display: flex
+              align-items: flex-end
+              padding: 0.4% 0.7%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: image
+            title: null
+            camera_image: camera.blink_indoor_back
+            style:
+              left: 66.14%
+              top: 79.2%
+              width: 10%
+              height: 6.2vw
+              filter: grayscale(100%)
+              border-radius: 0.7vw
+              overflow: hidden
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 66.14%
+              top: 78.8%
+              width: 10%
+              height: 5.7vw
+              box-shadow: inset 0 0 6.2vw black
+              opacity: 0.9
+              border-radius: 0.7vw 0.7vw 0 0
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.blink_indoor_back_camera_armed
+                state: 'on'
+            elements:
+              - type: state-icon
+                entity: binary_sensor.blink_indoor_back_camera_armed
+                icon: mdi:motion-sensor
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                state_color: false
+                style:
+                  left: 62.25%
+                  top: 75.7%
+                  box-sizing: border-box
+                  fill: red
+                  transform: scale(1)
+                  animation: icon-pulse 2s ease-in-out infinite alternate
+                  --paper-item-icon-color: '#cfd0d1'
+                  --iron-icon-height: 2.3vw
+                  --iron-icon-width: 2.3vw
+          - type: image
+            image: /local/overlay.svg
+            entity: camera.blink_indoor_back
+            title: null
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.blink_indoor_back_capture_script
+            hold_action:
+              action: more-info
+            style:
+              left: 66.14%
+              top: 82.17%
+              width: 10%
+              height: 16%
+
+          # Home
+          # Scott
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Scott
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+               left: 80.05%
+               top: 64.5%
+               width: 10%
+               height: 16%
+               background: 'var(--bg-scott)'
+               color: 'var(--colour-scott)'
+               border-radius: 0.7vw
+               font-size: 1.25vw
+               display: flex
+               align-items: flex-end
+               padding: 0.5% 0.8%
+               box-sizing: border-box
+               transition: all 0.5s ease-in-out
+          - type: image
+            entity: person.scott
+            image: https://s.gravatar.com/avatar/c887eb86967863cf7e9002277fa6f625?s=360&r=g
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 77.7%
+              top: 60.8%
+              width: 2.8vw
+              border-radius: 50%
+              overflow: hidden
+          - type: conditional
+            conditions:
+              - entity: person.scott
+                state: home
+            elements:
+              - type: custom:circle-sensor-card
+                entity: sensor.scott_last_changed
+                fill: '#FFFFFF10'
+                font_style:
+                  color: '#7d7e80'
+                  font-size: 1.0vw
+                  font-weight: 400
+                  margin-left: '-0.8%'
+                  margin-top: 1.9%
+                gradient: true
+                max: 100
+                min: 0
+                stroke_color: '#aaabad'
+                stroke_width: 6
+                style:
+                  height: 3.15vw
+                  left: 82.35%
+                  opacity: 0.7
+                  top: 60.8%
+                  width: 3.15vw
+          - type: conditional
+            conditions:
+              - entity: person.scott
+                state: not_home
+            elements:
+              - type: custom:circle-sensor-card
+                entity: sensor.scott_last_changed
+                fill: '#FFFFFF08'
+                font_style:
+                  color: '#7d7e80'
+                  font-size: 1.0vw
+                  font-weight: 400
+                  margin-left: '-0.8%'
+                  margin-top: 1.9%
+                gradient: true
+                max: 100
+                min: 0
+                stroke_color: '#313638'
+                stroke_width: 6
+                style:
+                  height: 3.15vw
+                  left: 82.35%
+                  opacity: 0.7
+                  top: 60.8%
+                  width: 3.15vw
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: none
+            hold_action: !include popups/person-scott.yaml
+            style:
+               left: 80.05%
+               top: 64.5%
+               width: 10%
+               height: 16%
+
+          # Gemma
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Gemma
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+               left: 91.05%
+               top: 64.5%
+               width: 10%
+               height: 16%
+               background: 'var(--bg-gemma)'
+               color: 'var(--colour-gemma)'
+               border-radius: 0.7vw
+               font-size: 1.25vw
+               display: flex
+               align-items: flex-end
+               padding: 0.5% 0.8%
+               box-sizing: border-box
+               transition: all 0.5s ease-in-out
+          - type: image
+            entity: person.gemma
+            image: https://s.gravatar.com/avatar/82a51cc36379aaaaf44e045acd89a3b3?s=360&r=g
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 88.8%
+              top: 60.8%
+              width: 2.8vw
+              border-radius: 50%
+              overflow: hidden
+          - type: conditional
+            conditions:
+              - entity: person.gemma
+                state: home
+            elements:
+              - type: custom:circle-sensor-card
+                entity: sensor.gemma_last_changed
+                fill: '#FFFFFF10'
+                font_style:
+                  color: '#7d7e80'
+                  font-size: 1.0vw
+                  font-weight: 400
+                  margin-left: '-0.8%'
+                  margin-top: 1.9%
+                gradient: true
+                max: 100
+                min: 0
+                stroke_color: '#aaabad'
+                stroke_width: 6
+                style:
+                  height: 3.15vw
+                  left: 93.35%
+                  opacity: 0.7
+                  top: 60.8%
+                  width: 3.15vw
+          - type: conditional
+            conditions:
+              - entity: person.gemma
+                state: not_home
+            elements:
+              - type: custom:circle-sensor-card
+                entity: sensor.gemma_last_changed
+                fill: '#FFFFFF08'
+                font_style:
+                  color: '#7d7e80'
+                  font-size: 1.0vw
+                  font-weight: 400
+                  margin-left: '-0.8%'
+                  margin-top: 1.9%
+                gradient: true
+                max: 100
+                min: 0
+                stroke_color: '#313638'
+                stroke_width: 6
+                style:
+                  height: 3.15vw
+                  left: 93.35%
+                  opacity: 0.7
+                  top: 60.8%
+                  width: 3.15vw
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: none
+            hold_action: !include popups/person-gemma.yaml
+            style:
+               left: 91.05%
+               top: 64.5%
+               width: 10%
+               height: 16%
+
+          # Post notification
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Post
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+               left: 80.05%
+               top: 82.17%
+               width: 10%
+               height: 16%
+               background: 'var(--bg-post)'
+               color: 'var(--colour-post)'
+               border-radius: 0.7vw
+               font-size: 1.25vw
+               display: flex
+               align-items: flex-end
+               padding: 0.5% 0.8%
+               box-sizing: border-box
+               transition: all 0.5s ease-in-out
+          - type: state-icon
+            entity: input_boolean.post_visibility
+            icon: mdi:email
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 75.9%
+              top: 75.1%
+              box-sizing: border-box
+              color: '#939697'
+              animation: 'var(--animation-post)'
+              transform: scale(1)
+              --iron-icon-height: 2.3vw
+              --iron-icon-width: 2.3vw
+          - type: image
+            image: /local/overlay.svg
+            entity: binary_sensor.post
+            title: null
+            tap_action:
+              action: call-service
+              service: input_boolean.turn_off
+              service_data:
+                entity_id: input_boolean.post_visibility
+            hold_action: !include popups/sensor-post.yaml
+            style:
+               left: 80.05%
+               top: 82.17%
+               width: 10%
+               height: 16%
+
+          # Presence Emulator
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Auto Home
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+               left: 91.05%
+               top: 82.17%
+               width: 10%
+               height: 16%
+               background: 'var(--bg-presence)'
+               color: 'var(--colour-presence)'
+               border-radius: 0.7vw
+               font-size: 1.25vw
+               display: flex
+               align-items: flex-end
+               padding: 0.5% 0.8%
+               box-sizing: border-box
+               transition: all 0.5s ease-in-out
+          - type: state-icon
+            entity: switch.presence_emulator
+            icon: mdi:home-assistant
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 86.9%
+              top: 75.1%
+              box-sizing: border-box
+              color: '#939697'
+              animation: 'var(--animation-presence)'
+              transform: scale(1)
+              --iron-icon-height: 2.3vw
+              --iron-icon-width: 2.3vw
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: call-service
+              service: switch.toggle
+              service_data:
+                entity_id: switch.presence_emulator
+            hold_action:
+              action: none
+            style:
+               left: 91.05%
+               top: 82.17%
+               width: 10%
+               height: 16%
+
+
+          # Coronavirus
+          - type: custom:hui-markdown-card
+            content: >
+              {% if is_state('sensor.sweden_coronavirus_current',
+              'unavailable') %} {% else %}
+              <font color='#6a7377'>
+              <b><ha-icon icon="bha:virus"></ha-icon> Coronavirus</b>
+              ‍  ‍  ‍     ‍  ‍ <font color='#2f3436'>|‍</font>  ‍    ‍   ‍  ‍  ‍
+              <b><ha-icon icon="mdi:emoticon-sad"></ha-icon>
+              {{ states('sensor.sweden_coronavirus_current') }}</b> smittade
+              ‍  ‍  ‍     ‍  ‍ <font color='#2f3436'>|‍</font>  ‍    ‍   ‍  ‍  ‍
+              <b><ha-icon icon="mdi:emoticon-happy"></ha-icon>
+              {{ states('sensor.sweden_coronavirus_recovered') }}</b> tillfrisknade
+              ‍  ‍  ‍     ‍  ‍ <font color='#2f3436'>|‍</font>  ‍    ‍   ‍  ‍  ‍
+              <b><ha-icon icon="mdi:grave-stone"></ha-icon>
+              {{ states('sensor.sweden_coronavirus_deaths') }}</b> avlidna
+              ‍  ‍  ‍     ‍  ‍ <font color='#2f3436'>|‍</font>  ‍    ‍   ‍  ‍  ‍
+              <b><ha-icon icon="mdi:chart-bar"></ha-icon>
+              {{ ((states('sensor.sweden_coronavirus_confirmed')
+              | int / 10327589 ) * 100) | round(3) }}%</b> av Sverige
+              </font>
+              {% endif %}
+            style:
+              top: 90.9%
+              left: 69.3%
+              width: 90vw
+              height: 1px
+              --iron-icon-height: 1.2vw
+              --iron-icon-width: 1.2vw
+              --ha-card-background: none
+              --ha-card-box-shadow: none
+              --primary-text-color: '#6a7377'
+              font-size: 1.15vw
+              font-weight: 400
+              letter-spacing: 0.06vw
+              line-height: 2.05vw
+              opacity: 0.5
+
+#          - type: image
+#            title: null
+#            image: /local/overlay.svg
+#            style:
+#              left: 66.14%
+#              opacity: 0
+#              top: 82.17%
+#              width: 10%
+#            tap_action:
+#              action: call-service
+#              service: light.toggle
+#              service_data:
+#                entity_id: light.hall
+
+#      - type: entities
+#        show_header_toggle: true
+#        title: Lights
+#        entities:
+#          - light.back_door
+#          - switch.bedroom_light
+#          - switch.lounge_light_small
+#          - switch.lounge_light_tall
+#          - switch.office_light
+#      - type: entities
+#        show_header_toggle: true
+#        title: Lounge Lights
+#        entities:
+#          - switch.lounge_light_small
+#          - switch.lounge_light_tall
+#      - type: entities
+#        title: Calls
+#        show_header_toggle: false
+#        entities:
+#          - sensor.last_call
+#          - sensor.last_blocked_call
+#      - type: vertical-stack
+#        cards:
+#          - type: sensor
+#            hours_to_show: 24
+#            name: Power Consumption
+#            graph: line
+#            entity: sensor.emoncms104856_power_kw
+#            detail: 2
+#          - type: sensor
+#            graph: line
+#            entity: sensor.emoncms104902_meter_count
+#            name: Power Meter
+#            hours_to_show: 24
+#          - type: sensor
+#            graph: line
+#            entity: sensor.energybattery
+#            name: Meter Battery
+#            detail: 2
+#      - type: entities
+#        title: General
+#        show_header_toggle: false
+#        entities:
+#          - switch.general_switch
+#      - type: vertical-stack
+#        cards:
+#          - type: thermostat
+#            entity: climate.hallway
+#          - type: entities
+#            title: false
+#            show_header_toggle: false
+#            entities:
+#              - switch.hot_water
+#      - type: sensor
+#        graph: line
+#        entity: sensor.hallway_thermostat_temperature
+#        name: Indoor Temperature
+#        detail: 2

@@ -326,3 +326,11 @@ switch.fullykiosk_screen:
   friendly_name: 'Wilson Screen'
 sensor.fp3_battery_level:
   friendly_name: 'Fairphone Battery'
+sensor.sweden_coronavirus_confirmed:
+  friendly_name: 'Confirmed'
+sensor.sweden_coronavirus_current:
+  friendly_name: 'Current'
+sensor.sweden_coronavirus_deaths:
+  friendly_name: 'Deaths'
+sensor.sweden_coronavirus_recovered:
+  friendly_name: 'Recovered'
