@@ -29,6 +29,10 @@ views:
             --bg-off: {{bg_off}};
             --colour-off: {{colour_off}};
 
+            --bg-adblock: {% if is_state('group.adblock', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
+            --colour-adblock: {% if is_state('group.adblock', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
+            --animation-adblock: {% if is_state('group.adblock', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
+
             --bg-light-hallway: {% if is_state('light.hallway', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
             --colour-light-hallway: {% if is_state('light.hallway', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
             --animation-light-hallway: {% if is_state('light.hallway', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
@@ -353,7 +357,7 @@ views:
           # Heading Tools
           - type: state-label
             entity: sensor.placeholder
-            prefix: Tools (ad block?)
+            prefix: Tools
             tap_action:
               action: none
             hold_action:
@@ -366,6 +370,62 @@ views:
               max-width: 1px
               top: 9.15%
               cursor: default
+
+          # Adblock
+          - type: state-label
+            entity: sensor.placeholder
+            prefix: Adblock
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 55.18%
+              top: 20.35%
+              width: 10%
+              height: 16%
+              background: 'var(--bg-adblock)'
+              color: 'var(--colour-adblock)'
+              border-radius: 0.7vw
+              font-size: 1.25vw
+              display: flex
+              align-items: flex-end
+              padding: 0.5% 0.8%
+              box-sizing: border-box
+              transition: all 0.5s ease-in-out
+          - type: state-icon
+            entity: group.adblock
+            icon: mdi:circle
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style:
+              left: 50.9%
+              top: 13.6%
+              box-sizing: border-box
+              color: '#939697'
+              animation: 'var(--animation-adblock)'
+              transform: scale(1)
+              --iron-icon-height: 2.3vw
+              --iron-icon-width: 2.3vw
+          - type: image
+            image: /local/overlay.svg
+            entity: sensor.placeholder
+            title: null
+            tap_action:
+              action: call-service
+              service: switch.toggle
+              service_data:
+                entity_id:
+                  - switch.pihole_mycroft_switch
+                  - switch.pihole_sycamore_switch
+            hold_action: !include popups/sensor-adblock.yaml
+            style:
+              left: 55.18%
+              top: 20.35%
+              width: 10%
+              height: 16%
 
           # Heading Media
           - type: state-label
