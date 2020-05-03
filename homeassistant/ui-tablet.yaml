@@ -7,6 +7,132 @@ preload_cards:
   - entities
   - iframe
 
+# Title Template
+anchors:
+  ⚓₁: &title
+    entity: sensor.placeholder
+    tap_action:
+      action: none
+    hold_action:
+      action: none
+    type: state-label
+  ⚓₂: &title-style
+    color: '#bcbebf'
+    font-size: 1.8vw
+    font-weight: 500
+    max-width: 1px
+    cursor: default
+
+button_card_templates:
+  # Light Template
+  light:
+    aspect_ratio: 1/1
+    show_state: true
+    show_icon: false
+    state: &button_state
+      - value: 'on'
+        styles:
+          card: [background-color: 'rgba(255, 255, 255, 0.8)']
+          name: [color: 'rgba(0, 0, 0, 0.6)']
+          state: [color: 'rgba(0, 0, 0, 0.6)']
+    custom_fields:
+      info: >
+        [[[ var brightness = Math.round( entity.attributes.brightness / 2.54 );
+        if (entity.state === 'on') return '<svg viewBox="0 0 50 50"><circle id="c_brightness" cx="25" cy="25" r="20.5" stroke="#b2b2b2" stroke-width="1.5" fill="none" />
+        <text x="50%" y="52%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">' + brightness + '</text></svg>'; ]]]
+    extra_styles: |
+      [[[ var radius = 20.5;
+      var circumference = radius * 2 * Math.PI;
+      var brightness = Math.round( entity.attributes.brightness / 2.54 );
+      return '#c_brightness { transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: ' + circumference + '; stroke-dashoffset: ' + (circumference - brightness / 100 * circumference) + ';}'; ]]]
+    styles:
+      name: &button_styles_name
+        [top: 57.7%, left: 11%, position: absolute, line-height: 2vw]
+      state: &button_styles_state
+        [top: 74%, left: 11%, position: absolute, line-height: 2vw, font-size: 1vw]
+      custom_fields:
+        info: &circle_pos
+          [top: 8.5%, left: 56.2%, width: 3.5vw, position: absolute, letter-spacing: 0.03vw]
+      card: &button_styles_card
+        [letter-spacing: 0.05vw, text-rendering: optimizeLegibility, font-weight: 400, color: 'rgba(255, 255, 255, 0.3)', font-size: 1.25vw,
+        background-color: 'rgba(115, 115, 115, 0.2)', border-radius: 0.8vw, box-shadow: none, transition: all 0.5s ease-in-out]
+    tap_action:
+      action: toggle
+    hold_action:
+      action: call-service
+      service: browser_mod.popup
+      service_data:
+        title: '[[[ return entity.attributes.friendly_name ]]]'
+        deviceID: this
+        style:
+          --ha-card-border-radius: 0 0 1em 1em
+          border-radius: 1em
+          opacity: 0.9
+        card:
+          type: vertical-stack
+          cards:
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - entity: '[[[ return entity.entity_id ]]]'
+                  secondary_info: last-changed
+                - type: custom:light-popup-card
+                  entity: '[[[ return entity.entity_id ]]]'
+                  icon: none
+                  fullscreen: false
+                  brightnessWidth: 75px
+                  brightnessHeight: 200px
+                  borderRadius: 1.8em
+                  sliderColor: '#c7c7c7'
+                  sliderTrackColor: rgba(25, 25, 25, 0.9)
+                  actionSize: 6em
+                  style: |
+                    #popup > div.action-holder > div > div > span {
+                      background: radial-gradient(circle at 50% 0, rgba(255,0,0,.5), rgba(255,0,0,0) 70.71%),
+                      radial-gradient(circle at 6.7% 75%, rgba(0,0,255,.5), rgba(0,0,255,0) 70.71%),
+                      radial-gradient(circle at 93.3% 75%, rgba(0,255,0,.5), rgba(0,255,0,0) 70.71%) beige;
+                    }
+                    #popup > div.action-holder > div > div {
+                      margin: 0.2em 0 0 0;
+                    }
+                    #brightnessValue {
+                      display: none;
+                    }
+                    #popup {
+                      margin: 0 0 0.8em 0;
+                    }
+                    #popup > div.range-holder {
+                      margin-top: -1.8em;
+                    }
+                    #popup > div.range-holder > input[type=range]::-webkit-slider-thumb {
+                      box-shadow: -210px 0 0 210px rgba(255, 255, 255, 0.8);
+                      border: 0;
+                      height: 0;
+                      width: 0;
+                      cursor: pointer;
+                    }
+                    #popup > div.range-holder > input[type=range]::-moz-range-thumb {
+                      box-shadow: -210px 0 0 210px rgba(255, 255, 255, 0.8);
+                      border: 0;
+                      height: 0;
+                      width: 0;
+                      cursor: pointer;
+                    }
+  # Switch Template
+  switch:
+    aspect_ratio: 1/1
+    show_state: true
+    show_icon: false
+    state: *button_state
+    extra_styles: |
+      @keyframes icon-shake{from,to{transform:translate3d(0,0,0)}10%,30%{transform:translate3d(-5px,0,0)}20%,40%{transform:translate3d(5px,0,0)}50%,100%{transform:translate3d(0,0,0)}}
+      @keyframes icon-ping{from,20%,40%,60%,to{animation-timing-function:cubic-bezier(0.215,0.61,0.355,1)}0%{opacity:0;transform:scale3d(0.6,0.6,0.6)}20%{transform:scale3d(1.2,1.2,1.2)}40%{opacity:1;transform:scale3d(0.9,0.9,0.9)}60%{opacity:1;transform:scale3d(1,1,1)}to{opacity:1;transform:scale3d(1,1,1)}}
+      @keyframes icon-pulse{0%{opacity:0}100%{opacity:1}}
+    styles:
+      name: *button_styles_name
+      state: *button_styles_state
+      card: *button_styles_card
+
 title: Sycamore
 views:
 # Tablet / full screen UI
@@ -28,14 +154,6 @@ views:
 
             --bg-off: {{bg_off}};
             --colour-off: {{colour_off}};
-
-            --bg-adblock: {% if is_state('group.adblock', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
-            --colour-adblock: {% if is_state('group.adblock', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
-            --animation-adblock: {% if is_state('group.adblock', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
-
-            --bg-light-hallway: {% if is_state('light.hallway', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
-            --colour-light-hallway: {% if is_state('light.hallway', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
-            --animation-light-hallway: {% if is_state('light.hallway', 'on') %}icon-ping 1s ease-in-out 1{% else %}none{% endif %};
 
             --bg-light-cloud: {% if is_state('switch.cloud', 'on') %}{{bg_on}}{% else %}{{bg_off}}{% endif %};
             --colour-light-cloud: {% if is_state('switch.cloud', 'on') %}{{colour_on}}{% else %}{{colour_off}}{% endif %};
@@ -321,98 +439,52 @@ views:
               top: 92.1%
 
           # Heading Environment (Vardagsrum)
-          - type: state-label
-            entity: sensor.placeholder
-            prefix: Environment
-            tap_action:
-              action: none
-            hold_action:
-              action: none
+          - prefix: Environment
+            <<: *title
             style:
-              color: '#bcbebf'
-              font-size: 1.8vw
-              font-weight: 500
               left: 24.85%
-              max-width: 1px
               top: 9.15%
-              cursor: default
+              <<: *title-style
 
           # Heading Hemma
-          - type: state-label
-            entity: sensor.placeholder
-            prefix: Hemma
-            tap_action:
-              action: none
-            hold_action:
-              action: none
+          - prefix: Hemma
+            <<: *title
             style:
-              color: '#bcbebf'
-              font-size: 1.8vw
-              font-weight: 500
               left: 74.5%
-              max-width: 1px
               top: 53.4%
-              cursor: default
+              <<: *title-style
 
           # Heading Tools
-          - type: state-label
-            entity: sensor.placeholder
-            prefix: Tools
-            tap_action:
-              action: none
-            hold_action:
-              action: none
+          - prefix: Tools
+            <<: *title
             style:
-              color: '#bcbebf'
-              font-size: 1.8vw
-              font-weight: 500
               left: 49.65%
-              max-width: 1px
               top: 9.15%
-              cursor: default
+              <<: *title-style
 
           # Adblock
-          - type: state-label
-            entity: sensor.placeholder
-            prefix: Adblock
-            tap_action:
-              action: none
-            hold_action:
-              action: none
+          - type: custom:button-card
+            entity: group.adblock
             style:
               left: 55.18%
               top: 20.35%
               width: 10%
-              height: 16%
-              background: 'var(--bg-adblock)'
-              color: 'var(--colour-adblock)'
-              border-radius: 0.7vw
-              font-size: 1.25vw
-              display: flex
-              align-items: flex-end
-              padding: 0.5% 0.8%
-              box-sizing: border-box
-              transition: all 0.5s ease-in-out
-          - type: state-icon
-            entity: group.adblock
-            icon: mdi:circle
-            tap_action:
-              action: none
-            hold_action:
-              action: none
-            style:
-              left: 50.9%
-              top: 13.6%
-              box-sizing: border-box
-              color: '#939697'
-              animation: 'var(--animation-adblock)'
-              transform: scale(1)
-              --iron-icon-height: 2.3vw
-              --iron-icon-width: 2.3vw
-          - type: image
-            image: /local/overlay.svg
-            entity: sensor.placeholder
-            title: null
+            custom_fields:
+              icon_adblock: >
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" fill="var(--button-card-light-color-no-temperature)"/></svg>
+            styles:
+              custom_fields:
+                icon_adblock:
+                  - top: 11.5%
+                  - left: 8%
+                  - width: 2.7vw
+                  - position: absolute
+                  - animation: >
+                      [[[
+                        if (entity.state === 'on')
+                          return "icon-ping 1s ease-in-out";
+                      ]]]
+            template: switch
             tap_action:
               action: call-service
               service: switch.toggle
@@ -421,355 +493,151 @@ views:
                   - switch.pihole_mycroft_switch
                   - switch.pihole_sycamore_switch
             hold_action: !include popups/sensor-adblock.yaml
+
+          # F@H
+          - type: custom:button-card
+            entity: switch.fah
             style:
-              left: 55.18%
               top: 20.35%
+              left: 66.14%
               width: 10%
-              height: 16%
+            custom_fields:
+              icon_fah: >
+                <svg viewBox="0 0 24 24"><path d="M4.22,11.29L11.29,4.22C13.64,1.88 17.43,1.88 19.78,4.22C22.12,6.56 22.12,10.36 19.78,12.71L12.71,19.78C10.36,22.12 6.56,22.12 4.22,19.78C1.88,17.43 1.88,13.64 4.22,11.29M5.64,12.71C4.59,13.75 4.24,15.24 4.6,16.57L10.59,10.59L14.83,14.83L18.36,11.29C19.93,9.73 19.93,7.2 18.36,5.64C16.8,4.07 14.27,4.07 12.71,5.64L5.64,12.71Z" fill="var(--button-card-light-color-no-temperature)" /></svg>
+            styles:
+              custom_fields:
+                icon_fah:
+                  - top: 11.5%
+                  - left: 8%
+                  - width: 2.7vw
+                  - position: absolute
+                  - animation: >
+                      [[[
+                        if (entity.state === 'on')
+                          return "icon-ping 1s ease-in-out";
+                      ]]]
+            template: switch
 
           # Heading Media
-          - type: state-label
-            entity: sensor.placeholder
-            prefix: Media
-            tap_action:
-              action: none
-            hold_action:
-              action: none
+          - prefix: Media
+            <<: *title
             style:
-              color: '#bcbebf'
-              font-size: 1.8vw
-              font-weight: 500
               left: 25%
-              max-width: 1px
               top: 53.4%
-              cursor: default
+              <<: *title-style
 
           # Heading Lampor
-          - type: state-label
-            entity: sensor.placeholder
-            prefix: Lampor
-            tap_action:
-              action: none
-            hold_action:
-              action: none
+          - prefix: Lampor
+            <<: *title
             style:
-              color: '#bcbebf'
-              font-size: 1.8vw
-              font-weight: 500
               left: 74.55%
-              max-width: 1px
               top: 9.15%
-              cursor: default
+              <<: *title-style
 
           # Heading - Cameras
-          - type: state-label
-            entity: sensor.placeholder
-            prefix: Kameror
-            tap_action:
-              action: none
-            hold_action:
-              action: none
+          - prefix: Kameror
+            <<: *title
             style:
-              color: '#bcbebf'
-              font-size: 1.8vw
-              font-weight: 500
               left: 49.6%
-              max-width: 1px
               top: 53.4%
-              cursor: default
+              <<: *title-style
 
           # Lights / Lampor
           # Hallway
-          - type: state-label
-            entity: sensor.placeholder
-            prefix: Hallway
-            tap_action:
-              action: none
-            hold_action:
-              action: none
-            style:
-              left: 80.05%
-              top: 20.35%
-              width: 10%
-              height: 16%
-              background: 'var(--bg-light-hallway)'
-              color: 'var(--colour-light-hallway)'
-              border-radius: 0.7vw
-              font-size: 1.25vw
-              display: flex
-              align-items: flex-end
-              padding: 0.5% 0.8%
-              box-sizing: border-box
-              transition: all 0.5s ease-in-out
-          - type: state-icon
+          - type: custom:button-card
             entity: light.hallway
-            icon: mdi:ceiling-light
-            tap_action:
-              action: none
-            hold_action:
-              action: none
-            style:
-              left: 75.9%
-              top: 13.6%
-              box-sizing: border-box
-              color: '#939697'
-              animation: 'var(--animation-light-hallway)'
-              transform: scale(1)
-              --iron-icon-height: 2.3vw
-              --iron-icon-width: 2.3vw
-          - type: conditional
-            conditions:
-              - entity: light.hallway
-                state: 'on'
-            elements:
-              - type: custom:circle-sensor-card
-                entity: sensor.light_hallway_brightness
-                fill: '#FFFFFF10'
-                font_style:
-                  color: '#7d7e80'
-                  font-size: 1.0vw
-                  font-weight: 400
-                  margin-left: '-0.8%'
-                  margin-top: 1.9%
-                gradient: true
-                max: 100
-                min: 0
-                stroke_color: '#aaabad'
-                stroke_width: 6
-                style:
-                  height: 3.15vw
-                  left: 82.3%
-                  opacity: 0.7
-                  top: 16.5%
-                  width: 3.15vw
-          - type: image
-            image: /local/overlay.svg
-            entity: sensor.placeholder
-            title: null
-            tap_action:
-              action: call-service
-              service: light.toggle
-              service_data:
-                entity_id: light.hallway
-            hold_action: !include popups/light-hallway.yaml
             style:
               left: 80.05%
               top: 20.35%
               width: 10%
-              height: 16%
+            custom_fields:
+              icon_light: >
+                <svg viewBox="0 0 24 24"><path d="M8,9H11V4H13V9H16L20,17H4L8,9M14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18H14Z" fill="var(--button-card-light-color-no-temperature)"/></svg>
+            styles:
+              custom_fields:
+                icon_light:
+                  - top: 11.5%
+                  - left: 8%
+                  - width: 2.7vw
+                  - position: absolute
+                  - animation: >
+                      [[[
+                        if (entity.state === 'on')
+                          return "icon-ping 1s ease-in-out";
+                      ]]]
+            template: light
 
           # Cloud
-          - type: state-label
-            entity: sensor.placeholder
-            prefix: Cloud
-            tap_action:
-              action: none
-            hold_action:
-              action: none
-            style:
-              left: 91.05%
-              top: 20.35%
-              width: 10%
-              height: 16%
-              background: 'var(--bg-light-cloud)'
-              color: 'var(--colour-light-cloud)'
-              border-radius: 0.7vw
-              font-size: 1.25vw
-              display: flex
-              align-items: flex-end
-              padding: 0.5% 0.8%
-              box-sizing: border-box
-              transition: all 0.5s ease-in-out
-          - type: state-icon
+          - type: custom:button-card
             entity: switch.cloud
-            icon: mdi:cloud
-            tap_action:
-              action: none
-            hold_action:
-              action: none
-            style:
-              left: 86.9%
-              top: 13.3%
-              box-sizing: border-box
-              color: '#939697'
-              animation: 'var(--animation-light-cloud)'
-              transform: scale(1)
-              --iron-icon-height: 2.3vw
-              --iron-icon-width: 2.3vw
-          - type: image
-            image: /local/overlay.svg
-            entity: sensor.placeholder
-            title: null
-            tap_action:
-              action: call-service
-              service: switch.toggle
-              service_data:
-                entity_id: switch.cloud
-            hold_action:
-              action: none
             style:
               left: 91.05%
               top: 20.35%
               width: 10%
-              height: 16%
+            custom_fields:
+              icon_cloud: >
+                <svg viewBox="0 0 24 24"><path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z" fill="var(--button-card-light-color-no-temperature)" /></svg>
+            styles:
+              custom_fields:
+                icon_cloud:
+                  - top: 11.5%
+                  - left: 10%
+                  - width: 2.7vw
+                  - position: absolute
+                  - animation: >
+                      [[[
+                        if (entity.state === 'on')
+                          return "icon-ping 1s ease-in-out";
+                      ]]]
+            template: switch
 
           # Lounge Small
-          - type: state-label
-            entity: sensor.placeholder
-            prefix: Small Lamp
-            tap_action:
-              action: none
-            hold_action:
-              action: none
-            style:
-              left: 80.05%
-              top: 37.9%
-              width: 10%
-              height: 16%
-              background: 'var(--bg-light-lounge-small)'
-              color: 'var(--colour-light-lounge-small)'
-              border-radius: 0.7vw
-              font-size: 1.25vw
-              display: flex
-              align-items: flex-end
-              padding: 0.5% 0.8%
-              box-sizing: border-box
-              transition: all 0.5s ease-in-out
-          - type: state-icon
+          - type: custom:button-card
             entity: light.lounge_light_small
-            icon: mdi:desk-lamp
-            tap_action:
-              action: none
-            hold_action:
-              action: none
-            style:
-              left: 75.9%
-              top: 31.41%
-              box-sizing: border-box
-              color: '#939697'
-              animation: 'var(--animation-light-lounge-small)'
-              transform: scale(1)
-              --iron-icon-height: 2.3vw
-              --iron-icon-width: 2.3vw
-          - type: conditional
-            conditions:
-              - entity: light.lounge_light_small
-                state: 'on'
-            elements:
-              - type: custom:circle-sensor-card
-                entity: sensor.light_lounge_small_brightness
-                fill: '#FFFFFF10'
-                font_style:
-                  color: '#7d7e80'
-                  font-size: 1.0vw
-                  font-weight: 400
-                  margin-left: '-0.8%'
-                  margin-top: 1.9%
-                gradient: true
-                max: 100
-                min: 0
-                stroke_color: '#aaabad'
-                stroke_width: 6
-                style:
-                  height: 3.15vw
-                  left: 82.3%
-                  opacity: 0.7
-                  top: 34.25%
-                  width: 3.15vw
-          - type: image
-            image: /local/overlay.svg
-            entity: sensor.placeholder
-            title: null
-            tap_action:
-              action: call-service
-              service: light.toggle
-              service_data:
-                entity_id: light.lounge_light_small
-            hold_action: !include popups/light-lounge-small.yaml
             style:
               left: 80.05%
               top: 37.9%
               width: 10%
-              height: 16%
+            custom_fields:
+              icon_arm_lamp: >
+                <svg viewBox="0 0 24 24"><path d="M10.85,2L9.18,4.5L10.32,5.25L7.14,10C7.1,10 7.05,10 7,10A2,2 0 0,0 5,12C5,12.94 5.66,13.75 6.58,13.95L10.62,20H7V22H17V20H13L8.53,13.28C8.83,12.92 9,12.47 9,12C9,11.7 8.93,11.4 8.8,11.13L12,6.37C11.78,8.05 12.75,9.89 14.45,11L18.89,4.37C17.2,3.24 15.12,3.04 13.65,3.87L10.85,2M18.33,7L16.67,9.5C17.35,9.95 18.29,9.77 18.75,9.08C19.21,8.39 19,7.46 18.33,7Z" fill="var(--button-card-light-color-no-temperature)"/></svg>
+            styles:
+              custom_fields:
+                icon_arm_lamp:
+                  - top: 11.5%
+                  - left: 8%
+                  - width: 2.7vw
+                  - position: absolute
+                  - animation: >
+                      [[[
+                        if (entity.state === 'on')
+                          return "icon-ping 1s ease-in-out";
+                      ]]]
+            template: light
 
           # Lounge Tall
-          - type: state-label
-            entity: sensor.placeholder
-            prefix: Tall Lamp
-            tap_action:
-              action: none
-            hold_action:
-              action: none
-            style:
-              left: 91.05%
-              top: 37.9%
-              width: 10%
-              height: 16%
-              background: 'var(--bg-light-lounge-tall)'
-              color: 'var(--colour-light-lounge-tall)'
-              border-radius: 0.7vw
-              font-size: 1.25vw
-              display: flex
-              align-items: flex-end
-              padding: 0.5% 0.8%
-              box-sizing: border-box
-              transition: all 0.5s ease-in-out
-          - type: state-icon
+          - type: custom:button-card
             entity: light.lounge_light_tall
-            icon: mdi:floor-lamp
-            tap_action:
-              action: none
-            hold_action:
-              action: none
-            style:
-              left: 86.9%
-              top: 31.41%
-              box-sizing: border-box
-              color: '#939697'
-              animation: 'var(--animation-light-lounge-tall)'
-              transform: scale(1)
-              --iron-icon-height: 2.3vw
-              --iron-icon-width: 2.3vw
-          - type: conditional
-            conditions:
-              - entity: light.lounge_light_tall
-                state: 'on'
-            elements:
-              - type: custom:circle-sensor-card
-                entity: sensor.light_lounge_tall_brightness
-                fill: '#FFFFFF10'
-                font_style:
-                  color: '#7d7e80'
-                  font-size: 1.0vw
-                  font-weight: 400
-                  margin-left: '-0.8%'
-                  margin-top: 1.9%
-                gradient: true
-                max: 100
-                min: 0
-                stroke_color: '#aaabad'
-                stroke_width: 6
-                style:
-                  height: 3.15vw
-                  left: 93.3%
-                  opacity: 0.7
-                  top: 34.25%
-                  width: 3.15vw
-          - type: image
-            image: /local/overlay.svg
-            entity: sensor.placeholder
-            title: null
-            tap_action:
-              action: call-service
-              service: light.toggle
-              service_data:
-                entity_id: light.lounge_light_tall
-            hold_action: !include popups/light-lounge-tall.yaml
             style:
               left: 91.05%
               top: 37.9%
               width: 10%
-              height: 16%
+            custom_fields:
+              icon_arm_lamp: >
+                <svg viewBox="0 0 24 24"><path d="M15,2L17,9H7L9,2M11,10H13V20H16V22H8V20H11V10Z" fill="var(--button-card-light-color-no-temperature)"/></svg>
+            styles:
+              custom_fields:
+                icon_arm_lamp:
+                  - top: 11.5%
+                  - left: 8%
+                  - width: 2.7vw
+                  - position: absolute
+                  - animation: >
+                      [[[
+                        if (entity.state === 'on')
+                          return "icon-ping 1s ease-in-out";
+                      ]]]
+            template: light
 
           # Media
           - type: custom:swipe-card

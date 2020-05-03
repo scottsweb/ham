@@ -334,3 +334,7 @@ sensor.sweden_coronavirus_deaths:
   friendly_name: 'Deaths'
 sensor.sweden_coronavirus_recovered:
   friendly_name: 'Recovered'
+light.lounge_light_small:
+  friendly_name: 'Small Lamp'
+light.lounge_light_tall:
+  friendly_name: 'Tall Lamp'

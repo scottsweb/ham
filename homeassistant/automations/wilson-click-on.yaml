@@ -24,6 +24,7 @@ trigger:
       - switch.dockermon_watchtower_oak
       - switch.presence_emulator
       - group.adblock
+      - switch.fah
 
       #- switch.pihole_sycamore_switch
       #- switch.pihole_mycroft_switch

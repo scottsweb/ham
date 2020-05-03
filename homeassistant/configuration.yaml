@@ -50,9 +50,8 @@ lovelace:
       type: js
     - url: /hacsfiles/lovelace-card-preloader/lovelace-card-preloader.js
       type: module
-  # ----------
-    - url: /hacsfiles/light-slider-card/light-slider-card.js?v=3.2.4
-      type: js
+    - url: /hacsfiles/light-popup-card/light-popup-card.js
+      type: module
   dashboards:
     lovelace-tablet:
       mode: yaml

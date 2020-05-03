@@ -198,3 +198,16 @@
   username: !secret dockermon_username
   password: !secret dockermon_password
   timeout: 20
+
+- platform: telnet
+  switches:
+    fah:
+      resource: !secret folding_ip
+      name: F@H
+      port: 36330
+      command_on: "unpause"
+      command_off: "pause"
+      command_state: "slot-info"
+      value_template: >
+        {{ "RUNNING" in value }}
+      timeout: 10
