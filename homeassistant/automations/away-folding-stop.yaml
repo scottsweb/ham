@@ -1,0 +1,14 @@
+alias: Away Folding Stop
+initial_state: true
+trigger:
+  platform: state
+  entity_id: group.people
+  from: 'home'
+  to: 'not_home'
+  for:
+    minutes: 45
+action:
+  - service: switch.turn_off
+    data:
+      entity_id:
+        - switch.fah

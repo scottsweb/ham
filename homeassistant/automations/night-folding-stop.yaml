@@ -1,0 +1,10 @@
+alias: Night Folding Stop
+initial_state: true
+trigger:
+  platform: time
+  at: '23:30:00'
+action:
+  - service: switch.turn_off
+    data:
+      entity_id:
+        - switch.fah

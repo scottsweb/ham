@@ -1,0 +1,13 @@
+alias: Arrive Folding Start
+initial_state: true
+trigger:
+  platform: state
+  entity_id: group.people
+  to: 'home'
+action:
+  - service: script.oak_on
+  - delay: '00:00:60'
+  - service: switch.turn_on
+    data:
+      entity_id:
+        - switch.fah
