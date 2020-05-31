@@ -22,6 +22,8 @@ http:
 lovelace:
   mode: yaml
   resources:
+    - url: /hacsfiles/vacuum-card/vacuum-card.js
+      type: module
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
     - url: /hacsfiles/button-card/button-card.js
@@ -102,9 +104,6 @@ wake_on_lan:
 
 # Allows you to issue voice commands from the frontend
 conversation:
-
-# Lightning
-wwlln:
 
 # DuckDNS
 duckdns:
