@@ -23,7 +23,7 @@ lovelace:
   mode: yaml
   resources:
     - url: /hacsfiles/bar-card/bar-card.js
-      type: js
+      type: module
     - url: /hacsfiles/button-card/button-card.js
       type: module
     - url: /hacsfiles/custom-header/custom-header.js
@@ -90,7 +90,6 @@ fan:
 
 # UPnP
 upnp:
-  sensors: true
 
 # tplink
 # tplink:
@@ -190,7 +189,6 @@ history:
 
 # Recorder
 recorder:
-  purge_interval: 2
   purge_keep_days: 3
 
 # Discover some devices automatically
@@ -247,24 +245,6 @@ weather:
 #      - entity_id: camera.blink_indoor_front
 #      - entity_id: camera.blink_indoor_back
 
-# Plants
-plant:
-  flora_back_plant:
-    sensors:
-      moisture: sensor.flora_back_moisture
-      battery: sensor.flora_back_battery
-      temperature: sensor.flora_back_temperature
-      conductivity: sensor.flora_back_conductivity
-      brightness: sensor.flora_back_light_intensity
-    min_moisture: 20
-  flora_front_plant:
-    sensors:
-      moisture: sensor.flora_front_moisture
-      battery: sensor.flora_front_battery
-      temperature: sensor.flora_front_temperature
-      conductivity: sensor.flora_front_conductivity
-      brightness: sensor.flora_front_light_intensity
-    min_moisture: 20
 
 # Track the sun
 sun:
@@ -290,11 +270,6 @@ emulated_hue:
 # IFTTT
 ifttt:
   key: !secret ifttt_key
-
-# blink
-blink:
-  username: !secret blink_username
-  password: !secret blink_password
 
 # Zeroconf
 zeroconf:
@@ -345,12 +320,6 @@ mqtt_statestream:
 # Mycroft
 mycroft:
   host: !secret mycroft_ip
-
-# Plex
-plex:
-  host: !secret plex_server_ip
-  token: !secret plex_token
-  server: oak
 
 # Browser Mod
 browser_mod:
