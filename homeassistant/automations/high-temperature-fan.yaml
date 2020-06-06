@@ -1,0 +1,21 @@
+alias: High Bedroom Temperature Turn On Fan
+initial_state: true
+trigger:
+  platform: numeric_state
+  entity_id: sensor.bedroom_temperature
+  above: 23
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after: '22:00:00'
+      before: '08:00:00'
+    - condition: state
+      entity_id: switch.auto_fan
+      state: 'on'
+    - condition: state
+      entity_id: group.people
+      state: 'home'
+action:
+  - service: homeassistant.turn_on
+    entity_id: fan.fan

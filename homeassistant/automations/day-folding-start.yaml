@@ -3,6 +3,10 @@ initial_state: true
 trigger:
   platform: time
   at: '09:00:00'
+condition:
+  - condition: state
+    entity_id: group.people
+    state: 'home'
 action:
   - service: script.oak_on
   - delay: '00:00:60'

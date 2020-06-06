@@ -1,0 +1,20 @@
+alias: Fan Speed Control
+initial_state: true
+trigger:
+  platform: state
+  entity_id: fan.fan
+  to: 'on'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: switch.auto_fan
+      state: 'on'
+action:
+  - service: fan.set_speed
+    data_template:
+      entity_id: fan.fan
+      speed: >
+        {% if states('sensor.bedroom_temperature') >= 24 %}
+        Level 4 {% else %}
+        Level 3 {% endif %}

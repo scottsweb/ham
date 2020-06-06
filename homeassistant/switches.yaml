@@ -32,6 +32,14 @@
   retain: true
 
 - platform: mqtt
+  name: "Auto Fan"
+  state_topic: "sycamore/fan/switch"
+  command_topic: "sycamore/fan/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: mqtt
   name: "TV"
   state_topic: "sycamore/tv/switch"
   command_topic: "sycamore/tv/switch"

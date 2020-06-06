@@ -46,6 +46,7 @@ views:
         title: Fan
         entities:
           - fan.fan
+          - switch.auto_fan
       - type: entities
         title: Coronavirus Sweden
         show_header_toggle: false

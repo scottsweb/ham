@@ -1,0 +1,25 @@
+alias: Timed Fan Control
+initial_state: true
+trigger:
+  platform: time_pattern
+  minutes: '/30'
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after: '22:00:00'
+      before: '08:00:00'
+    - condition: state
+      entity_id: switch.auto_fan
+      state: 'on'
+    - condition: state
+      entity_id: group.people
+      state: 'home'
+    - condition: template # an hour since last on
+      value_template: "{{ ( as_timestamp(now()) - as_timestamp(state_attr('fan.fan', 'last_triggered')) |int(0) ) > 3600000 }}"
+    - condition: numeric_state
+      entity_id: sensor.bedroom_temperature
+      above: 23
+action:
+  - service: homeassistant.turn_on
+    entity_id: fan.fan

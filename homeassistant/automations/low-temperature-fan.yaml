@@ -1,0 +1,21 @@
+alias: Low Bedroom Temperature Turn Off Fan
+initial_state: true
+trigger:
+  platform: numeric_state
+  entity_id: sensor.bedroom_temperature
+  below: 20
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after: '22:00:00'
+      before: '08:00:00'
+    - condition: state
+      entity_id: switch.auto_fan
+      state: 'on'
+    - condition: state
+      entity_id: group.people
+      state: 'home'
+action:
+  - service: homeassistant.turn_off
+    entity_id: fan.fan

@@ -202,6 +202,10 @@ light.back_door:
   emulated_hue_name: 'Back Door Light'
 switch.presence_emulator:
   icon: 'mdi:account-multiple'
+switch.auto_fan:
+  icon: 'mdi:hvac'
+switch.cloud:
+  icon: 'mdi:lightbulb'
 sensor.u_s_air_pollution_level:
   friendly_name: 'Air Pollution Level'
 sensor.u_s_air_quality_index:

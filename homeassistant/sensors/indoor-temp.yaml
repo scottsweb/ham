@@ -3,3 +3,4 @@ name: Indoor Temperature
 entities:
   - sensor.blink_indoor_back_temperature
   - sensor.blink_indoor_front_temperature
+  - sensor.bedroom_temperature
