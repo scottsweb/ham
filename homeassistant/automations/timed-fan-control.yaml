@@ -16,7 +16,7 @@ condition:
       entity_id: group.people
       state: 'home'
     - condition: template # an hour since last on
-      value_template: "{{ ( as_timestamp(now()) - as_timestamp(state_attr('fan.fan', 'last_triggered')) |int(0) ) > 3600000 }}"
+      value_template: "{{ ( as_timestamp(now()) | int - as_timestamp(states.fan.fan.last_changed) | int ) > 3600 }}"
     - condition: numeric_state
       entity_id: sensor.bedroom_temperature
       above: 23

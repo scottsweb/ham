@@ -1,0 +1,18 @@
+alias: Turn Off Fan in the Morning
+initial_state: true
+trigger:
+trigger:
+  platform: time
+  at: '08:30:00'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: switch.auto_fan
+      state: 'on'
+    - condition: state
+      entity_id: group.people
+      state: 'home'
+action:
+  - service: homeassistant.turn_off
+    entity_id: fan.fan
