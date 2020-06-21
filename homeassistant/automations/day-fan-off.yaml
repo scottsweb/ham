@@ -1,7 +1,6 @@
 alias: Turn Off Fan in the Morning
 initial_state: true
 trigger:
-trigger:
   platform: time
   at: '08:30:00'
 condition:
