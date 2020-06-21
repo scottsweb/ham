@@ -342,3 +342,5 @@ light.lounge_light_small:
   friendly_name: 'Small Lamp'
 light.lounge_light_tall:
   friendly_name: 'Tall Lamp'
+vacuum.xiaomi_vacuum_cleaner:
+  friendly_name: 'Monk'
