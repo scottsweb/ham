@@ -76,28 +76,28 @@ blink_front_capture_script:
   sequence:
     - service: blink.trigger_camera
       data:
-        name: "Front"
+        entity_id: camera.blink_front
 
 blink_back_capture_script:
   alias: 'Update Back at Sycamore'
   sequence:
     - service: blink.trigger_camera
       data:
-        name: "Back"
+        entity_id: camera.blink_back
 
 blink_indoor_front_capture_script:
   alias: 'Update Indoor Front at Sycamore'
   sequence:
     - service: blink.trigger_camera
       data:
-        name: "Indoor Front"
+        entity_id: camera.blink_indoor_front
 
 blink_indoor_back_capture_script:
   alias: 'Update Indoor Back at Sycamore'
   sequence:
     - service: blink.trigger_camera
       data:
-        name: "Indoor Back"
+        entity_id: camera.blink_indoor_back
 
 dash_andrex:
   alias: 'Amazon Dash - Andrex'
