@@ -178,6 +178,7 @@ history:
       - sensor.cpu_temperature_mycroft
       - sensor.ram_use_mycroft
       - sensor.memory_use_percent
+      - sensor.bedroom_temperature
 
       - sensor.indoor_temperature
 
