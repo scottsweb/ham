@@ -55,32 +55,14 @@ views:
           - sensor.sweden_coronavirus_current
           - sensor.sweden_coronavirus_deaths
           - sensor.sweden_coronavirus_recovered
-      - type: 'custom:vacuum-card'
-        entity: vacuum.xiaomi_vacuum_cleaner
-        stats:
-          default:
-            - attribute: filter_left
-              unit: hours
-              subtitle: Filter
-            - attribute: side_brush_left
-              unit: hours
-              subtitle: Side brush
-            - attribute: main_brush_left
-              unit: hours
-              subtitle: Main brush
-            - attribute: sensor_dirty_left
-              unit: hours
-              subtitle: Sensors
-
-#      - type: entities
-#        title: Coins
-#        show_header_toggle: false
-#        entities:
-#          - sensor.bitcoin
-#          - sensor.bitcoin_cash
-#          - sensor.ethereum
-#          - sensor.ripple
-#          - sensor.litecoin
+      - type: entities
+        title: Coins
+        show_header_toggle: false
+        entities:
+          - sensor.bitcoin
+          - sensor.ethereum
+          - sensor.ripple
+          - sensor.litecoin
 
   - title: Entertainment
     path: entertainment
@@ -205,6 +187,38 @@ views:
         entity: media_player.luther_universal_tv
  #       - type: media-control
  #         entity: media_player.luther_universal_audio
+
+  - title: Dammsugare
+    path: dammsugare
+    icon: mdi:robot-vacuum
+    badges:
+    cards:
+      - type: 'custom:vacuum-card'
+        entity: vacuum.xiaomi_vacuum_cleaner
+        stats:
+          default:
+            - attribute: filter_left
+              unit: hours
+              subtitle: Filter
+            - attribute: side_brush_left
+              unit: hours
+              subtitle: Side brush
+            - attribute: main_brush_left
+              unit: hours
+              subtitle: Main brush
+            - attribute: sensor_dirty_left
+              unit: hours
+              subtitle: Sensors
+      - type: entities
+        title: " ‍  Monk"
+        entities:
+          - entity: input_boolean.monk_clean_lounge
+          - entity: input_boolean.monk_clean_kitchen
+          - entity: input_boolean.monk_clean_bedroom
+          - entity: input_boolean.monk_clean_hall
+          - entity: input_boolean.monk_clean_office_gemma
+          - entity: input_boolean.monk_clean_office_scott
+#          - entity: input_select.monk_fan_speed
 
   - title: Cameras
     path: cctv

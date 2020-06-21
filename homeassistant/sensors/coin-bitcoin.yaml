@@ -1,0 +1,6 @@
+platform: rest
+name: Bitcoin
+resource: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=GBP
+value_template: '{{ value_json.bitcoin.gbp }}'
+unit_of_measurement: '£'
+scan_interval: 1500

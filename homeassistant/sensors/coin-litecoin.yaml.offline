@@ -1,6 +1,0 @@
-platform: rest
-name: Litecoin
-resource: https://api.coinmarketcap.com/v1/ticker/litecoin/?convert=GBP
-value_template: '{{ value_json[0].price_gbp }}'
-unit_of_measurement: '£'
-scan_interval: 1200

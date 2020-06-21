@@ -1,0 +1,6 @@
+platform: rest
+name: Ethereum
+resource: https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=GBP
+value_template: '{{ value_json.ethereum.gbp }}'
+unit_of_measurement: '£'
+scan_interval: 1300
