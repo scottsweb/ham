@@ -30,7 +30,7 @@
                     refresh_interval: 0
                     style: |
                       ha-card {
-                        margin-top: -10.5%;
+                        margin-top: -7%;
                         padding-left: 2.2%;
                       }
                   - type: entities
@@ -40,7 +40,7 @@
                         name: Motion
                     style: |
                       ha-card {
-                        margin-top: -18%;
+                        margin-top: -10%;
                         margin-left: -12.2%;
                         background-color: #FFFFFF00;
                         opacity: 0.9;
@@ -53,6 +53,6 @@
                     refresh_interval: 0
                     style: |
                       ha-card {
-                        margin-top: -10.5%;
+                        margin-top: -7%;
                         padding-left: 2.2%;
                       }

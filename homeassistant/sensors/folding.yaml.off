@@ -1,0 +1,27 @@
+platform: rest
+resource: !secret folding_user
+name: Folding at Home Points
+value_template: '{{ value_json.credit }}'
+scan_interval:
+  hours: 2
+
+platform: rest
+resource: !secret folding_user
+name: Folding at Home Work Units
+value_template: '{{ value_json.wus }}'
+scan_interval:
+  hours: 2
+
+platform: rest
+resource: !secret folding_team
+name: Folding at Home Team Points
+value_template: '{{ value_json.credit }}'
+scan_interval:
+  hours: 2
+
+platform: rest
+resource: !secret folding_team
+name: Folding at Home Team Work Units
+value_template: '{{ value_json.wus }}'
+scan_interval:
+  hours: 2

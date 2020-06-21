@@ -29,6 +29,19 @@ api:
             id: paper_servo
             level: !lambda 'return level / 100.0;'
 
+#mqtt:
+#  broker: !secret mqtt_ip
+#  discovery: True
+#  on_message:
+#    - topic: paper_signal/ota_mode
+#      payload: 'ON'
+#      then:
+#        - deep_sleep.prevent: deep_sleep_mode
+#    - topic: paaper_signal/sleep_mode
+#      payload: 'ON'
+#      then:
+#        - deep_sleep.enter: deep_sleep_mode
+
 ota:
   password: !secret esphome_adminpassword
 
@@ -41,3 +54,8 @@ output:
     id: pwm_output
     pin: GPIO14
     frequency: 50 Hz
+    
+#deep_sleep:
+#  id: deep_sleep_mode
+#  run_duration: 10s
+#  sleep_duration: 55s

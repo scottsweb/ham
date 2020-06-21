@@ -1,0 +1,23 @@
+esphome:
+  name: cartman
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: !secret esphome_wifi
+  password: !secret esphome_wifipassword
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Cartman Fallback Hotspot"
+    password: !secret esphome_appassword
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:

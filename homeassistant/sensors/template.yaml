@@ -217,11 +217,11 @@ sensors:
 
   plex_title:
     value_template: >
-      {% set data = state_attr('sensor.plex_recently_added', 'data') | from_json %}
-      {{ data[1].title }}
-      {% if data[1].number is none %} ({{ data[1].aired.split('-')[0] }})
-      {% else %} {{ data[1].number }} {% endif %}
+      {% set media = state_attr('sensor.plex_recently_added', 'data') | from_json %}
+      {{ media[1].title }}
+      {% if media[1].number is none %} ({{ media[1].aired.split('-')[0] }})
+      {% else %} {{ media[1].number }} {% endif %}
 
   plex_title_truncate:
     value_template: >
-      {{ states('sensor.plex_title') | truncate(30, True, '...', 0) }}
+      {{ states('sensor.plex_title') | truncate(25, True, '...', 0) }}

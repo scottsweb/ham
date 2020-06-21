@@ -37,9 +37,13 @@ button_card_templates:
           state: [color: 'rgba(0, 0, 0, 0.6)']
     custom_fields:
       info: >
-        [[[ var brightness = Math.round( entity.attributes.brightness / 2.54 );
-        if (entity.state === 'on') return '<svg viewBox="0 0 50 50"><circle id="c_brightness" cx="25" cy="25" r="20.5" stroke="#b2b2b2" stroke-width="1.5" fill="none" />
-        <text x="50%" y="52%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">' + brightness + '</text></svg>'; ]]]
+        [[[ if (entity.state === 'on' && entity.attributes.brightness) {
+        const brightness = Math.round(entity.attributes.brightness / 2.54);
+        const radius = 20.5; const circumference = radius * 2 * Math.PI;
+        return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="${radius}" stroke="#b2b2b2" stroke-width="1.5" fill="none" style="
+        transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: ${circumference}; stroke-dashoffset: ${circumference - brightness / 100 * circumference};" />
+        <text x="50%" y="54%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">${brightness}<tspan font-size="10">%</tspan></text></svg>`; } ]]]
+    styles:
     extra_styles: |
       [[[ var radius = 20.5;
       var circumference = radius * 2 * Math.PI;
@@ -260,7 +264,7 @@ views:
             }
           }
         elements:
-         # Sidebar
+          # Sidebar
           - type: image
             image: local/sidebar.png
             tap_action:
@@ -412,31 +416,28 @@ views:
             tap_action: !include popups/vacuum-monk.yaml
             title: null
             style:
-              '--iron-icon-height': 4vw
-              '--iron-icon-width': 4vw
               color: 'rgba(255, 255, 255, 0.20)'
               left: 4.8%
               top: 92.1%
+              --mdc-icon-size: 4vw
           - type: icon
             icon: 'mdi:information-outline'
             tap_action: !include popups/information.yaml
             title: null
             style:
-              '--iron-icon-height': 4vw
-              '--iron-icon-width': 4vw
               color: 'rgba(255, 255, 255, 0.20)'
               left: 10.7%
               top: 92.1%
+              --mdc-icon-size: 4vw
           - type: icon
             icon: 'mdi:emoticon-lol-outline'
             #tap_action: !include popup/sidebar_scenarier.yaml
             title: null
             style:
-              '--iron-icon-height': 4vw
-              '--iron-icon-width': 4vw
               color: 'rgba(255, 255, 255, 0.20)'
               left: 16.55%
               top: 92.1%
+              --mdc-icon-size: 4vw
 
           # Heading Environment (Vardagsrum)
           - prefix: Environment
@@ -445,6 +446,43 @@ views:
               left: 24.85%
               top: 9.15%
               <<: *title-style
+
+          # Temperature
+          - type: custom:button-card
+            entity: sensor.placeholder
+            name: Hem Temp
+            style:
+              top: 20.35%
+              left: 30.31%
+              width: 10%
+            custom_fields:
+              graph:
+                card:
+                  type: sensor
+                  entity: sensor.indoor_temperature
+                  graph: line
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                      background: transparent;
+                    }
+                    ha-card .header {
+                      display: none !important;
+                    }
+                    ha-card .info {
+                      position: realtive;
+                      text-align: left;
+                      font-size: 1.2vw;
+                    }
+                    ha-card .info .value {
+                      font-size: 1.5vw;
+                      margin: 0;
+                      padding: 0;
+                    }
+                    ha-card .info .measurement {
+                      font-size: 0.8vw;
+                    }
+            template: switch
 
           # Heading Hemma
           - prefix: Hemma
@@ -508,7 +546,7 @@ views:
               custom_fields:
                 icon_fah:
                   - top: 11.5%
-                  - left: 8%
+                  - left: 9%
                   - width: 2.7vw
                   - position: absolute
                   - animation: >
@@ -1744,7 +1782,7 @@ views:
               {% if is_state('sensor.sweden_coronavirus_current',
               'unavailable') %} {% else %}
               <font color='#6a7377'>
-              <b><ha-icon icon="bha:virus"></ha-icon> Coronavirus</b>
+              <b><ha-icon icon="mdi:bug"></ha-icon> Coronavirus</b>
               ‍  ‍  ‍     ‍  ‍ <font color='#2f3436'>|‍</font>  ‍    ‍   ‍  ‍  ‍
               <b><ha-icon icon="mdi:emoticon-sad"></ha-icon>
               {{ states('sensor.sweden_coronavirus_current') }}</b> smittade

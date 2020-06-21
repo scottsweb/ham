@@ -30,7 +30,7 @@
                     refresh_interval: 0
                     style: |
                       ha-card {
-                        margin-top: -10.5%;
+                        margin-top: -7%;
                         padding-left: 2.2%;
                         margin-bottom: -10.5%;
                       }
