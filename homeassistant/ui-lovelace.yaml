@@ -55,6 +55,23 @@ views:
           - sensor.sweden_coronavirus_current
           - sensor.sweden_coronavirus_deaths
           - sensor.sweden_coronavirus_recovered
+      - type: 'custom:vacuum-card'
+        entity: vacuum.xiaomi_vacuum_cleaner
+        stats:
+          default:
+            - attribute: filter_left
+              unit: hours
+              subtitle: Filter
+            - attribute: side_brush_left
+              unit: hours
+              subtitle: Side brush
+            - attribute: main_brush_left
+              unit: hours
+              subtitle: Main brush
+            - attribute: sensor_dirty_left
+              unit: hours
+              subtitle: Sensors
+
 #      - type: entities
 #        title: Coins
 #        show_header_toggle: false
@@ -204,7 +221,7 @@ views:
             entities:
               - script.blink_front_capture_script
               - sensor.blink_front_temperature
-              - sensor.blink_front_battery
+              - binary_sensor.blink_front_battery
               - binary_sensor.blink_front_camera_armed
       - type: vertical-stack
         cards:
@@ -216,7 +233,7 @@ views:
             entities:
               - script.blink_back_capture_script
               - sensor.blink_back_temperature
-              - sensor.blink_back_battery
+              - binary_sensor.blink_back_battery
               - binary_sensor.blink_back_camera_armed
       - type: vertical-stack
         cards:
@@ -228,7 +245,7 @@ views:
             entities:
               - script.blink_indoor_front_capture_script
               - sensor.blink_indoor_front_temperature
-              - sensor.blink_indoor_front_battery
+              - binary_sensor.blink_indoor_front_battery
               - binary_sensor.blink_indoor_front_camera_armed
       - type: vertical-stack
         cards:
@@ -240,7 +257,7 @@ views:
             entities:
               - script.blink_indoor_back_capture_script
               - sensor.blink_indoor_back_temperature
-              - sensor.blink_indoor_back_battery
+              - binary_sensor.blink_indoor_back_battery
               - binary_sensor.blink_indoor_back_camera_armed
 
   - title: Outdoors
