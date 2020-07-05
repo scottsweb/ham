@@ -15,24 +15,28 @@ import asyncio
 import async_timeout
 import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
-from datetime import datetime
+from datetime import datetime, timedelta
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import CONF_HOST, CONF_NAME, CONF_PORT, CONF_SSL
 from homeassistant.helpers.entity import Entity
 
+SCAN_INTERVAL = timedelta(minutes=3)
 _LOGGER = logging.getLogger(__name__)
 
 
 async def fetch(session, url, self, ssl, content):
-    with async_timeout.timeout(10):
-        async with session.get(
-            url, ssl=ssl, headers={
-                "Accept": "application/json", "X-Plex-Token": self.token}
-        ) as response:
-            if content:
-                return await response.content.read()
-            else:
-                return await response.text()
+    try:
+        with async_timeout.timeout(8):
+            async with session.get(
+                url, ssl=ssl, headers={
+                    "Accept": "application/json", "X-Plex-Token": self.token}
+            ) as response:
+                if content:
+                    return await response.content.read()
+                else:
+                    return await response.text()
+    except:
+        pass
 
 
 async def request(url, self, content=False, ssl=False):
@@ -48,6 +52,7 @@ CONF_TOKEN = 'token'
 CONF_MAX = 'max'
 CONF_IMG_CACHE = 'img_dir'
 CONF_SECTION_TYPES = 'section_types'
+CONF_EXCLUDE_KEYWORDS = 'exclude_keywords'
 CONF_RESOLUTION = 'image_resolution'
 CONF_ON_DECK = 'on_deck'
 
@@ -64,6 +69,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_PORT, default=32400): cv.port,
     vol.Optional(CONF_SECTION_TYPES,
                  default=['movie', 'show']): vol.All(cv.ensure_list, [cv.string]),
+    vol.Optional(CONF_EXCLUDE_KEYWORDS):
+                vol.All(cv.ensure_list, [cv.string]),
     vol.Optional(CONF_RESOLUTION, default=200): cv.positive_int,
     vol.Optional(CONF_IMG_CACHE,
                  default='/upcoming-media-card-images/plex/'): cv.string
@@ -96,6 +103,7 @@ class PlexRecentlyAddedSensor(Entity):
         self.dl_images = conf.get(CONF_DL_IMAGES)
         self.on_deck = conf.get(CONF_ON_DECK)
         self.sections = conf.get(CONF_SECTION_TYPES)
+        self.excludes = conf.get(CONF_EXCLUDE_KEYWORDS)
         self.resolution = conf.get(CONF_RESOLUTION)
         if self.server_name:
             _LOGGER.warning(
@@ -211,7 +219,13 @@ class PlexRecentlyAddedSensor(Entity):
                                                     False, poster, self.resolution)
                     card_item['fanart'] = image_url(self,
                                                     False, fanart, self.resolution)
-                self.card_json.append(card_item)
+                should_add = True
+                if self.excludes:
+                    for exclude in self.excludes:
+                        if exclude.lower() in card_item['title'].lower():
+                            should_add = False
+                if should_add:
+                    self.card_json.append(card_item)
                 self.change_detected = False
         attributes['data'] = self.card_json
         return attributes
@@ -234,6 +248,9 @@ class PlexRecentlyAddedSensor(Entity):
         sections = []
         try:
             libraries = await request(all_libraries, self)
+            if not libraries:
+                self._state = '%s cannot be reached' % self.server_ip
+                return
             libraries = json.loads(libraries)
             for lib_section in libraries['MediaContainer']['Directory']:
                 if lib_section['type'] in self.sections:
