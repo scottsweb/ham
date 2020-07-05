@@ -32,7 +32,6 @@
                             label: Containers
                           - entity: switch.dockermon_blinkt
                           - entity: switch.dockermon_nodered
-                          - entity: switch.dockermon_plex
                           - entity: switch.dockermon_watchtower
                         style: |
                           ha-card {
