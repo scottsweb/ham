@@ -1,6 +1,6 @@
 kodi:
   title: 'Kodi'
-  icon: 'mdi:library-music'
+  icon: 'mdi:music-box-multiple'
   url: !secret kodi_ui_ip
 plex:
   title: 'Plex'

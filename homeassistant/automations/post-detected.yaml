@@ -7,7 +7,7 @@ trigger:
 condition:
   condition: time
   after: '09:00:00'
-  before: '12:45:00'
+  before: '15:00:00'
   weekday:
     - mon
     - tue

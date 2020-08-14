@@ -5,10 +5,18 @@ trigger:
   entity_id: binary_sensor.post
   to: 'on'
 condition:
-  - condition: state
-    entity_id: group.people
-    state: 'not_home'
+  condition: time
+  after: '09:00:00'
+  before: '21:00:00'
 action:
-  - service: notify.telegram_group
+  - service: notify.all
     data:
-      message: "{{'\U0001F6AA'}} Post? Zombies? Time to check the cameras..."
+      title: "{{'\U0001F4E8'}} Post? Zombies?"
+      message: "It might be time to check the post box..."
+      data:
+        channel: Alert
+        importance: max
+        priority: high
+        ttl: 0
+        timeout: 600
+        clickAction: "/lovelace/cctv"

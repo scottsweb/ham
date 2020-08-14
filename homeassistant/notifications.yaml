@@ -1,24 +1,19 @@
-- name: pushbullet
-  platform: pushbullet
-  api_key: !secret pushbullet_key
-
 - name: tv
   platform: kodi
   host: !secret kodi_ip
 
-- name: telegram_group
-  platform: telegram
-  chat_id: !secret telegram_group
-
-- name: telegram_scottsweb
-  platform: telegram
-  chat_id: !secret telegram_scottsweb
-
 - name: mycroft
   platform: mycroft
+
+- name: mobiles
+  platform: group
+  services:
+    - service: mobile_app_fp3
+    - service: mobile_app_pixel_3a
 
 - name: all
   platform: group
   services:
-    - service: telegram_group
     - service: tv
+    - service: mobile_app_fp3
+    - service: mobile_app_pixel_3a

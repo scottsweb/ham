@@ -1,8 +1,0 @@
-alias: Switch TV Speaker On
-initial_state: true
-trigger:
-  platform: state
-  entity_id: switch.speaker
-  to: 'on'
-action:
-  - service: shell_command.luther_sound_on

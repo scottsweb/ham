@@ -37,13 +37,8 @@ sensor.ripple:
   icon: mdi:cash
 sensor.litecoin:
   icon: mdi:cash
-media_player.aftt:
-  friendly_name: 'TV Plex'
-  emulated_hue_name: 'Plex'
 media_player.tv_kodi:
   emulated_hue_name: 'Kodi'
-media_player.luther:
-  friendly_name: 'TV Chromecast'
 sensor.ip_address:
   icon: mdi:account-network
 sensor.load_5m:
@@ -132,74 +127,6 @@ switch.dockermon_f_h:
 #   icon: 'mdi:phone-incoming'
 # sensor.last_blocked_call:
 #   icon: 'mdi:phone-missed'
-sensor.flora_front_battery:
-  icon: 'mdi:battery-charging'
-sensor.flora_front_conductivity:
-  icon: 'mdi:emoticon-poop'
-sensor.flora_front_light_intensity:
-  icon: 'mdi:theme-light-dark'
-sensor.flora_front_moisture:
-  icon: 'mdi:water-percent'
-sensor.flora_back_battery:
-  icon: 'mdi:battery-charging'
-sensor.flora_back_conductivity:
-  icon: 'mdi:emoticon-poop'
-sensor.flora_back_light_intensity:
-  icon: 'mdi:theme-light-dark'
-sensor.flora_back_moisture:
-  icon: 'mdi:water-percent'
-group.pi:
-  emulated_hue_hidden: true
-group.calls:
-  emulated_hue_hidden: true
-group.coins:
-  emulated_hue_hidden: true
-group.weather:
-  emulated_hue_hidden: true
-group.internet:
-  emulated_hue_hidden: true
-group.protect:
-  emulated_hue_hidden: true
-group.energy:
-  emulated_hue_hidden: true
-group.sycamore:
-  emulated_hue_hidden: true
-group.media:
-  emulated_hue_hidden: true
-group.next_train:
-  emulated_hue_hidden: true
-group.flora_back:
-  emulated_hue_hidden: true
-group.flora_front:
-  emulated_hue_hidden: true
-group.mycroft:
-  emulated_hue_hidden: true
-group.settings:
-  emulated_hue_hidden: true
-group.remote:
-  emulated_hue_hidden: true
-group.ad_blocker:
-  emulated_hue_hidden: true
-group.all_devices:
-  emulated_hue_hidden: true
-group.all_automations:
-  emulated_hue_hidden: true
-group.all_scripts:
-  emulated_hue_hidden: true
-group.back:
-  emulated_hue_hidden: true
-group.indoor_back:
-  emulated_hue_hidden: true
-group.front:
-  emulated_hue_hidden: true
-group.indoor_front:
-  emulated_hue_hidden: true
-group.blink:
-  emulated_hue_hidden: true
-group.general:
-  emulated_hue_hidden: true
-light.back_door:
-  emulated_hue_name: 'Back Door Light'
 switch.presence_emulator:
   icon: 'mdi:account-multiple'
 switch.auto_fan:
@@ -314,10 +241,6 @@ script.oak_on:
 input_number.luther_sound_volume:
   friendly_name: 'Speaker Volume'
   icon: mdi:volume-medium
-plant.flora_back_plant:
-  friendly_name: 'Flora Back'
-plant.flora_front_plant:
-  friendly_name: 'Flora Front'
 person.scott:
   entity_picture: https://s.gravatar.com/avatar/c887eb86967863cf7e9002277fa6f625?s=360&r=g
 person.gemma:

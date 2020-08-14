@@ -18,9 +18,13 @@ action:
       message: "{{'\U00002604'}} The space station will be passing soon: {{ as_timestamp(states.binary_sensor.iss.attributes.next_rise) | timestamp_custom('%A at %H:%M') }}"
       data:
         displaytime: 15000
-  - service: notify.telegram_group
+  - service: notify.mobiles
     data:
-      message: "{{'\U00002604'}} The space station will be passing soon: {{ as_timestamp(states.binary_sensor.iss.attributes.next_rise) | timestamp_custom('%A at %H:%M') }}"
+      title: "{{'\U00002604'}} The space station will be passing soon"
+      message: "{{ as_timestamp(states.binary_sensor.iss.attributes.next_rise) | timestamp_custom('%A at %H:%M') }}"
+      data:
+        timeout: 300
+        clickAction: "https://spotthestation.nasa.gov/sightings/index.cfm"
   - service: mqtt.publish
     data:
       topic: sycamore/unicorn

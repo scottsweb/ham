@@ -1,8 +1,0 @@
-alias: Switch Games On
-initial_state: true
-trigger:
-  platform: state
-  entity_id: switch.games
-  to: 'on'
-action:
-  - service: script.games_on

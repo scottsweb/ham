@@ -3,9 +3,13 @@ trigger:
   - platform: state
     entity_id: sensor.monk_clean_count
 action:
-  - service: notify.telegram_group
+  - service: notify.all
     data:
-      message: "{{'\U0001F9F9'}} Monk finished cleaning. Cleaned {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaned_area }}m² in {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_time }} minutes. Battery level: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.battery_level }}%."
+      title: "{{'\U0001F9F9'}} Monk finished cleaning"
+      message: "Monk cleaned {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaned_area }}m² in {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_time }} minutes. Battery level: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.battery_level }}%."
+      data:
+        timeout: 120
+        clickAction: "/lovelace/dammsugare"
   - service: homeassistant.turn_off
     data:
       entity_id: group.monk_zones

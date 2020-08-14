@@ -1,63 +1,3 @@
-tv_on:
-  alias: 'TV On'
-  sequence:
-    - service: media_player.turn_on
-      data:
-        entity_id: media_player.tv_firetv
-    - service: switch.turn_on
-      data:
-        entity_id: switch.tv_ir
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.tv_firetv
-        source: org.xbmc.kodi
-    - delay: '00:00:08'
-    - service: switch.turn_on
-      data:
-        entity_id: switch.speaker
-    - service: shell_command.luther_sound_bluetooth
-    - service: shell_command.luther_sound_vol_reset
-    - delay: '00:00:20'
-    - service: broadlink.send
-      data:
-        host: !secret broadlink_ip
-        packet:
-          - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-
-tv_off:
-  alias: 'TV Off'
-  sequence:
-    - service: media_player.turn_off
-      data:
-        entity_id: media_player.tv_firetv
-    - service: switch.turn_off
-      data:
-        entity_id: switch.tv_ir
-    - delay: '00:00:15'
-    - service: switch.turn_off
-      data:
-        entity_id: switch.speaker
-
-tv_speaker_on:
-  alias: 'TV Sound On'
-  sequence:
-    - service: shell_command.luther_sound_on
-
-tv_speaker_off:
-  alias: 'TV Sound Off'
-  sequence:
-    - service: shell_command.luther_sound_off
-
-tv_time:
-  alias: 'TV Time'
-  sequence:
-    - service: homeassistant.turn_on
-      data:
-        entity_id: group.lounge_lights
-    - service: switch.turn_on
-      data:
-        entity_id: switch.tv
-
 bedtime:
   alias: 'Bedtime'
   sequence:
@@ -112,42 +52,16 @@ dash_andrex:
 dash_doorbell:
   alias: 'Amazon Dash - Doorbell'
   sequence:
-    - service: switch.turn_on
+    - service: notify.all
       data:
-        entity_id: switch.fullykiosk_screen
-    - delay: '00:00:02'
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.wilson
-        media_content_id: /local/doorbell.mp3
-        media_content_type: music
-    - service: notify.telegram_group
-      data:
-        message: "{{'\U0000270A'}} Ding dong! someone... or something is at the door."
-
-freeview:
-  alias: 'Switch to Freeview'
-  sequence:
-    - service: broadlink.send
-      data:
-        host: !secret broadlink_ip
-        packet:
-          - JgBQAAABKJMTEhITEjcTEhMSExISExITEjcSOBI3EzcSExITEhITEhI4EjcTNxI4EhMSNxI4EjcTEhITEhMSExI3EhMSExITEgAFlwABKEoSAA0FAAAAAAAAAAA=
-          - JgBQAAABKZMSExITEjcTEhMSEhMSEhMSEzcSNxM3EzcSEhMSExITEhI3EzcTNxITEhITEhMSEhMSExISExITNxI3EzcTNhM3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-          - JgBQAAABKZMSExITEjcTEhMSEhMSEhMSEzcSNxM3EzcSEhMSExITEhI3EzcTNxITEhITEhMSEhMSExISExITNxI3EzcTNhM3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-          - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-
-hdmi:
-  alias: 'Switch to HDMI'
-  sequence:
-    - service: broadlink.send
-      data:
-        host: !secret broadlink_ip
-        packet:
-          - JgBQAAABKJMTEhITEjcTEhMSExISExITEjcSOBI3EzcSExITEhITEhI4EjcTNxI4EhMSNxI4EjcTEhITEhMSExI3EhMSExITEgAFlwABKEoSAA0FAAAAAAAAAAA=
-          - JgBQAAABKZMTEhMSEzcSExISExITEhITEjcTNxI3EzcTEhITEhMSEhMSEzcSNxMSExISExITEhITNxITEhMSNRU3EjcTNxI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-          - JgBQAAABKZMTEhMSEzcSExISExITEhITEjcTNxI3EzcTEhITEhMSEhMSEzcSNxMSExISExITEhITNxITEhMSNRU3EjcTNxI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-          - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
+        title: "{{'\U0000270A'}} Ding dong!"
+        message: "Someone... or something is at the door."
+        data:
+          channel: Doorbell
+          importance: max
+          priority: high
+          ttl: 0
+          timeout: 600
 
 games_on:
   alias: 'Switch Games On'
@@ -181,77 +95,6 @@ games_off:
       data:
         entity_id: media_player.tv_firetv
         source: org.xbmc.kodi
-
-tv_vol_up:
-  alias: 'TV Volume Up'
-  sequence:
-    - service: broadlink.send
-      data:
-        host: !secret broadlink_ip
-        packet:
-          - JgBQAAABJpYRExITETkQFRAVEBQRFBEUETkQORE5EDkRFBEUEBUQFRAVETgRFBAVEBUQFRAUERQQOhAVEDkRORA5ETkQOhE4EQAFmAABJkwQAA0FAAAAAAAAAAA=
-
-tv_vol_down:
-  alias: 'TV Volume Down'
-  sequence:
-    - service: broadlink.send
-      data:
-        host: !secret broadlink_ip
-        packet:
-          - JgBQAAABJpURFBAVEDkRFBEUEBURFBAVEDkRORA5ETkRFBAVEBUQFBE5ETkQFBEUERQQFRAVEBQRFBEUEDoROBE5EDkRORA6EAAFmAABJkwQAA0FAAAAAAAAAAA=
-
-tv_ch_up:
-  alias: 'TV Channel Up'
-  sequence:
-    - service: broadlink.send
-      data:
-        host: !secret broadlink_ip
-        packet:
-          - JgBQAAABJ5UQFRAUETkQFRAVEBQRFBEUEDoQORE5EDoRExEUERQRFBAVERMRFBEUEBUQFRAVEBQRORA6EDkRORE5EDkRORE2EwAFmAABJkwQAA0FAAAAAAAAAAA=
-
-tv_ch_down:
-  alias: 'TV Channel Down'
-  sequence:
-    - service: broadlink.send
-      data:
-        host: !secret broadlink_ip
-        packet:
-          - JgBQAAABJ5UQFRAVEDkRFBEUERQQFRAVEDkRORA5ETkQFRAVEBURExI4EBUQFRAVERMSExAVEBUQFRA5ETkQOhA5ETkQORE5EAAFmQABJkwQAA0FAAAAAAAAAAA=
-
-tv_bbc_one:
-  alias: 'BBC One'
-  sequence:
-    - service: broadlink.send
-      data:
-        host: !secret broadlink_ip
-        packet:
-          - JgBQAAABJpURFBEUEDoQFBEUERQQFRAVEDkRORA6EDkRFBAVEBUQFBE5EBUQFRAVEDkQFRAVEBUQFBE5EDoQOREUEDoQORE5EAAFmAABJ0sRAA0FAAAAAAAAAAA=
-          - JgBIAAABJpYQFBEUETgRFRAVEBQRFBAVEDoQORE5EDoQFBEUEBUQFRAVEBQRFBAVEDgSFBEUERQQOhA5ETkQOhAUETkQOhA5EQANBQ==
-          - JgBQAAABJpURFBEUEDoQFBEUERQQFRAVEDkRORA6EDkRFBAVEBUQFBE5EBUQFRAVEDkQFRAVEBUQFBE5EDoQOREUEDoQORE5EAAFmAABJ0sRAA0FAAAAAAAAAAA=
-          - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-
-tv_channel_four:
-  alias: 'Channel 4'
-  sequence:
-    - service: broadlink.send
-      data:
-        host: !secret broadlink_ip
-        packet:
-          - JgBQAAABJpURFBEUEDoQFBEUERQQFRAVEDkRORA6EDkRFBAVEBUQFBE5EBUQFRAVEDkQFRAVEBUQFBE5EDoQOREUEDoQORE5EAAFmAABJ0sRAA0FAAAAAAAAAAA=
-          - JgBIAAABJpYQFBEUETgRFRAVEBQRFBAVEDoQORE5EDoQFBEUEBUQFRAVEBQRFBAVEDgSFBEUERQQOhA5ETkQOhAUETkQOhA5EQANBQ==
-          - JgBQAAABJpEVFBAVEDkRFBEUEBUQFRAVEDkRORA5ETkRFBAVEBUQFBEUEBUQOhAUETkRFBAVEBUQORA6EBUQOREUEDoQORE5EAAFmAABJ0sRAA0FAAAAAAAAAAA=
-          - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-
-tv_film_four:
-  alias: 'Film 4'
-  sequence:
-    - service: broadlink.send
-      data:
-        host: !secret broadlink_ip
-        packet:
-          - JgBQAAABJpURFBEUEDoQFBEUERQQFRAVEDkRORA6EDkRFBAVEBUQFBE5EBUQFRAVEDkQFRAVEBUQFBE5EDoQOREUEDoQORE5EAAFmAABJ0sRAA0FAAAAAAAAAAA=
-          - JgBIAAABJpURFBEUEDoQFRETERQQFRAVEDkRORA5ETkRFBAVEBUQFRA5EBUQOhAUETkQFRAVEBUQFBE5EBUQOREUETkQORE5EAANBQ==
-          - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
 
 tv_netflix:
   alias: 'Netflix'

@@ -1,8 +1,0 @@
-alias: Switch TV Speaker Off
-initial_state: true
-trigger:
-  platform: state
-  entity_id: switch.speaker
-  to: 'off'
-action:
-  - service: shell_command.luther_sound_off

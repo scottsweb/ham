@@ -14,9 +14,6 @@ action:
   - service: homeassistant.turn_off
     data:
       entity_id: automation.away_lounge_light_tall
-  - service: switch.turn_on
-    data:
-      entity_id: switch.fullykiosk_screen
   - service: mqtt.publish
     data:
       topic: sycamore/unicorn
@@ -24,15 +21,15 @@ action:
   - service: camera.disable_motion_detection
     data:
       entity_id: camera.blink_front
-  - delay: '00:00:05'
+  - delay: '00:00:10'
   - service: camera.disable_motion_detection
     data:
       entity_id: camera.blink_back
-  - delay: '00:00:05'
+  - delay: '00:00:10'
   - service: camera.disable_motion_detection
     data:
       entity_id: camera.blink_indoor_front
-  - delay: '00:00:05'
+  - delay: '00:00:10'
   - service: camera.disable_motion_detection
     data:
       entity_id: camera.blink_indoor_back

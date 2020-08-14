@@ -16,5 +16,7 @@ trigger:
 action:
   - service: notify.all
     data:
+      title: "{{'\U0001F4F9'}} Camera Battery Low!"
       message: "{{ trigger.entity_id }} battery level has dropped to {{ trigger.to_state.state }}%"
-      title: 'Camera Battery Low!'
+      data:
+        clickAction: "/lovelace/cctv"

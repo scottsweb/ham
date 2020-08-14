@@ -14,15 +14,6 @@
       command_state: !secret pihole_mycroft_command_state
       value_template: "{{ value_json.status == 'enabled' }}"
 
-- platform: command_line
-  switches:
-    fullykiosk_screen:
-      command_on: !secret fullykiosk_screen_on
-      command_off: !secret fullykiosk_screen_off
-      command_state: !secret fullykiosk_screen_state
-      value_template: '{{ value == "on" }}'
-      friendly_name: Fullykiosk Screen
-
 - platform: mqtt
   name: "Presence Emulator"
   state_topic: "sycamore/presence/switch"
@@ -91,32 +82,6 @@
           service: media_player.media_pause
           entity_id: media_player.luther_universal_tv
 
-# - platform: broadlink
-#   host: !secret broadlink_ip
-#   mac: !secret broadlink_mac
-#   type: rm_mini
-#   switches:
-#     tv_ir:
-#       friendly_name: "TV IR"
-#       command_on: 'JgBQAAABKJMTEhMSEzcSExISExITEhMSEjgSNxM3EjcTEhMSEhMSExI3ExISOBI3ExITNxISEzcTEhI3ExITEhM3EhMSNxMSEgAFlgABJ0sSAA0FAAAAAAAAAAA='
-#       command_off: 'JgBQAAABKJMTEhMSEzcSExISExITEhMSEjgSNxM3EjcTEhMSEhMSExI3ExISOBI3ExITNxISEzcTEhI3ExITEhM3EhMSNxMSEgAFlgABJ0sSAA0FAAAAAAAAAAA='
-#
-# - platform: broadlink
-#   host: !secret broadlink_ip
-#   mac: !secret broadlink_mac
-#   type: rm_mini
-#   switches:
-#     tv_mute:
-#       friendly_name: "TV Mute"
-#       command_on: 'JgBQAAABKZMTEhITEjcTEhMSEhMSExISEzcSOBI3EzcSExITEhITEhM3EhMSEhM3ExISExITEhITEhM3EjcTEhM3EjgSNxM3EgAFlgABKEoSAA0FAAAAAAAAAAA='
-#       command_off: 'JgBQAAABKZMTEhITEjcTEhMSEhMSExISEzcSOBI3EzcSExITEhITEhM3EhMSEhM3ExISExITEhITEhM3EjcTEhM3EjgSNxM3EgAFlgABKEoSAA0FAAAAAAAAAAA='
-
-# - platform: command_line
-#   switches:
-#     hot_water:
-#       command_on: !secret nest_boost
-#       command_off: !secret nest_cancel
-
 - platform: rest
   resource: !secret dockermon_blinkt
   name: Dockermon Blinkt
@@ -126,16 +91,6 @@
   username: !secret dockermon_username
   password: !secret dockermon_password
   timeout: 20
-
-# - platform: rest
-#   resource: !secret dockermon_ncid
-#   name: Dockermon NCID
-#   body_on: '{"state": "start"}'
-#   body_off: '{"state": "stop"}'
-#   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
-#   username: !secret dockermon_username
-#   password: !secret dockermon_password
-#   timeout: 20
 
 - platform: rest
   resource: !secret dockermon_nodered
