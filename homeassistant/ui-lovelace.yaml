@@ -8,37 +8,313 @@ custom_header:
         query_string: kiosk
       config:
         kiosk_mode: true
-preload_cards:
-  - markdown
-  - conditional
-  - map
-  - entities
-  - iframe
 
-title: Sycamore
+anchors:
+  ⚓₁: &light-style
+    style: |
+      ha-card {
+        box-shadow: none;
+      }
+      .light-button {
+        width: 40% !important;
+      }
+      .more-info {
+        display: none;
+      }
+  ⚓₂: &mini-button
+    styles:
+      card:
+        - background: "var(--nord2)"
+        - height: 56px
+        - padding: 0.9em
+      icon:
+        - width: 50px
+        - color: "var(--nord0)"
+      lock:
+        - width: 14px
+        - color: "var(--nord6)"
+        - padding-left: 70%
+        - padding-right: 13.8%
+    state:
+      - value: 'on'
+        styles:
+          card:
+            - background: "var(--nord9)"
+          icon:
+            - color: "var(--nord6)"
+          lock:
+            - color: "var(--nord0)"
+
+button_card_templates:
+  # Light Template
+  light:
+    aspect_ratio: 1/1
+    show_state: true
+    show_icon: false
+    state: &button_state
+      - value: 'on'
+        styles:
+          card: [background-color: 'var(--card-background-color)']
+          name: [color: 'var(--primary-text-color)']
+          state: [color: 'var(--primary-text-color)']
+      - value: 'off'
+        styles:
+          card: [background-color: 'var(--nord2)']
+          name: [color: 'var(--text-primary-color)']
+          state: [color: 'var(--text-primary-color)']
+    custom_fields:
+      info: >
+        [[[ if (entity.state === 'on' && entity.attributes.brightness) {
+        const brightness = Math.round(entity.attributes.brightness / 2.54);
+        const radius = 20.5; const circumference = radius * 2 * Math.PI;
+        return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="${radius}" stroke="#b2b2b2" stroke-width="1.5" fill="none" style="
+        transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: ${circumference}; stroke-dashoffset: ${circumference - brightness / 100 * circumference};" />
+        <text x="50%" y="54%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">${brightness}<tspan font-size="10">%</tspan></text></svg>`; } ]]]
+    extra_styles: |
+      [[[ var radius = 20.5;
+      var circumference = radius * 2 * Math.PI;
+      var brightness = Math.round( entity.attributes.brightness / 2.54 );
+      return '#c_brightness { transform: rotate(-90deg); transform-origin: 50% 50%; stroke-dasharray: ' + circumference + '; stroke-dashoffset: ' + (circumference - brightness / 100 * circumference) + ';}'; ]]]
+    styles:
+      name: &button_styles_name
+        [top: 60%, left: 11%, position: absolute, line-height: 1em]
+      state: &button_styles_state
+        [top: 78%, left: 11%, position: absolute, line-height: 1em, font-size: 0.8em]
+      custom_fields:
+        info: &circle_pos
+          [top: 8.5%, left: 52%, width: 40%, position: absolute, letter-spacing: 0.03vw]
+      card: &button_styles_card
+        [text-rendering: optimizeLegibility, font-weight: 400, font-size: 1.1em,
+        background-color: 'var(--nord2)', border-radius: 'var(--ha-card-border-radius, 4px)', transition: all 0.5s ease-in-out]
+    tap_action:
+      action: toggle
+    hold_action:
+      action: toggle
+
+  # Switch Template
+  switch:
+    aspect_ratio: 1/1
+    show_state: true
+    show_icon: false
+    state: *button_state
+    extra_styles: |
+      @keyframes icon-shake{from,to{transform:translate3d(0,0,0)}10%,30%{transform:translate3d(-5px,0,0)}20%,40%{transform:translate3d(5px,0,0)}50%,100%{transform:translate3d(0,0,0)}}
+      @keyframes icon-ping{from,20%,40%,60%,to{animation-timing-function:cubic-bezier(0.215,0.61,0.355,1)}0%{opacity:0;transform:scale3d(0.6,0.6,0.6)}20%{transform:scale3d(1.2,1.2,1.2)}40%{opacity:1;transform:scale3d(0.9,0.9,0.9)}60%{opacity:1;transform:scale3d(1,1,1)}to{opacity:1;transform:scale3d(1,1,1)}}
+      @keyframes icon-pulse{0%{opacity:0}100%{opacity:1}}
+      @keyframes icon-buzz{from,to{transform:translate3d(0,0,0) rotate(0deg)}10%,30%{transform:translate3d(-1px,-1px,0) rotate(5deg); transform-origin: left bottom}20%,40%{transform:translate3d(1px,1px,0) rotate(-5deg); transform-origin: right bottom}50%,100%{transform:translate3d(0,0,0) rotate(0deg)}}
+    styles:
+      name: *button_styles_name
+      state: *button_styles_state
+      card: *button_styles_card
+
+title: Lagom
 views:
 # Home
   - title: Home
     icon: mdi:home
     path: default_view
-    badges:
-      - person.gemma
-      - person.scott
+    background: "var(--nord0)"
     cards:
-      - type: entities
-        title: Exchange Rates
-        show_header_toggle: false
-        entities:
-          - sensor.gbp_sek
-          - sensor.sek_gbp
-      - type: entities
+      - type: horizontal-stack
+        cards:
+          # Scott
+          - type: custom:button-card
+            entity: person.scott
+            triggers_update:
+              ['person.scott', 'sensor.scott_last_changed']
+            state_display: &button_home_state_display >
+              [[[ return entity.state === 'home' ? 'Hemma' : 'Bort'; ]]]
+            show_entity_picture: true
+            state: &button_home_state
+              - value: 'home'
+                styles:
+                  card:
+                    - background-color: 'var(--card-background-color)'
+                  name:
+                    - color: 'var(--primary-text-color)'
+                  state:
+                    - color: 'var(--primary-text-color)'
+                  custom_fields:
+                    info:
+                      - color: '#959698'
+              - value: 'away'
+                styles:
+                  card:
+                    - background-color: 'var(--nord2)'
+                  name:
+                    - color: 'var(--text-primary-color)'
+                  state:
+                    - color: 'var(--text-primary-color)'
+                  custom_fields:
+                    info:
+                      - color: '#959698'
+            styles: &button_home_styles
+              entity_picture:
+                  [clip-path: circle(50% at center), top: 7.5%, left: 11.2%, width: 33%, position: absolute]
+              custom_fields:
+                sensor: *circle_pos
+            style:
+              top: 64.5%
+              left: 80.05%
+              width: 10%
+            tap_action: !include popups/person-scott.yaml
+            hold_action: !include popups/person-scott.yaml
+            custom_fields:
+              sensor: >
+                [[[ const last_changed = states['sensor.scott_last_changed'].state;
+                const stroke_color = entity.state === 'home' ? 'var(--primary-text-color)' : 'var(--disabled-text-color)';
+                const fill_color = entity.state === 'home' ? 'none' : '#FFFFFF08';
+                return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20.5" stroke="${stroke_color}" stroke-width="1.5" fill="${fill_color}" />
+                <text x="50%" y="52%" fill="${stroke_color}" font-size="14" text-anchor="middle" alignment-baseline="middle">${last_changed}</text></svg>`; ]]]
+            template: switch
+
+          # Gemma
+          - type: custom:button-card
+            entity: person.gemma
+            triggers_update:
+              ['person.gemma', 'sensor.gemma_last_changed']
+            state_display: *button_home_state_display
+            show_entity_picture: true
+            state: *button_home_state
+            styles: *button_home_styles
+            style:
+              top: 64.5%
+              left: 91.05%
+              width: 10%
+            tap_action: !include popups/person-gemma.yaml
+            hold_action: !include popups/person-gemma.yaml
+            custom_fields:
+              sensor: >
+                [[[ const last_changed = states['sensor.gemma_last_changed'].state;
+                const stroke_color = entity.state === 'home' ? 'var(--primary-text-color)' : 'var(--disabled-text-color)';
+                const fill_color = entity.state === 'home' ? 'none' : '#FFFFFF08';
+                return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20.5" stroke="${stroke_color}" stroke-width="1.5" fill="${fill_color}" />
+                <text x="50%" y="52%" fill="${stroke_color}" font-size="14" text-anchor="middle" alignment-baseline="middle">${last_changed}</text></svg>`; ]]]
+            template: switch
+
+          # Post notification
+          - type: custom:button-card
+            entity: input_boolean.post_visibility
+            state_display: >
+              [[[ return entity.state === 'on' ? 'Ja' : 'Nej'; ]]]
+            custom_fields:
+              icon_mail: >
+                <svg viewBox="0 0 24 24"><path d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M17,17H7V15H17M17,13H7V11H17M20,9H17V6H20" fill="var(--button-card-light-color-no-temperature)" /></svg>
+            styles:
+              custom_fields:
+                icon_mail:
+                  - top: 10.1%
+                  - left: 10%
+                  - width: 30%
+                  - position: absolute
+                  - animation: >
+                      [[[
+                        if (entity.state === 'on')
+                          return "icon-shake 1s ease-in-out infinite";
+                      ]]]
+            tap_action:
+              action: call-service
+              service: input_boolean.turn_off
+              service_data:
+                entity_id: input_boolean.post_visibility
+            hold_action: !include popups/sensor-post.yaml
+            template: switch
+
+      # Washing timer
+      - type: conditional
+        conditions:
+          - entity: input_boolean.washing_timer_visibility
+            state: 'on'
+        card:
+          type: "custom:button-card"
+          entity: timer.washing
+          show_icon: true
+          show_name: false
+          show_state: true
+          layout: icon_state
+          tap_action:
+            action: call-service
+            service: script.turn_on
+            service_data:
+              entity_id: script.restart_washing_timer
+          hold_action:
+            action: call-service
+            service: input_boolean.turn_off
+            service_data:
+              entity_id: input_boolean.washing_timer_visibility
+          double_tap_action:
+            action: none
+          styles:
+            card:
+            icon:
+              - left: -40px
+              - height: 45px
+              - color: var(--nord13)
+              - animation: icon-buzz 1s infinite
+            state:
+              - font-size: 1.7em
+              - font-weight: 500
+              - right: -40px
+              - position: relative
+          state:
+            - value: 'idle'
+              styles:
+                icon:
+                  - animation: none
+                  - color: var(--nord14)
+
+      # Lights
+      - type: custom:vertical-stack-in-card
         title: Lights
-        show_header_toggle: true
-        entities:
-          - light.lounge_light_tall
-          - light.lounge_light_small
-          - light.hallway
-          - switch.cloud
+        style: |
+          .card-header {
+            padding-bottom: 0;
+          }
+        cards:
+        - type: custom:mod-card
+          style: |
+            ha-card {
+              padding: 0 0.2em 0 0.2em;
+            }
+          card:
+            type: horizontal-stack
+            title: false
+            cards:
+            - type: light
+              entity: light.lounge_light_tall
+              icon: mdi:floor-lamp
+              <<: *light-style
+            - type: light
+              entity: light.lounge_light_small
+              icon: mdi:desk-lamp
+              <<: *light-style
+        - type: custom:mod-card
+          style: |
+            ha-card {
+              padding: 0 0.2em 0.8em 0.2em;
+            }
+          card:
+            type: horizontal-stack
+            title: false
+            cards:
+            - type: light
+              entity: light.hallway
+              icon: mdi:ceiling-light
+              <<: *light-style
+            - type: button
+              entity: switch.cloud
+              icon: mdi:cloud
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+                ha-icon {
+                  width: 32% !important;
+                }
+                span {
+                  position: relative;
+                  top: 22%;
+                }
       - type: sensor
         entity: sensor.indoor_temperature
         graph: line
@@ -52,9 +328,13 @@ views:
         show_header_toggle: false
         entities:
           - sensor.sweden_coronavirus_confirmed
-          - sensor.sweden_coronavirus_current
           - sensor.sweden_coronavirus_deaths
-          - sensor.sweden_coronavirus_recovered
+      - type: entities
+        title: Exchange Rates
+        show_header_toggle: false
+        entities:
+          - sensor.gbp_sek
+          - sensor.sek_gbp
       - type: entities
         title: Coins
         show_header_toggle: false
@@ -67,162 +347,320 @@ views:
   - title: Entertainment
     path: entertainment
     icon: mdi:filmstrip
+    background: "var(--nord0)"
     badges:
     cards:
       - type: vertical-stack
         cards:
-          - type: horizontal-stack
-            cards:
-              - type: "custom:button-card"
-                icon: mdi:power
-                size: 35px
-                entity: switch.tv
-                color: rgb(82,150,28)
-                color_off:
-                color_type: card
-                name: TV
+          - type: media-control
+            entity: media_player.tv
+          - type: conditional
+            conditions:
+              - entity: media_player.tv
+                state: 'off'
+            card:
+              type: custom:button-card
+              entity: sensor.plex_recently_added
+              triggers_update:
+                ['sensor.plex_recently_added']
+              name: Nyligen tillagd
+              aspect_ratio: 2.7/1
+              show_state: true
+              show_icon: false
+              state_display: >
+                [[[ const data = states[entity.entity_id].attributes.data;
+                const number = data[1].number == undefined ? '(' + data[1].aired.split('-')[0] + ')' : data[1].number;
+                return `${data[1].title} ${number}`; ]]]
+              custom_fields:
+                media_image: >
+                  <svg viewBox="0 0 50 50" />
+                overlay: >
+                  [[[ if (entity.state != 'off' && entity.state != 'idle' && entity.state != 'standby' && entity.state != 'unavailable') {
+                  return '<svg viewBox="0 0 50 50" />'; } ]]]
+              styles:
+                name:
+                  [bottom: 3em, left: 1.1em, position: absolute, z-index: 10, font-size: 0.9em]
                 state:
-                  - value: 'on'
-                    styles:
-                      card:
-                        - background: rgb(82,150,28)
-                      icon:
-                        - color: rgb(255,255,255)
-                      name:
-                        - color: rgb(255,255,255)
-                  - value: 'off'
-                    styles:
-                      card:
-                        - background: var(--primary-color)
-                      icon:
-                        - color: rgb(255,255,255)
-                      name:
-                        - color: rgb(255,255,255)
-          - type: horizontal-stack
-            cards:
-              - type: "custom:button-card"
-                icon: mdi:volume-minus
-                size: 44px
-                show_name: false
-                action: call-service
-                service: script.turn_on
-                entity: script.tv_vol_down
-              - type: "custom:button-card"
-                icon: mdi:volume-mute
-                size: 44px
-                entity: switch.tv_mute
-                show_name: false
-                state:
-                  - value: 'on'
-                    styles:
-                      icon:
-                        - color: rgb(82,150,28)
-                  - value: 'off'
-                    styles:
-                      icon:
-                        - color: var(--primary-color)
-              - type: "custom:button-card"
-                icon: mdi:volume-plus
-                size: 44px
-                show_name: false
-                action: call-service
-                service: script.turn_on
-                entity: script.tv_vol_up
+                  [bottom: 1em, left: 0.9em, position: absolute, z-index: 10,
+                  white-space: nowrap, overflow: hidden, text-overflow: ellipsis, max-width: 90%, font-size: 1.1em]
+                custom_fields:
+                  media_image: [background-position: top center, background-size: 100%, position: absolute, top: -30px, width: 100%, background-image:
+                    "[[[ return 'url(' + states[entity.entity_id].attributes.data[1].fanart + ')'; ]]]"]
+                  overlay: [background: 'rgba(46, 52, 64, 0.9)']
+                card:
+                  [color: 'var(--nord6)', text-shadow: '1px 1px 5px rgba(46, 52, 64, 0.7)']
+              tap_action:
+                action: none
+
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
                 name: Netflix
                 styles:
                   card:
-                    - color: rgb(255,255,255)
-                    - background: rgb(112,55,178)
+                    - color: var(--nord6)
+                    - background: var(--nord9)
                     - height: 56px
                 show_icon: false
-                action: call-service
-                service: kodi.call_method
-                service_data:
-                  entity_id: media_player.tv_kodi
-                  method: Addons.ExecuteAddon
-                  addonid: plugin.video.netflix
-                  params:
-                    command: activate
+                tap_action:
+                  action: call-service
+                  service: kodi.call_method
+                  service_data:
+                    entity_id: media_player.tv_kodi
+                    method: Addons.ExecuteAddon
+                    addonid: plugin.video.netflix
+                    params:
+                      command: activate
               - type: "custom:button-card"
                 name: Kodi
                 styles:
                   card:
-                    - color: rgb(255,255,255)
-                    - background: rgb(112,55,178)
+                    - color: var(--nord6)
+                    - background: var(--nord9)
                     - height: 56px
                 show_icon: false
-                action: call-service
-                service: kodi.call_method
-                service_data:
-                  entity_id: media_player.tv_kodi
-                  method: Input.Home
+                tap_action:
+                  action: call-service
+                  service: kodi.call_method
+                  service_data:
+                    entity_id: media_player.tv_kodi
+                    method: Input.Home
               - type: "custom:button-card"
                 name: Plex
                 styles:
                   card:
-                    - color: rgb(255,255,255)
-                    - background: rgb(112,55,178)
+                    - color: var(--nord6)
+                    - background: var(--nord9)
                     - height: 56px
                 show_icon: false
-                action: call-service
-                service: kodi.call_method
-                service_data:
-                  entity_id: media_player.tv_kodi
-                  method: Addons.ExecuteAddon
-                  addonid: script.plex
-                  params:
-                    command: activate
-          - type: entities
-            title: false
-            show_header_toggle: false
-            entities:
-              - entity: switch.tv
- #               - entity: switch.speaker
- #               - entity: input_number.luther_sound_volume
-              - entity: switch.games
-      - type: media-control
-        entity: media_player.luther_universal_tv
- #       - type: media-control
- #         entity: media_player.luther_universal_audio
+                tap_action:
+                  action: call-service
+                  service: kodi.call_method
+                  service_data:
+                    entity_id: media_player.tv_kodi
+                    method: Addons.ExecuteAddon
+                    addonid: script.plex
+                    params:
+                      command: activate
+              - type: "custom:button-card"
+                name: Steam
+                styles:
+                  card:
+                    - color: var(--nord6)
+                    - background: var(--nord9)
+                    - height: 56px
+                show_icon: false
+                tap_action:
+                  action: call-service
+                  service: kodi.call_method
+                  service_data:
+                    entity_id: media_player.tv_kodi
+                    method: Addons.ExecuteAddon
+                    addonid: script.steam.launcher
+                    params:
+                      command: activate
 
   - title: Dammsugare
     path: dammsugare
     icon: mdi:robot-vacuum
+    background: "var(--nord0)"
     badges:
     cards:
-      - type: 'custom:vacuum-card'
-        entity: vacuum.xiaomi_vacuum_cleaner
-        stats:
-          default:
-            - attribute: filter_left
-              unit: hours
-              subtitle: Filter
-            - attribute: side_brush_left
-              unit: hours
-              subtitle: Side brush
-            - attribute: main_brush_left
-              unit: hours
-              subtitle: Main brush
-            - attribute: sensor_dirty_left
-              unit: hours
-              subtitle: Sensors
-      - type: entities
-        title: " ‍  Monk"
-        entities:
-          - entity: input_boolean.monk_clean_lounge
-          - entity: input_boolean.monk_clean_kitchen
-          - entity: input_boolean.monk_clean_bedroom
-          - entity: input_boolean.monk_clean_hall
-          - entity: input_boolean.monk_clean_office_gemma
-          - entity: input_boolean.monk_clean_office_scott
-#          - entity: input_select.monk_fan_speed
+      - type: vertical-stack
+        cards:
+        - type: 'custom:vacuum-card'
+          entity: vacuum.xiaomi_vacuum_cleaner
+          compact_view: true
+          stats:
+            default:
+              - attribute: filter_left
+                unit: hours
+                subtitle: Filter
+              - attribute: side_brush_left
+                unit: hours
+                subtitle: Side brush
+              - attribute: main_brush_left
+                unit: hours
+                subtitle: Main brush
+              - attribute: sensor_dirty_left
+                unit: hours
+                subtitle: Sensors
+        - type: entities
+          title: " ‍  Select rooms to clean"
+          entities:
+            - entity: input_boolean.monk_clean_lounge
+            - entity: input_boolean.monk_clean_kitchen
+            - entity: input_boolean.monk_clean_bedroom
+            - entity: input_boolean.monk_clean_hall
+            - entity: input_boolean.monk_clean_office_gemma
+            - entity: input_boolean.monk_clean_office_scott
+  #          - entity: input_select.monk_fan_speed
+          style: |
+            ha-card {
+              margin-top: -63px;
+            }
+            .card-header {
+              font-size: 1em;
+            }
+        - type: horizontal-stack
+          cards:
+            - type: conditional
+              conditions:
+                - entity: vacuum.xiaomi_vacuum_cleaner
+                  state: 'docked'
+              card:
+                type: custom:button-card
+                entity: group.monk_zones
+                name: Start
+                show_icon: true
+                icon: mdi:play
+                show_name: false
+                lock:
+                  exemptions: []
+                  enabled: >
+                   [[[
+                      if ((entity.state == 'on') && (states['vacuum.xiaomi_vacuum_cleaner'].state == 'docked'))
+                        return false
+                      else
+                        return true
+                   ]]]
+                <<: *mini-button
+                tap_action:
+                  action: call-service
+                  service: script.monk_clean
+            - type: conditional
+              conditions:
+                - entity: vacuum.xiaomi_vacuum_cleaner
+                  state_not: 'docked'
+              card:
+                type: custom:button-card
+                entity: group.monk_zones
+                name: Resume
+                show_icon: true
+                icon: mdi:play
+                show_name: false
+                lock:
+                  exemptions: []
+                  enabled: >
+                   [[[
+                      if (states['vacuum.xiaomi_vacuum_cleaner'].state != 'idle' && states['vacuum.xiaomi_vacuum_cleaner'].state != 'cleaning')
+                        return false
+                      else
+                        return true
+                   ]]]
+                <<: *mini-button
+                tap_action:
+                  action: call-service
+                  service: vacuum.start_pause
+                  service_data:
+                    entity_id: vacuum.xiaomi_vacuum_cleaner
+            - type: custom:button-card
+              entity: group.monk_zones
+              name: Pause
+              show_icon: true
+              icon: mdi:pause
+              show_name: false
+              lock:
+                exemptions: []
+                enabled: >
+                 [[[
+                   if ((entity.state == 'on') && (states['vacuum.xiaomi_vacuum_cleaner'].state == 'cleaning'))
+                     return false
+                   else
+                     return true
+                 ]]]
+              <<: *mini-button
+#              state:
+#                - operator: template
+#                  value: >
+#                    [[[
+#                      if ((entity.state == 'on') && (states['vacuum.xiaomi_vacuum_cleaner'].state == 'cleaning'))
+#                        return false
+#                      else
+#                        return true
+#                    ]]]
+              tap_action:
+                action: call-service
+                service: vacuum.pause
+                service_data:
+                  entity_id: vacuum.xiaomi_vacuum_cleaner
+            - type: custom:button-card
+              entity: group.monk_zones
+              name: Stop
+              show_icon: true
+              icon: mdi:stop
+              show_name: false
+              lock:
+                exemptions: []
+                enabled: >
+                 [[[
+                   if ((entity.state == 'on') && (states['vacuum.xiaomi_vacuum_cleaner'].state == 'cleaning' || states['vacuum.xiaomi_vacuum_cleaner'].state == 'paused'))
+                     return false
+                   else
+                     return true
+                 ]]]
+              <<: *mini-button
+#              state:
+#                - operator: template
+#                  value: >
+#                    [[[
+#                      if ((entity.state == 'on') && (states['vacuum.xiaomi_vacuum_cleaner'].state == 'cleaning'))
+#                        return false
+#                      else
+#                        return true
+#                    ]]]
+              tap_action:
+                action: call-service
+                service: vacuum.stop
+                service_data:
+                  entity_id: vacuum.xiaomi_vacuum_cleaner
+            - type: custom:button-card
+              entity: group.monk_zones #sensor.monk_state
+              name: Return to Base
+              show_icon: true
+              icon: mdi:home
+              show_name: false
+              lock:
+                exemptions: []
+                enabled: >
+                 [[[
+                   if (states['vacuum.xiaomi_vacuum_cleaner'].state != 'docked')
+                     return false
+                   else
+                     return true
+                 ]]]
+              <<: *mini-button
+              tap_action:
+                action: call-service
+                service: vacuum.return_to_base
+                service_data:
+                  entity_id: vacuum.xiaomi_vacuum_cleaner
+            - type: custom:button-card
+              entity: group.monk_zones #sensor.monk_state
+              name: Locate
+              show_icon: true
+              icon: mdi:map-marker-question
+              show_name: false
+              lock:
+                exemptions: []
+                enabled: >
+                 [[[
+                   if (states['vacuum.xiaomi_vacuum_cleaner'].state != 'docked')
+                     return false
+                   else
+                     return true
+                 ]]]
+              <<: *mini-button
+              tap_action:
+                action: call-service
+                service: vacuum.locate
+                service_data:
+                  entity_id: vacuum.xiaomi_vacuum_cleaner
 
   - title: Cameras
     path: cctv
     icon: mdi:camera-iris
+    background: "var(--nord0)"
     badges:
     cards:
       - type: vertical-stack
@@ -277,6 +715,7 @@ views:
   - title: Outdoors
     path: outdoors
     icon: mdi:pine-tree
+    background: "var(--nord0)"
     cards:
       - type: weather-forecast
         entity: weather.dark_sky
@@ -312,7 +751,8 @@ views:
 
   - title: Settings
     path: settings
-    icon: mdi:settings
+    icon: mdi:cog
+    background: "var(--nord0)"
     badges:
     cards:
  #      - type: entities

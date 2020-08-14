@@ -128,7 +128,7 @@ history:
       - sensor.u_s_air_pollution_level
       - sensor.u_s_main_pollutant
 
-      - media_player.luther_universal_tv
+      - media_player.tv
 
       - sensor.ip_address
 

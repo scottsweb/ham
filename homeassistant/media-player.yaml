@@ -9,7 +9,7 @@
 #  host: !secret tv_ip
 
 - platform: universal
-  name: 'Luther Universal (TV)'
+  name: 'TV'
   children:
     - media_player.tv_kodi # kodi
     - media_player.plex_for_kodi # plex
