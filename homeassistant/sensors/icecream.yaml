@@ -1,0 +1,6 @@
+platform: rest
+name: Hemglass
+resource: !secret ice_cream_api
+value_template: '{{ value_json[0] }}'
+unit_of_measurement: 'date'
+scan_interval: 86400

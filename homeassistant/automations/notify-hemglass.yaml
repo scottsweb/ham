@@ -1,0 +1,19 @@
+alias: Hemglass Here
+initial_state: true
+trigger:
+  platform: time_pattern
+  minutes: 5
+condition:
+  condition: template
+  value_template: '{% set next = as_timestamp(states("sensor.hemglass")) %} {% set now = as_timestamp( now() ) %} {% if now >= ( next - 900 ) %}true{% endif %}'
+action:
+  - service: notify.all
+    data:
+      title: "{{'\U0001F368'}} Hemglass approaching"
+      message: "ETA: {{ as_timestamp(states('sensor.hemglass')) | timestamp_custom('%A at %H:%M') }}"
+      data:
+        timeout: 900
+        clickAction: "https://www.hemglass.se/sv/hitta-glassbilen/"
+  # perhaps turn off automation
+  - delay: '24:00:00'
+  # perhaps turn on automation
