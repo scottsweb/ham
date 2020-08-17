@@ -80,6 +80,12 @@ fan:
     host: !secret fan_ip
     token: !secret fan_token
 
+# Nanoleaf
+light:
+  - platform: nanoleaf
+    host: !secret nanoleaf_ip
+    token: !secret nanoleaf_token
+
 # UPnP
 upnp:
 
@@ -136,6 +142,7 @@ history:
       - light.hallway
       - light.lounge_light_small
       - switch.cloud
+      - light.nanoleaf
 
       - switch.dockermon_blinkt
       - switch.dockermon_nodered
