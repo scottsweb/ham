@@ -14,6 +14,20 @@
     - media_player.tv_kodi # kodi
     - media_player.plex_for_kodi # plex
 
+
+- platform: linkplay
+  host: !secret teeger_ip
+  name: teeger
+  sources:
+    {
+      'line-in': 'TV Sound',
+      'bluetooth': 'Bluetooth',
+      'https://sverigesradio.se/topsy/direkt/132-hi-aac.m3u ': 'P1',
+      'https://sverigesradio.se/topsy/direkt/2562-hi-aac.m3u': 'P2',
+      'https://sverigesradio.se/topsy/direkt/164-hi-aac.m3u': 'P3',
+      'https://sverigesradio.se/topsy/direkt/701-hi-aac.m3u': 'P4 Stockholm',
+    }
+
 #   commands:
 #     turn_on:
 #       service: switch.turn_on

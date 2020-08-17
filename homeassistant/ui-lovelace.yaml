@@ -137,7 +137,7 @@ views:
                   custom_fields:
                     info:
                       - color: '#959698'
-              - value: 'away'
+              - value: 'not_home'
                 styles:
                   card:
                     - background-color: 'var(--nord2)'
@@ -315,6 +315,8 @@ views:
                   position: relative;
                   top: 22%;
                 }
+        - type: light
+          entity: light.nanoleaf
       - type: sensor
         entity: sensor.indoor_temperature
         graph: line
@@ -352,8 +354,13 @@ views:
     cards:
       - type: vertical-stack
         cards:
-          - type: media-control
-            entity: media_player.tv
+          - type: conditional
+            conditions:
+              - entity: media_player.tv
+                state_not: 'off'
+            card:
+              type: media-control
+              entity: media_player.tv
           - type: conditional
             conditions:
               - entity: media_player.tv
@@ -364,9 +371,10 @@ views:
               triggers_update:
                 ['sensor.plex_recently_added']
               name: Nyligen tillagd
-              aspect_ratio: 2.7/1
+              aspect_ratio: 2.8/1
               show_state: true
-              show_icon: false
+              show_icon: true
+              icon: mdi:cast
               state_display: >
                 [[[ const data = states[entity.entity_id].attributes.data;
                 const number = data[1].number == undefined ? '(' + data[1].aired.split('-')[0] + ')' : data[1].number;
@@ -377,6 +385,7 @@ views:
                 overlay: >
                   [[[ if (entity.state != 'off' && entity.state != 'idle' && entity.state != 'standby' && entity.state != 'unavailable') {
                   return '<svg viewBox="0 0 50 50" />'; } ]]]
+                label: 'TV'
               styles:
                 name:
                   [bottom: 3em, left: 1.1em, position: absolute, z-index: 10, font-size: 0.9em]
@@ -386,9 +395,11 @@ views:
                 custom_fields:
                   media_image: [background-position: top center, background-size: 100%, position: absolute, top: -30px, width: 100%, background-image:
                     "[[[ return 'url(' + states[entity.entity_id].attributes.data[1].fanart + ')'; ]]]"]
-                  overlay: [background: 'rgba(46, 52, 64, 0.9)']
+                  overlay: [background: 'rgba(46, 52, 64, 0.6)']
+                  label: [position: absolute, z-index: 12, color: 'var(--nord6)', top: 1.6em, left: 3.7em, font-size: 0.8em]
                 card:
                   [color: 'var(--nord6)', text-shadow: '1px 1px 5px rgba(46, 52, 64, 0.7)']
+                icon: [position: absolute, z-index: 12, width: 24px, top: -3.5em, left: 1em, color: 'var(--nord6)']
               tap_action:
                 action: none
 
@@ -452,13 +463,82 @@ views:
                 show_icon: false
                 tap_action:
                   action: call-service
-                  service: kodi.call_method
-                  service_data:
-                    entity_id: media_player.tv_kodi
-                    method: Addons.ExecuteAddon
-                    addonid: script.steam.launcher
-                    params:
-                      command: activate
+                  service: script.steam_on
+
+          - type: horizontal-stack
+            cards:
+             - type: "custom:button-card"
+               name: Volume Down
+               icon: mdi:volume-minus
+               styles:
+                 card:
+                   - color: var(--nord6)
+                   - background: var(--nord10)
+                   - height: 56px
+                   - padding: 0.9em
+                 icon:
+                   - color: var(--nord6)
+               show_name: false
+               tap_action:
+                 action: call-service
+                 service: media_player.volume_down
+                 service_data:
+                   entity_id: media_player.teeger
+             - type: "custom:button-card"
+               name: Mute
+               icon: mdi:volume-mute
+               state:
+                 - operator: template
+                   value: >
+                     [[[
+                       if (states['media_player.teeger'].attributes.is_volume_muted != false)
+                         return 'on'
+                     ]]]
+                   styles:
+                     card:
+                       - background: var(--nord11)
+                 - operator: default
+               styles:
+                 card:
+                   - color: var(--nord6)
+                   - background: var(--nord10)
+                   - height: 56px
+                   - padding: 0.9em
+                 icon:
+                   - color: var(--nord6)
+               show_name: false
+               tap_action:
+                 action: call-service
+                 service: media_player.volume_mute
+                 service_data:
+                   entity_id: media_player.teeger
+                   is_volume_muted: >
+                     [[[
+                       if (states['media_player.teeger'].attributes.is_volume_muted == false)
+                         return true
+                       else
+                         return false
+                     ]]]
+             - type: "custom:button-card"
+               name: Volume Up
+               icon: mdi:volume-plus
+               styles:
+                 card:
+                   - color: var(--nord6)
+                   - background: var(--nord10)
+                   - height: 56px
+                   - padding: 0.9em
+                 icon:
+                   - color: var(--nord6)
+               show_name: false
+               tap_action:
+                 action: call-service
+                 service: media_player.volume_up
+                 service_data:
+                   entity_id: media_player.teeger
+
+          - type: media-control
+            entity: media_player.teeger
 
   - title: Dammsugare
     path: dammsugare

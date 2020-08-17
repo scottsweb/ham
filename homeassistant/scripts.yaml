@@ -1,16 +1,3 @@
-bedtime:
-  alias: 'Bedtime'
-  sequence:
-    - service: switch.turn_on
-      data:
-        entity_id: switch.bedroom_light
-    - service: homeassistant.turn_off
-      data:
-        entity_id: group.lounge_lights
-    - service: switch.turn_off
-      data:
-        entity_id: switch.tv
-
 blink_front_capture_script:
   alias: 'Update Front at Sycamore'
   sequence:
@@ -63,8 +50,8 @@ dash_doorbell:
           ttl: 0
           timeout: 600
 
-games_on:
-  alias: 'Switch Games On'
+steam_on:
+  alias: 'Switch Steam On'
   sequence:
     - service: wake_on_lan.send_magic_packet
       data:
@@ -73,60 +60,17 @@ games_on:
       data:
         message: 'Starting Steam...'
     - delay: '00:00:05'
-    - service: broadlink.send
+    - service: media_player.volume_set
       data:
-        host: !secret broadlink_ip
-        packet:
-          - JgBQAAABKJMTEhITEjcTEhMSExISExITEjcSOBI3EzcSExITEhITEhI4EjcTNxI4EhMSNxI4EjcTEhITEhMSExI3EhMSExITEgAFlwABKEoSAA0FAAAAAAAAAAA=
-          - JgBQAAABKZMSExITEjcTEhMSEhMSEhMSEzcSNxM3EzcSEhMSExITEhI3EzcTNxITEhITEhMSEhMSExISExITNxI3EzcTNhM3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-          - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-
-games_off:
-  alias: 'Switch Games Off'
-  sequence:
-    - service: broadlink.send
+        entity_id: media_player.teeger
+        volume_level: 0.3
+    - service: kodi.call_method
       data:
-        host: !secret broadlink_ip
-        packet:
-          - JgBQAAABKJMTEhITEjcTEhMSExISExITEjcSOBI3EzcSExITEhITEhI4EjcTNxI4EhMSNxI4EjcTEhITEhMSExI3EhMSExITEgAFlwABKEoSAA0FAAAAAAAAAAA=
-          - JgBQAAABKZMTEhMSEzcSExISExITEhITEjcTNxI3EzcTEhITEhMSEhMSEzcSNxMSExISExITEhITNxITEhMSNRU3EjcTNxI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-          - JgBQAAABJ5USExITETgSExITEhMSExISEzcSNBY3EzcSExISExITEhITEhMSNxMSEhMSExI3ExITNxI3ExITNxI3EzcSExI3EwAFlQABKUkTAA0FAAAAAAAAAAA=
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.tv_firetv
-        source: org.xbmc.kodi
-
-tv_netflix:
-  alias: 'Netflix'
-  sequence:
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.tv_firetv
-        source: com.netflix.ninja
-
-tv_kodi:
-  alias: 'Kodi'
-  sequence:
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.tv_firetv
-        source: org.xbmc.kodi
-
-tv_plex:
-  alias: 'Plex'
-  sequence:
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.tv_firetv
-        source: com.plexapp.android
-
-tv_youtube:
-  alias: 'YouTube'
-  sequence:
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.tv_firetv
-        source: com.amazon.firetv.youtube
+        entity_id: media_player.tv_kodi
+        method: Addons.ExecuteAddon
+        addonid: script.steam.launcher
+        params:
+          command: activate
 
 oak_on:
   alias: 'Wake on LAN (WOL)'
