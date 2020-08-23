@@ -16,7 +16,7 @@ monk_clean_hall:
   icon: mdi:ceiling-light
 monk_clean_office_gemma:
   name: Gemma's Office
-  icon: mdi:desk    
+  icon: mdi:desk
 monk_clean_office_scott:
-  name: Scotts's Office
-  icon: mdi:desk 
+  name: Scotts' Office
+  icon: mdi:desk

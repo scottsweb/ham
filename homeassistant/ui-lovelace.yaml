@@ -371,7 +371,7 @@ views:
               triggers_update:
                 ['sensor.plex_recently_added']
               name: Nyligen tillagd
-              aspect_ratio: 2.8/1
+              aspect_ratio: 2.55/1
               show_state: true
               show_icon: true
               icon: mdi:cast
@@ -399,7 +399,7 @@ views:
                   label: [position: absolute, z-index: 12, color: 'var(--nord6)', top: 1.6em, left: 3.7em, font-size: 0.8em]
                 card:
                   [color: 'var(--nord6)', text-shadow: '1px 1px 5px rgba(46, 52, 64, 0.7)']
-                icon: [position: absolute, z-index: 12, width: 24px, top: -3.5em, left: 1em, color: 'var(--nord6)']
+                icon: [position: absolute, z-index: 12, width: 24px, top: -3.92em, left: 1em, color: 'var(--nord6)']
               tap_action:
                 action: none
 
