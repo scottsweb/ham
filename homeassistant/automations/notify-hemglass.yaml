@@ -15,5 +15,9 @@ action:
         timeout: 900
         clickAction: "https://www.hemglass.se/sv/hitta-glassbilen/"
   # perhaps turn off automation
+  - service: automation.turn_off
+    entity_id:  automation.hemglass_here
   - delay: '24:00:00'
   # perhaps turn on automation
+  - service: automation.turn_on
+    entity_id:  automation.hemglass_here
