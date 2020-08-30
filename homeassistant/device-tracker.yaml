@@ -1,6 +1,6 @@
 - platform: asuswrt
-  consider_home: 900
+  consider_home: 600
   new_device_defaults:
-    track_new_devices: False
+    track_new_devices: false
   # home_interval: 5
   # consider_home will be the number of seconds to wait till marking someone as not home after not being seen on scans.
