@@ -1,0 +1,9 @@
+alias: NFC Scan Lounge
+initial_state: true
+trigger:
+  platform: tag
+  tag_id: lounge_entrance
+action:
+  - service: homeassistant.toggle
+    data:
+      entity_id: group.lounge_lights

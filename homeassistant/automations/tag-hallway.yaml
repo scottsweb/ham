@@ -1,0 +1,9 @@
+alias: NFC Scan Hallway
+initial_state: true
+trigger:
+  platform: tag
+  tag_id: hallway
+action:
+  - service: light.toggle
+    data:
+      entity_id: light.hallway
