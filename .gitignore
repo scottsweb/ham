@@ -9,6 +9,7 @@ dockermon/config
 dockermon-oak/config
 
 # homeassistant
+homeassistant/.shopping_list.json
 homeassistant/android
 homeassistant/*.pickle
 homeassistant/deps/*
@@ -36,7 +37,7 @@ homeassistant/.storage
 homeassistant/custom_components/**/__pycache__/
 homeassistant/custom_components/**/.translations/
 homeassistant/google_calendars.yaml
-homeassistant/www/plex/
+homeassistant/www/Plex_Recently_Added
 
 # miniflux
 miniflux/miniflux
