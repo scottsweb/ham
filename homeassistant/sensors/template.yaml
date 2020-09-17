@@ -5,115 +5,20 @@ sensors:
     value_template: " "
 
   day:
+    icon_template: mdi:calendar
     value_template: >
-      {% set days = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"] %}
-      {{ days[now().weekday()] }}
+      {% set weekday = as_local(states.sensor.date.last_changed).strftime('%w') | int %}
+      {% set days = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag'] %}
+      {{ days[weekday - 1] }}
 
   date_se:
+    icon_template: mdi:calendar
     value_template: >
-      {% set months = ["Januari", "Februari", "Mars", "April", "Maj", "Juni",
-      "Juli", "Augusti", "September", "Oktober", "November", "December"] %}
-      {{ strptime(states('sensor.date'), '%Y-%m-%d').day }}
-      {{ months[now().month-1] }}
-
-  washing_countdown:
-    friendly_name: Washing Countdown
-    value_template: >-
-      {% if state_attr('calendar.washing', 'start_time') ==  null or
-        state_attr('calendar.washing', 'start_time') == None %}
-      {% else %}
-        {% set calendar_washingid = state_attr('calendar.washing', 'start_time') %}
-        {% set now = now() %}
-        {% set dag = strptime(calendar_washingid, "%Y-%m-%d %H:%M:%S").strftime("%A")
-        | replace('Monday', 'Måndag') | replace('Tuesday', 'Tisdag')
-        | replace('Wednesday', 'Onsdag') | replace('Thursday', 'Torsdag')
-        | replace('Friday', 'Fredag') | replace('Saturday', 'Lördag') | replace('Sunday', 'Söndag') %}
-        {% set tid = as_timestamp(calendar_washingid) | timestamp_custom('%H:%M') %}
-        {% set sub_timer = as_timestamp(calendar_washingid) | timestamp_custom('%H') | int / 24 %}
-        {% set count = (as_timestamp(calendar_washingid) - as_timestamp(now)) / 86400 - sub_timer %}
-        {% if count <= -1.0 %}
-          Set a new washing time
-        {% elif count <= 0.0 %}
-          {{'\U0001F4A6'}} Washing today at {{ tid }}.
-        {% elif count <= 1.0 %}
-          Washing tomorrow at {{ tid }}.
-        {% elif count <= 2.0 %}
-          Washing the day after tomorrow at {{ tid }}.
-        {% else %}
-          Washing in {{ (count + sub_timer) | round }} days: {{ dag }} at {{ tid }}.
-        {% endif %}
-      {% endif %}
-
-  # people
-  scott_last_changed:
-    value_template: >-
-      {%- set time = (as_timestamp(now()) -
-      as_timestamp(states.person.scott.last_changed)) | int %}
-      {%- set minutes = ((time % 3600) // 60) %}
-      {%- set hours = ((time % 86400) // 3600) %}
-      {%- set days = (time // 86400) %}
-      {% if time <= 60 %} 0m
-      {% elif time <= 3600 %} {{ minutes }}m
-      {% elif time <= 86400 %} {{ hours }}h
-      {% elif time > 86400 %} {{ days }}d
-      {% endif %}
-
-  gemma_last_changed:
-    value_template: >-
-      {%- set time = (as_timestamp(now()) -
-      as_timestamp(states.person.gemma.last_changed)) | int %}
-      {%- set minutes = ((time % 3600) // 60) %}
-      {%- set hours = ((time % 86400) // 3600) %}
-      {%- set days = (time // 86400) %}
-      {% if time <= 60 %} 0m
-      {% elif time <= 3600 %} {{ minutes }}m
-      {% elif time <= 86400 %} {{ hours }}h
-      {% elif time > 86400 %} {{ days }}d
-      {% endif %}
-
-  scott_last_changed_h:
-    value_template: >-
-      {%- set time = (as_timestamp(now()) -
-      as_timestamp(states.person.scott.last_changed)) | int %}
-      {%- set minutes = ((time % 3600) // 60) %}
-      {%- set hours = ((time % 86400) // 3600) %}
-      {%- set days = (time // 86400) %}
-      {% if time <= 60 %} mindre än 1m
-      {% elif time <= 3600 %} {{ minutes }}m
-      {% elif time <= 86400 and minutes == 0 %} {{ hours }}h
-      {% elif time <= 86400 %} {{ hours }}h och {{ minutes }}m
-      {% elif time > 86400 %} {{ days }}d
-      {% endif %}
-
-  gemma_last_changed_h:
-    value_template: >-
-      {%- set time = (as_timestamp(now()) -
-      as_timestamp(states.person.gemma.last_changed)) | int %}
-      {%- set minutes = ((time % 3600) // 60) %}
-      {%- set hours = ((time % 86400) // 3600) %}
-      {%- set days = (time // 86400) %}
-      {% if time <= 60 %} mindre än 1m
-      {% elif time <= 3600 %} {{ minutes }}m
-      {% elif time <= 86400 and minutes == 0 %} {{ hours }}h
-      {% elif time <= 86400 %} {{ hours }}h och {{ minutes }}m
-      {% elif time > 86400 %} {{ days }}d
-      {% endif %}
-
-  # lights
-  light_hallway_brightness:
-    value_template: >-
-      {% if is_state('light.hallway', 'on') %}
-      {{ (state_attr('light.hallway', 'brightness') / 2.54) | round }}{% endif %}
-
-  light_lounge_tall_brightness:
-    value_template: >-
-      {% if is_state('light.lounge_light_tall', 'on') %}
-      {{ (state_attr('light.lounge_light_tall', 'brightness') / 2.54) | round }}{% endif %}
-
-  light_lounge_small_brightness:
-    value_template: >-
-      {% if is_state('light.lounge_light_small', 'on') %}
-      {{ (state_attr('light.lounge_light_small', 'brightness') / 2.54) | round }}{% endif %}
+      {% set month = as_local(states.sensor.date.last_changed).strftime('%m') | int %}
+      {% set day = as_local(states.sensor.date.last_changed).strftime('%d') | int %}
+      {% set months = ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni',
+      'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'] %}
+      {{ day }} {{ months[month - 1] }}
 
   # vacuum
   monk_battery_level:
@@ -169,16 +74,16 @@ sensors:
     friendly_name: Last Clean
     icon_template: 'mdi:clock'
     value_template: >
-      {% set clean_stop =
-      (as_timestamp(now()) - as_timestamp(state_attr('vacuum.xiaomi_vacuum_cleaner', 'clean_stop') | default(0))) %}
-      {% if clean_stop | timestamp_custom("%d") | int-1 == 1 %}{{ clean_stop | timestamp_custom("%d") | int-1}} day ago
-      {% elif clean_stop | timestamp_custom("%d") | int-1 >= 2 %}{{ clean_stop | timestamp_custom("%d") | int-1}} days ago
-      {% elif clean_stop | timestamp_custom("%H") | int-1 == 1 %}{{ clean_stop | timestamp_custom("%H") | int-1}} hour ago
-      {% elif clean_stop | timestamp_custom("%H") | int-1 >= 2 %}{{ clean_stop | timestamp_custom("%H") | int-1}} hours ago
-      {% elif clean_stop | timestamp_custom("%M")|int == 1 %}{{ clean_stop | timestamp_custom("%M") | int}} minute ago
-      {% elif clean_stop | timestamp_custom("%M")|int >= 2 %}{{ clean_stop | timestamp_custom("%M") | int}} minutes ago
-      {% else %}Less than 1 minute ago
-      {% endif %}
+      {% set last_cleaned = (as_timestamp(states.sensor.time.last_changed | as_local) -
+      as_timestamp(state_attr('vacuum.xiaomi_vacuum_cleaner', 'clean_stop'))) | default(0) %}
+      {% if last_cleaned | timestamp_custom('%d') | int -1 == 1 %} {{ last_cleaned | timestamp_custom('%d') | int -1 }} day ago
+      {% elif last_cleaned | timestamp_custom('%d') | int -1 >= 2 %} {{ last_cleaned | timestamp_custom('%d') | int -1 }} days ago
+      {% elif last_cleaned | timestamp_custom('%H') | int -1 == 1 %} {{ last_cleaned | timestamp_custom('%H') | int -1 }} hour ago
+      {% elif last_cleaned | timestamp_custom('%H') | int -1 >= 2 %} {{ last_cleaned | timestamp_custom('%H') | int -1 }} hours ago
+      {% elif last_cleaned | timestamp_custom('%M') | int == 1 %} {{ last_cleaned | timestamp_custom('%M') | int }} minute ago
+      {% elif last_cleaned | timestamp_custom('%M') | int >= 2 %} {{ last_cleaned | timestamp_custom('%M') | int }} minutes ago
+      {% else %} Less than 1 minute ago
+      {% endif %}    
 
   monk_clean_count:
     friendly_name: Cleaning Count
