@@ -20,9 +20,9 @@ action:
   - delay: '00:{{ range(01,59) | random | int }}:{{ range(01,59) | random | int }}'
   - service: light.turn_on
     data:
-      entity_id: switch.lounge_light_small
+      entity_id: light.lounge_light_small
       brightness: 125
   - delay: '0{{ range(1,2) | random | int }}:{{ range(01,59) | random | int }}:00'
   - service: light.turn_off
     data:
-      entity_id: switch.lounge_light_small
+      entity_id: light.lounge_light_small

@@ -1,0 +1,8 @@
+alias: Door Motion Trigger Front
+initial_state: true
+trigger:
+  platform: state
+  entity_id: binary_sensor.post
+  to: 'on'
+action:
+  - service: script.blink_front_capture_script
