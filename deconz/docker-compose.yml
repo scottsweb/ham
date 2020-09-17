@@ -1,7 +1,7 @@
 version: "2"
 services:
     deconz:
-        image: marthoc/deconz
+        image: marthoc/deconz:latest
         volumes:
             - "/media/data/Containers/deconz/data:/root/.local/share/dresden-elektronik/deCONZ"
             - "/etc/localtime:/etc/localtime:ro"
