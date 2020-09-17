@@ -5,7 +5,6 @@ sensors:
     value_template: " "
 
   day:
-    entity_id: sensor.date
     value_template: >
       {% set days = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"] %}
       {{ days[now().weekday()] }}
@@ -18,7 +17,6 @@ sensors:
       {{ months[now().month-1] }}
 
   washing_countdown:
-    entity_id: sensor.time
     friendly_name: Washing Countdown
     value_template: >-
       {% if state_attr('calendar.washing', 'start_time') ==  null or
@@ -48,7 +46,6 @@ sensors:
 
   # people
   scott_last_changed:
-    entity_id: sensor.time
     value_template: >-
       {%- set time = (as_timestamp(now()) -
       as_timestamp(states.person.scott.last_changed)) | int %}
@@ -62,7 +59,6 @@ sensors:
       {% endif %}
 
   gemma_last_changed:
-    entity_id: sensor.time
     value_template: >-
       {%- set time = (as_timestamp(now()) -
       as_timestamp(states.person.gemma.last_changed)) | int %}
@@ -76,7 +72,6 @@ sensors:
       {% endif %}
 
   scott_last_changed_h:
-    entity_id: sensor.time
     value_template: >-
       {%- set time = (as_timestamp(now()) -
       as_timestamp(states.person.scott.last_changed)) | int %}
@@ -91,7 +86,6 @@ sensors:
       {% endif %}
 
   gemma_last_changed_h:
-    entity_id: sensor.time
     value_template: >-
       {%- set time = (as_timestamp(now()) -
       as_timestamp(states.person.gemma.last_changed)) | int %}
@@ -172,7 +166,6 @@ sensors:
     icon_template: 'mdi:brush'
 
   monk_last_clean:
-    entity_id: sensor.time
     friendly_name: Last Clean
     icon_template: 'mdi:clock'
     value_template: >
