@@ -161,11 +161,16 @@ views:
             hold_action: !include popups/person-scott.yaml
             custom_fields:
               sensor: >
-                [[[ const last_changed = states['sensor.scott_last_changed'].state;
+                [[[ function time(c) {
+                var s = (c / 1000); var m = (c / (1000 * 60)); var h = (c / (1000 * 60 * 60)); var d = (c / (1000 * 60 * 60 * 24));
+                if (s < 60) { return parseInt(s) + 's'; } else if (m < 60) { return parseInt(m) + 'm'; }
+                else if (h < 24) { return parseInt(h) + 'h'; } else { return parseInt(d) + 'd'; }
+                }
+                const last_changed = time(Date.now() - Date.parse(states[entity.entity_id].last_changed));
                 const stroke_color = entity.state === 'home' ? 'var(--primary-text-color)' : 'var(--disabled-text-color)';
                 const fill_color = entity.state === 'home' ? 'none' : '#FFFFFF08';
                 return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20.5" stroke="${stroke_color}" stroke-width="1.5" fill="${fill_color}" />
-                <text x="50%" y="52%" fill="${stroke_color}" font-size="14" text-anchor="middle" alignment-baseline="middle">${last_changed}</text></svg>`; ]]]
+                <text x="50%" y="54%" fill="${stroke_color}" font-size="14" text-anchor="middle" alignment-baseline="middle">${last_changed}</text></svg>`; ]]]
             template: switch
 
           # Gemma
@@ -185,11 +190,16 @@ views:
             hold_action: !include popups/person-gemma.yaml
             custom_fields:
               sensor: >
-                [[[ const last_changed = states['sensor.gemma_last_changed'].state;
+                [[[ function time(c) {
+                var s = (c / 1000); var m = (c / (1000 * 60)); var h = (c / (1000 * 60 * 60)); var d = (c / (1000 * 60 * 60 * 24));
+                if (s < 60) { return parseInt(s) + 's'; } else if (m < 60) { return parseInt(m) + 'm'; }
+                else if (h < 24) { return parseInt(h) + 'h'; } else { return parseInt(d) + 'd'; }
+                }
+                const last_changed = time(Date.now() - Date.parse(states[entity.entity_id].last_changed));
                 const stroke_color = entity.state === 'home' ? 'var(--primary-text-color)' : 'var(--disabled-text-color)';
                 const fill_color = entity.state === 'home' ? 'none' : '#FFFFFF08';
                 return `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20.5" stroke="${stroke_color}" stroke-width="1.5" fill="${fill_color}" />
-                <text x="50%" y="52%" fill="${stroke_color}" font-size="14" text-anchor="middle" alignment-baseline="middle">${last_changed}</text></svg>`; ]]]
+                <text x="50%" y="54%" fill="${stroke_color}" font-size="14" text-anchor="middle" alignment-baseline="middle">${last_changed}</text></svg>`; ]]]
             template: switch
 
           # Post notification
