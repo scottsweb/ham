@@ -566,33 +566,6 @@ class LinkPlayDevice(MediaPlayerEntity):
         else:
             self._master.media_play()
 
-#    def media_play_pause(self):
-#        """Send play/pause toggle command."""
-#        if not self._slave_mode:
-#            if self._state == STATE_IDLE:  # when stopped
-#                self.media_play()
-#                return
-#
-#            if self._playing_stream:
-#                self._lpapi.call('GET', 'setPlayerCmd:stop')
-#            else:
-#                self._lpapi.call('GET', 'setPlayerCmd:onepause')
-#                
-#            value = self._lpapi.data
-#            if value == "OK":
-#                self._position_updated_at = utcnow()
-#                if self._playing_stream:
-#                    self._state = STATE_IDLE
-#                if self._slave_list is not None:
-#                    for slave in self._slave_list:
-#                        slave.set_position_updated_at(self.media_position_updated_at)
-#                        slave.set_state(self._state)
-#                        slave.trigger_schedule_update(True)
-#            else:
-#                _LOGGER.warning("Failed to onepause playback. Device: %s, Got response: %s", self.entity_id, value)
-#        else:
-#            self._master.media_play_pause()
-
     def media_pause(self):
         """Send pause command."""
         if not self._slave_mode:
@@ -999,7 +972,20 @@ class LinkPlayDevice(MediaPlayerEntity):
             from string import ascii_letters
             newkey = (''.join(choice(ascii_letters) for i in range(16)))
             self._lpapi.call('GET', 'setNetwork:1:{0}'.format(newkey))
-            value = self._lpapi.data + ", key: " + newkey
+            value = self._lpapi.data
+            if value == 'OK':
+                value = self._lpapi.data + ", key: " + newkey
+            else:
+                value = "key: " + newkey
+        elif command.find('SetApSSIDName:') == 0:
+            ssidnam = command.replace('SetApSSIDName:', '').strip()
+            if ssidnam != '':
+                self._lpapi.call('GET', 'setSSID:{0}'.format(ssidnam))
+                value = self._lpapi.data
+                if value == 'OK':
+                    value = self._lpapi.data + ", SoftAP SSID set to: " + ssidnam
+            else:
+                value == "SSID not specified correctly. You need 'SetApSSIDName: NewWifiName'"
         elif command.find('WriteDeviceNameToUnit:') == 0:
             devnam = command.replace('WriteDeviceNameToUnit:', '').strip()
             if devnam != '':
@@ -1013,7 +999,9 @@ class LinkPlayDevice(MediaPlayerEntity):
         elif command == 'TimeSync':
             tme = time.strftime('%Y%m%d%H%M%S')
             self._lpapi.call('GET', 'timeSync:{0}'.format(tme))
-            value = self._lpapi.data + ", time: " + tme
+            value = self._lpapi.data
+            if value == 'OK':
+                value = self._lpapi.data + ", time: " + tme
         elif command == 'Rescan':
             self._unav_throttle = False
             self._first_update = True
@@ -1222,7 +1210,7 @@ class LinkPlayDevice(MediaPlayerEntity):
         #_LOGGER.debug('getting status for %s', self._name)
         self._lpapi.call('GET', status)
         if self._lpapi.data is None:
-            _LOGGER.warning('Unable to connect to device: %s, %s', self.entity_id, self._name)
+            _LOGGER.debug('Unable to connect to device: %s, %s', self.entity_id, self._name)
             self._unav_throttle = True
             self._wait_for_mcu = 0
             self._state = STATE_UNAVAILABLE
@@ -1301,7 +1289,7 @@ class LinkPlayDevice(MediaPlayerEntity):
         try:
             result = self._upnp_device.PlayQueue.SetSpotifyPreset(KeyIndex=presetnum)
         except:
-            _LOGGER.warning("SetSpotifyPreset UPNP error: %s, %s", self.entity_id, presetnum)
+            _LOGGER.debug("SetSpotifyPreset UPNP error: %s, %s", self.entity_id, presetnum)
             return
 
         result = str(result.get('Result'))
@@ -1310,7 +1298,7 @@ class LinkPlayDevice(MediaPlayerEntity):
             preset_map = self._upnp_device.PlayQueue.GetKeyMapping()
             preset_map = preset_map.get('QueueContext')
         except:
-            _LOGGER.warning("GetKeyMapping UPNP error: %s", self.entity_id)
+            _LOGGER.debug("GetKeyMapping UPNP error: %s", self.entity_id)
             return
 
         xml_tree = ET.fromstring(preset_map)
@@ -1341,7 +1329,7 @@ class LinkPlayDevice(MediaPlayerEntity):
         try:
             setmap = self._upnp_device.PlayQueue.SetKeyMapping(QueueContext=preset_map)
         except:
-            _LOGGER.warning("SetKeyMapping UPNP error: %s, %s", self.entity_id, preset_map)
+            _LOGGER.debug("SetKeyMapping UPNP error: %s, %s", self.entity_id, preset_map)
             return
 
     def _tracklist_via_upnp(self, media):
@@ -1439,26 +1427,26 @@ class LinkPlayDevice(MediaPlayerEntity):
         """Update track info from icecast stream."""
         if self._icecast_meta == 'Off':
             return True
-#        _LOGGER.debug('Looking for IceCast metadata: %s', self._name)
+        _LOGGER.debug('Looking for IceCast metadata: %s', self._name)
 
-        def NiceToICY(self):
-            class InterceptedHTTPResponse():
-                pass
-            import io
-            line = self.fp.readline().replace(b"ICY 200 OK\r\n", b"HTTP/1.0 200 OK\r\n")
-            InterceptedSelf = InterceptedHTTPResponse()
-            InterceptedSelf.fp = io.BufferedReader(io.BytesIO(line))
-            InterceptedSelf.debuglevel = self.debuglevel
-            InterceptedSelf._close_conn = self._close_conn
-            return ORIGINAL_HTTP_CLIENT_READ_STATUS(InterceptedSelf)
-        
-        ORIGINAL_HTTP_CLIENT_READ_STATUS = urllib.request.http.client.HTTPResponse._read_status
-        urllib.request.http.client.HTTPResponse._read_status = NiceToICY
+#        def NiceToICY(self):
+#            class InterceptedHTTPResponse():
+#                pass
+#            import io
+#            line = self.fp.readline().replace(b"ICY 200 OK\r\n", b"HTTP/1.0 200 OK\r\n")
+#            InterceptedSelf = InterceptedHTTPResponse()
+#            InterceptedSelf.fp = io.BufferedReader(io.BytesIO(line))
+#            InterceptedSelf.debuglevel = self.debuglevel
+#            InterceptedSelf._close_conn = self._close_conn
+#            return ORIGINAL_HTTP_CLIENT_READ_STATUS(InterceptedSelf)
+
+#        ORIGINAL_HTTP_CLIENT_READ_STATUS = urllib.request.http.client.HTTPResponse._read_status
+#        urllib.request.http.client.HTTPResponse._read_status = NiceToICY
 
         try:
             request = urllib.request.Request(self._media_uri, headers={'Icy-MetaData': 1})  # request metadata
             response = urllib.request.urlopen(request)
-        except (urllib.error):  #urllib.error.HTTPError
+        except:  # (urllib.error.HTTPError)
             self._media_title = None
             self._media_artist = None
             self._icecast_name = None
@@ -1466,11 +1454,13 @@ class LinkPlayDevice(MediaPlayerEntity):
             return True
 
         icy_name = response.headers['icy-name']
-        if icy_name is not None and icy_name != 'no name' and icy_name != 'Unspecified name':
+        if icy_name is not None and icy_name != 'no name' and icy_name != 'Unspecified name' and icy_name != '-':
             try:  # 'latin1' # default: iso-8859-1 for mp3 and utf-8 for ogg streams
                 self._icecast_name = icy_name.encode('latin1').decode('utf-8')
             except (UnicodeDecodeError):
                 self._icecast_name = icy_name
+
+            _LOGGER.debug('For: %s found icy_name: %s', self._name, '"' + icy_name + '"')
 
         else:
             self._icecast_name = None
@@ -1491,28 +1481,46 @@ class LinkPlayDevice(MediaPlayerEntity):
                 response.read(metaint)  # skip to metadata
                 metadata_length = struct.unpack('B', response.read(1))[0] * 16  # length byte
                 metadata = response.read(metadata_length).rstrip(b'\0')
+
+                _LOGGER.debug('For: %s found metadata: %s', self._name, metadata)
                 # extract title from the metadata
-                m = re.search(br"StreamTitle='([^']*)';", metadata)
+                # m = re.search(br"StreamTitle='([^']*)';", metadata)
+                m = re.search(br"StreamTitle='(.*)';", metadata)
+                _LOGGER.debug('For: %s found m: %s', self._name, m)
                 if m:
-                    title = m.group(1)
+                    title = m.group(0)
+                    _LOGGER.debug('For: %s found title: %s', self._name, title)
+
                     if title:
                         code_detect = chardet.detect(title)['encoding']
                         title = title.decode(code_detect, errors='ignore')
+                        titlek = title.split("';")
+                        title = titlek[0]
+                        titlem = title.split("='")
+                        title = titlem[1]
+                        _LOGGER.debug('For: %s found decoded title: %s', self._name, title)
+
                         title = re.sub(r'\[.*?\]\ *', '', title)  #  "\s*\[.*?\]\s*"," ",title)
-                        if title.find('~~~~~') != -1:
+                        if title.find('~~~~~') != -1:  # for United Music Subasio servers
                             titles = title.split('~')
-                            self._media_artist = titles[0].strip()
-                            self._media_title = titles[1].strip()
-                        elif title.find(' - ') != -1:
+                            self._media_artist = titles[0].strip().title()
+                            self._media_title = titles[1].strip().title()
+                        elif title.find(' - ') != -1:  # for ordinary Icecast servers
                             titles = title.split(' - ')
-                            self._media_artist = titles[0].strip()
-                            self._media_title = titles[1].strip()
+                            self._media_artist = titles[0].strip().title()
+                            self._media_title = titles[1].strip().title()
                         else:
                             if self._icecast_name is not None:
                                 self._media_artist = '[' + self._icecast_name + ']'
                             else:
                                 self._media_artist = None
-                            self._media_title = title
+                            self._media_title = title.title()
+
+                        if self._media_artist == '-':
+                            self._media_artist = None
+                        if self._media_title == '-':
+                            self._media_title = None
+
                         break
                 else:
                     if self._icecast_name is not None:
@@ -1530,6 +1538,9 @@ class LinkPlayDevice(MediaPlayerEntity):
             self._media_artist = None
             self._media_image_url = None
 
+        _LOGGER.debug('For: %s stated media_title: %s', self._name, self._media_title)
+        _LOGGER.debug('For: %s stated media_artist: %s', self._name, self._media_artist)
+
     def _get_playerstatus_metadata(self, plr_stat):
         try:
             if plr_stat['uri'] != "":
@@ -1546,7 +1557,7 @@ class LinkPlayDevice(MediaPlayerEntity):
             except ValueError:
                 title = plr_stat['Title']
             if title.lower() != 'unknown':
-                self._media_title = title
+                self._media_title = title.title()
                 if self._trackc == None:
                     self._trackc = title
             else:
@@ -1557,7 +1568,7 @@ class LinkPlayDevice(MediaPlayerEntity):
             except ValueError:
                 artist = plr_stat['Artist']
             if artist.lower() != 'unknown':
-                self._media_artist = artist
+                self._media_artist = artist.title()
             else:
                 self._media_artist = None
         if plr_stat['Album'] != '':
@@ -1650,6 +1661,7 @@ class LinkPlayDevice(MediaPlayerEntity):
                         self._ssid = self._ssid.decode()
                         try:
                             self._name = device_status['DeviceName']
+
                         except KeyError:
                             pass
                         try:
@@ -1798,10 +1810,10 @@ class LinkPlayDevice(MediaPlayerEntity):
                         title.replace('_', ' ')
                         if title.find(' - ') != -1:
                             titles = title.split(' - ')
-                            self._media_artist = titles[0].strip().strip('-')
-                            self._media_title = titles[1].strip().strip('-')
+                            self._media_artist = titles[0].strip().strip('-').title()
+                            self._media_title = titles[1].strip().strip('-').title()
                         else:
-                            self._media_title = title.strip().strip('-')
+                            self._media_title = title.strip().strip('-').title()
                     else:
                         self._media_title = self._source
 
@@ -1898,10 +1910,11 @@ class LinkPlayRestData:
             with requests.Session() as sess:
                 response = sess.send(
                     self._request, timeout=5)
-            self.data = response.text
+#            self.data = response.text
+            self.data = str(response.content, 'utf-8', errors='replace')
 
         except requests.exceptions.RequestException as ex:
-#            _LOGGER.warning("Error fetching data: %s from %s failed with %s", self._request, self._request.url, ex)
+            _LOGGER.debug("Error fetching data: %s from %s failed with %s", self._request, self._request.url, ex)
             self.data = None
 
 class LinkPlayTcpUartData:
@@ -1916,7 +1929,7 @@ class LinkPlayTcpUartData:
         HEAD = '18 96 18 20 0b 00 00 00 c1 02 00 00 00 00 00 00 00 00 00 00 '
         CMHX = ' '.join(hex(ord(c))[2:] for c in cmd)
         self.data = None
-#        _LOGGER.warning("Sending to %s TCP command: %s", self._host, cmd)
+#        _LOGGER.debug("Sending to %s TCP command: %s", self._host, cmd)
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.settimeout(5)
@@ -1929,14 +1942,14 @@ class LinkPlayTcpUartData:
                 pos = data.find("MCU")
 
             self.data = data[pos:(len(data)-2)]
-#            _LOGGER.warning("Received from %s TCP command result: %s", self._host, self.data)
+#            _LOGGER.debug("Received from %s TCP command result: %s", self._host, self.data)
             try:
                 s.close()
             except:
                 pass
 
         except socket.error as ex:
-#            _LOGGER.warning("Error sending TCP command: %s with %s", cmd, ex)
+            _LOGGER.debug("Error sending TCP command: %s with %s", cmd, ex)
             self.data = None
 
 class LastFMRestData:
@@ -1954,7 +1967,7 @@ class LastFMRestData:
         resource = "{0}{1}&{2}&api_key={3}&format=json".format(
             LASTFM_API_BASE, cmd, params, self._api_key)
         self._request = requests.Request(method, resource).prepare()
-        _LOGGER.debug("Updating LastFMRestData from %s", self._request.url)
+#        _LOGGER.debug("Updating LastFMRestData from %s", self._request.url)
         try:
             with requests.Session() as sess:
                 response = sess.send(
@@ -1962,6 +1975,6 @@ class LastFMRestData:
             self.data = response.text
 
         except requests.exceptions.RequestException as ex:
-            # _LOGGER.warning("Error fetching data: %s from %s failed with %s", self._request, self._request.url, ex)
+            _LOGGER.debug("Error fetching data: %s from %s failed with %s", self._request, self._request.url, ex)
             self.data = None
  
