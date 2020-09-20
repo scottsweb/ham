@@ -1,0 +1,5 @@
+platform: krisinformation
+county: "Stockholms län"
+latitude: !secret latitude
+longitude: !secret longitude
+radius: 100

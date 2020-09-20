@@ -1,0 +1,13 @@
+alias: Krisinformation
+initial_state: true
+trigger:
+  platform: state
+  entity_id: sensor.krisinformation
+  to: "Alert"
+action:
+  - service: notify.all
+    data:
+      title: "{{'\U000126A0'}} Krisinformation"
+      message: "{{states.sensor.krisinformation.attributes.messages[0].Headline}}"
+      data:
+        clickAction: "https://www.krisinformation.se/en"
