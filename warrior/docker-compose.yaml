@@ -3,7 +3,7 @@ services:
     warrior:
         image: archiveteam/warrior-dockerfile
         volumes:
-            - "/media/oak/Media/Containers/warrior/data:/data/data"
+            - "/media/saga/Media/Containers/warrior/data:/data/data"
         ports:
           - "8001:8001"
         environment:
