@@ -887,15 +887,15 @@ views:
           - entity: sensor.since_last_boot_mycroft
           - entity: switch.pihole_mycroft_switch
       - type: entities
-        title: Oak
+        title: Saga
         show_header_toggle: false
         entities:
-          - entity: script.oak_on
+          - entity: script.saga_on
           - type: section
             label: Containers
-          - entity: switch.dockermon_plex_oak
+          - entity: switch.dockermon_plex_saga
           - entity: switch.dockermon_warrior
-          - entity: switch.dockermon_watchtower_oak
+          - entity: switch.dockermon_watchtower_saga
           - entity: switch.dockermon_f_h
       - type: entities
         title: Settings

@@ -1,4 +1,4 @@
-alias: Cron Wake Oak
+alias: Cron Wake Saga
 initial_state: true
 trigger:
   platform: time
@@ -9,4 +9,4 @@ condition:
 action:
   - service: wake_on_lan.send_magic_packet
     data:
-      mac: !secret oak_mac
+      mac: !secret saga_mac

@@ -110,15 +110,15 @@
                   - type: custom:hui-vertical-stack-card
                     cards:
                       - type: entities
-                        title: " ‍   Oak"
+                        title: " ‍   Saga"
                         show_header_toggle: false
                         entities:
-                          - entity: script.oak_on
+                          - entity: script.saga_on
                           - type: section
                             label: Containers
-                          - entity: switch.dockermon_plex_oak
+                          - entity: switch.dockermon_plex_saga
                           - entity: switch.dockermon_warrior
-                          - entity: switch.dockermon_watchtower_oak
+                          - entity: switch.dockermon_watchtower_saga
                           - entity: switch.dockermon_f_h
                         style: |
                           ha-card {

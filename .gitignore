@@ -6,7 +6,7 @@ deconz/data
 
 # dockermon
 dockermon/config
-dockermon-oak/config
+dockermon-saga/config
 
 # homeassistant
 homeassistant/.shopping_list.json

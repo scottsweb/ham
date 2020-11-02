@@ -109,13 +109,13 @@ switch.dockermon_watchtower:
 switch.dockermon_plex:
   friendly_name: 'Plex'
   icon: 'mdi:plex'
-switch.dockermon_watchtower_oak:
+switch.dockermon_watchtower_saga:
   friendly_name: 'Watchtower'
-  emulated_hue_name: 'Watchtower Oak'
+  emulated_hue_name: 'Watchtower Saga'
   icon: 'mdi:tower-beach'
-switch.dockermon_plex_oak:
+switch.dockermon_plex_saga:
   friendly_name: 'Plex'
-  emulated_hue_name: 'Plex Oak'
+  emulated_hue_name: 'Plex Saga'
   icon: 'mdi:plex'
 switch.dockermon_warrior:
   friendly_name: 'Warrior'
@@ -234,9 +234,9 @@ script.games_on:
   emulated_hue_hidden: true
 script.games_off:
   emulated_hue_hidden: true
-script.oak_on:
+script.saga_on:
   icon: mdi:play-network
-  emulated_hue_name: 'Oak'
+  emulated_hue_name: 'Saga'
   emulated_hue_hidden: false
 input_number.luther_sound_volume:
   friendly_name: 'Speaker Volume'

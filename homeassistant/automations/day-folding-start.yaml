@@ -8,7 +8,7 @@ condition:
     entity_id: group.people
     state: 'home'
 action:
-  - service: script.oak_on
+  - service: script.saga_on
   - delay: '00:00:60'
   - service: switch.turn_on
     data:

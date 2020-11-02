@@ -1,12 +1,12 @@
 version: '2'
 services:
     foldingathome:
-        image: linuxserver/foldingathome
+        image: linuxserver/foldingathome:latest
         volumes:
-            - "/media/oak/Media/Containers/folding/data:/config"
+            - "/media/saga/Media/Containers/folding/data:/config"
         environment:
-            - PUID=1001
-            - PGID=1001
+            - PUID=1000
+            - PGID=1000
             - TZ=Europe/Stockholm
         ports:
             - 7396:7396

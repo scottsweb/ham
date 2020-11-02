@@ -123,8 +123,8 @@
   timeout: 20
 
 - platform: rest
-  resource: !secret dockermon_plex_oak
-  name: Dockermon Plex Oak
+  resource: !secret dockermon_plex_saga
+  name: Dockermon Plex Saga
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
@@ -143,8 +143,8 @@
   timeout: 20
 
 - platform: rest
-  resource: !secret dockermon_watchtower_oak
-  name: Dockermon Watchtower Oak
+  resource: !secret dockermon_watchtower_saga
+  name: Dockermon Watchtower Saga
   body_on: '{"state": "start"}'
   body_off: '{"state": "stop"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'

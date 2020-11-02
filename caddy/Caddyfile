@@ -53,7 +53,7 @@ http://sycamore.lan:8811, http://192.168.11.3:8811 {
 	fastcgi / 127.0.0.1:9000 php
 }
 
-http://plex.oak.lan {
+http://plex.saga.lan {
 	proxy / 192.168.11.5:32400 {
 		transparent
 	}

@@ -28,8 +28,6 @@ lovelace:
       type: module
     - url: /hacsfiles/button-card/button-card.js
       type: module
-    - url: /hacsfiles/custom-header/custom-header.js
-      type: module
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
     - url: /browser_mod.js
@@ -147,9 +145,9 @@ history:
       - switch.dockermon_blinkt
       - switch.dockermon_nodered
       - switch.dockermon_plex
-      - switch.dockermon_plex_oak
+      - switch.dockermon_plex_saga
       - switch.dockermon_warrior
-      - switch.dockermon_watchtower_oak
+      - switch.dockermon_watchtower_saga
       - switch.dockermon_watchtower
       - switch.dockermon_f_h
 

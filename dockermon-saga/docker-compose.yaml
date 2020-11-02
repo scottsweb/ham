@@ -6,6 +6,6 @@ services:
       - "8126:8126"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /media/oak/Media/Containers/dockermon-oak/config:/config
+      - /media/saga/Media/Containers/dockermon-saga/config:/config
     container_name: dockermon
     restart: always

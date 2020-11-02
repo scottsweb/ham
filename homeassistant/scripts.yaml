@@ -55,7 +55,7 @@ steam_on:
   sequence:
     - service: wake_on_lan.send_magic_packet
       data:
-        mac: !secret oak_mac
+        mac: !secret saga_mac
     - service: notify.tv
       data:
         message: 'Starting Steam...'
@@ -72,12 +72,12 @@ steam_on:
         params:
           command: activate
 
-oak_on:
+saga_on:
   alias: 'Wake on LAN (WOL)'
   sequence:
     - service: wake_on_lan.send_magic_packet
       data:
-        mac: !secret oak_mac
+        mac: !secret saga_mac
 
 restart_washing_timer:
   alias: 'Restart Washing Timer'
