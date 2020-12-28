@@ -267,3 +267,9 @@ light.lounge_light_tall:
   friendly_name: 'Tall Lamp'
 vacuum.xiaomi_vacuum_cleaner:
   friendly_name: 'Monk'
+switch.vpn_liskeard_switch:
+  friendly_name: VPN (Liskeard)
+  icon: mdi:key
+switch.vpn_ee_switch:
+  friendly_name: VPN (Proton EE-02)
+  icon: mdi:key

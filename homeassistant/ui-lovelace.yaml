@@ -325,8 +325,32 @@ views:
                   position: relative;
                   top: 22%;
                 }
-        - type: light
-          entity: light.nanoleaf
+        - type: custom:mod-card
+          style: |
+            ha-card {
+              padding: 0 0.2em 0.8em 0.2em;
+            }
+          card:
+            type: horizontal-stack
+            title: false
+            cards:
+            - type: light
+              entity: light.nanoleaf
+              <<: *light-style
+            - type: button
+              entity: switch.christmas
+              icon: mdi:pine-tree
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+                ha-icon {
+                  width: 32% !important;
+                }
+                span {
+                  position: relative;
+                  top: 22%;
+                }
       - type: sensor
         entity: sensor.indoor_temperature
         graph: line
@@ -807,19 +831,21 @@ views:
     icon: mdi:pine-tree
     background: "var(--nord0)"
     cards:
-      - type: weather-forecast
-        entity: weather.dark_sky
-      - type: entities
-        title: Weather
-        show_header_toggle: false
-        entities:
-          - sensor.dark_sky_precip_intensity
-          - sun.sun
-          - sensor.moon
-          - sensor.dark_sky_uv_index
-          - sensor.u_s_air_pollution_level
-          - sensor.u_s_air_quality_index
-          - sensor.u_s_main_pollutant
+      - type: vertical-stack
+        cards:
+        - type: weather-forecast
+          entity: weather.dark_sky
+        - type: entities
+          title: Weather
+          show_header_toggle: false
+          entities:
+            - sensor.dark_sky_precip_intensity
+            - sun.sun
+            - sensor.moon
+            - sensor.dark_sky_uv_index
+            - sensor.u_s_air_pollution_level
+            - sensor.u_s_air_quality_index
+            - sensor.u_s_main_pollutant
  #      - type: map
  #        title: Space Station
  #        aspect_ratio: 16:9
@@ -897,6 +923,10 @@ views:
           - entity: switch.dockermon_warrior
           - entity: switch.dockermon_watchtower_saga
           - entity: switch.dockermon_f_h
+          - type: section
+            label: Network
+          - entity: switch.vpn_liskeard_switch
+          - entity: switch.vpn_ee_switch
       - type: entities
         title: Settings
         show_header_toggle: false

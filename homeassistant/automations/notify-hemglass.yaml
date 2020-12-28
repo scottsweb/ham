@@ -2,7 +2,7 @@ alias: Hemglass Here
 initial_state: true
 trigger:
   platform: template
-  value_template: '{% set next = as_timestamp(states(sensor.hemglass)) %} {% set now = as_timestamp( now() ) %} {% if now >= ( next - 900 ) %}true{% endif %}'
+  value_template: '{% set next = as_timestamp(states("sensor.hemglass")) %} {% set now = as_timestamp( now() ) %} {% if now >= ( next - 900 ) %}true{% endif %}'
 action:
   - service: notify.all
     data:
