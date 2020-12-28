@@ -1,5 +1,5 @@
 alias: Day Folding Start
-initial_state: true
+initial_state: false
 trigger:
   platform: time
   at: '09:00:00'

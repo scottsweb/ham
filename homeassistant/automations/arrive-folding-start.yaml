@@ -1,5 +1,5 @@
 alias: Arrive Folding Start
-initial_state: true
+initial_state: false
 trigger:
   platform: state
   entity_id: group.people

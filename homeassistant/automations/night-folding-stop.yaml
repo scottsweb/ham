@@ -1,5 +1,5 @@
 alias: Night Folding Stop
-initial_state: true
+initial_state: false
 trigger:
   platform: time
   at: '23:30:00'
