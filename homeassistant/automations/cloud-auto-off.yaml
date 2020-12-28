@@ -6,9 +6,13 @@ trigger:
   for:
     minutes: 10
 condition:
-  - condition: state
-    entity_id: sun.sun
-    state: below_horizon
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+    - condition: time
+      after: '18:00:00'
 action:
   service: switch.turn_off
   entity_id: switch.cloud
