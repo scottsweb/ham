@@ -1,0 +1,17 @@
+version: '2'
+services:
+    jottacloud:
+        image: jottacloud:latest
+        volumes:
+            - "/media/saga/Media/Containers/jottacloud/data:/var/lib/jottad"
+            - "/etc/localtime:/etc/localtime:ro"
+        ports:
+            - "14443:14443"
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - JOTTA_DEVICE=saga
+            - JOTTA_SCANINTERVAL=1h
+        network_mode: "host"
+        restart: always
+        container_name: jottacloud
