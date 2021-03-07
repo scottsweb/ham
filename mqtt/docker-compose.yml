@@ -3,9 +3,9 @@ services:
     mqtt:
         image: eclipse-mosquitto
         volumes:
-            - "/media/data/Containers/mqtt/config:/mqtt/config:ro"
-            - "/media/data/Containers/mqtt/log:/mqtt/log"
-            - "/media/data/Containers/mqtt/data:/mqtt/data"
+            - "/media/data/Containers/mqtt/config/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro"
+            - "/media/data/Containers/mqtt/log:/mosquitto/log"
+            - "/media/data/Containers/mqtt/data:/mosquitto/data"
         ports:
             - "1883:1883"
             - "9001:9001"
