@@ -3,6 +3,10 @@ services:
     jottacloud:
         image: jottacloud:latest
         volumes:
+            - "/media/saga/Media/Music:/backup/Music:ro"
+            - "/media/saga/Media/Photos:/backup/Photos:ro"
+            - "/media/saga/Media/TV:/backup/TV:ro"
+            - "/media/saga/Media/Films:/backup/Films:ro"
             - "/media/saga/Media/Containers/jottacloud/data:/var/lib/jottad"
             - "/etc/localtime:/etc/localtime:ro"
         ports:
