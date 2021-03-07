@@ -6,13 +6,13 @@
       command_state: !secret pihole_sycamore_command_state
       value_template: "{{ value_json.status == 'enabled' }}"
 
-- platform: command_line
-  switches:
-    pihole_mycroft_switch:
-      command_on: !secret pihole_mycroft_command_on
-      command_off: !secret pihole_mycroft_command_off
-      command_state: !secret pihole_mycroft_command_state
-      value_template: "{{ value_json.status == 'enabled' }}"
+#- platform: command_line
+#  switches:
+#    pihole_mycroft_switch:
+#      command_on: !secret pihole_mycroft_command_on
+#      command_off: !secret pihole_mycroft_command_off
+#      command_state: !secret pihole_mycroft_command_state
+#      value_template: "{{ value_json.status == 'enabled' }}"
 
 - platform: command_line
   switches:
@@ -188,15 +188,15 @@
   timeout: 20
   verify_ssl: false
 
-- platform: telnet
-  switches:
-    fah:
-      resource: !secret folding_ip
-      name: F@H
-      port: 36330
-      command_on: "unpause"
-      command_off: "pause"
-      command_state: "slot-info"
-      value_template: >
-        {{ "RUNNING" in value }}
-      timeout: 10
+#- platform: telnet
+#  switches:
+#    fah:
+#      resource: !secret folding_ip
+#      name: F@H
+#      port: 36330
+#      command_on: "unpause"
+#      command_off: "pause"
+#      command_state: "slot-info"
+#      value_template: >
+#        {{ "RUNNING" in value }}
+#      timeout: 10

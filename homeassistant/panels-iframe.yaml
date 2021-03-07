@@ -14,10 +14,6 @@ pihole_sycamore:
   title: 'Pi-hole (Bonsai)'
   icon: 'mdi:checkbox-blank-circle'
   url: 'http://pihole.sycamore.lan/admin/'
-pihole_mycroft:
-  title: 'Pi-hole (Mycroft)'
-  icon: 'mdi:checkbox-blank-circle'
-  url: 'http://pihole.mycroft.lan/admin/'
 miniflux:
   title: 'RSS'
   icon: 'mdi:rss-box'
