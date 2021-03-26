@@ -1,11 +1,11 @@
 version: '2'
 services:
     caddy:
-        image: yobasystems/alpine-caddy:php-armhf
+        image: yobasystems/alpine-caddy:php
         volumes:
-            - "/media/data/Containers/caddy/Caddyfile:/etc/Caddyfile"
-            - "/media/data/Containers/caddy/.caddy:/root/.caddy"
-            - "/media/data/Containers/caddy/sites/:/srv"
+            - "/media/saga/Media/Containers/caddy/Caddyfile:/etc/Caddyfile"
+            - "/media/saga/Media/Containers/caddy/.caddy:/root/.caddy"
+            - "/media/saga/Media/Containers/caddy/sites/:/srv"
         ports:
             - "80:80"
             - "443:443"

@@ -11,8 +11,8 @@ http://sycamore.lan {
 	errors stdout
 }
 
-http://pihole.sycamore.lan {
-	proxy / 192.168.11.3:8053 {
+http://pihole.saga.lan {
+	proxy / 192.168.11.5:8053 {
 		transparent
 	}
 	header / {
@@ -20,17 +20,8 @@ http://pihole.sycamore.lan {
 	}
 }
 
-http://pihole.mycroft.lan {
-	proxy / 192.168.11.7:8053 {
-		transparent
-	}
-	header / {
-		-X-Frame-Options
-	}
-}
-
-http://miniflux.sycamore.lan {
-	proxy / 192.168.11.3:8080 {
+http://miniflux.saga.lan {
+	proxy / 192.168.11.5:8080 {
 		transparent
 	}
 	header / {
@@ -45,12 +36,6 @@ http://deconz.sycamore.lan {
 	header / {
 		-X-Frame-Options
 	}
-}
-
-http://sycamore.lan:8811, http://192.168.11.3:8811 {
-	root /srv/nest
-	on startup php-fpm7
-	fastcgi / 127.0.0.1:9000 php
 }
 
 http://plex.saga.lan {
