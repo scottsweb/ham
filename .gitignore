@@ -38,6 +38,7 @@ homeassistant/custom_components/**/__pycache__/
 homeassistant/custom_components/**/.translations/
 homeassistant/google_calendars.yaml
 homeassistant/www/Plex_Recently_Added
+homeassistant/ip_bans.yaml
 
 # miniflux
 miniflux/miniflux
@@ -85,9 +86,6 @@ pihole/setupVars.conf.update.bak
 pihole/dhcp.leases
 pihole/dns-servers.conf
 pihole/logrotate
-
-# pihole backup
-pihole-backup/
 
 # plex
 plex/config/
