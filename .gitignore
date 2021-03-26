@@ -51,11 +51,6 @@ mqtt/log/
 # mycroft
 mycroft/data/identity/
 
-# ncid
-ncid/ncidd.whitelist
-ncid/ncidd.log
-ncid/cidcall.log
-
 # node-red
 node-red/node_modules/
 node-red/settings.js
