@@ -1,9 +1,9 @@
 version: '3'
 services:
   watchtower:
-    image: containrrr/watchtower:armhf-latest
+    image: containrrr/watchtower:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     container_name: watchtower
     restart: always
-    command: watchtower dockermon plex pihole mqtt miniflux miniflux_db caddy --cleanup -i 86400
+    command: watchtower dockermon plex pihole mqtt warrior miniflux miniflux_db caddy --cleanup -i 86400

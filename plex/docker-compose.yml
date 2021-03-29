@@ -1,15 +1,22 @@
 version: '2'
 services:
     plex:
-        image: linuxserver/plex:arm32v7-latest
+        image: plexinc/pms-docker:plexpass
         volumes:
-            - "/media/data/Music:/data/Music"
-            - "/media/data/Containers/plex/transcode:/transcode"
-            - "/media/data/Containers/plex/config:/config"
+            - "/media/saga/Media/TV:/data/TV"
+            - "/media/saga/Media/Music:/data/Music"
+            - "/media/saga/Media/Films:/data/Films"
+            - "/media/saga/Media/Photos:/data/Photos"
+            - "/media/saga/Media/Containers/plex/transcode:/transcode"
+            - "/media/saga/Media/Containers/plex/config:/config"
         environment:
-            - PUID=1001
-            - PGID=1001
+            - PLEX_UID=1000
+            - PLEX_GID=1000
+            - TZ=Europe/Stockholm
+            - HOSTNAME=SagaPlex
+        devices:
+            - /dev/dri:/dev/dri
         network_mode: "host"
         restart: always
         container_name: plex
-        mem_limit: 1000m
+        mem_limit: 1024m

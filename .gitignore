@@ -8,6 +8,9 @@ deconz/data
 dockermon/config
 dockermon-saga/config
 
+# folding
+folding/data
+
 # homeassistant
 homeassistant/.shopping_list.json
 homeassistant/android
@@ -39,6 +42,9 @@ homeassistant/custom_components/**/.translations/
 homeassistant/google_calendars.yaml
 homeassistant/www/Plex_Recently_Added
 homeassistant/ip_bans.yaml
+
+# jottacloud
+jottacloud/data
 
 # mqtt
 mqtt/config/
@@ -92,3 +98,6 @@ utilities/tv-switch.sh
 # wiki
 wiki/data/users.csv
 wiki/data/mywiki/*
+
+# warrior
+warrior/data

@@ -1,8 +1,8 @@
-http://sycamore.lan {
-	proxy / http://192.168.11.3:8123 {
+http://saga.lan {
+	proxy / http://192.168.11.5:8123 {
 		transparent
 	}
-	proxy /api/websocket http://192.168.11.3:8123 {
+	proxy /api/websocket http://192.168.11.5:8123 {
 		websocket
 		header_upstream Sec-WebSocket-Extensions {>Sec-WebSocket-Extensions}
 		header_upstream Sec-WebSocket-Key {>Sec-WebSocket-Key}
@@ -29,8 +29,8 @@ http://miniflux.saga.lan {
 	}
 }
 
-http://deconz.sycamore.lan {
-	proxy / 192.168.11.3:8020 {
+http://deconz.saga.lan {
+	proxy / 192.168.11.5:8020 {
 		transparent
 	}
 	header / {

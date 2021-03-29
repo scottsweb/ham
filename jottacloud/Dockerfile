@@ -29,7 +29,7 @@ ENV JOTTA_TOKEN=**None** \
     JOTTA_DEVICE=**None** \
     JOTTA_SCANINTERVAL=1h\
     PUID=101 \
-    PGID=101
+    PGID=101 
 
 # setup container and start service
 ENTRYPOINT ["/usr/local/jottad/entrypoint.sh"]
