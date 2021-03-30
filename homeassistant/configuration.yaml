@@ -90,6 +90,47 @@ upnp:
 # Cloud
 # cloud:
 
+# Docker
+monitor_docker:
+  - name: Docker
+    containers:
+      - deconz
+      - pihole
+      - watchtower
+      - plex
+      - folding
+      - warrior
+      - nodered
+      - homeassistant
+      - esphome
+      - caddy
+      - miniflux
+      - jottacloud
+    rename:
+      deconz: deCONZ
+      pihole: "Pi-Hole"
+      watchtower: Watchtower
+      plex: Plex
+      folding: "F@H"
+      warrior: Warrior
+      mosquitto: MQTT
+      nodered: "Node-RED"
+      homeassistant: "Home Assistant"
+      esphome: ESPHome
+      caddy: Caddy
+      miniflux: Miniflux
+      jottacloud: Jottacloud
+    monitored_conditions:
+      - containers_running
+      - containers_total
+      - state
+      - status
+      - memory
+      - containers_memory
+      - containers_memory_percentage
+      - cpu_percentage
+      - containers_cpu_percentage
+
 # WOL
 wake_on_lan:
 
@@ -142,14 +183,15 @@ history:
       - switch.cloud
       - light.nanoleaf
 
-      - switch.dockermon_blinkt
-      - switch.dockermon_nodered
-      - switch.dockermon_plex
-      - switch.dockermon_plex_saga
-      - switch.dockermon_warrior
-      - switch.dockermon_watchtower_saga
-      - switch.dockermon_watchtower
-      - switch.dockermon_f_h
+      - switch.docker_caddy
+      - switch.docker_deconz
+      - switch.docker_folding
+      - switch.docker_jottacloud
+      - switch.docker_miniflux
+      - switch.docker_pihole
+      - switch.docker_plex
+      - switch.docker_warrior
+      - switch.docker_watchtower
 
       - binary_sensor.post
       - input_boolean.post_visibility
