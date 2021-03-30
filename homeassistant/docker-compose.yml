@@ -3,11 +3,11 @@ services:
     homeassistant:
         image: homeassistant/home-assistant:stable
         volumes:
-            - "/home/pilot/.ssh:/root/.ssh:ro"
+            - "/home/saga/.ssh:/root/.ssh:ro"
             - "/etc/ssl/certs:/etc/ssl/certs:ro"
-            - "/media/data/Containers/homeassistant:/config"
+            - "/media/saga/Media/Containers/homeassistant:/config"
             - "/etc/localtime:/etc/localtime:ro"
-            - "/media/data/Containers/ncid/cidcall.log:/var/log/cidcall.log"
+            - /var/run/docker.sock:/var/run/docker.sock
         network_mode: host
         restart: always
         container_name: homeassistant

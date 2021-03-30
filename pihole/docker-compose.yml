@@ -3,19 +3,29 @@ services:
   pihole:
     image: pihole/pihole:latest
     volumes:
-      - "/var/log/pihole.log:/var/log/pihole.log"
-      - "/media/data/Containers/pihole:/etc/pihole"
+      - "/media/saga/Media/Containers/pihole:/etc/pihole"
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
+      - "192.168.11.5:53:53/tcp"
+      - "192.168.11.5:53:53/udp"
+      - "192.168.11.5:67:67/udp"
       - "8053:80"
     cap_add:
       - NET_ADMIN
     environment:
+      - TZ=Europe/Stockholm
+      - VIRTUAL_HOST=pihole.saga.lan
     dns:
       - 127.0.0.1
       - 1.1.1.1
     extra_hosts:
+      - "columbo columbo.lan:192.168.11.1"
+      - "saga saga.lan:192.168.11.5"
+      - "nodered nodered.saga.lan:192.168.11.5"
+      - "pihole pihole.saga.lan:192.168.11.5"
+      - "bonsai bonsai.lan:192.168.11.3"
+      - "miniflux miniflux.saga.lan:192.168.11.5"
+      - "deconz.saga.lan:192.168.11.5"
+      - "plex.saga.lan:192.168.11.5"
     secrets:
       - web-password
     restart: always
