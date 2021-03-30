@@ -23,6 +23,3 @@ Monk Zones:
   - input_boolean.monk_clean_hall
   - input_boolean.monk_clean_office_gemma
   - input_boolean.monk_clean_office_scott
-Adblock:
-  - switch.pihole_sycamore_switch
-  - switch.pihole_mycroft_switch

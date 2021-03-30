@@ -11,9 +11,9 @@ nodered:
   icon: 'mdi:vector-polyline'
   url: !secret node_red_ip
 pihole_sycamore:
-  title: 'Pi-hole (Bonsai)'
+  title: 'Pi-hole'
   icon: 'mdi:checkbox-blank-circle'
-  url: 'http://pihole.sycamore.lan/admin/'
+  url: 'http://pihole.saga.lan/admin/'
 miniflux:
   title: 'RSS'
   icon: 'mdi:rss-box'
@@ -22,13 +22,9 @@ warrior:
   title: 'Warrior'
   icon: 'mdi:archive'
   url: !secret warrior_url
-wiki:
-  title: 'Wiki'
-  icon: 'mdi:note'
-  url: !secret wiki_url
 deconz:
   title: 'Deconz'
-  icon: 'mdi:usb-flash-drive'
+  icon: 'mdi:zigbee'
   url: !secret deconz_url
 folding:
   title: F@H

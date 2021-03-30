@@ -1,5 +1,0 @@
-platform: command_line
-name: CPU Use (Mycroft)
-command: !secret ssh_mycroft_cpu
-unit_of_measurement: "%"
-value_template: '{{ ( value | round(0) ) }}'

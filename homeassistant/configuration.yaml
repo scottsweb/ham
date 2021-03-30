@@ -2,7 +2,7 @@ homeassistant:
   name: Lagom
   latitude: !secret latitude
   longitude: !secret longitude
-  elevation: 50
+  elevation: 15
   unit_system: metric
   time_zone: !secret timezone
   customize: !include customize.yaml
@@ -51,14 +51,6 @@ lovelace:
 #      show_in_sidebar: false
 #      require_admin: true
 
-# Asus
-asuswrt:
-  host: !secret asus_ip
-  mode: router
-  protocol: ssh
-  username: !secret asus_username
-  password: !secret asus_password
-
 # Google
 google:
   client_id: !secret google_client_id
@@ -79,13 +71,10 @@ fan:
     token: !secret fan_token
 
 # Nanoleaf
-light:
-  - platform: nanoleaf
-    host: !secret nanoleaf_ip
-    token: !secret nanoleaf_token
-
-# UPnP
-upnp:
+#light:
+#  - platform: nanoleaf
+#    host: !secret nanoleaf_ip
+#    token: !secret nanoleaf_token
 
 # Cloud
 # cloud:
@@ -206,11 +195,9 @@ history:
       - sensor.lounge_switch_battery_level
       - sensor.tradfri_motion_sensor_battery_level
       - sensor.fp3_battery_level
-      - sensor.cpu_use_mycroft
       - sensor.load_5m
       - sensor.cpu_temperature
       - sensor.cpu_temperature_mycroft
-      - sensor.ram_use_mycroft
       - sensor.memory_use_percent
       - sensor.bedroom_temperature
 
@@ -239,8 +226,7 @@ logbook:
   exclude:
     entities:
       - automation.weather_summary_automation
-      - sensor.since_last_boot_sycamore
-      - sensor.since_last_boot_mycroft
+      - sensor.since_last_boot
       - sensor.date
       - sensor.time
       - sensor.scott_last_changed
@@ -335,10 +321,6 @@ mqtt:
 mqtt_statestream:
   base_topic: homeassistant
 
-# Mycroft
-mycroft:
-  host: !secret mycroft_ip
-
 # Browser Mod
 browser_mod:
   prefix: "browser_"
@@ -371,7 +353,7 @@ binary_sensor:
 # utility_meter: !include utilities.yaml
 
 # Device Tracking
-device_tracker: !include device-tracker.yaml
+# device_tracker: !include device-tracker.yaml
 
 # Media Players
 media_player: !include media-player.yaml

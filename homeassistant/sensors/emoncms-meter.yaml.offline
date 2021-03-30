@@ -1,8 +1,0 @@
-platform: emoncms
-api_key: !secret emoncms_api_key
-url: https://emoncms.org
-scan_interval: 1200
-id: 104902
-unit_of_measurement: 'kWh'
-include_only_feed_id:
-  - 104902

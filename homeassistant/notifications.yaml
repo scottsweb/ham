@@ -1,9 +1,6 @@
-- name: tv
+- name: tv_kodi
   platform: kodi
   host: !secret kodi_ip
-
-- name: mycroft
-  platform: mycroft
 
 - name: mobiles
   platform: group
@@ -14,6 +11,6 @@
 - name: all
   platform: group
   services:
-    - service: tv
+    - service: tv_kodi
     - service: mobile_app_fp3
     - service: mobile_app_pixel_3a

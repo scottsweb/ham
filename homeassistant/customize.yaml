@@ -13,12 +13,6 @@ sensor.speedtest_upload:
 sensor.speedtest_ping:
   friendly_name: 'Ping'
   icon: mdi:access-point-network
-# sensor.emoncms104902_meter_count:
-#   friendly_name: 'Meter'
-#   icon: mdi:counter
-# sensor.emoncms104856_power_kw:
-#   friendly_name: 'Watts'
-#   icon: mdi:power-plug
 sensor.dark_sky_summary:
   friendly_name: 'Summary'
   icon: mdi:weather-cloudy
@@ -42,19 +36,13 @@ media_player.tv_kodi:
 sensor.ip_address:
   icon: mdi:account-network
 sensor.load_5m:
-  friendly_name: 'Bonsai CPU'
+  friendly_name: 'CPU'
   icon: mdi:chip
   unit_of_measurement: "%"
 sensor.memory_use_percent:
-  friendly_name: 'Bonsai RAM'
+  friendly_name: 'RAM'
   icon: mdi:chip
 sensor.cpu_temperature:
-  icon: mdi:chip
-sensor.ram_use_mycroft:
-  friendly_name: 'Mycroft RAM'
-  icon: mdi:chip
-sensor.cpu_use_mycroft:
-  friendly_name: 'Mycroft CPU'
   icon: mdi:chip
 sensor.gbp_sek:
   friendly_name: 'GBP → SEK'
@@ -62,26 +50,12 @@ sensor.gbp_sek:
 sensor.sek_gbp:
   friendly_name: 'SEK → GBP'
   icon: 'mdi:bank-transfer-out'
-sensor.cpu_temperature_mycroft:
-  friendly_name: 'CPU Temperature'
-  icon: mdi:chip
-sensor.since_last_boot_mycroft:
-  friendly_name: 'Since Last Boot'
-  icon: mdi:clock
-sensor.since_last_boot_sycamore:
+sensor.since_last_boot:
   friendly_name: 'Since Last Boot'
   icon: mdi:clock
 binary_sensor.nodered:
   friendly_name: 'Node-Red'
   icon: mdi:nfc-tap
-switch.pihole_sycamore_switch:
-  icon: 'mdi:checkbox-blank-circle'
-  friendly_name: 'Pi-Hole Switch (Bonsai)'
-  emulated_hue_hidden: true
-switch.pihole_mycroft_switch:
-  icon: 'mdi:checkbox-blank-circle'
-  friendly_name: 'Pi-Hole Switch (Mycroft)'
-  emulated_hue_hidden: true
 switch.speaker:
   icon: 'mdi:volume-medium'
   friendly_name: 'Speaker'
@@ -100,33 +74,30 @@ switch.dockermon_ncid:
 switch.dockermon_blinkt:
   friendly_name: 'Blinkt'
   icon: 'mdi:led-on'
-switch.dockermon_nodered:
+switch.docker_nodered:
   friendly_name: 'Node-RED'
   icon: 'mdi:tournament'
-switch.dockermon_watchtower:
+switch.docker_watchtower:
   friendly_name: 'Watchtower'
   icon: 'mdi:tower-beach'
-switch.dockermon_plex:
+switch.docker_plex:
   friendly_name: 'Plex'
   icon: 'mdi:plex'
-switch.dockermon_watchtower_saga:
-  friendly_name: 'Watchtower'
-  emulated_hue_name: 'Watchtower Saga'
-  icon: 'mdi:tower-beach'
-switch.dockermon_plex_saga:
-  friendly_name: 'Plex'
-  emulated_hue_name: 'Plex Saga'
-  icon: 'mdi:plex'
-switch.dockermon_warrior:
+switch.docker_warrior:
   friendly_name: 'Warrior'
   icon: 'mdi:archive'
-switch.dockermon_f_h:
+switch.docker_folding:
   friendly_name: 'F@H'
   icon: 'mdi:pill'
-# sensor.last_call:
-#   icon: 'mdi:phone-incoming'
-# sensor.last_blocked_call:
-#   icon: 'mdi:phone-missed'
+switch.docker_deconz:
+  friendly_name: 'deConz'
+  icon: 'mdi:zigbee'
+switch.docker_miniflux:
+  friendly_name: 'Miniflux'
+  icon: 'mdi:rss-box'
+switch.docker_esphome:
+  friendly_name: 'ESPHome'
+  icon: 'mdi:chip'
 switch.presence_emulator:
   icon: 'mdi:account-multiple'
 switch.auto_fan:
