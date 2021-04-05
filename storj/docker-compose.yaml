@@ -1,0 +1,17 @@
+version: '2.4'
+services:
+    storagenode:
+        image: storjlabs/storagenode:latest
+        ports:
+            - "28967:28967"
+            - "14002:14002"
+        volumes:
+            - type: 'bind'
+              source: '/home/saga/.local/share/storj/identity/storagenode'
+              target: '/app/identity'
+            - type: 'bind'
+              source: '/media/saga/Internxt/Storj'
+              target: '/app/config'
+        container_name: storj
+        env_file: ./settings.env
+        restart: 'unless-stopped'

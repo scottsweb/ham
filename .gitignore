@@ -91,6 +91,9 @@ plex/config/
 # samba
 samba/
 
+# storj
+storj/settings.env
+
 # utilities
 utilities/cron-music-sync.sh
 utilities/tv-switch.sh
