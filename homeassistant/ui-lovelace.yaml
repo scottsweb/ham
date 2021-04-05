@@ -605,9 +605,9 @@ views:
             - entity: input_boolean.monk_clean_lounge
             - entity: input_boolean.monk_clean_kitchen
             - entity: input_boolean.monk_clean_bedroom
-            - entity: input_boolean.monk_clean_hall
-            - entity: input_boolean.monk_clean_office_gemma
-            - entity: input_boolean.monk_clean_office_scott
+            - entity: input_boolean.monk_clean_dining
+            - entity: input_boolean.monk_clean_bathroom
+            - entity: input_boolean.monk_clean_office
   #          - entity: input_select.monk_fan_speed
           style: |
             ha-card {

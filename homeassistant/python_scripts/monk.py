@@ -3,21 +3,21 @@ args = {"entity_id": "vacuum.xiaomi_vacuum_cleaner", "command": "app_segment_cle
 lounge = data.get("input_boolean.monk_clean_lounge")
 kitchen = data.get("input_boolean.monk_clean_kitchen")
 bedroom = data.get("input_boolean.monk_clean_bedroom")
-hall = data.get("input_boolean.monk_clean_hall")
-gemma = data.get("input_boolean.monk_clean_office_gemma")
-scott = data.get("input_boolean.monk_clean_office_scott")
+dining = data.get("input_boolean.monk_clean_dining")
+bathroom = data.get("input_boolean.monk_clean_bathroom")
+office = data.get("input_boolean.monk_clean_office")
 
 if lounge == 'on':
-  args["params"].extend([17])
-if kitchen == 'on':
-  args["params"].extend([19])
-if bedroom == 'on':
-  args["params"].extend([16])
-if hall == 'on':
   args["params"].extend([20])
-if gemma == 'on':
-  args["params"].extend([21])
-if scott == 'on':
+if kitchen == 'on':
+  args["params"].extend([15])
+if bedroom == 'on':
+  args["params"].extend([22])
+if dining == 'on':
+  args["params"].extend([19])
+if bathroom == 'on':
+  args["params"].extend([16])
+if office == 'on':
   args["params"].extend([18])
 
 #logger.info( args )

@@ -11,12 +11,12 @@ monk_clean_kitchen:
 monk_clean_bedroom:
   name: Sovrum
   icon: mdi:bed-king
-monk_clean_hall:
-  name: Hall
-  icon: mdi:ceiling-light
-monk_clean_office_gemma:
-  name: Gemma's Office
-  icon: mdi:desk
-monk_clean_office_scott:
-  name: Scotts' Office
+monk_clean_dining:
+  name: Dining
+  icon: mdi:table-chair
+monk_clean_bathroom:
+  name: Bathroom
+  icon: mdi:paper-roll
+monk_clean_office:
+  name: Office
   icon: mdi:desk
