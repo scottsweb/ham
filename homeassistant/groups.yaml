@@ -20,6 +20,6 @@ Monk Zones:
   - input_boolean.monk_clean_lounge
   - input_boolean.monk_clean_kitchen
   - input_boolean.monk_clean_bedroom
-  - input_boolean.monk_clean_hall
-  - input_boolean.monk_clean_office_gemma
-  - input_boolean.monk_clean_office_scott
+  - input_boolean.monk_clean_dining
+  - input_boolean.monk_clean_bathroom
+  - input_boolean.monk_clean_office
