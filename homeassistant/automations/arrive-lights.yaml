@@ -9,10 +9,10 @@ condition:
     after: sunset
     after_offset: "-00:45:00"
 action:
-  - service: light.turn_on
-    data:
-      entity_id: light.hallway
-      brightness: 255
+#  - service: light.turn_on
+#    data:
+#      entity_id: light.hallway
+#      brightness: 255
   - service: light.turn_on
     data:
       entity_id: light.lounge_light_small
@@ -21,6 +21,6 @@ action:
     data:
       entity_id: light.lounge_light_tall
       brightness: 180
-  - service: homeassistant.turn_on
-    data:
-      entity_id: switch.cloud
+#  - service: homeassistant.turn_on
+#    data:
+#      entity_id: switch.cloud

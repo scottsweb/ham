@@ -8,4 +8,4 @@ trigger:
 action:
   - service: homeassistant.turn_off
     data:
-      entity_id: switch.dockermon_warrior
+      entity_id: switch.docker_warrior

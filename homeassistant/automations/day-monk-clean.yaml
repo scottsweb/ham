@@ -17,8 +17,9 @@ action:
       entity_id:
         - input_boolean.monk_clean_kitchen
         - input_boolean.monk_clean_bedroom
-        - input_boolean.monk_clean_hall
-        - input_boolean.monk_clean_office_gemma
-        - input_boolean.monk_clean_office_scott
+        - input_boolean.monk_clean_dining
+        - input_boolean.monk_clean_office
+        - input_boolean.monk_clean_bathrrom
+        - input_boolean.monk_clean_office
   - delay: '00:00:10'
   - service: script.monk_clean

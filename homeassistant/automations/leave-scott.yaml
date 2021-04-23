@@ -7,4 +7,4 @@ trigger:
 action:
   - service: homeassistant.turn_off
     data:
-      entity_id: switch.dockermon_watchtower
+      entity_id: switch.docker_watchtower

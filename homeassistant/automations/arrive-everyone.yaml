@@ -1,0 +1,21 @@
+alias: Arrive Everyone
+initial_state: true
+trigger:
+  platform: state
+  entity_id:
+    - person.scott
+    - person.gemma
+  to: 'home'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: person.scott
+      state: 'home'
+    - condition: state
+      entity_id: person.gemma
+      state: 'home'
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id: switch.docker_openvpn

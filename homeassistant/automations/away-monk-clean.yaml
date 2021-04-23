@@ -21,6 +21,6 @@ action:
       entity_id:
         - input_boolean.monk_clean_kitchen
         - input_boolean.monk_clean_bedroom
-        - input_boolean.monk_clean_hall
+        - input_boolean.monk_clean_dining
   - delay: '00:00:10'
   - service: script.monk_clean

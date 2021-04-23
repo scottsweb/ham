@@ -1,0 +1,12 @@
+alias: Leave Anyone
+initial_state: true
+trigger:
+  platform: state
+  entity_id:
+    - person.scott
+    - person.gemma
+  from: 'home'
+action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id: switch.docker_openvpn

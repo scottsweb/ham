@@ -1,0 +1,18 @@
+alias: Reset DNS if sensors go offline for 10 minutes
+initial_state: true
+trigger:
+  platform: state
+  entity_id: sensor.u_s_air_pollution_level
+  to: 'Unavailable'
+  for:
+    minutes: 10
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - switch.docker_pihole
+  - delay: '00:00:05'
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - switch.docker_pihole

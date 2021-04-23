@@ -7,29 +7,29 @@ trigger:
 action:
   - service: homeassistant.turn_off
     data:
-      entity_id: automation.away_hallway_light
-  - service: homeassistant.turn_off
-    data:
       entity_id: automation.away_lounge_light_small
   - service: homeassistant.turn_off
     data:
       entity_id: automation.away_lounge_light_tall
-  - service: mqtt.publish
+  - service: alarm_control_panel.alarm_disarm
     data:
-      topic: sycamore/unicorn
-      payload: '{ "opcode": "11" }'
-  - service: camera.disable_motion_detection
-    data:
-      entity_id: camera.blink_front
-  - delay: '00:00:10'
-  - service: camera.disable_motion_detection
-    data:
-      entity_id: camera.blink_back
-  - delay: '00:00:10'
-  - service: camera.disable_motion_detection
-    data:
-      entity_id: camera.blink_indoor_front
-  - delay: '00:00:10'
-  - service: camera.disable_motion_detection
-    data:
-      entity_id: camera.blink_indoor_back
+      entity_id: alarm_control_panel.blink_sycamore
+#  - service: mqtt.publish
+#    data:
+#      topic: sycamore/unicorn
+#      payload: '{ "opcode": "11" }'
+#  - service: camera.disable_motion_detection
+#    data:
+#      entity_id: camera.blink_front
+#  - delay: '00:00:10'
+#  - service: camera.disable_motion_detection
+#    data:
+#      entity_id: camera.blink_back
+#  - delay: '00:00:10'
+#  - service: camera.disable_motion_detection
+#    data:
+#      entity_id: camera.blink_indoor_front
+#  - delay: '00:00:10'
+#  - service: camera.disable_motion_detection
+#    data:
+#      entity_id: camera.blink_indoor_back
