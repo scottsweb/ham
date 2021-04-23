@@ -1,11 +1,11 @@
-#- platform: androidtv
-#  adbkey: "/config/android/adbkey"
-#  name: 'TV FireTV'
-#  host: !secret tv_ip
+- platform: androidtv
+  name: 'TV Al'
+  host: !secret tv_ip
 
 - platform: universal
   name: 'TV'
   children:
+    - media_player.tv_al # Android TV
     - media_player.tv_kodi # kodi
     - media_player.plex_for_kodi # plex
 
