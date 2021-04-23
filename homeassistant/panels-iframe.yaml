@@ -34,3 +34,11 @@ esphome:
   title: ESPHome
   icon: 'mdi:chip'
   url: !secret esphome_url
+storj:
+  title: Storj
+  icon: 'mdi:nas'
+  url: !secret storj_url
+internxt:
+  title: Internxt
+  icon: 'mdi:xamarin'
+  url: !secret internxt_url

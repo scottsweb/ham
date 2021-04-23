@@ -10,7 +10,7 @@ Lounge Lights:
   - light.lounge_light_tall
 All Devices:
   - device_tracker.ge
-  - device_tracker.se
+  - device_tracker.sc
   - device_tracker.ti
   - device_tracker.gr
 People:

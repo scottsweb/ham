@@ -57,12 +57,6 @@ google:
   client_secret: !secret google_client_secret
   track_new_calendar: false
 
-# Xiaomi vacuum
-vacuum:
-  - platform: xiaomi_miio
-    host: !secret monk_ip
-    token: !secret monk_token
-
 # Xiaomi fan
 fan:
   - platform: xiaomi_miio_fan
@@ -95,6 +89,7 @@ monitor_docker:
       - caddy
       - miniflux
       - jottacloud
+      - openvpn
     rename:
       deconz: deCONZ
       pihole: "Pi-Hole"
@@ -109,11 +104,11 @@ monitor_docker:
       caddy: Caddy
       miniflux: Miniflux
       jottacloud: Jottacloud
+      openvpn: OpenVPN
     monitored_conditions:
       - containers_running
       - containers_total
       - state
-      - status
       - memory
       - containers_memory
       - containers_memory_percentage
@@ -138,7 +133,7 @@ history:
       - person.scott
       - person.gemma
 
-      - calendar.washing
+      - alarm_control_panel.blink_sycamore
 
       - binary_sensor.blink_front_motion_detected
       - binary_sensor.blink_front_camera_armed
@@ -177,6 +172,7 @@ history:
       - switch.docker_folding
       - switch.docker_jottacloud
       - switch.docker_miniflux
+      - switch.docker_openvpn
       - switch.docker_pihole
       - switch.docker_plex
       - switch.docker_warrior
@@ -338,9 +334,6 @@ timer:
     duration: '01:00:00'
     icon: 'mdi:washing-machine'
 
-# persons
-person: !include persons.yaml
-
 # Sensors
 sensor: !include_dir_list sensors
 
@@ -353,7 +346,7 @@ binary_sensor:
 # utility_meter: !include utilities.yaml
 
 # Device Tracking
-# device_tracker: !include device-tracker.yaml
+device_tracker: !include device-tracker.yaml
 
 # Media Players
 media_player: !include media-player.yaml

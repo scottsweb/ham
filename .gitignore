@@ -67,6 +67,8 @@ node-red/.flows_cred.json.backup
 
 # pihole sycamore
 pihole/*.domains
+pihole/adlists.list
+pihole/custom.list
 pihole/gravity.list
 pihole/piholeIP
 pihole/setupVars.conf
@@ -84,6 +86,8 @@ pihole/setupVars.conf.update.bak
 pihole/dhcp.leases
 pihole/dns-servers.conf
 pihole/logrotate
+pihole/list.*
+pihole/gravity.db
 
 # plex
 plex/config/
