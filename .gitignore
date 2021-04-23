@@ -98,6 +98,9 @@ storj/settings.env
 utilities/cron-music-sync.sh
 utilities/tv-switch.sh
 
+# vpn
+vpn/data/*
+
 # wiki
 wiki/data/users.csv
 wiki/data/mywiki/*
