@@ -90,6 +90,7 @@ monitor_docker:
       - miniflux
       - jottacloud
       - openvpn
+      - syncthing
     rename:
       deconz: deCONZ
       pihole: "Pi-Hole"
@@ -105,6 +106,7 @@ monitor_docker:
       miniflux: Miniflux
       jottacloud: Jottacloud
       openvpn: OpenVPN
+      syncthing: Syncthing
     monitored_conditions:
       - containers_running
       - containers_total
@@ -175,6 +177,7 @@ history:
       - switch.docker_openvpn
       - switch.docker_pihole
       - switch.docker_plex
+      - switch.docker_synchthing
       - switch.docker_warrior
       - switch.docker_watchtower
 

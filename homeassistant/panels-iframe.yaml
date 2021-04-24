@@ -42,3 +42,7 @@ internxt:
   title: Internxt
   icon: 'mdi:xamarin'
   url: !secret internxt_url
+syncthing:
+  title: Syncthing
+  icon: 'mdi:sync-circle'
+  url: !secret syncthing_url

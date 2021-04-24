@@ -95,6 +95,9 @@ plex/config/
 # samba
 samba/
 
+# synchthing
+syncthing/data/
+
 # storj
 storj/settings.env
 

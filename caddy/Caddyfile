@@ -46,3 +46,12 @@ http://plex.saga.lan {
 		-X-Frame-Options
 	}
 }
+
+http://syncthing.saga.lan {
+	proxy / 192.168.11.5:8384 {
+		transparent
+	}
+	header / {
+		-X-Frame-Options
+	}
+}

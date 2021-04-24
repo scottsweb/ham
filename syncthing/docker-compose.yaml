@@ -1,0 +1,19 @@
+version: "2.1"
+services:
+  syncthing:
+    image: ghcr.io/linuxserver/syncthing
+    container_name: syncthing
+    hostname: syncthing
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Stockholm
+    volumes:
+      - /media/saga/Media/Containers/syncthing/data:/config
+      - /media/saga/Media/Photos/Uploads/Scott:/photos-scott
+      - /media/saga/Media/Photos/Uploads/Gemma:/photos-gemma
+    ports:
+      - 8384:8384
+      - 22000:22000
+      - 21027:21027/udp
+    restart: unless-stopped

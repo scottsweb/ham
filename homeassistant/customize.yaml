@@ -68,6 +68,9 @@ switch.tv_mute:
   icon: 'mdi:television-off'
 switch.games:
   icon: 'mdi:gamepad-variant'
+switch.docker_syncthing:
+  friendly_name: 'Syncthing'
+  icon: 'mdi:sync-circle'
 switch.docker_nodered:
   friendly_name: 'Node-RED'
   icon: 'mdi:tournament'

@@ -26,9 +26,11 @@ services:
       - "miniflux miniflux.saga.lan:192.168.11.5"
       - "deconz.saga.lan:192.168.11.5"
       - "plex.saga.lan:192.168.11.5"
+      - "syncthing.saga.lan:192.168.11.5"
     secrets:
       - web-password
     restart: always
+    network_mode: host
     container_name: pihole
 secrets:
   web-password:
