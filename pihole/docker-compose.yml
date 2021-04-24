@@ -11,9 +11,7 @@ services:
       - "8053:80"
     cap_add:
       - NET_ADMIN
-    environment:
-      - TZ=Europe/Stockholm
-      - VIRTUAL_HOST=pihole.saga.lan
+    env_file: ./settings.env
     dns:
       - 127.0.0.1
       - 1.1.1.1
@@ -27,11 +25,6 @@ services:
       - "deconz.saga.lan:192.168.11.5"
       - "plex.saga.lan:192.168.11.5"
       - "syncthing.saga.lan:192.168.11.5"
-    secrets:
-      - web-password
     restart: always
     network_mode: host
     container_name: pihole
-secrets:
-  web-password:
-    file: ./secrets/web-password

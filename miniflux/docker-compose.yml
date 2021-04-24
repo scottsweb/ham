@@ -6,13 +6,12 @@ services:
       - "8080:8080"
     depends_on:
       - db
-    environment:
-      - RUN_MIGRATIONS=1
+    env_file: ./settings.env
     container_name: miniflux
     restart: always
   db:
     image: postgres:latest
-    environment:
+    env_file: ./settings.env
     volumes:
       - /media/saga/Media/Containers/miniflux/db/:/var/lib/postgresql/data
     container_name: miniflux_db

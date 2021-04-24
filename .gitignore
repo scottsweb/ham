@@ -46,6 +46,9 @@ homeassistant/ip_bans.yaml
 # jottacloud
 jottacloud/data
 
+# miniflux
+miniflux/settings.env
+
 # mqtt
 mqtt/config/
 mqtt/data/
@@ -88,6 +91,7 @@ pihole/dns-servers.conf
 pihole/logrotate
 pihole/list.*
 pihole/gravity.db
+pihole/settings.env
 
 # plex
 plex/config/
@@ -114,3 +118,4 @@ wiki/data/mywiki/*
 
 # warrior
 warrior/data
+warrior/settings.env

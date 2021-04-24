@@ -6,9 +6,7 @@ services:
             - "/media/saga/Media/Containers/warrior/data:/data/data"
         ports:
           - "8001:8001"
-        environment:
-          - CONCURRENT_ITEMS=4
-          - SELECTED_PROJECT=auto
+        env_file: ./settings.env
         restart: always
         privileged: true
         container_name: warrior
