@@ -1,6 +1,6 @@
 platform: average
 name: Indoor Temperature
 entities:
-  - sensor.blink_indoor_back_temperature
-  - sensor.blink_indoor_front_temperature
+  - sensor.blink_front_door_temperature
+  - sensor.blink_kitchen_temperature
   - sensor.bedroom_temperature

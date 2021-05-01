@@ -137,21 +137,13 @@ history:
 
       - alarm_control_panel.blink_sycamore
 
-      - binary_sensor.blink_front_motion_detected
-      - binary_sensor.blink_front_camera_armed
-      - binary_sensor.blink_front_battery
+      - binary_sensor.blink_front_door_motion_detected
+      - binary_sensor.blink_front_door_camera_armed
+      - binary_sensor.blink_front_door_battery
 
-      - binary_sensor.blink_back_motion_detected
-      - binary_sensor.blink_back_camera_armed
-      - binary_sensor.blink_back_battery
-
-      - binary_sensor.blink_indoor_front_motion_detected
-      - binary_sensor.blink_indoor_front_camera_armed
-      - binary_sensor.blink_indoor_front_battery
-
-      - binary_sensor.blink_indoor_back_motion_detected
-      - binary_sensor.blink_indoor_back_camera_armed
-      - binary_sensor.blink_indoor_back_battery
+      - binary_sensor.blink_kitchen_motion_detected
+      - binary_sensor.blink_kitchen_camera_armed
+      - binary_sensor.blink_kitchen_battery
 
       - weather.dark_sky
       - sun.sun

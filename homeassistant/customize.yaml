@@ -110,73 +110,37 @@ sensor.u_s_air_quality_index:
   friendly_name: 'Air Quality Index'
 sensor.u_s_main_pollutant:
   friendly_name: 'Main Pollutant'
-binary_sensor.blink_back_motion_detected:
-  friendly_name: 'Blink Back Motion'
-binary_sensor.blink_front_motion_detected:
-  friendly_name: 'Blink Front Motion'
-binary_sensor.blink_front_battery:
-  friendly_name: 'Blink Front Battery'
+camera.blink_front_door:
+  friendly_name: 'Front Door'
+binary_sensor.blink_front_door_motion_detected:
+  friendly_name: 'Front Door Motion'
+binary_sensor.blink_front_door_battery:
+  friendly_name: 'Front Door Battery'
   icon: mdi:battery-charging
-sensor.blink_front_notifications:
-  friendly_name: 'Blink Front Notifcations'
+binary_sensor.blink_front_door_camera_armed:
+  friendly_name: 'Front Door Armed?'
+sensor.blink_front_door_notifications:
+  friendly_name: 'Front Door Notifcations'
   icon: mdi:comment-alert
-sensor.blink_front_temperature:
-  friendly_name: 'Blink Front Temperature'
-binary_sensor.blink_front_camera_armed:
-  friendly_name: 'Blink Front Armed?'
-binary_sensor.blink_back_battery:
-  friendly_name: 'Blink Back Battery'
+sensor.blink_front_door_temperature:
+  friendly_name: 'Front Door Temperature'
+camera.blink_kitchen:
+  friendly_name: 'Kitchen'
+binary_sensor.blink_kitchen_motion_detected:
+  friendly_name: 'Kitchen Motion'
+binary_sensor.blink_kitchen_battery:
+  friendly_name: 'Kitchen Battery'
   icon: mdi:battery-charging
-sensor.blink_back_notifications:
-  friendly_name: 'Blink Back Notifcations'
+binary_sensor.blink_kitchen_camera_armed:
+  friendly_name: 'Kitchen Armed?'
+sensor.blink_kitchen_notifications:
+  friendly_name: 'Kitchen Notifcations'
   icon: mdi:comment-alert
-sensor.blink_back_temperature:
-  friendly_name: 'Blink Back Temperature'
-binary_sensor.blink_back_camera_armed:
-  friendly_name: 'Blink Back Armed?'
-binary_sensor.blink_indoor_front_motion_detected:
-  friendly_name: 'Blink Indoor Front Motion'
-binary_sensor.blink_indoor_front_battery:
-  friendly_name: 'Blink Indoor Front Battery'
-  icon: mdi:battery-charging
-sensor.blink_indoor_front_notifications:
-  friendly_name: 'Blink Indoor Front Notifcations'
-  icon: mdi:comment-alert
-sensor.blink_indoor_front_temperature:
-  friendly_name: 'Blink Indoor Front Temperature'
-binary_sensor.blink_indoor_front_camera_armed:
-  friendly_name: 'Blink Indoor Front Armed?'
-binary_sensor.blink_indoor_back_motion_detected:
-  friendly_name: 'Blink Indoor Back Motion'
-binary_sensor.blink_indoor_back_battery:
-  friendly_name: 'Blink Indoor Back Battery'
-  icon: mdi:battery-charging
-sensor.blink_indoor_back_notifications:
-  friendly_name: 'Blink Indoor Back Notifcations'
-  icon: mdi:comment-alert
-sensor.blink_indoor_back_temperature:
-  friendly_name: 'Blink Indoor Back Temperature'
-binary_sensor.blink_indoor_back_camera_armed:
-  friendly_name: 'Blink Indoor Back Armed?'
-binary_sensor.blink_armed_status:
-  friendly_name: 'Armed?'
-camera.front:
-  friendly_name: 'Blink Front'
-camera.back:
-  friendly_name: 'Blink Back'
-camera.indoor_front:
-  friendly_name: 'Blink Indoor Front'
-camera.indoor_back:
-   friendly_name: 'Blink Indoor Back'
-alarm_control_panel.blink_sync:
-  friendly_name: 'Blink Sycamore'
-script.blink_back_capture_script:
+sensor.blink_kitchen_temperature:
+  friendly_name: 'Kitchen Temperature'
+script.blink_front_door_capture_script:
   icon: mdi:camera
-script.blink_front_capture_script:
-  icon: mdi:camera
-script.blink_indoor_front_capture_script:
-  icon: mdi:camera
-script.blink_indoor_back_capture_script:
+script.blink_kitchen_capture_script:
   icon: mdi:camera
 script.freeview:
   icon: mdi:video-input-antenna

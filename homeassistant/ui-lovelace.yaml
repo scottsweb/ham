@@ -780,51 +780,27 @@ views:
       - type: vertical-stack
         cards:
           - type: picture-entity
-            entity: camera.blink_front
+            entity: camera.blink_front_door
           - type: entities
             title: Front
             show_header_toggle: false
             entities:
-              - script.blink_front_capture_script
-              - sensor.blink_front_temperature
-              - binary_sensor.blink_front_battery
-              - binary_sensor.blink_front_camera_armed
+              - script.blink_front_door_capture_script
+              - sensor.blink_front_door_temperature
+              - binary_sensor.blink_front_door_battery
+              - binary_sensor.blink_front_door_camera_armed
       - type: vertical-stack
         cards:
           - type: picture-entity
-            entity: camera.blink_back
+            entity: camera.blink_kitchen
           - type: entities
             title: Back
             show_header_toggle: false
             entities:
-              - script.blink_back_capture_script
-              - sensor.blink_back_temperature
-              - binary_sensor.blink_back_battery
-              - binary_sensor.blink_back_camera_armed
-      - type: vertical-stack
-        cards:
-          - type: picture-entity
-            entity: camera.blink_indoor_front
-          - type: entities
-            title: Indoor Front
-            show_header_toggle: false
-            entities:
-              - script.blink_indoor_front_capture_script
-              - sensor.blink_indoor_front_temperature
-              - binary_sensor.blink_indoor_front_battery
-              - binary_sensor.blink_indoor_front_camera_armed
-      - type: vertical-stack
-        cards:
-          - type: picture-entity
-            entity: camera.blink_indoor_back
-          - type: entities
-            title: Indoor Back
-            show_header_toggle: false
-            entities:
-              - script.blink_indoor_back_capture_script
-              - sensor.blink_indoor_back_temperature
-              - binary_sensor.blink_indoor_back_battery
-              - binary_sensor.blink_indoor_back_camera_armed
+              - script.blink_kitchen_capture_script
+              - sensor.blink_kitchen_temperature
+              - binary_sensor.blink_kitchen_battery
+              - binary_sensor.blink_kitchen_camera_armed
 
   - title: Outdoors
     path: outdoors

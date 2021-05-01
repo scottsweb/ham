@@ -13,7 +13,7 @@ action:
       entity_id: automation.away_lounge_light_tall
   - service: alarm_control_panel.alarm_disarm
     data:
-      entity_id: alarm_control_panel.blink_sycamore
+      entity_id: alarm_control_panel.blink_hem
 #  - service: mqtt.publish
 #    data:
 #      topic: sycamore/unicorn

@@ -1,30 +1,16 @@
-blink_front_capture_script:
-  alias: 'Update Front at Sycamore'
+blink_front_door_capture_script:
+  alias: 'Update Front at Hem'
   sequence:
     - service: blink.trigger_camera
       data:
-        entity_id: camera.blink_front
+        entity_id: camera.blink_front_door
 
-blink_back_capture_script:
-  alias: 'Update Back at Sycamore'
+blink_kitchen_capture_script:
+  alias: 'Update Kitchen at Hem'
   sequence:
     - service: blink.trigger_camera
       data:
-        entity_id: camera.blink_back
-
-blink_indoor_front_capture_script:
-  alias: 'Update Indoor Front at Sycamore'
-  sequence:
-    - service: blink.trigger_camera
-      data:
-        entity_id: camera.blink_indoor_front
-
-blink_indoor_back_capture_script:
-  alias: 'Update Indoor Back at Sycamore'
-  sequence:
-    - service: blink.trigger_camera
-      data:
-        entity_id: camera.blink_indoor_back
+        entity_id: camera.blink_kitchen
 
 dash_andrex:
   alias: 'Amazon Dash - Andrex'
