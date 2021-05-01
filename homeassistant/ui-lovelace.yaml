@@ -120,6 +120,7 @@ views:
           # Scott
           - type: custom:button-card
             entity: person.scott
+            name: Scott
             triggers_update:
               ['person.scott', 'sensor.scott_last_changed']
             state_display: &button_home_state_display >
@@ -176,6 +177,7 @@ views:
           # Gemma
           - type: custom:button-card
             entity: person.gemma
+            name: Gemma
             triggers_update:
               ['person.gemma', 'sensor.gemma_last_changed']
             state_display: *button_home_state_display
@@ -308,38 +310,11 @@ views:
             title: false
             cards:
             - type: light
-              entity: light.hallway
-              icon: mdi:ceiling-light
+              entity: light.nanoleaf
               <<: *light-style
             - type: button
               entity: switch.cloud
               icon: mdi:cloud
-              style: |
-                ha-card {
-                  box-shadow: none;
-                }
-                ha-icon {
-                  width: 32% !important;
-                }
-                span {
-                  position: relative;
-                  top: 22%;
-                }
-        - type: custom:mod-card
-          style: |
-            ha-card {
-              padding: 0 0.2em 0.8em 0.2em;
-            }
-          card:
-            type: horizontal-stack
-            title: false
-            cards:
-            - type: light
-              entity: light.nanoleaf
-              <<: *light-style
-            - type: button
-              entity: switch.christmas
-              icon: mdi:pine-tree
               style: |
                 ha-card {
                   box-shadow: none;
@@ -866,59 +841,43 @@ views:
           - sensor.speedtest_upload
           - sensor.ip_address
       - type: entities
-        title: Bonsai
+        title: Saga
         show_header_toggle: false
         entities:
           - entity: sensor.memory_use_percent
           - entity: sensor.load_5m
           - entity: sensor.cpu_temperature
-          - entity: sensor.since_last_boot_sycamore
-          - entity: switch.pihole_sycamore_switch
-          - type: section
-            label: Containers
-          - entity: switch.dockermon_blinkt
-          - entity: switch.dockermon_nodered
-          - entity: switch.dockermon_watchtower
-      - type: entities
-        title: Mycroft
-        show_header_toggle: false
-        entities:
-          - entity: sensor.ram_use_mycroft
-          - entity: sensor.cpu_use_mycroft
-          - entity: sensor.cpu_temperature_mycroft
-          - entity: sensor.since_last_boot_mycroft
-          - entity: switch.pihole_mycroft_switch
-      - type: entities
-        title: Saga
-        show_header_toggle: false
-        entities:
-          - entity: script.saga_on
-          - type: section
-            label: Containers
-          - entity: switch.dockermon_plex_saga
-          - entity: switch.dockermon_warrior
-          - entity: switch.dockermon_watchtower_saga
-          - entity: switch.dockermon_f_h
+          - entity: sensor.since_last_boot
           - type: section
             label: Network
+          - entity: script.saga_on
+          - entity: switch.saga_pi_hole
           - entity: switch.vpn_liskeard_switch
           - entity: switch.vpn_ee_switch
+      - type: entities
+        title: Containers
+        show_header_toggle: false
+        entities:
+          - entity: sensor.docker_containers_running
+          - entity: sensor.docker_containers_total
+          - type: section
+          - entity: switch.docker_deconz
+          - entity: switch.docker_esphome
+          - entity: switch.docker_folding
+          - entity: switch.docker_miniflux
+          - entity: switch.docker_openvpn
+          - entity: switch.docker_plex
+          - entity: switch.docker_syncthing
+          - entity: switch.docker_warrior
+          - entity: switch.docker_watchtower
       - type: entities
         title: Settings
         show_header_toggle: false
         entities:
           - switch.presence_emulator
       - type: entities
-        title: Ad Blocker
-        show_header_toggle: true
-        entities:
-          - switch.pihole_sycamore_switch
-          - switch.pihole_mycroft_switch
-      - type: entities
         title: Blink
         show_header_toggle: false
         entities:
-          - binary_sensor.blink_back_camera_armed
-          - binary_sensor.blink_front_camera_armed
-          - binary_sensor.blink_indoor_back_camera_armed
-          - binary_sensor.blink_indoor_front_camera_armed
+          - binary_sensor.blink_front_door_camera_armed
+          - binary_sensor.blink_kitchen_camera_armed
