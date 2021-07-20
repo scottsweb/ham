@@ -1,0 +1,18 @@
+alias: Notify Bathroom Leak
+initial_state: true
+trigger:
+  platform: state
+  entity_id: binary_sensor.water_sensor_bathroom
+  to: 'on'
+action:
+  - service: notify.all
+    data:
+      title: "{{'\U0001F30A'}} Bathroom Leak!"
+      message: "A water leak has been detected in the bathroom"
+      data:
+        channel: Alert
+        importance: max
+        priority: high
+        ttl: 0
+        timeout: 600
+        clickAction: "/lovelace/cctv"

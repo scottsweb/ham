@@ -17,12 +17,12 @@ condition:
       - condition: time
         before: '22:30:00'
 action:
-  - delay: '00:{{ range(01,59) | random | int }}:{{ range(01,59) | random | int }}'
+  - delay: "00:{{ range(01,59) | random }}:{{ range(01,59) | random }}"
   - service: light.turn_on
     data:
       entity_id: light.lounge_light_small
       brightness: 125
-  - delay: '0{{ range(1,2) | random | int }}:{{ range(01,59) | random | int }}:00'
+  - delay: "0{{ range(1,2) | random }}:{{ range(01,59) | random }}:00"
   - service: light.turn_off
     data:
       entity_id: light.lounge_light_small
