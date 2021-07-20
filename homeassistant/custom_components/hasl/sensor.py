@@ -23,7 +23,7 @@ from homeassistant.util.dt import now
 from hasl import (haslapi, fpapi, tl2api, ri4api, si2api,
                   HASL_Error, HASL_API_Error, HASL_HTTP_Error)
 
-__version__ = '2.2.0'
+__version__ = '2.2.7'
 _LOGGER = logging.getLogger(__name__)
 DOMAIN = 'hasl'
 
@@ -385,7 +385,7 @@ class SLStatusSensor(Entity):
             # the specified interval then use that data instead of
             # requesting it again and spare some innocent credits from dying.
             cacheage = self._hass.data[DOMAIN][self._datakey]
-            if not cacheage or now(self._hass.config.time_zone) \
+            if not cacheage or now() \
                     - self._interval > cacheage or not self._minimization:
 
                 try:
@@ -394,7 +394,7 @@ class SLStatusSensor(Entity):
 
                     self.putCache(self._datakey, apidata)
                     self._hass.data[DOMAIN][self._datakey] = \
-                        now(self._hass.config.time_zone)
+                        now()
 
                     _LOGGER.info("Updated cache for %s...", self._name)
 
@@ -611,7 +611,7 @@ class SLDeparturesSensor(Entity):
                 return int(s[0])
             s = t.split(':')
             if len(s) > 1:
-                rightnow = now(self._hass.config.time_zone)
+                rightnow = now()
                 min = int(s[0]) * 60 + int(s[1]) - (rightnow.hour * 60 +
                                                     rightnow.minute)
                 if min < 0:
@@ -671,14 +671,14 @@ class SLDeparturesSensor(Entity):
             if self._si2key:
                 self._update_si2()
 
-            self._lastupdate = now(self._hass.config.time_zone)
+            self._lastupdate = now()
 
     def _update_ri4(self):
         errorOccured = False
         _LOGGER.info("Starting to update RI4 for %s...", self._name)
 
         cacheage = self._hass.data[DOMAIN][self._ri4datakey]
-        if not cacheage or now(self._hass.config.time_zone) \
+        if not cacheage or now() \
                 - self._interval > cacheage or not self._minimization:
 
             try:
@@ -687,7 +687,7 @@ class SLDeparturesSensor(Entity):
 
                 self.putCache(self._ri4datakey, departuredata)
                 self._hass.data[DOMAIN][self._ri4datakey] = \
-                    now(self._hass.config.time_zone)
+                    now()
 
                 _LOGGER.info("Updated cache for %s...", self._name)
 
@@ -764,7 +764,7 @@ class SLDeparturesSensor(Entity):
         _LOGGER.info("Starting to update SI2 for %s...", self._name)
 
         cacheage = self._hass.data[DOMAIN][self._si2datakey]
-        if not cacheage or now(self._hass.config.time_zone) \
+        if not cacheage or now() \
                 - self._interval > cacheage or not self._minimization:
 
             try:
@@ -773,7 +773,7 @@ class SLDeparturesSensor(Entity):
 
                 self.putCache(self._si2datakey, deviationdata)
                 self._hass.data[DOMAIN][self._si2datakey] = \
-                    now(self._hass.config.time_zone)
+                    now()
 
                 _LOGGER.info('Updated cache for %s...', self._name)
 
