@@ -1,5 +1,0 @@
-- platform: nmap_tracker
-  home_interval: 5
-  hosts:
-    - !secret fp3_ip
-    - !secret pixel_ip

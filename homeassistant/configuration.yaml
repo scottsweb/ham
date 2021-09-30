@@ -341,7 +341,7 @@ binary_sensor:
 # utility_meter: !include utilities.yaml
 
 # Device Tracking
-device_tracker: !include device-tracker.yaml
+# device_tracker: !include device-tracker.yaml
 
 # Media Players
 media_player: !include media-player.yaml
