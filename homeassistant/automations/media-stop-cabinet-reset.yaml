@@ -14,6 +14,8 @@ condition:
       state: 'on'
     - condition: template
       value_template: "{{ not is_state('media_player.tv', 'playing') }}"
+    - condition: time
+      before: '21:59:00'
 action:
   - service: light.turn_on
     data:

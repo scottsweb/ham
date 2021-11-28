@@ -13,6 +13,8 @@ condition:
     - condition: state
       entity_id: light.cabinet_2
       state: 'on'
+    - condition: time
+      before: '21:59:00'
 action:
   - service: light.turn_on
     data:
