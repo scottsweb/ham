@@ -10,7 +10,7 @@ services:
     container_name: miniflux
     restart: always
   db:
-    image: postgres:latest
+    image: postgres:13.4
     env_file: ./settings.env
     volumes:
       - /media/saga/Media/Containers/miniflux/db/:/var/lib/postgresql/data
