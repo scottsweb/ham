@@ -6,4 +6,4 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     container_name: watchtower
     restart: always
-    command: watchtower plex syncthing storj pihole mqtt warrior miniflux miniflux_db esphome homeassistant openvpn deconz --cleanup -i 86400
+    command: watchtower plex syncthing storj pihole mqtt warrior miniflux miniflux_db esphome homeassistant openvpn deconz iplayer plextv --cleanup -i 86400
