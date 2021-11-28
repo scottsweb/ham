@@ -1,15 +1,15 @@
-kodi:
-  title: 'Kodi'
-  icon: 'mdi:music-box-multiple'
-  url: !secret kodi_ui_ip
+#kodi:
+#  title: 'Kodi'
+# icon: 'mdi:music-box-multiple'
+#  url: !secret kodi_ui_ip
 plex:
   title: 'Plex'
   icon: 'mdi:plex'
   url: !secret plex_ui_ip
-nodered:
-  title: 'Node-RED'
-  icon: 'mdi:vector-polyline'
-  url: !secret node_red_ip
+#nodered:
+#  title: 'Node-RED'
+#  icon: 'mdi:vector-polyline'
+#  url: !secret node_red_ip
 pihole_sycamore:
   title: 'Pi-hole'
   icon: 'mdi:checkbox-blank-circle'
@@ -26,10 +26,10 @@ deconz:
   title: 'Deconz'
   icon: 'mdi:zigbee'
   url: !secret deconz_url
-folding:
-  title: F@H
-  icon: 'mdi:pill'
-  url: !secret folding_url
+#folding:
+#  title: F@H
+#  icon: 'mdi:pill'
+#  url: !secret folding_url
 esphome:
   title: ESPHome
   icon: 'mdi:chip'
@@ -38,11 +38,23 @@ storj:
   title: Storj
   icon: 'mdi:nas'
   url: !secret storj_url
-internxt:
-  title: Internxt
-  icon: 'mdi:xamarin'
-  url: !secret internxt_url
 syncthing:
   title: Syncthing
   icon: 'mdi:sync-circle'
   url: !secret syncthing_url
+helium:
+  title: Helium
+  icon: 'mdi:radio-tower'
+  url: !secret helium_url
+router:
+  title: Router
+  icon: 'mdi:router-wireless'
+  url: !secret router_url
+iplayer:
+  title: iPlayer
+  icon: 'mdi:television'
+  url: !secret iplayer_url
+n8n:
+  title: n8n
+  icon: 'mdi:transit-connection-variant'
+  url: !secret n8n_url

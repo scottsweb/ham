@@ -1,0 +1,5 @@
+platform: helium
+hotspots:
+  - !secret helium_hotspot
+wallets:
+  - !secret helium_wallet

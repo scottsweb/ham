@@ -2,12 +2,16 @@ Lights:
   - light.lounge_light_tall
   - light.hallway
   - light.lounge_light_small
+  - light.cameras
   - switch.cloud
 General:
   - switch.general_switch
 Lounge Lights:
   - light.lounge_light_small
   - light.lounge_light_tall
+Cabinet Lights:
+  - light.cabinet_1
+  - light.cabinet_2
 All Devices:
   - device_tracker.ge
   - device_tracker.sc

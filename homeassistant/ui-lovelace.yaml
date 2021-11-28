@@ -326,6 +326,27 @@ views:
                   position: relative;
                   top: 22%;
                 }
+        - type: custom:mod-card
+          style: |
+            ha-card {
+              padding: 0 0.2em 0.8em 0.2em;
+            }
+          card:
+            type: horizontal-stack
+            title: false
+            cards:
+            - type: light
+              entity: light.cameras
+              icon: mdi:camera-party-mode
+              <<: *light-style
+            - type: light
+              entity: light.cabinet_1
+              icon: mdi:wall-sconce-flat-variant
+              <<: *light-style
+            - type: light
+              entity: light.cabinet_2
+              icon: mdi:wall-sconce-flat-variant
+              <<: *light-style
       - type: sensor
         entity: sensor.indoor_temperature
         graph: line
@@ -334,12 +355,6 @@ views:
         entities:
           - fan.fan
           - switch.auto_fan
-      - type: entities
-        title: Coronavirus Sweden
-        show_header_toggle: false
-        entities:
-          - sensor.sweden_coronavirus_confirmed
-          - sensor.sweden_coronavirus_deaths
       - type: entities
         title: Exchange Rates
         show_header_toggle: false
@@ -424,15 +439,12 @@ views:
                 show_icon: false
                 tap_action:
                   action: call-service
-                  service: kodi.call_method
+                  service: media_player.select_source
                   service_data:
-                    entity_id: media_player.tv_kodi
-                    method: Addons.ExecuteAddon
-                    addonid: plugin.video.netflix
-                    params:
-                      command: activate
+                    entity_id: media_player.tv_al
+                    source: Kodi
               - type: "custom:button-card"
-                name: Kodi
+                name: YouTube
                 styles:
                   card:
                     - color: var(--nord6)
@@ -441,10 +453,10 @@ views:
                 show_icon: false
                 tap_action:
                   action: call-service
-                  service: kodi.call_method
+                  service: media_player.select_source
                   service_data:
-                    entity_id: media_player.tv_kodi
-                    method: Input.Home
+                    entity_id: media_player.tv_al
+                    source: YouTube
               - type: "custom:button-card"
                 name: Plex
                 styles:
@@ -455,13 +467,10 @@ views:
                 show_icon: false
                 tap_action:
                   action: call-service
-                  service: kodi.call_method
+                  service: media_player.select_source
                   service_data:
-                    entity_id: media_player.tv_kodi
-                    method: Addons.ExecuteAddon
-                    addonid: script.plex
-                    params:
-                      command: activate
+                    entity_id: media_player.tv_al
+                    source: Plex
               - type: "custom:button-card"
                 name: Steam
                 styles:
@@ -863,11 +872,12 @@ views:
           - type: section
           - entity: switch.docker_deconz
           - entity: switch.docker_esphome
-          - entity: switch.docker_folding
+          #- entity: switch.docker_folding
           - entity: switch.docker_miniflux
           - entity: switch.docker_openvpn
           - entity: switch.docker_plex
           - entity: switch.docker_syncthing
+          - entity: switch.docker_ipsecvpn
           - entity: switch.docker_warrior
           - entity: switch.docker_watchtower
       - type: entities

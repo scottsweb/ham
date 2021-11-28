@@ -17,6 +17,10 @@ python_script:
 http:
   ip_ban_enabled: true
   login_attempts_threshold: 5
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.24.0.0/24
+    - 192.168.11.5
 
 # Lovelace
 lovelace:
@@ -29,8 +33,6 @@ lovelace:
     - url: /hacsfiles/button-card/button-card.js
       type: module
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
-      type: module
-    - url: /browser_mod.js
       type: module
     - url: /hacsfiles/popup-backdrop-filter/popup-backdrop-filter.js
       type: module
@@ -65,10 +67,10 @@ fan:
     token: !secret fan_token
 
 # Nanoleaf
-#light:
-#  - platform: nanoleaf
-#    host: !secret nanoleaf_ip
-#    token: !secret nanoleaf_token
+light:
+  - platform: nanoleaf
+    host: !secret nanoleaf_ip
+    token: !secret nanoleaf_token
 
 # Cloud
 # cloud:
@@ -91,6 +93,7 @@ monitor_docker:
       - jottacloud
       - openvpn
       - syncthing
+      - ipsecvpn
     rename:
       deconz: deCONZ
       pihole: "Pi-Hole"
@@ -160,6 +163,9 @@ history:
       - light.lounge_light_small
       - switch.cloud
       - light.nanoleaf
+      - light.cameras
+      - light.cabinet_1
+      - light.cabinet_2
 
       - switch.docker_caddy
       - switch.docker_deconz
@@ -172,6 +178,7 @@ history:
       - switch.docker_synchthing
       - switch.docker_warrior
       - switch.docker_watchtower
+      - switch.docker_ipsecvpn
 
       - binary_sensor.post
       - input_boolean.post_visibility
@@ -198,6 +205,11 @@ history:
       - fan.fan
 
       - sensor.steam_76561197969853112
+
+      - binary_sensor.water_sensor_bathroom
+      - binary_sensor.water_sensor_kitchen
+
+      - binary_sensor.hallway
 
 # Recorder
 recorder:
@@ -311,17 +323,6 @@ mqtt:
 
 mqtt_statestream:
   base_topic: homeassistant
-
-# Browser Mod
-browser_mod:
-  prefix: "browser_"
-  devices:
-    f2f7f59f-59355108:
-      name: arnott
-    fc0145b0_c697cef7:
-      name: wilson
-  disable:
-    - all
 
 # Timers
 timer:

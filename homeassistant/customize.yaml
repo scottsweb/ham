@@ -98,6 +98,8 @@ switch.docker_esphome:
 switch.docker_openvpn:
   friendly_name: 'OpenVPN'
   icon: 'mdi:key'
+switch.docker_ipsecvpn:
+  icon: 'mdi:key'
 switch.presence_emulator:
   icon: 'mdi:account-multiple'
 switch.auto_fan:
