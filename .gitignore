@@ -43,6 +43,10 @@ homeassistant/google_calendars.yaml
 homeassistant/www/Plex_Recently_Added
 homeassistant/ip_bans.yaml
 
+# iplayer
+iplayer/config/*
+!iplayer/config/options
+
 # jottacloud
 jottacloud/data
 
@@ -56,6 +60,9 @@ mqtt/log/
 
 # mycroft
 mycroft/data/identity/
+
+# n8n
+n8n/config/*
 
 # node-red
 node-red/node_modules/
