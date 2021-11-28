@@ -1,0 +1,18 @@
+alias: Turn Off Cabinet Lights At Ten When Home
+initial_state: true
+trigger:
+  platform: time
+  at: "22:00:00"
+condition:
+  - condition: state
+    entity_id: group.people
+    state: 'home'
+action:
+  - service: light.turn_off
+    data:
+      entity_id: light.cabinet_1
+      transition: 5
+  - service: light.turn_off
+    data:
+      entity_id: light.cabinet_2
+      transition: 3

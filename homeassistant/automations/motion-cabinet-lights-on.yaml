@@ -1,0 +1,21 @@
+alias: Motion Turn On Cabinet Lights
+initial_state: true
+trigger:
+  platform: state
+  entity_id: binary_sensor.hallway
+  to: 'on'
+condition:
+  condition: and
+  conditions:
+    - condition: sun
+      after: sunset
+    - condition: state
+      entity_id: group.people
+      state: 'not_home'
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.cabinet_2
+      brightness: 255
+      kelvin: 5200
+      transition: 1

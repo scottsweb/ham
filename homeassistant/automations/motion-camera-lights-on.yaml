@@ -1,0 +1,21 @@
+alias: Motion Turn On Camera Lights
+initial_state: true
+trigger:
+  platform: state
+  entity_id: binary_sensor.hallway
+  to: 'on'
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after: '14:00:00'
+      before: '22:00:00'
+    - condition: sun
+      after: sunset
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.cameras
+      brightness: 255
+      kelvin: 495
+      transition: 1

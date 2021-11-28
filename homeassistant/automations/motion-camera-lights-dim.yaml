@@ -1,0 +1,18 @@
+alias: Motion Stop Dim Camera Lights
+initial_state: true
+trigger:
+  platform: state
+  entity_id: binary_sensor.hallway
+  to: 'off'
+  for:
+    minutes: 2
+condition:
+    condition: state
+    entity_id: light.cameras
+    state: 'on'
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.cameras
+      brightness: 30
+      transition: 3

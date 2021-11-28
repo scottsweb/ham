@@ -14,6 +14,12 @@ action:
   - service: alarm_control_panel.alarm_arm_away
     data:
       entity_id: alarm_control_panel.blink_hem
+  - service: light.turn_off
+    data:
+      entity_id: light.cabinet_1
+  - service: light.turn_off
+    data:
+      entity_id: light.cabinet_2
 #  - service: mqtt.publish
 #    data:
 #      topic: sycamore/unicorn

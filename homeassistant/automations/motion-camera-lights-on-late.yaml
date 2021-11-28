@@ -1,0 +1,22 @@
+alias: Motion Turn On Camera Lights Late
+initial_state: true
+trigger:
+  platform: state
+  entity_id: binary_sensor.hallway
+  to: 'on'
+condition:
+  condition: or
+  conditions:
+    - condition: time
+      after: '22:00:00'
+      before: '09:00:00'
+    - condition: sun
+      after: sunset
+      before: sunrise
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.cameras
+      brightness: 30
+      rgb_color: [255, 178, 218]
+      transition: 2

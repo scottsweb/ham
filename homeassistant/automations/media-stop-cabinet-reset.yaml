@@ -1,0 +1,29 @@
+alias: Reset Cabinet When Media Stops Playing
+initial_state: true
+trigger:
+  - platform: state
+    entity_id: media_player.tv
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: light.cabinet_1
+      state: 'on'
+    - condition: state
+      entity_id: light.cabinet_2
+      state: 'on'
+    - condition: template
+      value_template: "{{ not is_state('media_player.tv', 'playing') }}"
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.cabinet_1
+      brightness: 255
+      rgb_color: [255, 146, 228]
+      transition: 1
+  - service: light.turn_on
+    data:
+      entity_id: light.cabinet_2
+      brightness: 255
+      kelvin: 455
+      transition: 1
