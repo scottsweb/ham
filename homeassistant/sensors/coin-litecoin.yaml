@@ -1,6 +1,0 @@
-platform: rest
-name: Litecoin
-resource: https://api.coingecko.com/api/v3/simple/price?ids=litecoin&vs_currencies=GBP
-value_template: '{{ value_json.litecoin.gbp }}'
-unit_of_measurement: '£'
-scan_interval: 1200
