@@ -14,16 +14,6 @@ action:
   - service: alarm_control_panel.alarm_disarm
     data:
       entity_id: alarm_control_panel.blink_hem
-  - service: light.turn_on
-    data:
-      entity_id: light.cabinet_1
-      brightness: 255
-      rgb_color: [255, 146, 228]
-  - service: light.turn_on
-    data:
-      entity_id: light.cabinet_2
-      brightness: 255
-      kelvin: 455
 #  - service: mqtt.publish
 #    data:
 #      topic: sycamore/unicorn
