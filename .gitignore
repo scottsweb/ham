@@ -42,6 +42,8 @@ homeassistant/custom_components/**/.translations/
 homeassistant/google_calendars.yaml
 homeassistant/www/Plex_Recently_Added
 homeassistant/ip_bans.yaml
+homeassistant/home-assistant.log.1
+homeassistant/home-assistant.log.fault
 
 # iplayer
 iplayer/config/*
@@ -77,7 +79,6 @@ node-red/.flows_cred.json.backup
 
 # pihole sycamore
 pihole/*.domains
-pihole/adlists.list
 pihole/custom.list
 pihole/gravity.list
 pihole/piholeIP
@@ -102,6 +103,7 @@ pihole/settings.env
 
 # plex
 plex/config/
+plex-tv/config/
 
 # samba
 samba/
@@ -126,3 +128,6 @@ wiki/data/mywiki/*
 # warrior
 warrior/data
 warrior/settings.env
+
+# zerotier
+zerotier/data
