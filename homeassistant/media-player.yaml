@@ -1,7 +1,3 @@
-- platform: androidtv
-  name: 'TV Al'
-  host: !secret tv_ip
-
 - platform: universal
   name: 'TV'
   children:
