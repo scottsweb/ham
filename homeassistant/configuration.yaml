@@ -66,12 +66,6 @@ fan:
     host: !secret fan_ip
     token: !secret fan_token
 
-# Nanoleaf
-light:
-  - platform: nanoleaf
-    host: !secret nanoleaf_ip
-    token: !secret nanoleaf_token
-
 # Cloud
 # cloud:
 
