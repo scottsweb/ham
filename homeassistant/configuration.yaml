@@ -317,11 +317,6 @@ timer:
 # Sensors
 sensor: !include_dir_list sensors
 
-binary_sensor:
-  - platform: iss
-    show_on_map: false
-    scan_interval: 300
-
 # Utility Meters
 # utility_meter: !include utilities.yaml
 
