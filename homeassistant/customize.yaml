@@ -140,9 +140,25 @@ sensor.blink_kitchen_notifications:
   icon: mdi:comment-alert
 sensor.blink_kitchen_temperature:
   friendly_name: 'Kitchen Temperature'
+camera.blink_street:
+  friendly_name: 'Street'
+binary_sensor.blink_street_motion_detected:
+  friendly_name: 'Street Motion'
+binary_sensor.blink_street_battery:
+  friendly_name: 'Street Battery'
+  icon: mdi:battery-charging
+binary_sensor.blink_street_camera_armed:
+  friendly_name: 'Street Armed?'
+sensor.blink_street_notifications:
+  friendly_name: 'Street Notifcations'
+  icon: mdi:comment-alert
+sensor.blink_street_temperature:
+  friendly_name: 'Street Temperature'
 script.blink_front_door_capture_script:
   icon: mdi:camera
 script.blink_kitchen_capture_script:
+  icon: mdi:camera
+script.blink_street_capture_script:
   icon: mdi:camera
 script.freeview:
   icon: mdi:video-input-antenna

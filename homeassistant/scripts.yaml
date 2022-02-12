@@ -12,6 +12,13 @@ blink_kitchen_capture_script:
       data:
         entity_id: camera.blink_kitchen
 
+blink_street_capture_script:
+  alias: 'Update Street at Hem'
+  sequence:
+    - service: blink.trigger_camera
+      data:
+        entity_id: camera.blink_street
+
 dash_andrex:
   alias: 'Amazon Dash - Andrex'
   sequence:

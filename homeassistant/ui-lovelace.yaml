@@ -790,6 +790,18 @@ views:
               - sensor.blink_kitchen_temperature
               - binary_sensor.blink_kitchen_battery
               - binary_sensor.blink_kitchen_camera_armed
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            entity: camera.blink_street
+          - type: entities
+            title: Street
+            show_header_toggle: false
+            entities:
+              - script.blink_street_capture_script
+              - sensor.blink_street_temperature
+              - binary_sensor.blink_street_battery
+              - binary_sensor.blink_street_camera_armed
 
   - title: Outdoors
     path: outdoors
