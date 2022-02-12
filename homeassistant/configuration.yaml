@@ -148,7 +148,7 @@ history:
       - binary_sensor.blink_kitchen_camera_armed
       - binary_sensor.blink_kitchen_battery
 
-      - weather.dark_sky
+      - weather.home
       - sun.sun
       - sensor.moon
       - sensor.u_s_air_pollution_level

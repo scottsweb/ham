@@ -367,8 +367,6 @@ views:
         entities:
           - sensor.bitcoin
           - sensor.ethereum
-          - sensor.ripple
-          - sensor.litecoin
 
   - title: Entertainment
     path: entertainment
@@ -801,15 +799,15 @@ views:
       - type: vertical-stack
         cards:
         - type: weather-forecast
-          entity: weather.dark_sky
+          entity: weather.home
         - type: entities
-          title: Weather
+          title: Details
           show_header_toggle: false
           entities:
-            - sensor.dark_sky_precip_intensity
+#            - sensor.dark_sky_precip_intensity
             - sun.sun
             - sensor.moon
-            - sensor.dark_sky_uv_index
+#            - sensor.dark_sky_uv_index
             - sensor.u_s_air_pollution_level
             - sensor.u_s_air_quality_index
             - sensor.u_s_main_pollutant
