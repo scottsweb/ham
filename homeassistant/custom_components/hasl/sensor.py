@@ -23,7 +23,7 @@ from homeassistant.util.dt import now
 from hasl import (haslapi, fpapi, tl2api, ri4api, si2api,
                   HASL_Error, HASL_API_Error, HASL_HTTP_Error)
 
-__version__ = '2.2.7'
+__version__ = '2.2.6'
 _LOGGER = logging.getLogger(__name__)
 DOMAIN = 'hasl'
 
@@ -211,7 +211,7 @@ class SLTrainLocationSensor(Entity):
         return None
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """ Return the sensor attributes."""
         return {'type': self._train_type, 'data': json.dumps(self._data)}
 
@@ -266,7 +266,7 @@ class SLVersionSensor(Entity):
         return None
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """ Return the sensor attributes."""
         return {'hasl': self._version, 'pyHasl': self._py_version}
 
@@ -310,7 +310,7 @@ class SLStatusSensor(Entity):
         return 'mdi:train-car'
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """ Return the sensor attributes."""
         return self._sensordata
 
@@ -553,7 +553,7 @@ class SLDeparturesSensor(Entity):
         return '-'
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """ Return the sensor attributes ."""
 
         # Initialize the state attributes.
