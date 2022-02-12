@@ -31,7 +31,13 @@ LOG = logging.getLogger(__name__)
 
 SCAN_INTERVAL = timedelta(minutes=15)
 
+# FIXME: use service: homeassistant.update_entity to trigger updates for different types of data
+# rather than rely on SCAN_INTERVAL defaults for ALL sensors.
+
 USD_DIVISOR = 100000000
+CURRENCY_USD = 'USD'
+
+#CONF_PREFIX = 'helium_prefix'
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
@@ -39,6 +45,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         # FIXME: ensure WALLET or HOTSPOT is specified
         vol.Optional(CONF_WALLET): [cv.string],
         vol.Required(CONF_HOTSPOT): [cv.string],
+#        vol.Optional(CONF_PREFIX, default=True): [cv.boolean],
         vol.Optional(CONF_TIMEOUT, default=DEFAULT_TIMEOUT): cv.positive_int
     }
 )
@@ -60,13 +67,14 @@ async def async_setup_platform(hass, config, async_add_entities_cb, discovery_in
 
     if wallets:
         for wallet_address in wallets:
-            sensors.append( HeliumWalletSensor(hass, config, wallet_address, client, async_add_entities_cb) )
+            sensors.append( HeliumWalletSensor(hass, config, wallet_address, client, price_sensor, async_add_entities_cb) )
 
             if create_hotspot_sensors_for_wallet:
                 response = await client.async_get_wallet_hotspots(wallet_address)
-                data = response['data']
+                if not response:
+                    continue
 
-                for hotspot_info in data:
+                for hotspot_info in response['data']:
                     hotspot_address = hotspot_info['address']
                     sensors.append( HeliumHotspotSensor(hass, config, hotspot_address, client, async_add_entities_cb) )
 
@@ -108,7 +116,7 @@ class HeliumPriceSensor(Entity):
     @property
     def unit_of_measurement(self):
         """HNT Oracle price is always in USD"""
-        return 'USD'
+        return CURRENCY_USD
 
     @property
     def should_poll(self):
@@ -127,7 +135,7 @@ class HeliumPriceSensor(Entity):
             self._attrs[ATTR_BLOCK] = int(data['block'])
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the any attributes."""
         return self._attrs
 
@@ -135,16 +143,19 @@ class HeliumPriceSensor(Entity):
 class HeliumWalletSensor(Entity):
     """Helium wallet core sensor (adds related sensors)"""
 
-    def __init__(self, hass, config, wallet_address, helium_client, async_add_entities_callback):
+    def __init__(self, hass, config, wallet_address, helium_client, price_sensor, async_add_entities_callback):
         """Initialize the Helium wallet sensor."""
         self.hass = hass
+        self._price_sensor = price_sensor
 
         self._address = wallet_address
         self._unique_id = f"helium_wallet_{wallet_address}"
 
         self._attrs = {
             ATTR_ATTRIBUTION: ATTRIBUTION,
-            ATTR_ADDRESS: wallet_address
+            ATTR_ADDRESS: wallet_address,
+            'tracker': 'https://heliumtracker.io/invite/5119',
+            'hotspotty': 'https://app.hotspotty.net/workspace/wallets?ref=helium'
         }
 
         self._client = helium_client
@@ -152,7 +163,7 @@ class HeliumWalletSensor(Entity):
 
         self._json = None
         self._name = f"Helium Wallet {wallet_address}"
-        self._state = None        
+        self._state = None
 
         # FIXME: create all the dependent sensors
 
@@ -188,8 +199,10 @@ class HeliumWalletSensor(Entity):
 
         # peel back the onion one layer to make access simpler for dependent sensors
         response = await self._client.async_get_wallet_data(self._address)
-        json = response['data']
+        if not response:
+            return
 
+        json = response['data']
         if not json:
             return
         self._json = json
@@ -201,11 +214,14 @@ class HeliumWalletSensor(Entity):
         for attr in copy_attributes:
             self._attrs[attr] = json[attr]
 
-        # FIXME: trigger an update of this sensor (and all related sensors)
-
+        # update USD price attribute for the current HNT value based on current Oracle HNT/USD price
+        if self._state and self._price_sensor.state:
+            self._attrs[CURRENCY_USD] = round(self._price_sensor.state * self._state, 2)
+        elif CURRENCY_USD in self._attrs:
+            self._attrs.pop(CURRENCY_USD)
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the any state attributes."""
         return self._attrs
 
@@ -228,7 +244,9 @@ class HeliumHotspotSensor(Entity):
 
         self._attrs = {
             ATTR_ATTRIBUTION: ATTRIBUTION,
-            ATTR_ADDRESS: hotspot_address
+            ATTR_ADDRESS: hotspot_address,
+            'tracker': 'https://heliumtracker.io/invite/5119',
+            'hotspotty': f"https://app.hotspotty.net/hotspots/{hotspot_address}/status?ref=helium"
         }
 
         self._client = helium_client
@@ -270,8 +288,10 @@ class HeliumHotspotSensor(Entity):
 
         # peel back the onion one layer to make access simpler for dependent sensors
         response = await self._client.async_get_hotspot_data(self._address)
-        json = response['data']
+        if not response:
+            return
 
+        json = response['data']
         if not json:
             return
         self._json = json
@@ -287,7 +307,7 @@ class HeliumHotspotSensor(Entity):
         # FIXME: trigger dependancies to update
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the any state attributes."""
         return self._attrs
 
@@ -333,10 +353,9 @@ class DependentSensor(RestoreEntity):
         return True  # FIXME: get scheduled updates working below
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the any state attributes."""
         return self._attrs
-
 
 class UpdatableSensor(RestoreEntity):
     """Representation of a sensor whose state is kept up-to-date by an external data source."""
@@ -378,7 +397,7 @@ class UpdatableSensor(RestoreEntity):
         return self._state
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the any state attributes."""
         return self._attrs
 

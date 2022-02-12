@@ -1,7 +1,7 @@
 {
     "domain": "helium",
     "name": "Helium Blockchain",
-    "version": "0.0.1",
+    "version": "0.3.7",
     "documentation": "https://github.com/rsnodgrass/hass-helium/",
     "issue_tracker": "https://github.com/rsnodgrass/hass-helium/issues",
     "requirements": [
@@ -11,5 +11,6 @@
 	"httpx>=0.16.1"
     ],
     "dependencies": [],
-    "codeowners": ["@rsnodgrass"]
+    "codeowners": ["@rsnodgrass"],
+    "iot_class": "cloud_polling"
 }
