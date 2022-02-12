@@ -36,8 +36,8 @@ from homeassistant.const import (
     STATE_UNKNOWN,
     STATE_UNAVAILABLE,
 )
+from homeassistant.components.media_player import MediaPlayerDeviceClass
 from homeassistant.components.media_player import (
-    DEVICE_CLASS_SPEAKER,
     BrowseMedia,
     MediaPlayerEntity,
 )
@@ -104,6 +104,7 @@ LASTFM_API_BASE = 'http://ws.audioscrobbler.com/2.0/?method='
 MAX_VOL = 100
 FW_MROOM_RTR_MIN = '4.2.8020'
 FW_RAKOIT_UART_MIN = '4.2.9326'
+FW_SLOW_STREAMS = '4.6'
 UPNP_TIMEOUT = 2
 TCPPORT = 8899
 ICE_THROTTLE = timedelta(seconds=60)
@@ -502,12 +503,11 @@ class LinkPlayDevice(MediaPlayerEntity):
         return self._is_master
 
     @property
-    def device_class(self):
-        """Return the device class of this entity, if any."""
-        return DEVICE_CLASS_SPEAKER
+    def device_class(self) -> MediaPlayerDeviceClass:
+        return MediaPlayerDeviceClass.SPEAKER
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """List members in group and set master and slave state."""
         attributes = {}
         if self._multiroom_group != []:
@@ -775,9 +775,22 @@ class LinkPlayDevice(MediaPlayerEntity):
     def media_stop(self):
         """Send stop command."""
         if not self._slave_mode:
+ 
             if self._playing_spotify or self._playing_liveinput:
+                if self._fwvercheck(self._fw_ver) >= self._fwvercheck(FW_SLOW_STREAMS):
+                    self._lpapi.call('GET', 'setPlayerCmd:pause')
+
                 self._lpapi.call('GET', 'setPlayerCmd:switchmode:wifi')
                 self._wait_for_mcu = 1.2
+
+            if self._playing_stream:  #recent firmwares don't stop the previous stream quickly enough
+                if self._fwvercheck(self._fw_ver) >= self._fwvercheck(FW_SLOW_STREAMS):
+                    self._lpapi.call('GET', 'setPlayerCmd:pause')
+                    self._lpapi.call('GET', 'setPlayerCmd:switchmode:wifi')
+
+
+
+
 
             self._lpapi.call('GET', 'setPlayerCmd:stop')
             value = self._lpapi.data
@@ -867,6 +880,13 @@ class LinkPlayDevice(MediaPlayerEntity):
 
             if media_type == MEDIA_TYPE_URL:
                 media_id_final = self._detect_stream_url_redirection(media_id)
+
+                if self._fwvercheck(self._fw_ver) >= self._fwvercheck(FW_SLOW_STREAMS):
+                    self._lpapi.call('GET', 'setPlayerCmd:pause')  #recent firmwares don't stop the previous stream while loading the new one, can take several seconds
+                
+                if self._playing_spotify:  # disconnect from Spotify before playing new http source
+                    self._lpapi.call('GET', 'setPlayerCmd:switchmode:wifi')
+
                 self._lpapi.call('GET', 'setPlayerCmd:play:{0}'.format(media_id_final))
                 value = self._lpapi.data
                 if value != "OK":
@@ -916,6 +936,11 @@ class LinkPlayDevice(MediaPlayerEntity):
             if temp_source == None:
                 return
 
+            if self._playing_spotify:  # disconnect from Spotify before selecting new source
+                if self._fwvercheck(self._fw_ver) >= self._fwvercheck(FW_SLOW_STREAMS):
+                    self._lpapi.call('GET', 'setPlayerCmd:pause')
+                self._lpapi.call('GET', 'setPlayerCmd:switchmode:wifi')
+
             if temp_source == "udisk":
                 self._tracklist_via_upnp("USB")
 
@@ -928,6 +953,10 @@ class LinkPlayDevice(MediaPlayerEntity):
             self._unav_throttle = False
             if temp_source.find('http') == 0:
                 temp_source_final = self._detect_stream_url_redirection(temp_source)
+
+                if self._fwvercheck(self._fw_ver) >= self._fwvercheck(FW_SLOW_STREAMS):
+                    self._lpapi.call('GET', 'setPlayerCmd:pause')  #recent firmwares don't stop the previous stream while loading the new one, can take several seconds
+
                 self._lpapi.call('GET', 'setPlayerCmd:play:{0}'.format(temp_source_final))
                 value = self._lpapi.data
                 if value == "OK":
@@ -1267,11 +1296,15 @@ class LinkPlayDevice(MediaPlayerEntity):
             self._unav_throttle = False
             self._first_update = True
             self.schedule_update_ha_state(True)
-            value = "OK"
+            value = "Scheduled"
+        elif command == 'Update':
+            self.schedule_update_ha_state(True)
+            value = "Scheduled"
         else:
             value = "No such command implemented."
+            _LOGGER.warning("Player %s command: %s, result: %s", self.entity_id, command, value)
 
-        _LOGGER.warning("Player %s executed command: %s, result: %s", self.entity_id, command, value)
+        _LOGGER.debug("Player %s executed command: %s, result: %s", self.entity_id, command, value)
 
         if notif:
             self.hass.components.persistent_notification.async_create("<b>Executed command:</b><br>{0}<br><b>Result:</b><br>{1}".format(command, value), title=self.entity_id)
