@@ -1,5 +1,6 @@
 platform: alpha_vantage
 api_key: !secret alpha_vantage_api_key
+scan_interval: 1500
 foreign_exchange:
   - name: GBP_SEK
     from: GBP
