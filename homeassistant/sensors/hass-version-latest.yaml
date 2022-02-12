@@ -1,3 +1,0 @@
-platform: version
-name: hass_version_latest
-source: docker
