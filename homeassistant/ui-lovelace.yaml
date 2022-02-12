@@ -571,18 +571,25 @@ views:
           compact_view: true
           stats:
             default:
-              - attribute: filter_left
-                unit: hours
+              - entity_id: sensor.monk_filter
+                unit: '%'
                 subtitle: Filter
-              - attribute: side_brush_left
-                unit: hours
+              - entity_id: sensor.monk_side_brush
+                unit: '%'
                 subtitle: Side brush
-              - attribute: main_brush_left
-                unit: hours
+              - entity_id: sensor.monk_brush
+                unit: '%'
                 subtitle: Main brush
-              - attribute: sensor_dirty_left
-                unit: hours
+              - entity_id: sensor.monk_sensors
+                unit: '%'
                 subtitle: Sensors
+            cleaning:
+              - attribute: cleaned_area
+                unit: m2
+                subtitle: Cleaning area
+              - attribute: cleaning_time
+                unit: minutes
+                subtitle: Cleaning time
         - type: entities
           title: " ‍  Select rooms to clean"
           entities:
@@ -592,7 +599,7 @@ views:
             - entity: input_boolean.monk_clean_dining
             - entity: input_boolean.monk_clean_bathroom
             - entity: input_boolean.monk_clean_office
-  #          - entity: input_select.monk_fan_speed
+ #          - entity: input_select.monk_fan_speed
           style: |
             ha-card {
               margin-top: -63px;

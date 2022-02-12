@@ -1,12 +1,12 @@
 alias: Monk Finished Cleaning
 trigger:
   - platform: state
-    entity_id: sensor.monk_clean_count
+    entity_id: sensor.xiaomi_vacuum_cleaner_total_clean_count
 action:
   - service: notify.all
     data:
       title: "{{'\U0001F9F9'}} Monk finished cleaning"
-      message: "Monk cleaned {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaned_area }}m² in {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_time }} minutes. Battery level: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.battery_level }}%."
+      message: "Monk cleaned {{ sensor.xiaomi_vacuum_cleaner_last_clean_area }}m² in {{ sensor.xiaomi_vacuum_cleaner_last_clean_duration / 60 | round }} minutes."
       data:
         timeout: 120
         clickAction: "/lovelace/dammsugare"

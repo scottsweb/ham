@@ -21,74 +21,29 @@ sensors:
       {{ day }} {{ months[month - 1] }}
 
   # vacuum
-  monk_battery_level:
-    friendly_name: Battery
-    unit_of_measurement: '%'
-    value_template: "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'battery_level') }}"
-    icon_template: "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'battery_icon') }}"
-
-  monk_state:
-    friendly_name: Monk
-    value_template: >-
-      {% if is_state('vacuum.xiaomi_vacuum_cleaner', 'docked') %}
-      Docked
-      {% elif is_state('vacuum.xiaomi_vacuum_cleaner', 'cleaning') %}
-      Cleaning
-      {% elif is_state('vacuum.xiaomi_vacuum_cleaner', 'returning') %}
-      Returning
-      {% elif is_state('vacuum.xiaomi_vacuum_cleaner', 'paused') %}
-      Paused
-      {% else %}
-      {{ states('vacuum.xiaomi_vacuum_cleaner') }}
-      {% endif %}
-    icon_template: 'mdi:robot-vacuum'
-
-  monk_fan_speed:
-    value_template: "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'fan_speed') }}"
-
   monk_filter:
     friendly_name: Filter
     unit_of_measurement: '%'
-    value_template: "{{ (state_attr('vacuum.xiaomi_vacuum_cleaner', 'filter_left') / 1.5) | round }}"
+    value_template: "{{ (states('sensor.xiaomi_vacuum_cleaner_filter_left') | int(default=0) / 5400) | int(default=0) }}"
     icon_template: 'mdi:air-filter'
 
   monk_brush:
     friendly_name: Brush
     unit_of_measurement: '%'
-    value_template: "{{ (state_attr('vacuum.xiaomi_vacuum_cleaner', 'main_brush_left') / 3) | round }}"
+    value_template: "{{ (states('sensor.xiaomi_vacuum_cleaner_main_brush_left') | int(default=0) / 10800) | int(default=0) }}"
     icon_template: 'mdi:broom'
 
   monk_sensors:
     friendly_name: Sensors
     unit_of_measurement: '%'
-    value_template: "{{ (state_attr('vacuum.xiaomi_vacuum_cleaner', 'sensor_dirty_left') / 0.3) | round }}"
+    value_template: "{{ (states('sensor.xiaomi_vacuum_cleaner_sensor_dirty_left') | int(default=0) / 1080) | int(default=0) }}"
     icon_template: 'mdi:leak'
 
   monk_side_brush:
     friendly_name: Side Brush
     unit_of_measurement: '%'
-    value_template: "{{ (state_attr('vacuum.xiaomi_vacuum_cleaner', 'side_brush_left') / 2) | round }}"
+    value_template: "{{ (states('sensor.xiaomi_vacuum_cleaner_side_brush_left') | int(default=0) / 7200) | int(default=0) }}"
     icon_template: 'mdi:brush'
-
-  monk_last_clean:
-    friendly_name: Last Clean
-    icon_template: 'mdi:clock'
-    value_template: >
-      {% set last_cleaned = (as_timestamp(states.sensor.time.last_changed | as_local) -
-      as_timestamp(state_attr('vacuum.xiaomi_vacuum_cleaner', 'clean_stop'))) | default(0) %}
-      {% if last_cleaned | timestamp_custom('%d') | int -1 == 1 %} {{ last_cleaned | timestamp_custom('%d') | int -1 }} day ago
-      {% elif last_cleaned | timestamp_custom('%d') | int -1 >= 2 %} {{ last_cleaned | timestamp_custom('%d') | int -1 }} days ago
-      {% elif last_cleaned | timestamp_custom('%H') | int -1 == 1 %} {{ last_cleaned | timestamp_custom('%H') | int -1 }} hour ago
-      {% elif last_cleaned | timestamp_custom('%H') | int -1 >= 2 %} {{ last_cleaned | timestamp_custom('%H') | int -1 }} hours ago
-      {% elif last_cleaned | timestamp_custom('%M') | int == 1 %} {{ last_cleaned | timestamp_custom('%M') | int }} minute ago
-      {% elif last_cleaned | timestamp_custom('%M') | int >= 2 %} {{ last_cleaned | timestamp_custom('%M') | int }} minutes ago
-      {% else %} Less than 1 minute ago
-      {% endif %}    
-
-  monk_clean_count:
-    friendly_name: Cleaning Count
-    icon_template: 'mdi:robot-vacuum'
-    value_template: "{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_count }}"
 
   # hass
   hass_version_template:
