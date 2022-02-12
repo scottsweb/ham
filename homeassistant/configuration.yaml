@@ -184,10 +184,6 @@ history:
       - input_boolean.post_visibility
 
       - sensor.u_s_air_quality_index
-      - sensor.dark_sky_uv_index
-      - sensor.dark_sky_precip_intensity
-      - sensor.dark_sky_apparent_temperature
-      - sensor.dark_sky_temperature
 
       - sensor.battery_level_post
       - sensor.lounge_switch_battery_level
@@ -254,12 +250,6 @@ frontend:
 
 # Shopping list
 shopping_list:
-
-# Weather
-weather:
-  - platform: darksky
-    api_key: !secret darksky_key
-    mode: daily
 
 #  Image Processing
 #image_processing:
@@ -357,7 +347,7 @@ script: !include scripts.yaml
 rest_command: !include rest-commands.yaml
 
 # Controls
-input_select: !include input-selects.yaml
+#input_select: !include input-selects.yaml
 input_number: !include input-numbers.yaml
 #input_text : !include input-text.yaml
 input_boolean: !include input-booleans.yaml
