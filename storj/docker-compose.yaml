@@ -3,7 +3,8 @@ services:
     storagenode:
         image: storjlabs/storagenode:latest
         ports:
-            - "28967:28967"
+            - "28967:28967/tcp"
+            - "28967:28967/udp"
             - "14002:14002"
         volumes:
             - type: 'bind'
