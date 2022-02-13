@@ -6,11 +6,11 @@
   platform: group
   services:
     - service: mobile_app_fp3
-    - service: mobile_app_pixel_3a
+    - service: mobile_app_sm_g991b
 
 - name: all
   platform: group
   services:
     - service: tv_kodi
     - service: mobile_app_fp3
-    - service: mobile_app_pixel_3a
+    - service: mobile_app_sm_g991b

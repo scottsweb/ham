@@ -347,26 +347,30 @@ views:
               entity: light.cabinet_2
               icon: mdi:wall-sconce-flat-variant
               <<: *light-style
-      - type: sensor
-        entity: sensor.indoor_temperature
-        graph: line
-      - type: entities
-        title: Fan
-        entities:
-          - fan.fan
-          - switch.auto_fan
-      - type: entities
-        title: Exchange Rates
-        show_header_toggle: false
-        entities:
-          - sensor.gbp_sek
-          - sensor.sek_gbp
-      - type: entities
-        title: Coins
-        show_header_toggle: false
-        entities:
-          - sensor.bitcoin
-          - sensor.ethereum
+      - type: vertical-stack
+        cards:
+          - type: sensor
+            entity: sensor.indoor_temperature
+            graph: line
+          - type: entities
+            title: Fan
+            entities:
+              - fan.fan
+              - switch.auto_fan
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Exchange Rates
+            show_header_toggle: false
+            entities:
+              - sensor.gbp_sek
+              - sensor.sek_gbp
+          - type: entities
+            title: Coins
+            show_header_toggle: false
+            entities:
+              - sensor.bitcoin
+              - sensor.ethereum
 
   - title: Entertainment
     path: entertainment
@@ -566,6 +570,7 @@ views:
         cards:
         - type: 'custom:vacuum-card'
           entity: vacuum.xiaomi_vacuum_cleaner
+          show_toolbar: false
           compact_view: true
           stats:
             default:
@@ -582,11 +587,11 @@ views:
                 unit: '%'
                 subtitle: Sensors
             cleaning:
-              - attribute: cleaned_area
+              - entity_id: sensor.xiaomi_vacuum_cleaner_current_clean_area
                 unit: m2
                 subtitle: Cleaning area
-              - attribute: cleaning_time
-                unit: minutes
+              - entity_id: sensor.xiaomi_vacuum_cleaner_current_clean_duration
+                unit: seconds
                 subtitle: Cleaning time
         - type: entities
           title: " ‍  Select rooms to clean"
@@ -600,7 +605,7 @@ views:
  #          - entity: input_select.monk_fan_speed
           style: |
             ha-card {
-              margin-top: -63px;
+              margin-top: -12px;
             }
             .card-header {
               font-size: 1em;

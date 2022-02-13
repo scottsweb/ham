@@ -6,14 +6,10 @@ action:
   - service: notify.all
     data:
       title: "{{'\U0001F9F9'}} Monk finished cleaning"
-      message: "Monk cleaned {{ sensor.xiaomi_vacuum_cleaner_last_clean_area }}m² in {{ sensor.xiaomi_vacuum_cleaner_last_clean_duration / 60 | round }} minutes."
+      message: "Monk cleaned {{ (states('sensor.xiaomi_vacuum_cleaner_last_clean_area') | round(2)) }}m² in {{ (states('sensor.xiaomi_vacuum_cleaner_last_clean_duration') | float | timestamp_custom('%M:%S')) }}."
       data:
         timeout: 120
         clickAction: "/lovelace/dammsugare"
   - service: homeassistant.turn_off
     data:
       entity_id: group.monk_zones
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.monk_fan_speed
-      option: 'Standard'
