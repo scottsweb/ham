@@ -1,8 +1,0 @@
-alias: Blink Trigger Front
-initial_state: true
-trigger:
-  platform: state
-  entity_id: binary_sensor.blink_front_motion_detected
-  to: 'on'
-action:
-  - service: script.blink_front_capture_script
