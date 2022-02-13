@@ -32,8 +32,6 @@ lovelace:
       type: module
     - url: /hacsfiles/button-card/button-card.js
       type: module
-    - url: /hacsfiles/lovelace-card-mod/card-mod.js
-      type: module
     - url: /hacsfiles/popup-backdrop-filter/popup-backdrop-filter.js
       type: module
     - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
@@ -237,7 +235,8 @@ logger:
 # Enables the frontend
 frontend:
   themes: !include themes.yaml
-
+  extra_module_url:
+    - /hacsfiles/lovelace-card-mod/card-mod.js
 
 # Map
 # map:
