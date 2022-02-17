@@ -818,7 +818,7 @@ views:
         - type: weather-forecast
           entity: weather.home
         - type: entities
-          title: Details
+          title: Environment
           show_header_toggle: false
           entities:
 #            - sensor.dark_sky_precip_intensity
@@ -907,9 +907,4 @@ views:
         show_header_toggle: false
         entities:
           - switch.presence_emulator
-      - type: entities
-        title: Blink
-        show_header_toggle: false
-        entities:
-          - binary_sensor.blink_front_door_camera_armed
-          - binary_sensor.blink_kitchen_camera_armed
+          - switch.do_not_disturb

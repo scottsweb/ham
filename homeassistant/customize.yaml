@@ -102,6 +102,8 @@ switch.docker_ipsecvpn:
   icon: 'mdi:key'
 switch.presence_emulator:
   icon: 'mdi:account-multiple'
+switch.do_not_disturb:
+  icon: 'mdi:bell-sleep'
 switch.auto_fan:
   icon: 'mdi:hvac'
 switch.cloud:

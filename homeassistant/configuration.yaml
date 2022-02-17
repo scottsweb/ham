@@ -140,6 +140,10 @@ history:
       - binary_sensor.blink_kitchen_camera_armed
       - binary_sensor.blink_kitchen_battery
 
+      - binary_sensor.blink_street_motion_detected
+      - binary_sensor.blink_street_camera_armed
+      - binary_sensor.blink_street_battery
+
       - weather.home
       - sun.sun
       - sensor.moon
@@ -198,6 +202,9 @@ history:
       - binary_sensor.water_sensor_kitchen
 
       - binary_sensor.hallway
+
+      - switch.do_not_disturb
+      - switch.presence_emulator
 
 # Recorder
 recorder:
@@ -306,6 +313,11 @@ mqtt:
 
 mqtt_statestream:
   base_topic: homeassistant
+
+# Lametric
+lametric:
+  client_id: !secret lametric_id
+  client_secret: !secret lametric_secret
 
 # Timers
 timer:

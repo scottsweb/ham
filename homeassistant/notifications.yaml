@@ -14,3 +14,11 @@
     - service: tv_kodi
     - service: mobile_app_fp3
     - service: mobile_app_sm_g991b
+
+- name: lametric
+  platform: lametric
+  lifetime: 20
+  icon: a7956
+  cycles: 5
+  priority: info
+  icon_type: none
