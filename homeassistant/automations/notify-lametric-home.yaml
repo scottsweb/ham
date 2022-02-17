@@ -1,0 +1,14 @@
+alias: Notify Lametric Home
+initial_state: true
+trigger:
+  platform: state
+  entity_id: group.people
+  to: 'home'
+action:
+  - service: notify.lametric
+    data:
+      message: "Welcome home!"
+      data:
+        sound: positive6
+        icon: "i6731"
+        cycles: 3

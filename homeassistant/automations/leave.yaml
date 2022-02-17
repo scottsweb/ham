@@ -16,10 +16,12 @@ action:
       entity_id: alarm_control_panel.blink_hem
   - service: light.turn_off
     data:
-      entity_id: light.cabinet_1
-  - service: light.turn_off
-    data:
-      entity_id: light.cabinet_2
+      entity_id:
+        - light.cabinet_1
+        - light.cabinet_2
+        - light.nanoleaf
+        - light.lounge_light_tall
+        - light.lounge_light_small
 #  - service: mqtt.publish
 #    data:
 #      topic: sycamore/unicorn

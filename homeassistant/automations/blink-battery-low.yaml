@@ -2,16 +2,13 @@ alias: Blink Battery Low
 initial_state: true
 trigger:
   - platform: state
-    entity_id: sensor.blink_front_battery
+    entity_id: sensor.blink_front_door_battery
     to: 'on'
   - platform: state
-    entity_id: sensor.blink_indoor_front_battery
+    entity_id: sensor.blink_kitchen_battery
     to: 'on'
   - platform: state
-    entity_id: sensor.blink_back_battery
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.blink_indoor_back_battery
+    entity_id: sensor.blink_street_battery
     to: 'on'
 action:
   - service: notify.all

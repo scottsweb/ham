@@ -16,3 +16,10 @@ action:
         ttl: 0
         timeout: 600
         clickAction: "/lovelace/cctv"
+  - service: notify.lametric
+    data:
+      message: "Kitchen leak!"
+      data:
+        sound: water2
+        icon: "a12989"
+        cycles: 3

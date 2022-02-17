@@ -1,0 +1,13 @@
+alias: Turn Off DND in the Morning
+initial_state: true
+trigger:
+  platform: time
+  at: "09:30:00"
+condition:
+  - condition: state
+    entity_id: group.people
+    state: 'home'
+action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.do_not_disturb

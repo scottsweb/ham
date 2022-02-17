@@ -1,0 +1,21 @@
+alias: Notify Lametric Pollution
+initial_state: true
+trigger:
+  platform: state
+  entity_id: sensor.u_s_air_pollution_level
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: switch.do_not_disturb
+      state: 'off'
+    - condition: state
+      entity_id: group.people
+      state: 'home'
+action:
+  - service: notify.lametric
+    data:
+      message: "Pollution level now {{ states.sensor.u_s_air_pollution_level.state }} and the main pollutant is {{ states.sensor.chinese_main_pollutant.state }}"
+      data:
+        icon: "a12019"
+        cycles: 3

@@ -11,3 +11,10 @@ action:
       message: "{{states.sensor.krisinformation.attributes.messages[0].Headline}}"
       data:
         clickAction: "https://www.krisinformation.se/en"
+  - service: notify.lametric
+    data:
+      message: "Krisinformation: {{states.sensor.krisinformation.attributes.messages[0].Headline}}"
+      data:
+        sound: thunder
+        icon: "a17908"
+        cycles: 3
