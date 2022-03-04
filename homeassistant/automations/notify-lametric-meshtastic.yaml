@@ -1,0 +1,25 @@
+alias: Notify Lametric with Meshtastic Message
+initial_state: true
+trigger:
+  platform: mqtt
+  topic: "meshtastic/#"
+  value_template: "{{ value_json.message }}"
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: switch.do_not_disturb
+      state: 'off'
+    - condition: state
+      entity_id: group.people
+      state: 'home'
+    - condition: template
+      value_template: '{{ trigger.payload_json.from != 2885183080 }}'
+action:
+  - service: notify.lametric
+    data:
+      message: "Meshtastic: {{ trigger.payload_json.message | replace('!!!', '') }}"
+      data:
+        sound: notification2
+        icon: "a16313"
+        cycles: 5

@@ -1,0 +1,23 @@
+alias: Notify Lametric Hemglass Here
+initial_state: true
+trigger:
+  platform: time_pattern
+  minutes: "/5"
+condition:
+  condition: template
+  value_template: '{% set next = as_timestamp(states("sensor.hemglass")) %} {% set now = as_timestamp( now() ) %} {% if now >= ( next - 900 ) %}true{% endif %}'
+action:
+  - service: notify.lametric
+    data:
+      message: "Hemglass ETA: {{ as_timestamp(states('sensor.hemglass')) | timestamp_custom('%A at %H:%M') }}"
+      data:
+        sound: car
+        icon: "i20524"
+        cycles: 3
+  # perhaps turn off automation
+  - service: automation.turn_off
+    entity_id:  automation.notify_lametric_hemglass_here
+  - delay: '24:00:00'
+  # perhaps turn on automation
+  - service: automation.turn_on
+    entity_id:  automation.notify_lametric_hemglass_here

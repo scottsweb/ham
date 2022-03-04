@@ -1,0 +1,24 @@
+alias: Notify Lametric Helium
+initial_state: true
+trigger:
+  platform: state
+  entity_id: sensor.helium_wallet_14rgwsi6secqjfs9hxcr5mpw9qfjzgycf1crhtas8ngadhhxrtc
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: switch.do_not_disturb
+      state: 'off'
+    - condition: state
+      entity_id: group.people
+      state: 'home'
+    - condition: template
+      value_template: '{{ trigger.to_state.state > trigger.from_state.state }}'
+action:
+  - service: notify.lametric
+    data:
+      message: "Helium: {{ states.sensor.helium_wallet_14rgwsi6secqjfs9hxcr5mpw9qfjzgycf1crhtas8ngadhhxrtc.state }}"
+      data:
+        sound: cash
+        icon: "i27863"
+        cycles: 2

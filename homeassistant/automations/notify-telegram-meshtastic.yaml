@@ -1,0 +1,15 @@
+alias: Notify Telegram with Meshtastic Message
+initial_state: true
+trigger:
+  platform: mqtt
+  topic: "meshtastic/#"
+  value_template: "{{ value_json.message }}"
+condition:
+  condition: and
+  conditions:
+    - condition: template
+      value_template: '{{ "!!!" in trigger.payload_json.message }}'
+action:
+  - service: notify.telegram
+    data:
+      message: "Meshtastic: {{ trigger.payload_json.message | replace('!!!', '') }}"
