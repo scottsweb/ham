@@ -22,3 +22,17 @@
   cycles: 5
   priority: info
   icon_type: none
+
+- name: family
+  platform: telegram
+  chat_id: !secret telegram_group_family
+
+- name: swengland
+  platform: telegram
+  chat_id: !secret telegram_group_swengland
+
+- name: telegram
+  platform: group
+  services:
+    - service: family
+    - service: swengland

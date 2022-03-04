@@ -4,6 +4,7 @@ services:
         image: eclipse-mosquitto
         volumes:
             - "/media/saga/Media/Containers/mqtt/config/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro"
+            - "/media/saga/Media/Containers/mqtt/config/password.txt:/mosquitto/config/password.txt"
             - "/media/saga/Media/Containers/mqtt/log:/mosquitto/log"
             - "/media/saga/Media/Containers/mqtt/data:/mosquitto/data"
         ports:

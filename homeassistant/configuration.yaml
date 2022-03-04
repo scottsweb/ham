@@ -42,6 +42,8 @@ lovelace:
       type: module
     - url: /hacsfiles/upcoming-media-card/upcoming-media-card.js
       type: js
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
+      type: js
 #  dashboards:
 #    lovelace-tablet:
 #      mode: yaml
@@ -86,6 +88,7 @@ monitor_docker:
       - openvpn
       - syncthing
       - ipsecvpn
+      - appdaemon
     rename:
       deconz: deCONZ
       pihole: "Pi-Hole"
@@ -175,6 +178,7 @@ history:
       - switch.docker_warrior
       - switch.docker_watchtower
       - switch.docker_ipsecvpn
+      - switch.docker_appdaemon
 
       - binary_sensor.post
       - input_boolean.post_visibility
@@ -266,9 +270,6 @@ sun:
 # Enable the configurator
 config:
 
-# Checks for available updates
-updater:
-
 # Emulate Hue for Echo
 emulated_hue:
   exposed_domains:
@@ -297,22 +298,23 @@ tts:
     time_memory: 300
 
 # Telegram
-#telegram_bot:
-#  - platform: broadcast
-#    api_key: !secret telegram_api_key
-#    allowed_chat_ids:
-#      - !secret telegram_group
-#      - !secret telegram_scottsweb
-#      - !secret telegram_gemma
+telegram_bot:
+  - platform: broadcast
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_group_swengland
+      - !secret telegram_group_family
+      - !secret telegram_scottsweb
+      - !secret telegram_gemma
 
 # MQTT
-mqtt:
-  broker: !secret mqtt_ip
-  port: 1883
-  client_id: home-assistant
+#mqtt:
+#  broker: !secret mqtt_ip
+#  port: 1883
+# client_id: home-assistant
 
-mqtt_statestream:
-  base_topic: homeassistant
+#mqtt_statestream:
+#  base_topic: homeassistant
 
 # Lametric
 lametric:

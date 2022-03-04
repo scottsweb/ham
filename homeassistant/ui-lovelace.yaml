@@ -892,6 +892,7 @@ views:
           - entity: sensor.docker_containers_running
           - entity: sensor.docker_containers_total
           - type: section
+          - entity: switch.docker_appdaemon
           - entity: switch.docker_deconz
           - entity: switch.docker_esphome
           #- entity: switch.docker_folding

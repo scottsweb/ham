@@ -100,6 +100,8 @@ switch.docker_openvpn:
   icon: 'mdi:key'
 switch.docker_ipsecvpn:
   icon: 'mdi:key'
+switch.docker_appdaemon:
+  icon: 'mdi:robot-happy'
 switch.presence_emulator:
   icon: 'mdi:account-multiple'
 switch.do_not_disturb:
