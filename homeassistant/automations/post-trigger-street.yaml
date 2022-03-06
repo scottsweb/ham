@@ -1,0 +1,8 @@
+alias: Post Rumble Trigger Street
+initial_state: true
+trigger:
+  platform: state
+  entity_id: binary_sensor.post
+  to: 'on'
+action:
+  - service: script.blink_street_capture_script

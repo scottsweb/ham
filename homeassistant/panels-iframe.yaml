@@ -58,3 +58,7 @@ n8n:
   title: n8n
   icon: 'mdi:transit-connection-variant'
   url: !secret n8n_url
+meshtastic:
+  title: Meshtastic
+  icon: 'mdi:access-point-network'
+  url: !secret meshtastic_url

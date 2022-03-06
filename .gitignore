@@ -1,3 +1,8 @@
+# appdaemon
+appdaemon/data/apps/._*
+appdaemon/data/apps/__pycache__/
+appdaemon/settings.env
+
 # caddy
 caddy/.caddy/
 
