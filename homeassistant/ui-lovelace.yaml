@@ -897,7 +897,7 @@ views:
           - entity: switch.docker_esphome
           #- entity: switch.docker_folding
           - entity: switch.docker_miniflux
-          - entity: switch.docker_openvpn
+          - entity: switch.docker_wireguard
           - entity: switch.docker_plex
           - entity: switch.docker_syncthing
           - entity: switch.docker_ipsecvpn

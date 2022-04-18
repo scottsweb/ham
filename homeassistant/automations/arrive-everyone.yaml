@@ -18,4 +18,4 @@ condition:
 action:
   - service: homeassistant.turn_off
     data:
-      entity_id: switch.docker_openvpn
+      entity_id: switch.docker_wireguard

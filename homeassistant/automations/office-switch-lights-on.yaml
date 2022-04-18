@@ -1,0 +1,15 @@
+alias: Office Switch Lights On
+initial_state: true
+trigger:
+  platform: event
+  event_type: deconz_event
+  event_data:
+    id: office_switch
+    event: 1002
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.nanoleaf
+  - service: switch.turn_on
+    data:
+      entity_id: switch.cloud

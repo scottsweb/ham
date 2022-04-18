@@ -95,8 +95,8 @@ switch.docker_miniflux:
 switch.docker_esphome:
   friendly_name: 'ESPHome'
   icon: 'mdi:chip'
-switch.docker_openvpn:
-  friendly_name: 'OpenVPN'
+switch.docker_wireguard:
+  friendly_name: 'Wireguard'
   icon: 'mdi:key'
 switch.docker_ipsecvpn:
   icon: 'mdi:key'

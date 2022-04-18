@@ -1,18 +1,19 @@
 version: "2.1"
 services:
-    openvpn-as:
-        image: ghcr.io/linuxserver/openvpn-as
-        container_name: openvpn
+    wireguard:
+        image: lscr.io/linuxserver/wireguard
+        container_name: wireguard
         cap_add:
             - NET_ADMIN
+            - SYS_MODULE
         environment:
             - PUID=1000
             - PGID=1000
             - TZ=Europe/Stockholm
         volumes:
             - /media/saga/Media/Containers/vpn/data:/config
+            - /lib/modules:/lib/modules:ro
+            - /usr/src:/usr/src:ro
         ports:
-            - 943:943
-            - 9443:9443
-            - 1194:1194/udp
+            - 51820:51820/udp
         restart: unless-stopped
