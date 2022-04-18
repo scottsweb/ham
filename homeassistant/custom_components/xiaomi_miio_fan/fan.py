@@ -8,13 +8,12 @@ import asyncio
 import logging
 from enum import Enum
 from functools import partial
-from typing import Optional, Dict, Any
+from typing import Any, Dict, Optional
 
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 from homeassistant.components.fan import (
     PLATFORM_SCHEMA,
-    SPEED_OFF,
     SUPPORT_DIRECTION,
     SUPPORT_OSCILLATE,
     SUPPORT_PRESET_MODE,
@@ -33,27 +32,25 @@ from homeassistant.util.percentage import (
     ordered_list_item_to_percentage,
     percentage_to_ordered_list_item,
 )
-from miio import (  # pylint: disable=import-error
+from miio import (
     Device,
     DeviceException,
-    Fan,
+    Fan,  # pylint: disable=import-error
     Fan1C,
     FanLeshow,
+    FanMiot,
     FanP5,
-    FanP9,
-    FanP10,
-    FanP11,
 )
-from miio.miot_device import MiotDevice, DeviceStatus
+from miio.fan_common import FanException
 from miio.fan_common import (
-    LedBrightness as FanLedBrightness,  # pylint: disable=import-error, import-error
-    MoveDirection as FanMoveDirection,
-    OperationMode as FanOperationMode,
-    FanException,
-)
+    LedBrightness as FanLedBrightness,
+)  # pylint: disable=import-error, import-error
+from miio.fan_common import MoveDirection as FanMoveDirection
+from miio.fan_common import OperationMode as FanOperationMode
 from miio.integrations.fan.leshow.fan_leshow import (
-    OperationMode as FanLeshowOperationMode,  # pylint: disable=import-error, import-error
-)
+    OperationMode as FanLeshowOperationMode,
+)  # pylint: disable=import-error, import-error
+from miio.miot_device import DeviceStatus, MiotDevice
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -114,6 +111,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         ),
     }
 )
+
+SPEED_OFF = "off"
 
 ATTR_MODEL = "model"
 ATTR_BRIGHTNESS = "brightness"
@@ -417,17 +416,17 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
             name, fan, model, unique_id, retries, preset_modes_override
         )
     elif model == MODEL_FAN_P9:
-        fan = FanP9(host, token, model=model)
+        fan = FanMiot(host, token, model=model)
         device = XiaomiFanMiot(
             name, fan, model, unique_id, retries, preset_modes_override
         )
     elif model in [MODEL_FAN_P10, MODEL_FAN_P18]:
-        fan = FanP10(host, token, model=MODEL_FAN_P10)
+        fan = FanMiot(host, token, model=MODEL_FAN_P10)
         device = XiaomiFanMiot(
             name, fan, model, unique_id, retries, preset_modes_override
         )
     elif model in [MODEL_FAN_P11, MODEL_FAN_P15]:
-        fan = FanP11(host, token, model=MODEL_FAN_P11)
+        fan = FanMiot(host, token, model=MODEL_FAN_P11)
         device = XiaomiFanMiot(
             name, fan, model, unique_id, retries, preset_modes_override
         )
@@ -999,6 +998,7 @@ class XiaomiFanP5(XiaomiFan):
 
 class XiaomiFanMiot(XiaomiFanP5):
     """Representation of a Xiaomi Pedestal Fan P9, P10, P11, P18."""
+
     pass
 
 
