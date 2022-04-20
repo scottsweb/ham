@@ -37,6 +37,12 @@ from homeassistant.components.media_player import (
     MediaPlayerDeviceClass,
     BrowseMedia,
 )
+
+from homeassistant.components import media_source
+from homeassistant.components.media_player.browse_media import (
+    async_process_play_media_url,
+)
+
 from homeassistant.components.media_player.const import (
     ATTR_GROUP_MEMBERS,
     MEDIA_TYPE_MUSIC,
@@ -125,7 +131,7 @@ UPNP_TIMEOUT = 2
 API_TIMEOUT = 2
 SCAN_INTERVAL = timedelta(seconds=3)
 ICE_THROTTLE = timedelta(seconds=60)
-UNA_THROTTLE = timedelta(seconds=60)
+UNA_THROTTLE = timedelta(seconds=20)
 MROOM_UJWDIR = timedelta(seconds=20)
 MROOM_UJWROU = timedelta(seconds=3)
 SPOTIFY_PAUSED_TIMEOUT = timedelta(seconds=300)
@@ -248,7 +254,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 
     except (asyncio.TimeoutError, aiohttp.ClientError) as error:
         _LOGGER.warning(
-            "Failed communicating with LinkPlayDevice at start '%s': uuid: %s %s", host, uuid, type(error)
+            "Failed communicating with LinkPlayDevice (start) '%s': uuid: %s %s", host, uuid, type(error)
         )
         state = STATE_UNAVAILABLE
 
@@ -344,6 +350,7 @@ class LinkPlayDevice(MediaPlayerEntity):
         self._playing_spotify = False
         self._playing_webplaylist = False
         self._playing_tts = False
+        self._playing_mediabrowser = False
         self._slave_list = None
         self._multiroom_wifidirect = multiroom_wifidirect
         self._multiroom_group = []
@@ -381,7 +388,7 @@ class LinkPlayDevice(MediaPlayerEntity):
 
         except (asyncio.TimeoutError, aiohttp.ClientError) as error:
             _LOGGER.warning(
-                "Failed communicating with LinkPlayDevice '%s': %s", self._name, type(error)
+                "Failed communicating with LinkPlayDevice (httpapi) '%s': %s", self._name, type(error)
             )
             return False
 
@@ -562,7 +569,12 @@ class LinkPlayDevice(MediaPlayerEntity):
 
                         if self._upnp_device is None: # and self._name is not None:
                             url = "http://{0}:49152/description.xml".format(self._host)
-                            self._upnp_device = await self._factory.async_create_device(url)
+                            try:
+                                self._upnp_device = await self._factory.async_create_device(url)
+                            except:
+                                _LOGGER.warning(
+                                    "Failed communicating with LinkPlayDevice (UPnP) '%s': %s", self._name, type(error)
+                                )
 
                         if self._first_update:
                             self._duration = 0
@@ -624,6 +636,7 @@ class LinkPlayDevice(MediaPlayerEntity):
 
             if bool(self._player_statdata['mode'] != '10'):
                 self._playing_tts = False
+                self._playing_mediabrowser = False
 
             if not (self._playing_liveinput or self._playing_stream or self._playing_spotify):
                 self._playing_localfile = True
@@ -746,7 +759,7 @@ class LinkPlayDevice(MediaPlayerEntity):
                     else:
                         self._media_title = self._source
 
-                elif self._state == STATE_PLAYING and self._media_uri and int(self._player_statdata['totlen']) > 0 and not self._snapshot_active and not self._playing_tts:
+                elif self._state == STATE_PLAYING and self._media_uri and int(self._player_statdata['totlen']) > 0 and not self._snapshot_active and not self._playing_tts and not self._playing_mediabrowser:
                     #_LOGGER.debug("10 Update async_get_playerstatus_metadata media_URI %s, %s", self.entity_id, self._name)
                     await self.async_get_playerstatus_metadata(self._player_statdata)
 
@@ -927,8 +940,7 @@ class LinkPlayDevice(MediaPlayerEntity):
             SUPPORT_VOLUME_SET | SUPPORT_VOLUME_STEP | SUPPORT_VOLUME_MUTE | \
             SUPPORT_STOP
 
-        if "udisk" in self._source_list:
-            self._features |= SUPPORT_BROWSE_MEDIA
+        self._features |= SUPPORT_BROWSE_MEDIA
 
         return self._features
 
@@ -1064,6 +1076,9 @@ class LinkPlayDevice(MediaPlayerEntity):
 
             if self._playing_tts:
                 atrdbg = atrdbg + " _playing_tts"
+                
+            if self._playing_mediabrowser:
+                atrdbg = atrdbg + " _playing_mediabrowser"
 
             attributes[ATTR_DEBUG] = atrdbg
 
@@ -1215,6 +1230,7 @@ class LinkPlayDevice(MediaPlayerEntity):
                 self._icecast_name = None
                 self._media_uri = None
                 self._media_uri_final = None
+                self._playing_mediabrowser = False
                 self._trackc = None
                 self._media_image_url = None
                 self._position_updated_at = utcnow()
@@ -1249,15 +1265,54 @@ class LinkPlayDevice(MediaPlayerEntity):
         """Play media from a URL or localfile."""
         _LOGGER.debug("Trying to play media. Device: %s, Media_type: %s, Media_id: %s", self.entity_id, media_type, media_id)
         if not self._slave_mode:
-            if not media_type in [MEDIA_TYPE_MUSIC, MEDIA_TYPE_URL, MEDIA_TYPE_TRACK]:
+
+            if not (media_type in [MEDIA_TYPE_MUSIC, MEDIA_TYPE_URL, MEDIA_TYPE_TRACK] or media_source.is_media_source_id(media_id)):
                 _LOGGER.warning("For %s Invalid media type %s. Only %s and %s is supported", self._name, media_type, MEDIA_TYPE_MUSIC, MEDIA_TYPE_URL)
-                return
+                return False
+            
+            self._playing_mediabrowser = False
+            if media_source.is_media_source_id(media_id):
+                play_item = await media_source.async_resolve_media(self.hass, media_id)
+                if media_id.find('radio_browser') != -1:  # radios are an exception, be treated by server redirect checker and icecast metadata parser
+                    self._playing_mediabrowser = False
+                else:
+                    self._playing_mediabrowser = True
+
+                media_id = play_item.url
+                if not play_item.mime_type in ['audio/basic',
+                                               'audio/mpeg', 
+                                               'audio/mp3', 
+                                               'audio/mpeg3', 
+                                               'audio/x-mpeg-3',
+                                               'audio/mp4', 
+                                               'audio/aac', 
+                                               'audio/x-aac',
+                                               'audio/x-hx-aac-adts', 
+                                               'audio/x-aiff', 
+                                               'audio/x-mpegurl', 
+                                               'audio/ogg', 
+                                               'audio/vorbis', 
+                                               'application/ogg', 
+                                               'audio/opus', 
+                                               'audio/vnd.wav', 
+                                               'audio/x-wav', 
+                                               'audio/x-flac', 
+                                               'audio/x-ms-wma']:
+                    _LOGGER.warning("For %s Invalid media type, %s is not supported", self._name, play_item.mime_type)
+                    self._playing_mediabrowser = False
+                    return False
+                
+                media_id = async_process_play_media_url(self.hass, media_id)
+                _LOGGER.debug("Trying to play HA media. Device: %s, Play_Item: %s, Media_id: %s", self.entity_id, play_item, media_id)
 
             if media_id.find('http') == 0:
                 media_type = MEDIA_TYPE_URL
 
             if media_type == MEDIA_TYPE_URL:
-                media_id_final = await self.async_detect_stream_url_redirection(media_id)
+                if self._playing_mediabrowser:
+                    media_id_final = media_id
+                else:
+                    media_id_final = await self.async_detect_stream_url_redirection(media_id)
 
                 if self._fwvercheck(self._fw_ver) >= self._fwvercheck(FW_SLOW_STREAMS):
                     await self.call_linkplay_httpapi("setPlayerCmd:pause", None)
@@ -1995,8 +2050,8 @@ class LinkPlayDevice(MediaPlayerEntity):
         for slave in slaves:
             if slave.entity_id in self._multiroom_group:
                 await slave.async_set_multiroom_group(self._multiroom_group)
-##                slave.set_position_updated_at(utcnow())
-##                slave.trigger_schedule_update(True)
+##                await slave.async_set_position_updated_at(utcnow())
+##                await slave.async_trigger_schedule_update(True)
 
         self._position_updated_at = utcnow()
         # await self.async_schedule_update_ha_state(True)
@@ -2080,8 +2135,8 @@ class LinkPlayDevice(MediaPlayerEntity):
             for player in self.hass.data[DOMAIN].entities:
                 if player.entity_id == member and player.entity_id != self.entity_id:
                     await player.async_set_multiroom_group(self._multiroom_group)
-#                    player.trigger_schedule_update(True)
-#                    player.set_position_updated_at(utcnow())
+#                    await player.async_trigger_schedule_update(True)
+#                    await player.async_set_position_updated_at(utcnow())
 
     async def async_execute_command(self, command, notif):
         """Execute desired command against the player using factory API."""
@@ -2372,7 +2427,6 @@ class LinkPlayDevice(MediaPlayerEntity):
         self._service = self._upnp_device.service('urn:schemas-wiimu-com:service:PlayQueue:1')
         #_LOGGER.debug("PlayQueue for: %s, UPNP service:%s", self.entity_id, self._service)
 
-
         try:
             media_info = await self._service.action("SetSpotifyPreset").async_call(KeyIndex=int(presetnum))
             _LOGGER.debug("PlayQueue/SetSpotifyPreset for: %s, UPNP media_info:%s", self.entity_id, media_info)
@@ -2392,17 +2446,20 @@ class LinkPlayDevice(MediaPlayerEntity):
 
         xml_tree = ET.fromstring(preset_map)
         
-        if xml_tree.find('Key'+presetnum+'/Name') is None:
-            _LOGGER.error("Preset Map error: %s num: %s. Please create a Spotify preset first with the mobile app for this player.", self.entity_id, presetnum)
-            self.hass.components.persistent_notification.async_create("<b>Preset Map error:</b><br>Please create a Spotify preset first with the mobile app for this player", title=self.entity_id)
+        if xml_tree.find('Key'+presetnum) is None:
+            _LOGGER.error("Preset Map error: %s num: %s. Please create a Spotify preset first with the mobile app for this player. Tree: %s", self.entity_id, presetnum, preset_map)
+            self.hass.components.persistent_notification.async_create("<b>Preset Map error:</b><br><br><br>This player can't store presets yet!<br>Please create a preset first manually with the mobile app for this player and then try again.", title=self.entity_id)
             return
 
+        import time
+        tme = time.strftime('%Y-%m-%d %H:%M:%S')
+
         try:
-            xml_tree.find('Key'+presetnum+'/Name').text = "Snapshot set by Home Assistant ("+result+")_#~" + str(utcnow())
+            xml_tree.find('Key'+presetnum+'/Name').text = "Snapshot set by Home Assistant ("+result+")_#~" + tme
         except:
             data=xml_tree.find('Key'+presetnum)
             snap=ET.SubElement(data,'Name')
-            snap.text = "Snapshot set by Home Assistant ("+result+")_#~" + str(utcnow())
+            snap.text = "Snapshot set by Home Assistant ("+result+")_#~" + tme
 
         try:
             xml_tree.find('Key'+presetnum+'/Source').text = "SPOTIFY"
@@ -2429,46 +2486,53 @@ class LinkPlayDevice(MediaPlayerEntity):
 
     async def async_browse_media(self, media_content_type=None, media_content_id=None):
         """Implement the websocket media browsing helper."""
-        if media_content_id not in (None, "root"):
-            raise BrowseError(
-                f"Media not found: {media_content_type} / {media_content_id}"
-            )
+        return await media_source.async_browse_media(
+            self.hass,
+            media_content_id,
+            content_filter=lambda item: item.media_content_type.startswith("audio/"),
+        )
+        
+        #TODO: combide the BrowseMedia Media Sources above with the BrowseMedia Directory below
+        #if "udisk" in self._source_list: 
+        # if media_content_id not in (None, "root"):
+            # raise BrowseError(
+                # f"Media not found: {media_content_type} / {media_content_id}"
+            # )
 
-        source_media_name = self._source_list.get("udisk", "USB Disk")
+        # source_media_name = self._source_list.get("udisk", "USB Disk")
 
-        if len(self._trackq) > 0:
-            radio = [
-                BrowseMedia(
-                    title = preset,
-                    media_class = MEDIA_CLASS_MUSIC,
-                    media_content_id = index,
-                    media_content_type = MEDIA_TYPE_MUSIC,
-                    can_play = True,
-                    can_expand = False,
-                )
-                for index, preset in enumerate(self._trackq, start=1)
-            ]
+        # if len(self._trackq) > 0:
+            # radio = [
+                # BrowseMedia(
+                    # title = preset,
+                    # media_class = MEDIA_CLASS_MUSIC,
+                    # media_content_id = index,
+                    # media_content_type = MEDIA_TYPE_MUSIC,
+                    # can_play = True,
+                    # can_expand = False,
+                # )
+                # for index, preset in enumerate(self._trackq, start=1)
+            # ]
 
-            root = BrowseMedia(
-                title=self._name + " " + source_media_name,
-                media_class = MEDIA_CLASS_DIRECTORY,
-                media_content_id = "root",
-                media_content_type = "listing",
-                can_play = False,
-                can_expand = True,
-                children = radio,
-            )
+            # root = BrowseMedia(
+                # title=self._name + " " + source_media_name,
+                # media_class = MEDIA_CLASS_DIRECTORY,
+                # media_content_id = "root",
+                # media_content_type = "listing",
+                # can_play = False,
+                # can_expand = True,
+                # children = radio,
+            # )
 
-        else:
-            root = BrowseMedia(
-                title=self._name + " " + source_media_name,
-                media_class = MEDIA_CLASS_DIRECTORY,
-                media_content_id = "root",
-                media_content_type = "listing",
-                can_play = False,
-                can_expand = False,
-            )
+        # else:
+            # root = BrowseMedia(
+                # title=self._name + " " + source_media_name,
+                # media_class = MEDIA_CLASS_DIRECTORY,
+                # media_content_id = "root",
+                # media_content_type = "listing",
+                # can_play = False,
+                # can_expand = False,
+            # )
 
-        return root
-
+        # return root
 #END
