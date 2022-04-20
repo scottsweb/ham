@@ -16,3 +16,4 @@ services:
         container_name: storj
         env_file: ./settings.env
         restart: 'unless-stopped'
+        command: --operator.wallet-features=zksync
