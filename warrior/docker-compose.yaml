@@ -1,7 +1,7 @@
 version: '2'
 services:
     warrior:
-        image: archiveteam/warrior-dockerfile
+        image: atdr.meo.ws/archiveteam/warrior-dockerfile
         volumes:
             - "/media/saga/Media/Containers/warrior/data:/data/data"
         ports:
