@@ -98,8 +98,6 @@ switch.docker_esphome:
 switch.docker_wireguard:
   friendly_name: 'Wireguard'
   icon: 'mdi:key'
-switch.docker_ipsecvpn:
-  icon: 'mdi:key'
 switch.docker_appdaemon:
   icon: 'mdi:robot-happy'
 switch.presence_emulator:

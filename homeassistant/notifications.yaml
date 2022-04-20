@@ -11,7 +11,7 @@
 - name: all
   platform: group
   services:
-    - service: tv_kodi
+    - service: al_notifications
     - service: mobile_app_fp3
     - service: mobile_app_sm_g991b
 

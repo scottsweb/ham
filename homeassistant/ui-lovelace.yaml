@@ -883,7 +883,6 @@ views:
             label: Network
           - entity: script.saga_on
           - entity: switch.saga_pi_hole
-          - entity: switch.vpn_liskeard_switch
           - entity: switch.vpn_ee_switch
       - type: entities
         title: Containers
@@ -900,7 +899,6 @@ views:
           - entity: switch.docker_wireguard
           - entity: switch.docker_plex
           - entity: switch.docker_syncthing
-          - entity: switch.docker_ipsecvpn
           - entity: switch.docker_warrior
           - entity: switch.docker_watchtower
       - type: entities

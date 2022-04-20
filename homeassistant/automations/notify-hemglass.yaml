@@ -1,7 +1,10 @@
 alias: Hemglass Here
 initial_state: true
 trigger:
-  platform: template
+  platform: time_pattern
+  minutes: "/5"
+condition:
+  condition: template
   value_template: '{% set next = as_timestamp(states("sensor.hemglass")) %} {% set now = as_timestamp( now() ) %} {% if now >= ( next - 900 ) %}true{% endif %}'
 action:
   - service: notify.all
@@ -11,6 +14,10 @@ action:
       data:
         timeout: 900
         clickAction: "https://www.hemglass.se/sv/hitta-glassbilen/"
+        color: black
+        transparency: "75%"
+        icon:
+            path: "/config/www/ha.png"
   # perhaps turn off automation
   - service: automation.turn_off
     entity_id:  automation.hemglass_here

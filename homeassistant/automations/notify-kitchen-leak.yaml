@@ -16,6 +16,10 @@ action:
         ttl: 0
         timeout: 600
         clickAction: "/lovelace/cctv"
+        color: black
+        transparency: "75%"
+        icon:
+            path: "/config/www/ha.png"
   - service: notify.lametric
     data:
       message: "Kitchen leak!"

@@ -1,0 +1,32 @@
+alias: Notify Etsy
+initial_state: true
+trigger:
+  platform: state
+  entity_id: sensor.etsy
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: switch.do_not_disturb
+      state: 'off'
+    - condition: state
+      entity_id: group.people
+      state: 'home'
+    - condition: template
+      value_template: '{{ trigger.to_state.state > trigger.from_state.state }}'
+action:
+  - service: notify.lametric
+    data:
+      message: "Etsy sale! (Total: {{ states.sensor.etsy.state }})"
+      data:
+        sound: cash
+        icon: "i10781"
+        cycles: 2
+  - service: notify.al_notifications
+    data:
+      message: "Etsy sale! (Total: {{ states.sensor.etsy.state }})"
+      data:
+        color: black
+        transparency: "75%"
+        icon:
+            path: "/config/www/ha.png"

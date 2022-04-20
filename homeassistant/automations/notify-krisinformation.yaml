@@ -11,6 +11,10 @@ action:
       message: "{{states.sensor.krisinformation.attributes.messages[0].Headline}}"
       data:
         clickAction: "https://www.krisinformation.se/en"
+        color: black
+        transparency: "75%"
+        icon:
+            path: "/config/www/ha.png"
   - service: notify.lametric
     data:
       message: "Krisinformation: {{states.sensor.krisinformation.attributes.messages[0].Headline}}"
