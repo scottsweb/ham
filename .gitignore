@@ -108,7 +108,6 @@ pihole/settings.env
 
 # plex
 plex/config/
-plex-tv/config/
 
 # samba
 samba/
@@ -133,6 +132,3 @@ wiki/data/mywiki/*
 # warrior
 warrior/data
 warrior/settings.env
-
-# zerotier
-zerotier/data
