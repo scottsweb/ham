@@ -50,10 +50,6 @@ homeassistant/ip_bans.yaml
 homeassistant/home-assistant.log.1
 homeassistant/home-assistant.log.fault
 
-# iplayer
-iplayer/config/*
-!iplayer/config/options
-
 # jottacloud
 jottacloud/data
 
