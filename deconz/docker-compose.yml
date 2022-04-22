@@ -1,9 +1,9 @@
 version: "2"
 services:
     deconz:
-        image: marthoc/deconz:latest
+        image: deconzcommunity/deconz:stable
         volumes:
-            - "/media/saga/Media/Containers/deconz/data:/root/.local/share/dresden-elektronik/deCONZ"
+            - "/media/saga/Media/Containers/deconz/data:/opt/deCONZ"
             - "/etc/localtime:/etc/localtime:ro"
         environment:
             - DECONZ_WEB_PORT=8020

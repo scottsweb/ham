@@ -177,7 +177,6 @@ history:
       - switch.docker_synchthing
       - switch.docker_warrior
       - switch.docker_watchtower
-      - switch.docker_ipsecvpn
       - switch.docker_appdaemon
 
       - binary_sensor.post
