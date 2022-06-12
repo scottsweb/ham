@@ -4,11 +4,6 @@ services:
     image: pihole/pihole:latest
     volumes:
       - "/media/saga/Media/Containers/pihole:/etc/pihole"
-    ports:
-      - "192.168.11.5:53:53/tcp"
-      - "192.168.11.5:53:53/udp"
-      - "192.168.11.5:67:67/udp"
-      - "8053:80"
     cap_add:
       - NET_ADMIN
     env_file: ./settings.env

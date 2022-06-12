@@ -1,10 +1,8 @@
 - platform: universal
   name: 'TV'
   children:
-    - media_player.tv_al # Android TV
-    - media_player.tv_kodi # kodi
-    - media_player.plex_for_kodi # plex
-
+    - media_player.shield
+    - media_player.shield_cast
 
 - platform: linkplay
   host: !secret teeger_ip

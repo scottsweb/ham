@@ -19,8 +19,9 @@ http:
   login_attempts_threshold: 5
   use_x_forwarded_for: true
   trusted_proxies:
-    - 172.24.0.0/24
     - 192.168.11.5
+    - 192.168.128.0/24
+    - 172.26.0.0/24
 
 # Lovelace
 lovelace:
@@ -208,6 +209,8 @@ history:
 
       - switch.do_not_disturb
       - switch.presence_emulator
+
+      - sensor.solar_host
 
 # Recorder
 recorder:

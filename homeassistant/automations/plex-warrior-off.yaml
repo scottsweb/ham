@@ -2,7 +2,7 @@ alias: Stop Warrior with Plex
 initial_state: true
 trigger:
   platform: template
-  value_template: "{{ states('sensor.plex') | int == 0 }}"
+  value_template: "{{ states('sensor.plex') | int(default=0) == 0 }}"
   for:
     minutes: 10
 action:
