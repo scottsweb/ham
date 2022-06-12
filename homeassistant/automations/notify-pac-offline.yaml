@@ -1,0 +1,28 @@
+alias: Notify PAC (Solar) Offline
+initial_state: true
+trigger:
+  platform: state
+  entity_id: sensor.solar_host
+  to: "unavailable"
+action:
+  - service: notify.all
+    data:
+      title: "{{'\U0001FAAB'}} PAC Offline"
+      message: "Solar host has gone down"
+      data:
+        channel: Alert
+        importance: max
+        priority: high
+        ttl: 0
+        timeout: 600
+        clickAction: "/lovelace/"
+        color: black
+        transparency: "75%"
+        icon:
+            path: "/config/www/ha.png"
+  - service: notify.lametric
+    data:
+      message: "PAC has gone offline"
+      data:
+        icon: "a12832"
+        cycles: 3

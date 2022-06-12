@@ -1,0 +1,26 @@
+alias: Notify Lametric PAC (Solar) Battery
+initial_state: true
+trigger:
+  platform: time_pattern
+  minutes: 0
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: switch.do_not_disturb
+      state: 'off'
+    - condition: state
+      entity_id: group.people
+      state: 'home'
+action:
+  - service: notify.lametric
+    data:
+      message: >
+        {% if is_state("sensor.solar_host", "unavailable") -%}
+          Solar host offline.
+        {%- else -%}
+          Solar host battery: {{states.sensor.solar_host.state}}%
+        {%- endif %}
+      data:
+        icon: "a27283"
+        cycles: 3

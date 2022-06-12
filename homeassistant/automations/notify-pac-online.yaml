@@ -1,0 +1,28 @@
+alias: Notify PAC (Solar) Online
+initial_state: true
+trigger:
+  platform: state
+  entity_id: sensor.solar_host
+  from: "unavailable"
+action:
+  - service: notify.all
+    data:
+      title: "{{'\U0001F50B'}} PAC Online"
+      message: "Solar host has come back online"
+      data:
+        channel: Alert
+        importance: max
+        priority: high
+        ttl: 0
+        timeout: 600
+        clickAction: "/lovelace/"
+        color: black
+        transparency: "75%"
+        icon:
+            path: "/config/www/ha.png"
+  - service: notify.lametric
+    data:
+      message: "PAC has come online"
+      data:
+        icon: "a12835"
+        cycles: 3
