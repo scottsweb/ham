@@ -3,4 +3,4 @@ name: Solar Host
 resource: !secret pac_api
 value_template: '{{ value_json.battery }}'
 unit_of_measurement: '%'
-scan_interval: 3600
+scan_interval: 1200

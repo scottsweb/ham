@@ -54,12 +54,6 @@ lovelace:
 #      show_in_sidebar: false
 #      require_admin: true
 
-# Google
-google:
-  client_id: !secret google_client_id
-  client_secret: !secret google_client_secret
-  track_new_calendar: false
-
 # Xiaomi fan
 fan:
   - platform: xiaomi_miio_fan
@@ -343,6 +337,9 @@ media_player: !include media-player.yaml
 
 # Switches
 switch: !include switches.yaml
+
+# MQTT switches
+mqtt: !include mqtt.yaml
 
 # Scripts
 script: !include scripts.yaml

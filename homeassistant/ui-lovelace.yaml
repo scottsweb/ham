@@ -357,6 +357,11 @@ views:
             entities:
               - fan.fan
               - switch.auto_fan
+
+      - type: sensor
+        graph: line
+        entity: sensor.solar_host
+
       - type: vertical-stack
         cards:
           - type: entities
@@ -885,7 +890,7 @@ views:
           - entity: switch.saga_pi_hole
           - entity: switch.vpn_ee_switch
       - type: entities
-        title: Containers
+        title: Containers (Saga)
         show_header_toggle: false
         entities:
           - entity: sensor.docker_containers_running
@@ -901,6 +906,17 @@ views:
           - entity: switch.docker_syncthing
           - entity: switch.docker_warrior
           - entity: switch.docker_watchtower
+      - type: entities
+        title: "Containers (Beans)"
+        show_header_toggle: false
+        entities:
+          - entity: sensor.beans_containers_running
+          - entity: sensor.beans_containers_total
+          - type: section
+          - entity: switch.beans_cloudflared
+          - entity: switch.beans_cloudflared_web
+          - entity: switch.beans_gotosocial_ge
+          - entity: switch.beans_gotosocial_se
       - type: entities
         title: Settings
         show_header_toggle: false

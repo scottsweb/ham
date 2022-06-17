@@ -1,0 +1,6 @@
+platform: scrape
+name: Etsy
+resource: https://www.etsy.com/se-en/shop/GemmaEvansDesign
+select: "a[href='/se-en/shop/GemmaEvansDesign/sold']"
+value_template: '{{ value.split(" Sales")[0] | int }}'
+scan_interval: 3600

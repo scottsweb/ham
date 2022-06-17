@@ -1,5 +1,5 @@
 alias: Start Warrior with Plex
-initial_state: true
+initial_state: false
 trigger:
   platform: numeric_state
   entity_id: sensor.plex

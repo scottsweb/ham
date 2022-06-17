@@ -31,6 +31,8 @@ sensor.ripple:
   icon: mdi:cash
 sensor.litecoin:
   icon: mdi:cash
+sensor.solar_host:
+  icon: mdi:solar-power-variant
 media_player.tv_kodi:
   emulated_hue_name: 'Kodi'
 sensor.ip_address:
@@ -100,6 +102,14 @@ switch.docker_wireguard:
   icon: 'mdi:key'
 switch.docker_appdaemon:
   icon: 'mdi:robot-happy'
+switch.beans_cloudflared:
+  icon: 'mdi:cloud'
+switch.beans_cloudflared_web:
+  icon: 'mdi:cloud'
+switch.beans_gotosocial_ge:
+  icon: 'mdi:mastodon'
+switch.beans_gotosocial_se:
+  icon: 'mdi:mastodon'
 switch.presence_emulator:
   icon: 'mdi:account-multiple'
 switch.do_not_disturb:

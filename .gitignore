@@ -100,6 +100,7 @@ pihole/dns-servers.conf
 pihole/logrotate
 pihole/list.*
 pihole/gravity.db
+pihole/gravity_old.db
 pihole/settings.env
 
 # plex

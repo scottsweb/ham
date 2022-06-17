@@ -1,0 +1,21 @@
+switch:
+  - name: "Presence Emulator"
+    state_topic: "sycamore/presence/switch"
+    command_topic: "sycamore/presence/switch"
+    payload_on: "on"
+    payload_off: "off"
+    retain: true
+
+  - name: "Do Not Disturb"
+    state_topic: "sycamore/dnd/switch"
+    command_topic: "sycamore/dnd/switch"
+    payload_on: "on"
+    payload_off: "off"
+    retain: true
+
+  - name: "Auto Fan"
+    state_topic: "sycamore/fan/switch"
+    command_topic: "sycamore/fan/switch"
+    payload_on: "on"
+    payload_off: "off"
+    retain: true

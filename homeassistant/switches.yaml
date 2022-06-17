@@ -15,27 +15,3 @@
       command_state: !secret ssh_ee_vpn_status
       value_template: >
         {{ "vpn" in value }}
-
-- platform: mqtt
-  name: "Presence Emulator"
-  state_topic: "sycamore/presence/switch"
-  command_topic: "sycamore/presence/switch"
-  payload_on: "on"
-  payload_off: "off"
-  retain: true
-
-- platform: mqtt
-  name: "Do Not Disturb"
-  state_topic: "sycamore/dnd/switch"
-  command_topic: "sycamore/dnd/switch"
-  payload_on: "on"
-  payload_off: "off"
-  retain: true
-
-- platform: mqtt
-  name: "Auto Fan"
-  state_topic: "sycamore/fan/switch"
-  command_topic: "sycamore/fan/switch"
-  payload_on: "on"
-  payload_off: "off"
-  retain: true
