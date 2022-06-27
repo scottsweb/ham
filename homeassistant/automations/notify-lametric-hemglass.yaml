@@ -11,7 +11,7 @@ action:
     data:
       message: "Hemglass ETA: {{ as_timestamp(states('sensor.hemglass')) | timestamp_custom('%A at %H:%M') }}"
       data:
-        sound: car
+        sound: bicycle
         icon: "i20524"
         cycles: 3
   # perhaps turn off automation
