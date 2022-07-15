@@ -26,3 +26,6 @@ action:
       data:
         icon: "a12832"
         cycles: 3
+  - service: homeassistant.turn_on
+    data:
+      entity_id: switch.beans_cloudflared_web

@@ -1,0 +1,11 @@
+alias: PAC (Solar) Battery High
+initial_state: true
+trigger:
+  platform: numeric_state
+  entity_id: sensor.solar_host
+  above: 45
+  below: 100
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id: switch.beans_cloudflared_web

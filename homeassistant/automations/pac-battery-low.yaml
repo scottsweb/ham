@@ -1,0 +1,11 @@
+alias: PAC (Solar) Battery Low
+initial_state: true
+trigger:
+  platform: numeric_state
+  entity_id: sensor.solar_host
+  below: 40
+  for: "00:25:00"
+action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id: switch.beans_cloudflared_web
