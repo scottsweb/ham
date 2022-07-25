@@ -100,12 +100,153 @@ slate:
   iron-overlay-backdrop-filter: 'blur(15px)'
   iron-overlay-backdrop-background-color: 'rgba(0,0,0,.6)'
   iron-overlay-backdrop-opacity: '1'
-sycamore:
-  primary-color: "#a8122b"
-  label-badge-red: "#a8122b"
-  paper-item-icon-color: "#747474"
-  paper-item-icon-active-color: "#FDD835"
-  paper-toggle-button-checked-ink-color: "#a8122b"
-  paper-toggle-button-checked-button-color: "#a8122b"
-  paper-toggle-button-checked-bar-color: "#a8122b"
-  accent-color: "#21aedd"
+nord:
+  nord0: "#2e3440"
+  nord1: "#3b4252"
+  nord2: "#434c5e"
+  nord3: "#4c566a"
+  nord4: "#d8dee9"
+  nord5: "#e5e9f0"
+  nord6: "#eceff4"
+  nord7: "#8fbcbb"
+  nord8: "#88c0d0"
+  nord9: "#81a1c1"
+  nord10: "#5e81ac"
+  nord11: "#bf616a"
+  nord12: "#d08770"
+  nord13: "#ebcb8b"
+  nord14: "#a3be8c"
+  nord15: "#b48ead"
+  # general
+  primary-color: "#5e81ac"
+  # ^ set manually so the apps understand it
+  primary-background-color: "var(--nord4)"
+  accent-color: "var(--nord13)"
+  secondary-background-color: "var(--nord5)"
+  light-primary-color: "var(--nord13)"
+  error-color: "var(--nord11)"
+  # app-header-background-color: "var(--nord2)"
+  # text
+  primary-text-color: "var(--nord0)"
+  secondary-text-color: "var(--nord3)"
+  text-primary-color: "var(--nord6)"
+  disabled-text-color: "var(--nord4)"
+  # sidebar
+  sidebar-background-color: "var(--nord4)"
+  sidebar-icon-color: "var(--nord0)"
+  sidebar-text-color: "var(--nord0)"
+  sidebar-selected-icon-color: "var(--nord10)"
+  sidebar-selected-text-color: "var(--nord10)"
+  # icons
+  paper-item-icon-color: "var(--nord9)"
+  paper-item-icon-active-color: "var(--nord13)"
+  mdc-theme-secondary: "var(--nord14)" # FAB
+  # cards
+  card-background-color: "var(--nord6)"
+  # popup-backdrop-filter
+  iron-overlay-backdrop-filter: 'blur(15px)'
+  iron-overlay-backdrop-background-color: 'rgba(0,0,0,.6)'
+  iron-overlay-backdrop-opacity: '1'
+  # tables
+  table-row-background-color: "var(--nord5)"
+  table-row-alternative-background-color: "var(--nord6)"
+
+#  label-badge-red: "#a8122b"
+#  paper-toggle-button-checked-ink-color: "#a8122b"
+#  paper-toggle-button-checked-button-color: "#a8122b"
+#  paper-toggle-button-checked-bar-color: "#a8122b"
+#  accent-color: "#21aedd"
+
+nord-test:
+  ### Main Interface Colors ###
+  primary-color: var(--accent-color)
+  light-primary-color: "var(--dark-background-color)"
+  primary-background-color: "var(--dark-background-color)"
+  secondary-background-color: "var(--dark-background-color)"
+  divider-color: var(--dark-background-color)
+  paper-icon-button-active-color: "var(--accent-color)"
+  paper-icon-button-inactive-color: "var(--accent-color)"
+  mdc-theme-primary: var(--accent-color)
+  ### Text ###
+  primary-text-color: "#ECEFF4"
+  secondary-text-color: "#E5E9F0"
+  text-primary-color: "#ECEFF4"
+  disabled-text-color: "#D8DEE9"
+  ### Sidebar Menu ###
+  sidebar-background-color: "#3B4252"
+  sidebar-icon-color: "var(--foreground-color)"
+  sidebar-text-color: "var(--foreground-color)"
+  sidebar-selected-background-color: var(--sidebar-background-color)
+  sidebar-selected-icon-color: var(--foreground-color)
+  sidebar-selected-text-color: var(--sidebar-selected-icon-color)
+  ### States and Badges ###
+  state-icon-color: var(--primary-text-color)
+  state-icon-active-color: var(--accent-color)
+  state-icon-unavailable-color: var(--disabled-text-color)
+  ### Sliders ###
+  paper-slider-knob-color: var(--accent-color)
+  paper-slider-knob-start-color: var(--accent-color)
+  paper-slider-pin-color: var(--accent-color)
+  paper-slider-active-color: var(--accent-color)
+  paper-slider-secondary-color: var(--dark-background-color)
+  paper-slider-container-color: var(--dark-background-color)
+  ### Labels ###
+  label-badge-background-color: "var(--card-background-color)"
+  label-badge-text-color: "var(--foreground-color)"
+  label-badge-red: "#BF616A"
+  label-badge-green: "#A3BE8C"
+  label-badge-yellow: "#EBCB8B"
+  ha-label-badge-color: "#5E81AC"
+  ### Cards ###
+  paper-card-header-color: "var(--accent-color)"
+  paper-card-background-color: "var(--card-background-color)"
+  card-background-color: "#434C5E"
+  ha-card-header-color: "var(--primary-text-color)"
+  ### Toggles ###
+  paper-toggle-button-checked-button-color: var(--accent-color)
+  paper-toggle-button-checked-bar-color: var(--dark-background-color)
+  paper-toggle-button-checked-ink-color: var(--accent-color)
+  paper-toggle-button-unchecked-bar-color: var(--accent-color)
+  paper-toggle-button-unchecked-button-color: var(--dark-background-color)
+  ### Dialog ###
+  paper-dialog-background-color: var(--card-background-color)
+  ### Table row ###
+  table-row-background-color: var(--primary-background-color)
+  table-row-alternative-background-color: var(--secondary-background-color)
+  ### Listbox ###
+  paper-listbox-background-color: "#3B4252"
+  paper-listbox-color: "var(--foreground-color)"
+  paper-item-selected_-_background-color: "var(--dark-background-color)"
+  paper-item-icon-color: "var(--foreground-color)"
+  paper-item-icon_-_color: "var(--foreground-color)"
+  paper-item-icon-active-color: "var(--accent-color)"
+  dark-primary-color: "var(--accent-color)"
+  dark-background-color: "#2E3440"
+  light-background-color: "#8FBCBB"
+  foreground-color: "#ECEFF4"
+  accent-color: "#88C0D0"
+  paper-green-400: "#A3BE8C"
+  paper-blue-400: "#81A1C1"
+  paper-orange-400: "#D08770"
+  paper-grey-200: "var(--dark-background-color)"
+  paper-grey-50: "#4C566A"
+  mini-media-player-icon-color: "--mini-media-player-base-color, var(--paper-item-icon-color, #13274A)"
+  banner-card-heading-size: "1.5em"
+  ### Google colors ###
+  google-red-500: "#BF616A"
+  google-blue-500: "#5E81AC"
+  google-green-500: "#A3BE8C"
+  google-yellow-500: "#EBCB8B"
+  ### Thermostat card ###
+  auto-color: "#8FBCBB"
+  eco-color: "#A3BE8C"
+  cool-color: "#81A1C1"
+  heat-color: "#D08770"
+  manual-color: "#5E81AC"
+  off-color: "#D8DEE9"
+  fan_only-color: "#D8DEE9"
+  dry-color: "#EBCB8B"
+  idle-color: "#D8DEE9"
+  unknown-color: "#B48EAD"
+  ### HACS ###
+  hacs-status-installed: var(--google-green-500)

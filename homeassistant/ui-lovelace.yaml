@@ -833,24 +833,6 @@ views:
             - sensor.u_s_air_pollution_level
             - sensor.u_s_air_quality_index
             - sensor.u_s_main_pollutant
- #      - type: map
- #        title: Space Station
- #        aspect_ratio: 16:9
- #        default_zoom: 8
- #        entities:
- #          - binary_sensor.iss
- #      - type: entities
- #        title: Next Train
- #        show_header_toggle: false
- #        entities:
- #          - sensor.next_train_status
- #          - sensor.next_trains_estimated
- #          - sensor.next_trains_scheduled
- #          - sensor.next_trains_platform
- #      - type: plant-status
- #        entity: plant.flora_front_plant
- #      - type: plant-status
- #        entity: plant.flora_back_plant
 
   - title: Settings
     path: settings
@@ -858,16 +840,6 @@ views:
     background: "var(--nord0)"
     badges:
     cards:
- #      - type: entities
- #        title: Protect
- #        show_header_toggle: false
- #        entities:
- #          - sensor.downstairs_nest_protect_battery_health
- #          - sensor.downstairs_nest_protect_co_status
- #          - sensor.downstairs_nest_protect_smoke_status
- #          - sensor.upstairs_nest_protect_battery_health
- #          - sensor.upstairs_nest_protect_co_status
- #          - sensor.upstairs_nest_protect_smoke_status
       - type: entities
         title: Internet
         show_header_toggle: false
@@ -875,7 +847,6 @@ views:
           - sensor.speedtest_ping
           - sensor.speedtest_download
           - sensor.speedtest_upload
-          - sensor.ip_address
       - type: entities
         title: Saga
         show_header_toggle: false

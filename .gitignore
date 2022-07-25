@@ -1,6 +1,5 @@
 # appdaemon
-appdaemon/data/apps/._*
-appdaemon/data/apps/__pycache__/
+appdaemon/data/
 appdaemon/settings.env
 
 # caddy
@@ -12,6 +11,9 @@ deconz/data
 # dockermon
 dockermon/config
 dockermon-saga/config
+
+# epg (testing)
+epg
 
 # folding
 folding/data
@@ -49,12 +51,14 @@ homeassistant/www/Plex_Recently_Added
 homeassistant/ip_bans.yaml
 homeassistant/home-assistant.log.1
 homeassistant/home-assistant.log.fault
+homeassistant/camera
 
 # jottacloud
 jottacloud/data
 
 # miniflux
 miniflux/settings.env
+miniflux/db/
 
 # mqtt
 mqtt/config/
@@ -106,8 +110,8 @@ pihole/settings.env
 # plex
 plex/config/
 
-# samba
-samba/
+# rss
+rss-bridge/data/
 
 # synchthing
 syncthing/data/
@@ -118,6 +122,8 @@ storj/settings.env
 # utilities
 utilities/cron-music-sync.sh
 utilities/tv-switch.sh
+utilities/cron-duckdns.sh
+utilities/duck.log
 
 # vpn
 vpn/data/*
