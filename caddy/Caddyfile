@@ -56,26 +56,6 @@ http://syncthing.saga.lan {
 	}
 }
 
-http://plextv.saga.lan {
-	proxy / 127.0.0.1:32500 {
-		transparent
-	}
-	header / {
-		-X-Frame-Options
-	}
-	errors stdout
-}
-
-http://iplayer.saga.lan {
-	proxy / 127.0.0.1:1935 {
-		transparent
-	}
-	header / {
-		-X-Frame-Options
-	}
-	errors stdout
-}
-
 http://n8n.saga.lan {
 	proxy / 192.168.11.5:5678 {
 		transparent

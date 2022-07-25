@@ -1,0 +1,12 @@
+version: '2'
+services:
+    appdaemon:
+        image: acockburn/appdaemon:latest
+        volumes:
+            - "/media/saga/Media/Containers/appdaemon/data:/conf"
+            - "/etc/localtime:/etc/localtime:ro"
+        ports:
+            - "5050:5050"
+        env_file: ./settings.env
+        restart: always
+        container_name: appdaemon
