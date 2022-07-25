@@ -1,0 +1,10 @@
+version: '2'
+services:
+    rss-bridge:
+        image: rssbridge/rss-bridge:latest
+        volumes:
+            - /media/saga/Media/Containers/rss-bridge/data:/config
+        ports:
+            - 3000:80
+        restart: unless-stopped
+        container_name: rss
