@@ -116,11 +116,6 @@ wake_on_lan:
 # Allows you to issue voice commands from the frontend
 conversation:
 
-# DuckDNS
-duckdns:
-  domain: !secret duck_domain
-  access_token: !secret duck_access_token
-
 # Enables support for tracking state changes over time.
 history:
   include:

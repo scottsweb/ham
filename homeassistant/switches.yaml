@@ -1,14 +1,5 @@
 - platform: command_line
   switches:
-    vpn_liskeard_switch:
-      command_on: !secret ssh_liskeard_vpn_on
-      command_off: !secret ssh_liskeard_vpn_off
-      command_state: !secret ssh_liskeard_vpn_status
-      value_template: >
-        {{ "vpn" in value }}
-
-- platform: command_line
-  switches:
     vpn_ee_switch:
       command_on: !secret ssh_ee_vpn_on
       command_off: !secret ssh_ee_vpn_off

@@ -2,6 +2,9 @@ version: '2'
 services:
     plex:
         image: plexinc/pms-docker:plexpass
+        container_name: plex
+        network_mode: host
+        restart: always
         volumes:
             - "/media/saga/Media/TV:/data/TV"
             - "/media/saga/Media/Music:/data/Music"
@@ -16,7 +19,3 @@ services:
             - HOSTNAME=SagaPlex
         devices:
             - /dev/dri:/dev/dri
-        network_mode: "host"
-        restart: always
-        container_name: plex
-        mem_limit: 1024m

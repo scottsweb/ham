@@ -2,10 +2,6 @@ plex:
   title: 'Plex'
   icon: 'mdi:plex'
   url: !secret plex_ui_ip
-#nodered:
-#  title: 'Node-RED'
-#  icon: 'mdi:vector-polyline'
-#  url: !secret node_red_ip
 pihole_sycamore:
   title: 'Pi-hole'
   icon: 'mdi:checkbox-blank-circle'
@@ -14,6 +10,10 @@ miniflux:
   title: 'RSS'
   icon: 'mdi:rss-box'
   url: !secret miniflux_url
+rss:
+  title: 'RSS Bridge'
+  icon: 'mdi:rss'
+  url: !secret rss_bridge_url
 warrior:
   title: 'Warrior'
   icon: 'mdi:archive'
@@ -34,10 +34,6 @@ syncthing:
   title: Syncthing
   icon: 'mdi:sync-circle'
   url: !secret syncthing_url
-helium:
-  title: Helium
-  icon: 'mdi:radio-tower'
-  url: !secret helium_url
 router:
   title: Router
   icon: 'mdi:router-wireless'
