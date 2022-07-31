@@ -1,0 +1,137 @@
+# appdaemon
+appdaemon/data/
+appdaemon/settings.env
+
+# caddy
+caddy/.caddy/
+
+# deconz
+deconz/data
+
+# dockermon
+dockermon/config
+dockermon-saga/config
+
+# epg (testing)
+epg
+
+# folding
+folding/data
+
+# homeassistant
+homeassistant/.shopping_list.json
+homeassistant/android
+homeassistant/*.pickle
+homeassistant/deps/*
+homeassistant/.uuid
+homeassistant/*.log
+homeassistant/*.db
+homeassistant/*.sqlite
+homeassistant/*.xml
+homeassistant/.google.token
+homeassistant/.HA_VERSION
+homeassistant/known_devices.yaml
+homeassistant/secrets.yaml
+homeassistant/nest.conf
+homeassistant/plex.conf
+homeassistant/emulated_hue_ids.json
+homeassistant/gas-meter.jpg
+homeassistant/gas-meter-invert.jpg
+homeassistant/gas-meter-optimised.jpg
+homeassistant/automations/notify-coin-*
+homeassistant/automations/notify-exchange-rate.yaml
+homeassistant/home-assistant_v2.db-shm
+homeassistant/home-assistant_v2.db-wal
+homeassistant/.cloud/*
+homeassistant/.storage
+homeassistant/custom_components/**/__pycache__/
+homeassistant/custom_components/**/.translations/
+homeassistant/google_calendars.yaml
+homeassistant/www/Plex_Recently_Added
+homeassistant/ip_bans.yaml
+homeassistant/home-assistant.log.1
+homeassistant/home-assistant.log.fault
+homeassistant/camera
+
+# jottacloud
+jottacloud/data
+
+# miniflux
+miniflux/settings.env
+miniflux/db/
+
+# mqtt
+mqtt/config/
+mqtt/data/
+mqtt/log/
+
+# mycroft
+mycroft/data/identity/
+
+# n8n
+n8n/config/*
+
+# node-red
+node-red/node_modules/
+node-red/settings.js
+node-red/flows.json
+node-red/flows_cred.json
+node-red/.sessions.json
+node-red/.config.json
+node-red/.config.json.backup
+node-red/.flows.json.backup
+node-red/.flows_cred.json.backup
+
+# pihole sycamore
+pihole/*.domains
+pihole/custom.list
+pihole/gravity.list
+pihole/piholeIP
+pihole/setupVars.conf
+pihole/list.preEventHorizon
+pihole/local.list
+pihole/install.log
+pihole/pihole-FTL.db
+pihole/pihole-FTL.conf
+pihole/black.list
+pihole/GitHubVersions
+pihole/localbranches
+pihole/localversions
+pihole/secrets/*
+pihole/setupVars.conf.update.bak
+pihole/dhcp.leases
+pihole/dns-servers.conf
+pihole/logrotate
+pihole/list.*
+pihole/gravity.db
+pihole/gravity_old.db
+pihole/settings.env
+
+# plex
+plex/config/
+
+# rss
+rss-bridge/data/
+
+# synchthing
+syncthing/data/
+
+# storj
+storj/settings.env
+
+# utilities
+utilities/cron-music-sync.sh
+utilities/tv-switch.sh
+utilities/cron-duckdns.sh
+utilities/duck.log
+
+# vpn
+vpn/data/*
+
+# wiki
+wiki/data/users.csv
+wiki/data/mywiki/*
+
+# warrior
+warrior/data
+warrior/settings.env
