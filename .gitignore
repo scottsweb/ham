@@ -52,5 +52,3 @@ homeassistant/ip_bans.yaml
 homeassistant/home-assistant.log.1
 homeassistant/home-assistant.log.fault
 homeassistant/camera
-
-# test
