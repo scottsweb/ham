@@ -1,0 +1,73 @@
+version: '3.5'
+
+services:
+  mqtt:
+    image: eclipse-mosquitto
+    container_name: mqtt
+    hostname: mqtt
+    restart: always
+    volumes:
+      - "./data/mqtt/config/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro,z"
+      - "./data/mqtt/config/password.txt:/mosquitto/config/password.txt:ro,z"
+      - "./data/mqtt/log:/mosquitto/log:z"
+      - "./data/mqtt/data:/mosquitto/data:z"
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+
+  deconz:
+    image: deconzcommunity/deconz:stable
+    container_name: deconz
+    restart: always
+    env_file: ./.settings.env
+    group_add:
+      - dialout
+    #device_cgroup_rules:
+    #  - 'c 166:* rmw'
+    volumes:
+      - "./data/deconz:/opt/deCONZ:z"
+    ports:
+      - "8020:8020"
+      - "4043:4043"
+    devices:
+      - "/dev/ttyACM0:/dev/ttyACM0"
+
+  appdaemon:
+    image: acockburn/appdaemon:latest
+    container_name: appdaemon
+    hostname: appdaemon
+    restart: always
+    env_file: .settings.env
+    volumes:
+      - "./data/appdaemon:/conf:z"
+    ports:
+      - "5050:5050"
+    depends_on:
+      - mqtt
+
+  esphome:
+    image: esphome/esphome:latest
+    container_name: esphome
+    hostname: esphome
+    restart: always
+    env_file: ./.settings.env
+    volumes:
+      - "./data/esphome:/config:z"
+    ports:
+      - "6052:6052"
+
+  homeassistant:
+    image: homeassistant/home-assistant:stable
+    container_name: homeassistant
+    network_mode: host
+    privileged: true
+    restart: always
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./data/homeassistant:/config:z"
+      - "/run/user/1000/podman/podman.sock:/var/run/docker.sock:z"
+    depends_on:
+      - mqtt
+      - deconz
+      - appdaemon
+      - esphome

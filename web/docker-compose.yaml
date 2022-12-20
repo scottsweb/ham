@@ -1,0 +1,36 @@
+version: "3.3"
+
+services:
+  web:
+    image: joseluisq/static-web-server:latest
+    hostname: web
+    container_name: web
+    env_file: ./.settings.env
+    restart: always
+    command: -g info
+    volumes:
+      - ./data/web:/public:ro,Z
+    networks:
+      web:
+        ipv4_address: 172.1.1.2
+
+  cloudflared-web:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-web
+    hostname: cloudflaredweb
+    command: tunnel --no-autoupdate run --token ${CF_WEB_TOKEN}
+    restart: always
+    depends_on:
+      - web
+    networks:
+      web:
+        ipv4_address: 172.1.1.3
+
+networks:
+  web:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.1.1.0/16
+          gateway: 172.1.1.1

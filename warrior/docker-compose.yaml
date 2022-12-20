@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+  warrior:
+    image: atdr.meo.ws/archiveteam/warrior-dockerfile
+    container_name: warrior
+    hostname: warrior
+    env_file: ./.settings.env
+    restart: on-failure
+    volumes:
+      - "./data/warrior:/data/data"
+    ports:
+      - "8001:8001"

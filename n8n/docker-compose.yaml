@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  n8n:
+    image: n8nio/n8n
+    container_name: n8n
+    hostname: n8n
+    restart: always
+    env_file: ./.settings.env
+    #command: "n8n start --tunnel"
+    volumes:
+      - ./data/n8n:/home/node/.n8n:z
+    ports:
+      - 5678:5678

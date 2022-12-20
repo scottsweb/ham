@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  caddy:
+    image: caddy:latest
+    restart: always
+    container_name: caddy
+    volumes:
+      - ./data/Caddyfile:/etc/caddy/Caddyfile:z
+      - ./data/config:/config:z
+      - ./data/data:/data:z
+      - ./data/sites:/srv:z
+    ports:
+      - 80:80
+      - 443:443

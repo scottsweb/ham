@@ -1,22 +1,22 @@
-# appdaemon
-appdaemon/data/
-appdaemon/settings.env
+# general
+*/.settings.env
+*/data/
 
-# caddy
-caddy/.caddy/
+# broken / testing
+watchtower/
+vpn/
 
-# deconz
-deconz/data
+# fediverse
+fediverse/*
+fediverse/.settings-ge.env
+fediverse/.settings-se.env
 
-# dockermon
-dockermon/config
-dockermon-saga/config
+# pihole
+pihole/*
 
-# epg (testing)
-epg
+# utilities
+utilities/*
 
-# folding
-folding/data
 
 # homeassistant
 homeassistant/.shopping_list.json
@@ -52,86 +52,3 @@ homeassistant/ip_bans.yaml
 homeassistant/home-assistant.log.1
 homeassistant/home-assistant.log.fault
 homeassistant/camera
-
-# jottacloud
-jottacloud/data
-
-# miniflux
-miniflux/settings.env
-miniflux/db/
-
-# mqtt
-mqtt/config/
-mqtt/data/
-mqtt/log/
-
-# mycroft
-mycroft/data/identity/
-
-# n8n
-n8n/config/*
-
-# node-red
-node-red/node_modules/
-node-red/settings.js
-node-red/flows.json
-node-red/flows_cred.json
-node-red/.sessions.json
-node-red/.config.json
-node-red/.config.json.backup
-node-red/.flows.json.backup
-node-red/.flows_cred.json.backup
-
-# pihole sycamore
-pihole/*.domains
-pihole/custom.list
-pihole/gravity.list
-pihole/piholeIP
-pihole/setupVars.conf
-pihole/list.preEventHorizon
-pihole/local.list
-pihole/install.log
-pihole/pihole-FTL.db
-pihole/pihole-FTL.conf
-pihole/black.list
-pihole/GitHubVersions
-pihole/localbranches
-pihole/localversions
-pihole/secrets/*
-pihole/setupVars.conf.update.bak
-pihole/dhcp.leases
-pihole/dns-servers.conf
-pihole/logrotate
-pihole/list.*
-pihole/gravity.db
-pihole/gravity_old.db
-pihole/settings.env
-
-# plex
-plex/config/
-
-# rss
-rss-bridge/data/
-
-# synchthing
-syncthing/data/
-
-# storj
-storj/settings.env
-
-# utilities
-utilities/cron-music-sync.sh
-utilities/tv-switch.sh
-utilities/cron-duckdns.sh
-utilities/duck.log
-
-# vpn
-vpn/data/*
-
-# wiki
-wiki/data/users.csv
-wiki/data/mywiki/*
-
-# warrior
-warrior/data
-warrior/settings.env

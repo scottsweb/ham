@@ -1,0 +1,87 @@
+version: '3.3'
+
+services:
+
+  miniflux:
+    image: miniflux/miniflux:2.0.39
+    container_name: miniflux
+    hostname: miniflux
+    env_file: ./.settings.env
+    restart: always
+    ports:
+      - 8082:8080
+    depends_on:
+      - db
+      - rss-bridge
+
+  db:
+    image: postgres:13.7
+    container_name: miniflux_db
+    restart: always
+    env_file: ./.settings.env
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "miniflux"]
+      interval: 10s
+      start_period: 30s
+    volumes:
+      - ./data/miniflux:/var/lib/postgresql/data
+
+  rss-bridge:
+    image: rssbridge/rss-bridge:latest
+    container_name: rss
+    hostname: rssbridge
+    restart: always
+    volumes:
+      - ./data/rss-bridge:/config
+    ports:
+      - 8083:80
+
+  photoprism:
+    image: photoprism/photoprism:latest
+    container_name: photoprism
+    hostname: photoprism
+    restart: always
+    env_file: ./.settings.env
+    working_dir: /photoprism
+    depends_on:
+      - photoprism_db
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    ports:
+      - 8084:2342
+    volumes:
+      - /media/sloan/data/Photos:/photoprism/originals:z
+      - ./data/photoprism/storage:/photoprism/storage:z
+
+  photoprism_db:
+    image: mariadb:10.8
+    container_name: photoprism_db
+    hostname: photoprismdb
+    restart: always
+    env_file: ./.settings.env
+    security_opt: # see https://github.com/MariaDB/mariadb-docker/issues/434#issuecomment-1136151239
+      - seccomp:unconfined
+      - apparmor:unconfined
+    command: mysqld --innodb-buffer-pool-size=512M --transaction-isolation=READ-COMMITTED --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=512 --innodb-rollback-on-timeout=OFF --innodb-lock-wait-timeout=120
+    volumes:
+      - ./data/photoprism/db:/var/lib/mysql:z
+
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    hostname: jellyfin
+    restart: always
+    env_file: ./.settings.env
+    mem_limit: 1000m
+    volumes:
+      - /media/sloan/data/TV:/media/TV:ro
+      - /media/sloan/data/Music:/media/Music:ro
+      - /media/sloan/data/Films:/media/Films:ro
+      - /media/sloan/data/Books:/media/Books:ro
+      - ./data/jellyfin/cache:/cache:z
+      - ./data/jellyfin/config:/config:z
+    ports:
+      - 8085:8096
+    devices:
+      - /dev/dri:/dev/dri
