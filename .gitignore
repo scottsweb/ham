@@ -7,7 +7,6 @@ watchtower/
 vpn/
 
 # fediverse
-fediverse/*
 fediverse/.settings-ge.env
 fediverse/.settings-se.env
 

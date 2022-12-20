@@ -1,0 +1,51 @@
+version: "3.5"
+
+# start: PODMAN_USERNS=keep-id podman-compose-new up -d
+services:
+  gotosocial-se:
+    image: superseriousbusiness/gotosocial:0.6.0
+    container_name: gotosocial-se
+    hostname: gotosocialse
+    env_file: ./.settings-se.env
+    user: 1000:1000
+    restart: always
+    volumes:
+      - ./data/db-se:/gotosocial/storage:Z
+    networks:
+      fediverse:
+        ipv4_address: 172.2.1.2
+
+  gotosocial-ge:
+    image: superseriousbusiness/gotosocial:0.6.0
+    container_name: gotosocial-ge
+    hostname: gotosocialge
+    env_file: ./.settings-ge.env
+    user: 1000:1000
+    restart: always
+    volumes:
+      - ./data/db-ge:/gotosocial/storage:Z
+    networks:
+      fediverse:
+        ipv4_address: 172.2.1.3
+
+  cloudflared-fediverse:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-fediverse
+    hostname: cloudflaredfediverse
+    command: tunnel --no-autoupdate run --token ${CF_FEDIVERSE_TOKEN}
+    restart: always
+    depends_on:
+      - gotosocial-se
+      - gotosocial-ge
+    networks:
+      fediverse:
+        ipv4_address: 172.2.1.4
+
+networks:
+  fediverse:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.2.1.0/16
+          gateway: 172.2.1.1
