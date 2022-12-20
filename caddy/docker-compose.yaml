@@ -6,10 +6,10 @@ services:
     restart: always
     container_name: caddy
     volumes:
-      - ./data/Caddyfile:/etc/caddy/Caddyfile:z
-      - ./data/config:/config:z
-      - ./data/data:/data:z
-      - ./data/sites:/srv:z
+      - ./data/Caddyfile:/etc/caddy/Caddyfile:Z
+      - ./data/config:/config:Z
+      - ./data/data:/data:Z
+      - ./data/sites:/srv:Z
     ports:
       - 80:80
       - 443:443
