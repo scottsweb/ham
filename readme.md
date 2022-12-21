@@ -1,8 +1,8 @@
 # HAM (Home Automation Machine)
 
-This is version two of HAM ([see version one](https://github.com/scottsweb/ham/tree/master)), the host machine is now running [Fedora Silverblue](https://silverblue.fedoraproject.org/) and uses [Podman](https://podman.io/) instead of Docker. This allows me to run these containers rootless and have a slightly more stable system upon which to build my #homelab.
+This is version two of HAM ([see version one](https://github.com/scottsweb/ham/tree/master)), the host machine is now running [Fedora Silverblue](https://silverblue.fedoraproject.org/) and uses [Podman](https://podman.io/) instead of Docker. This allows the containers to run rootless and have a slightly more stable system upon which to build my #homelab. have also upgraded from a Raspberry Pi to a small x86 system with a small footprint and power demands.
 
-I am mostly just publishing the relevant `docker-compose` / `podman-compose` files now that are grouped into pods around certain pieces of functionality like home automation or media.
+I am mostly just publishing the relevant `docker-compose` / `podman-compose` files that are grouped into pods around certain pieces of functionality like home automation or media. I think this makes more sense, especially as more of my Home Assistant config is moved from YAML to the database.
 
 ## General / OS tweaks
 
@@ -40,6 +40,8 @@ Test the Docker API with:
 sudo curl -H "Content-Type: application/json" --unix-socket /run/user/1000/podman/podman.sock http://localhost/_ping
 ```
 
+Reference: [Using Podman and Docker Compose](https://www.redhat.com/sysadmin/podman-docker-compose)
+
 Start the Podman restart service (restarts containers set to `restart: always`) after a reboot:
 
 ```
@@ -51,4 +53,20 @@ systemctl --user start podman-restart.service
 
 As Silverblue is a desktop OS, it tries to shutdown long running tasks (including Podman containers). This can be turned off by running: `loginctl enable-linger`, check the status with `ls /var/lib/systemd/linger`, then reboot.
 
+### Connectivity check
+
+Fedora has a built in connectivity check that phones home rather frequently. It's probably more useful on a system that uses WiFi, but as this machine is connected via Ethernet I decided to turn it off. `sudo nano /etc/NetworkManager/NetworkManager.conf`:
+
+```
+[connectivity]
+enabled=false
+uri=http://fedoraproject.org/static/hotspot.txt
+response=OK
+interval=300
+```
+
+Then run `systemctl restart NetworkManager` for the changes to be picked up.
+
 ... more to come
+
+## Containers
