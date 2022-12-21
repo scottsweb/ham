@@ -71,6 +71,7 @@ services:
     image: jellyfin/jellyfin:latest
     container_name: jellyfin
     hostname: jellyfin
+    privileged: true
     restart: always
     env_file: ./.settings.env
     mem_limit: 1000m
@@ -84,4 +85,5 @@ services:
     ports:
       - 8085:8096
     devices:
-      - /dev/dri:/dev/dri
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card0:/dev/dri/card0
