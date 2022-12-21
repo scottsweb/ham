@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   miniflux:
-    image: miniflux/miniflux:2.0.39
+    image: miniflux/miniflux:latest
     container_name: miniflux
     hostname: miniflux
     env_file: ./.settings.env
