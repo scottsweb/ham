@@ -150,7 +150,7 @@ Reference: [Using firewalld](https://docs.fedoraproject.org/en-US/quick-docs/fir
 
 The `nmap` scanner has to run in unprivileged mode. To do this modify the Nmap Tracker options in the Home Assistant UI and add `--unprivileged` to the raw configurable scan options.
 
-## Deconz
+### Deconz
 
 The Deconz container needs access to USB which is a little tricking using Podman. You need to create a udev rule that changes the group and owner of the USB device when its plugged in so the container can access it.
 
@@ -176,3 +176,7 @@ sudo udevadm trigger
 ```
 
 Reference: [Access USB from rootless container](https://bugzilla.redhat.com/show_bug.cgi?id=1770553), [udev rule tips](https://gist.github.com/edro15/1c6cd63894836ed982a7d88bef26e4af)
+
+### VPN / Wireguard
+
+I haven't found a way to run Wireguard in a rootless container yet, so for now it is running directly on the host machine.
