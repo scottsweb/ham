@@ -1,6 +1,6 @@
 # HAM (Home Automation Machine)
 
-This is version two of HAM ([see version one](https://github.com/scottsweb/ham/tree/master)), the host machine is now running [Fedora Silverblue](https://silverblue.fedoraproject.org/) and uses [Podman](https://podman.io/) instead of Docker. This allows the containers to run rootless and have a slightly more stable system upon which to build my #homelab. have also upgraded from a Raspberry Pi to a small x86 system with a small footprint and power demands.
+This is version two of HAM ([see version one](https://github.com/scottsweb/ham/tree/master)), the host machine is now running [Fedora Silverblue](https://silverblue.fedoraproject.org/) and uses [Podman](https://podman.io/) instead of Docker. This allows the containers to run rootless and have a slightly more stable system upon which to build my #homelab. I have also upgraded from a Raspberry Pi to a x86 system with a small footprint and low power demands.
 
 I am mostly just publishing the relevant `docker-compose` / `podman-compose` files that are grouped into pods around certain pieces of functionality like home automation or media. I think this makes more sense, especially as more of my Home Assistant config is moved from YAML to the database.
 
@@ -97,4 +97,52 @@ crontab -e
 
 Reference: [Scheduling tasks with Cron](https://fedoramagazine.org/scheduling-tasks-with-cron/), [Automating System Tasks](https://docs.fedoraproject.org/en-US/fedora/latest/system-administrators-guide/monitoring-and-automation/Automating_System_Tasks/)
 
+### USB sleep / Auto suspend
+
+To save power Fedora will sleep USB devices. We need to turn this off for Deconz and the Zigbee USB stick (ConBee II):
+
+```
+sudo rpm-ostree kargs --append=usbcore.autosuspend=-1
+
+# check
+cat /sys/module/usbcore/parameters/autosuspend
+```
+
 ## Containers
+
+### Caddy
+
+I am using Caddy as a local reverse proxy. Along with the Pi-hole it allows custom domains like `homeassistant.lan` for each of the services. Caddy needs access to port 80 and 443 so the firewall needs to be opened:
+
+```
+sudo firewall-cmd --zone=FedoraWorkstation --add-service=http
+sudo firewall-cmd --zone=FedoraWorkstation --add-service=http --permanent
+sudo firewall-cmd --zone=FedoraWorkstation --add-service=https
+sudo firewall-cmd --zone=FedoraWorkstation --add-service=https --permanent
+```
+
+`firewall-cmd --get-default-zone` will let you know which zone you are currently using.
+
+### Pi-hole
+
+Pi-hole also needs a few tweaks (including a hole in the local firewall):
+
+```
+sudo sysctl net.ipv4.ip_unprivileged_port_start=53
+sudo nano /etc/sysctl.conf
+# add net.ipv4.ip_unprivileged_port_start=53
+
+sudo nano /etc/systemd/resolved.conf
+# add DNSStubListener=no
+
+sudo systemctl restart systemd-resolved
+sudo systemctl restart NetworkManager
+
+# Firewall
+sudo firewall-cmd --zone=FedoraWorkstation --add-port=53/udp
+sudo firewall-cmd --zone=FedoraWorkstation --add-port=53/tcp
+sudo firewall-cmd --permanent --zone=FedoraWorkstation --add-port=53/udp
+sudo firewall-cmd --permanent --zone=FedoraWorkstation --add-port=53/tcp
+```
+
+Reference: [Using firewalld](https://docs.fedoraproject.org/en-US/quick-docs/firewalld/), [Running Pi-hole in a Podman container](https://jreypo.io/2021/03/12/running-pihole-as-a-podman-container-in-fedora/)
