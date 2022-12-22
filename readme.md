@@ -67,6 +67,34 @@ interval=300
 
 Then run `systemctl restart NetworkManager` for the changes to be picked up.
 
-... more to come
+### SSH
+
+Tweak some SSH settings to restrict access:
+
+```
+PermitRootLogin	no
+PermitEmptyPasswords no
+X11Forwarding no
+PasswordAuthentication no
+AllowUsers username@192.168.1.* username@10.80.x.x (example for more IPs)
+```
+
+These tweaks can be added to `/etc/sshd/sshd_config.d/50-redhat.conf` and applied with `sudo systemctl reload sshd`.
+
+### Cron
+
+`cronie` is a layered package (`rpm-ostree install cronie`).
+
+```
+sudo nano /etc/cron.allow
+# add your username
+
+systemctl enable crond.service
+systemctl start crond.service
+
+crontab -e
+```
+
+Reference: [Scheduling tasks with Cron](https://fedoramagazine.org/scheduling-tasks-with-cron/), [Automating System Tasks](https://docs.fedoraproject.org/en-US/fedora/latest/system-administrators-guide/monitoring-and-automation/Automating_System_Tasks/)
 
 ## Containers
