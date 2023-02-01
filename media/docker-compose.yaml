@@ -24,7 +24,7 @@ services:
       interval: 10s
       start_period: 30s
     volumes:
-      - ./data/miniflux:/var/lib/postgresql/data
+      - ./data/miniflux:/var/lib/postgresql/data:Z
 
   rss-bridge:
     image: rssbridge/rss-bridge:latest
@@ -52,7 +52,7 @@ services:
       - 8084:2342
     volumes:
       - /media/sloan/data/Photos:/photoprism/originals:z
-      - ./data/photoprism/storage:/photoprism/storage:z
+      - ./data/photoprism/storage:/photoprism/storage:Z
 
   photoprism_db:
     image: mariadb:10.8
@@ -65,7 +65,7 @@ services:
       - apparmor:unconfined
     command: mysqld --innodb-buffer-pool-size=512M --transaction-isolation=READ-COMMITTED --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=512 --innodb-rollback-on-timeout=OFF --innodb-lock-wait-timeout=120
     volumes:
-      - ./data/photoprism/db:/var/lib/mysql:z
+      - ./data/photoprism/db:/var/lib/mysql:Z
 
   jellyfin:
     image: jellyfin/jellyfin:latest
@@ -80,8 +80,8 @@ services:
       - /media/sloan/data/Music:/media/Music:ro
       - /media/sloan/data/Films:/media/Films:ro
       - /media/sloan/data/Books:/media/Books:ro
-      - ./data/jellyfin/cache:/cache:z
-      - ./data/jellyfin/config:/config:z
+      - ./data/jellyfin/cache:/cache:Z
+      - ./data/jellyfin/config:/config:Z
     ports:
       - 8085:8096
     devices:

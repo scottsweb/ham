@@ -8,6 +8,6 @@ services:
     env_file: ./.settings.env
     restart: on-failure
     volumes:
-      - "./data/warrior:/data/data"
+      - ./data/warrior:/data/data:Z
     ports:
       - "8001:8001"

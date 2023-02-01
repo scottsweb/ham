@@ -7,10 +7,10 @@ services:
     hostname: mqtt
     restart: always
     volumes:
-      - "./data/mqtt/config/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro,z"
-      - "./data/mqtt/config/password.txt:/mosquitto/config/password.txt:ro,z"
-      - "./data/mqtt/log:/mosquitto/log:z"
-      - "./data/mqtt/data:/mosquitto/data:z"
+      - "./data/mqtt/config/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro,Z"
+      - "./data/mqtt/config/password.txt:/mosquitto/config/password.txt:ro,Z"
+      - "./data/mqtt/log:/mosquitto/log:Z"
+      - "./data/mqtt/data:/mosquitto/data:Z"
     ports:
       - "1883:1883"
       - "9001:9001"
@@ -25,7 +25,7 @@ services:
     #device_cgroup_rules:
     #  - 'c 166:* rmw'
     volumes:
-      - "./data/deconz:/opt/deCONZ:z"
+      - "./data/deconz:/opt/deCONZ:Z"
     ports:
       - "8020:8020"
       - "4043:4043"

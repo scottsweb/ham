@@ -9,6 +9,6 @@ services:
     env_file: ./.settings.env
     #command: "n8n start --tunnel"
     volumes:
-      - ./data/n8n:/home/node/.n8n:z
+      - ./data/n8n:/home/node/.n8n:Z
     ports:
       - 5678:5678

@@ -31,4 +31,4 @@ services:
       - /media/sloan/data/Photos/:/backup/Photos:ro
       - /media/sloan/data/TV/:/backup/TV:ro
       - /media/sloan/data/Films/:/backup/Films:ro
-      - ./data/jottacloud:/data/jottad:z
+      - ./data/jottacloud:/data/jottad:Z
