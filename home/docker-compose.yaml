@@ -15,23 +15,6 @@ services:
       - "1883:1883"
       - "9001:9001"
 
-  deconz:
-    image: deconzcommunity/deconz:stable
-    container_name: deconz
-    restart: always
-    env_file: ./.settings.env
-    group_add:
-      - dialout
-    #device_cgroup_rules:
-    #  - 'c 166:* rmw'
-    volumes:
-      - "./data/deconz:/opt/deCONZ:Z"
-    ports:
-      - "8020:8020"
-      - "4043:4043"
-    devices:
-      - "/dev/ttyACM0:/dev/ttyACM0"
-
   appdaemon:
     image: acockburn/appdaemon:latest
     container_name: appdaemon
@@ -68,6 +51,5 @@ services:
       - "/run/user/1000/podman/podman.sock:/var/run/docker.sock:z"
     depends_on:
       - mqtt
-      - deconz
       - appdaemon
       - esphome
