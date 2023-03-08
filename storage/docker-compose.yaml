@@ -6,7 +6,6 @@ services:
     image: syncthing/syncthing:latest
     container_name: syncthing
     hostname: syncthing
-    hostname: syncthing
     restart: always
     userns_mode: keep-id
     env_file: ./.settings.env
@@ -31,4 +30,15 @@ services:
       - /media/sloan/data/Photos/:/backup/Photos:ro
       - /media/sloan/data/TV/:/backup/TV:ro
       - /media/sloan/data/Films/:/backup/Films:ro
+      - /media/sloan/data/Software/:/backup/Software:z,ro
       - ./data/jottacloud:/data/jottad:Z
+
+  samba:
+    image: crazymax/samba:latest
+    container_name: samba
+    restart: always
+    env_file: ./.settings.env
+    network_mode: host
+    volumes:
+      - ./data/samba:/data:Z
+      - /media/sloan/data/Software:/samba/games:z,ro
