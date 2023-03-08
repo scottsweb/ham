@@ -3,7 +3,7 @@ version: "3.5"
 # start: PODMAN_USERNS=keep-id podman-compose-new up -d
 services:
   gotosocial-se:
-    image: superseriousbusiness/gotosocial:0.6.0
+    image: superseriousbusiness/gotosocial:latest
     container_name: gotosocial-se
     hostname: gotosocialse
     env_file: ./.settings-se.env
@@ -16,7 +16,7 @@ services:
         ipv4_address: 172.2.1.2
 
   gotosocial-ge:
-    image: superseriousbusiness/gotosocial:0.6.0
+    image: superseriousbusiness/gotosocial:latest
     container_name: gotosocial-ge
     hostname: gotosocialge
     env_file: ./.settings-ge.env
