@@ -150,25 +150,21 @@ Reference: [Using firewalld](https://docs.fedoraproject.org/en-US/quick-docs/fir
 
 The `nmap` scanner has to run in unprivileged mode. To do this modify the Nmap Tracker options in the Home Assistant UI and add `--unprivileged` to the raw configurable scan options.
 
-### Deconz
+The container needs access to USB which is a little tricking using Podman. You need to create a udev rule that changes the group and owner of the USB device when its plugged in so the container can access it.
 
-The Deconz container needs access to USB which is a little tricking using Podman. You need to create a udev rule that changes the group and owner of the USB device when its plugged in so the container can access it.
 
 ```
 # set policy for containers to use USB devices in SELinux
 setsebool -P container_use_devices on
 
-# get access to /dev/ttyACM0 by being in same group
-ls -l /dev/ttyACM0
-grep -E '^dialout:' /usr/lib/group | sudo tee -a /etc/group
-sudo usermod -a -G dialout username
+ls -l /dev/ttyUSB0
 
-# change owner of /dev/ttyACM0 to your username
+# change owner of /dev/ttyUSB0 to your username
 lsusb
-sudo nano /etc/udev/rules.d/99-deconz.rules
+sudo nano /etc/udev/rules.d/99-skyconnect.rules
 
 # add the following to the rule file (based on what you get from lsusb)
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1cf1", ATTRS{idProduct}=="0030", OWNER="username", GROUP="dialout"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", OWNER="username", GROUP="username"
 
 # apply changes
 sudo udevadm control --reload-rules
@@ -176,6 +172,21 @@ sudo udevadm trigger
 ```
 
 Reference: [Access USB from rootless container](https://bugzilla.redhat.com/show_bug.cgi?id=1770553), [udev rule tips](https://gist.github.com/edro15/1c6cd63894836ed982a7d88bef26e4af)
+
+### Samba
+
+The [Samba container](https://github.com/crazy-max/docker-samba) requires a hole in the firewall:
+
+```
+sudo dnf install samba
+sudo systemctl enable smb --now
+firewall-cmd --get-active-zones
+sudo firewall-cmd --permanent --zone=FedoraWorkstation --add-service=samba
+sudo firewall-cmd --reload
+```
+
+Reference: [Setting up Samba on Fedora](https://docs.fedoraproject.org/en-US/quick-docs/samba/)
+
 
 ### VPN / Wireguard
 
