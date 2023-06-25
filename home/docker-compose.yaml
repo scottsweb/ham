@@ -53,3 +53,27 @@ services:
       - mqtt
       - appdaemon
       - esphome
+      - whisper
+      - piper
+
+  whisper:
+    image: rhasspy/wyoming-whisper
+    container_name: whisper
+    restart: always
+    command: --model medium-int8 --language en
+    env_file: ./.settings.env
+    volumes:
+      - "./data/whisper:/data:Z"
+    ports:
+      - "10300:10300"
+
+  piper:
+    image: rhasspy/wyoming-piper
+    container_name: piper
+    restart: always
+    command: --voice en-gb-southern_english_female-low
+    env_file: ./.settings.env
+    volumes:
+      - "./data/piper:/data:Z"
+    ports:
+      - "10200:10200"
