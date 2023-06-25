@@ -4,7 +4,6 @@
 
 # broken / testing
 watchtower/
-vpn/
 
 # fediverse
 fediverse/.settings-ge.env
@@ -15,7 +14,6 @@ pihole/*
 
 # utilities
 utilities/*
-
 
 # homeassistant
 homeassistant/.shopping_list.json
