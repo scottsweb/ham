@@ -40,7 +40,7 @@ services:
       - "6052:6052"
 
   homeassistant:
-    image: homeassistant/home-assistant:stable
+    image: homeassistant/home-assistant:latest
     container_name: homeassistant
     network_mode: host
     privileged: true
