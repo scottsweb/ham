@@ -67,6 +67,17 @@ interval=300
 
 Then run `systemctl restart NetworkManager` for the changes to be picked up.
 
+### System time
+
+I found that my system time was getting out of sync, so enabled NTP
+
+```
+timedatectl set-ntp yes
+timedatectl
+```
+
+Reference: [Configuring date and time](https://docs.fedoraproject.org/en-US/fedora/latest/system-administrators-guide/basic-system-configuration/Configuring_the_Date_and_Time/)
+
 ### SSH
 
 Tweak some SSH settings to restrict access:
@@ -79,7 +90,7 @@ PasswordAuthentication no
 AllowUsers username@192.168.1.* username@10.80.x.x (example for more IPs)
 ```
 
-These tweaks can be added to `/etc/sshd/sshd_config.d/50-redhat.conf` and applied with `sudo systemctl reload sshd`.
+These tweaks can be added to `/etc/ssh/sshd_config.d/50-redhat.conf` and applied with `sudo systemctl reload sshd`.
 
 ### Cron
 
@@ -150,7 +161,7 @@ Reference: [Using firewalld](https://docs.fedoraproject.org/en-US/quick-docs/fir
 
 The `nmap` scanner has to run in unprivileged mode. To do this modify the Nmap Tracker options in the Home Assistant UI and add `--unprivileged` to the raw configurable scan options.
 
-The container needs access to USB which is a little tricking using Podman. You need to create a udev rule that changes the group and owner of the USB device when its plugged in so the container can access it.
+The container needs access to USB which is a little tricky using Podman. You need to create a udev rule that changes the group and owner of the USB device when its plugged in so the container can access it.
 
 
 ```
@@ -188,6 +199,30 @@ sudo firewall-cmd --reload
 Reference: [Setting up Samba on Fedora](https://docs.fedoraproject.org/en-US/quick-docs/samba/)
 
 
-### VPN / Wireguard
+### VPN / WireGuard
 
-I haven't found a way to run Wireguard in a rootless container yet, so for now it is running directly on the host machine.
+It took some time to get WireGuard running rootless but the `docker-compose.yaml` file in the `vpn` folder is now working. I spent [a great deal of time experimenting](https://github.com/containers/podman/issues/15120) with this and I cannot exactly remember all the steps I took. I think the main thing you will need to do is enable the kernel module for WireGuard if it's not already enabled... and a few others for ip managment:
+
+```
+# see which modules are loaded 
+lsmod
+
+# enable required modules
+sudo touch /etc/modules-load.d/wireguard.conf
+```
+
+Add the following to `wireguard.conf`:
+
+```
+# load wireguard at boot
+wireguard
+
+# modules for nat
+ip_tables
+iptable_filter
+iptable_nat
+xt_MASQUERADE
+xt_nat
+```
+
+Reboot and the container should now start.
