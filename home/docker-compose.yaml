@@ -77,3 +77,14 @@ services:
       - "./data/piper:/data:Z"
     ports:
       - "10200:10200"
+
+  openwakeword:
+    image: rhasspy/wyoming-openwakeword:latest
+    container_name: openwakeword
+    restart: always
+    command: --custom-model-dir /custom
+    env_file: ./.settings.env
+    volumes: 
+      - "./data/wakeword:/custom"
+    ports:
+      - "10400:10400"
