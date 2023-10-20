@@ -249,3 +249,4 @@ Reboot and the container should now start.
 * [Podman troubleshooting](https://github.com/containers/podman/blob/main/troubleshooting.md)
 * [When to use :z or :Z on Podman mounts](https://unix.stackexchange.com/questions/651198/podman-volume-mounts-when-to-use-the-z-or-z-suffix)
 * [Tips on fixing SELinux labels](https://unix.stackexchange.com/questions/240813/how-to-remove-selinux-label/240884#240884?s=bfed9cf1b8634c10aad788109dbd0930)
+* [Updating images with compose](https://stackoverflow.com/questions/49316462/how-to-update-existing-images-with-docker-compose)
