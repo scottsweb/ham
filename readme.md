@@ -119,6 +119,20 @@ sudo rpm-ostree kargs --append=usbcore.autosuspend=-1
 cat /sys/module/usbcore/parameters/autosuspend
 ```
 
+### Gnome suspends after 15 minutes
+
+Since Fedora 38 the server started auto suspending after 15 minutes. This was due to a settings change that can be adjusted with:
+
+```
+# check state of power settings
+sudo -u gdm dbus-run-session gsettings list-recursively org.gnome.settings-daemon.plugins.power | grep sleep
+
+# set to 0 to disable autosuspend on power
+sudo -u gdm dbus-run-session gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+```
+
+Reference: [Gnome suspends after 15 minutes](https://discussion.fedoraproject.org/t/gnome-suspends-after-15-minutes-of-user-inactivity-even-on-ac-power/79801)
+
 ## Containers
 
 ### Caddy
@@ -201,13 +215,13 @@ Reference: [Setting up Samba on Fedora](https://docs.fedoraproject.org/en-US/qui
 
 ### VPN / WireGuard
 
-It took some time to get WireGuard running rootless but the `docker-compose.yaml` file in the `vpn` folder is now working. I spent [a great deal of time experimenting](https://github.com/containers/podman/issues/15120) with this and I cannot exactly remember all the steps I took. I think the main thing you will need to do is enable the kernel module for WireGuard if it's not already enabled... and a few others for ip managment:
+It took some time to get WireGuard running rootless but the `docker-compose.yaml` file in the `vpn` folder is now working. [I spent a great deal of time experimenting with this](https://github.com/containers/podman/issues/15120) and I cannot exactly remember all the steps I took. I think the main thing you will need to do is enable the kernel module for WireGuard if it's not already enabled... and a few others for ip managment:
 
 ```
 # see which modules are loaded 
 lsmod
 
-# enable required modules
+# enable required kernel modules
 sudo touch /etc/modules-load.d/wireguard.conf
 ```
 
