@@ -240,3 +240,12 @@ xt_nat
 ```
 
 Reboot and the container should now start.
+
+## Useful links
+
+* [User IDs and (rootless) containers with Podman](https://blog.christophersmart.com/2021/01/26/user-ids-and-rootless-containers-with-podman/)
+* [Debugging volumes in rootles containers](https://www.redhat.com/sysadmin/debug-rootless-podman-mounted-volumes)
+* [Using volumes with rootless Podman](https://www.tutorialworks.com/podman-rootless-volumes/)
+* [Podman troubleshooting](https://github.com/containers/podman/blob/main/troubleshooting.md)
+* [When to use :z or :Z on Podman mounts](https://unix.stackexchange.com/questions/651198/podman-volume-mounts-when-to-use-the-z-or-z-suffix)
+* [Tips on fixing SELinux labels](https://unix.stackexchange.com/questions/240813/how-to-remove-selinux-label/240884#240884?s=bfed9cf1b8634c10aad788109dbd0930)
