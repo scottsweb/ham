@@ -2,18 +2,20 @@ version: "3.3"
 
 services:
   wireguard:
-    image: lscr.io/linuxserver/wireguard
+    image: weejewel/wg-easy
     container_name: wireguard
     hostname: wireguard
     restart: always
     env_file: ./.settings.env
     sysctls:
       - net.ipv4.conf.all.forwarding=1
+      - net.ipv4.conf.all.src_valid_mark=1
     ports:
       - 51820:51820/udp
+      - 51821:51821/tcp
     cap_add:
       - NET_ADMIN
       - NET_RAW
       - SYS_MODULE
     volumes:
-      - ./data/wireguard:/config:Z
+      - ./data/wireguard:/etc/wireguard:Z  
