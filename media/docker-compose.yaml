@@ -12,7 +12,6 @@ services:
       - 8082:8080
     depends_on:
       - db
-      - rss-bridge
 
   db:
     image: postgres:13.7
@@ -25,16 +24,6 @@ services:
       start_period: 30s
     volumes:
       - ./data/miniflux:/var/lib/postgresql/data:Z
-
-  rss-bridge:
-    image: rssbridge/rss-bridge:latest
-    container_name: rss
-    hostname: rssbridge
-    restart: always
-    volumes:
-      - ./data/rss-bridge:/config
-    ports:
-      - 8083:80
 
   photoprism:
     image: photoprism/photoprism:latest
