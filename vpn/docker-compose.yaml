@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   wireguard:
-    image: weejewel/wg-easy
+    image: ghcr.io/wg-easy/wg-easy
     container_name: wireguard
     hostname: wireguard
     restart: always
@@ -18,4 +18,4 @@ services:
       - NET_RAW
       - SYS_MODULE
     volumes:
-      - ./data/wireguard:/etc/wireguard:Z  
+      - ./data/wireguard:/etc/wireguard:Z
