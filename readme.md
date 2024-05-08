@@ -49,6 +49,15 @@ systemctl --user enable podman-restart.service
 systemctl --user start podman-restart.service
 ```
 
+With the release of Podman 5 (Fedora 40), there are [some breaking changes with the switch from slirp4netns to pasta](https://blog.podman.io/2024/03/podman-5-0-breaking-changes-in-detail/). This caused two of my containers to break; Caddy and WireGuard. I still need to read more into but for now the fix is to switch back to slirp4netns for container networking by adding the following to `~/.config/containers/containers.conf`:
+
+```
+[network]
+default_rootless_network_cmd = "slirp4netns"
+```
+
+The system then needed to be rebooted and containers were behaving as before.
+
 ### Allow long running tasks
 
 As Silverblue is a desktop OS, it tries to shutdown long running tasks (including Podman containers). This can be turned off by running: `loginctl enable-linger`, check the status with `ls /var/lib/systemd/linger`, then reboot.
