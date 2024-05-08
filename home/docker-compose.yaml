@@ -53,17 +53,17 @@ services:
       - mqtt
       - appdaemon
       - esphome
-      - whisper
+      - vosk
       - piper
 
-  whisper:
-    image: rhasspy/wyoming-whisper
-    container_name: whisper
+  vosk:
+    image: rhasspy/wyoming-vosk
+    container_name: vosk
     restart: always
-    command: --model medium-int8 --language en
+    command: --data-dir=/data --data-dir=/share/vosk/models --sentences-dir=/share/vosk/sentences --correct-sentences=0 --language=uk --preload-language=uk
     env_file: ./.settings.env
     volumes:
-      - "./data/whisper:/data:Z"
+      - "./data/vosk:/data:Z"
     ports:
       - "10300:10300"
 
@@ -84,7 +84,7 @@ services:
     restart: always
     command: --custom-model-dir /custom
     env_file: ./.settings.env
-    volumes: 
+    volumes:
       - "./data/wakeword:/custom"
     ports:
       - "10400:10400"
