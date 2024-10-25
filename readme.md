@@ -224,7 +224,7 @@ Reference: [Setting up Samba on Fedora](https://docs.fedoraproject.org/en-US/qui
 
 ### VPN / WireGuard
 
-It took some time to get WireGuard running rootless but the `docker-compose.yaml` file in the `vpn` folder is now working. [I spent a great deal of time experimenting with this](https://github.com/containers/podman/issues/15120) and I cannot exactly remember all the steps I took. I think the main thing you will need to do is enable the kernel module for WireGuard if it's not already enabled... and a few others for ip managment:
+It took some time to get WireGuard running rootless but the `docker-compose.yaml` file in the `vpn` folder is now working. [I spent a great deal of time experimenting with this](https://github.com/containers/podman/issues/15120) and I cannot exactly remember all the steps I took. I think the main thing you will need to do is enable the kernel module for WireGuard if it's not already enabled... and a few others for ip management:
 
 ```
 # see which modules are loaded 
