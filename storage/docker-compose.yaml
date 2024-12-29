@@ -1,25 +1,7 @@
-version: '3.3'
+x-podman:
+  in_pod: false
 
-# podman-compose --in-pod=0 up -d
-# start: podman-compose-new --no-pod up -d
 services:
-#  syncthing:
-#    image: syncthing/syncthing:latest
-#    container_name: syncthing
-#    hostname: syncthing
-#    restart: always
-#    userns_mode: keep-id
-#    env_file: ./.settings.env
-#    volumes:
-#      - ./data/syncthing:/var/syncthing/config
-#      - /media/sloan/data/Photos/Uploads/Scott:/photos-scott:z
-#      - /media/sloan/data/Photos/Uploads/Gemma:/photos-gemma:z
-#    ports:
-#      - 8384:8384
-#      - 22000:22000/tcp
-#      - 22000:22000/udp
-#      - 21027:21027/udp
-
   jottacloud:
     image: bluet/jottacloud:latest
     container_name: jottacloud
