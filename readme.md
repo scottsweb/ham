@@ -174,8 +174,10 @@ sudo systemctl restart NetworkManager
 
 sudo firewall-cmd --zone=FedoraWorkstation --add-port=53/udp
 sudo firewall-cmd --zone=FedoraWorkstation --add-port=53/tcp
+sudo firewall-cmd --zone=FedoraWorkstation --add-port=67/udp
 sudo firewall-cmd --permanent --zone=FedoraWorkstation --add-port=53/udp
 sudo firewall-cmd --permanent --zone=FedoraWorkstation --add-port=53/tcp
+sudo firewall-cmd --permanent --zone=FedoraWorkstation --add-port=67/udp
 ```
 
 Reference: [Using firewalld](https://docs.fedoraproject.org/en-US/quick-docs/firewalld/), [Running Pi-hole in a Podman container](https://jreypo.io/2021/03/12/running-pihole-as-a-podman-container-in-fedora/)
@@ -224,7 +226,7 @@ Reference: [Setting up Samba on Fedora](https://docs.fedoraproject.org/en-US/qui
 
 ### VPN / WireGuard
 
-It took some time to get WireGuard running rootless but the `docker-compose.yaml` file in the `vpn` folder is now working. [I spent a great deal of time experimenting with this](https://github.com/containers/podman/issues/15120) and I cannot exactly remember all the steps I took. I think the main thing you will need to do is enable the kernel module for WireGuard if it's not already enabled... and a few others for ip managment:
+It took some time to get WireGuard running rootless but the `docker-compose.yaml` file in the `vpn` folder is now working. [I spent a great deal of time experimenting with this](https://github.com/containers/podman/issues/15120) and I cannot exactly remember all the steps I took. I think the main thing you will need to do is enable the kernel module for WireGuard if it's not already enabled... and a few others for ip management:
 
 ```
 # see which modules are loaded 
@@ -259,3 +261,5 @@ Reboot and the container should now start.
 * [When to use :z or :Z on Podman mounts](https://unix.stackexchange.com/questions/651198/podman-volume-mounts-when-to-use-the-z-or-z-suffix)
 * [Tips on fixing SELinux labels](https://unix.stackexchange.com/questions/240813/how-to-remove-selinux-label/240884#240884?s=bfed9cf1b8634c10aad788109dbd0930)
 * [Updating images with compose](https://stackoverflow.com/questions/49316462/how-to-update-existing-images-with-docker-compose)
+* [LaMetric icon reference](https://developer.lametric.com/icons)
+* [Fix excessive ASUS router requests to dns.msftncsi.com](https://www.healey.io/blog/excessive-dns-msftncsi-com-requests/)
