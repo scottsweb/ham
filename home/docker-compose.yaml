@@ -1,5 +1,3 @@
-version: '3.5'
-
 services:
   mqtt:
     image: eclipse-mosquitto
@@ -14,19 +12,6 @@ services:
     ports:
       - "1883:1883"
       - "9001:9001"
-
-  appdaemon:
-    image: acockburn/appdaemon:latest
-    container_name: appdaemon
-    hostname: appdaemon
-    restart: always
-    env_file: .settings.env
-    volumes:
-      - "./data/appdaemon:/conf:z"
-    ports:
-      - "5050:5050"
-    depends_on:
-      - mqtt
 
   esphome:
     image: esphome/esphome:latest
@@ -51,7 +36,6 @@ services:
       - "/run/user/1000/podman/podman.sock:/var/run/docker.sock:z"
     depends_on:
       - mqtt
-      - appdaemon
       - esphome
       - vosk
       - piper
