@@ -1,6 +1,7 @@
-version: "3.5"
+# start: podman-compose up -d
+x-podman:
+  in_pod: false
 
-# start: PODMAN_USERNS=keep-id podman-compose-new up -d
 services:
   gotosocial-se:
     image: superseriousbusiness/gotosocial:latest
@@ -8,6 +9,7 @@ services:
     hostname: gotosocialse
     env_file: ./.settings-se.env
     user: 1000:1000
+    userns_mode: "keep-id:uid=1000,gid=1000"
     restart: always
     volumes:
       - ./data/db-se:/gotosocial/storage:Z
@@ -21,6 +23,7 @@ services:
     hostname: gotosocialge
     env_file: ./.settings-ge.env
     user: 1000:1000
+    userns_mode: "keep-id:uid=1000,gid=1000"
     restart: always
     volumes:
       - ./data/db-ge:/gotosocial/storage:Z
