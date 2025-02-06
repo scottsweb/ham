@@ -37,17 +37,29 @@ services:
     depends_on:
       - mqtt
       - esphome
-      - vosk
+#      - vosk
+      - whisper
       - piper
 
-  vosk:
-    image: rhasspy/wyoming-vosk
-    container_name: vosk
+#  vosk:
+#    image: rhasspy/wyoming-vosk
+#    container_name: vosk
+#    restart: always
+#    command: --data-dir=/data --data-dir=/share/vosk/models --sentences-dir=/share/vosk/sentences --correct-sentences=0 --language=uk --preload-language=uk
+#    env_file: ./.settings.env
+#    volumes:
+#      - "./data/vosk:/data:Z"
+#    ports:
+#      - "10300:10300"
+
+  whisper:
+    image: rhasspy/wyoming-whisper
+    container_name: whisper
     restart: always
-    command: --data-dir=/data --data-dir=/share/vosk/models --sentences-dir=/share/vosk/sentences --correct-sentences=0 --language=uk --preload-language=uk
+    command: --model tiny.en --language en
     env_file: ./.settings.env
     volumes:
-      - "./data/vosk:/data:Z"
+      - "./data/whisper:/data:Z"
     ports:
       - "10300:10300"
 
