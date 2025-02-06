@@ -1,0 +1,16 @@
+x-podman:
+  in_pod: false
+
+services:
+  node-red:
+    image: nodered/node-red:latest
+    container_name: nodered
+    hostname: nodred
+    user: 1000:1000
+    userns_mode: "keep-id:uid=1000,gid=1000"
+    restart: always
+    env_file: ./.settings.env
+    ports:
+      - 8088:1880
+    volumes:
+      - ./data:/data:Z
