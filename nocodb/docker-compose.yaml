@@ -1,0 +1,11 @@
+services:
+  nocodb:
+    image: nocodb/nocodb:latest
+    container_name: nocodb
+    hostname: nocodb
+    restart: always
+    env_file: ./.settings.env
+    ports:
+      - 8087:8080
+    volumes:
+      - ./data:/usr/app/data/:Z
