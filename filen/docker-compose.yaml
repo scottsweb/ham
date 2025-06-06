@@ -1,0 +1,17 @@
+services:
+  filen:
+      image: filen/cli:latest
+      container_name: filen
+      command: >
+         sync
+#        webdav
+#        --w-user ${FILEN_W_USER}
+#       --w-password ${FILEN_W_PASSWORD}
+#       --w-hostname 127.0.0.1
+      volumes:
+        - ./data/.filen-cli-auth-config:/root/.config/filen-cli/.filen-cli-auth-config:ro,Z
+        - ./data/sync.json:/root/.config/filen-cli/syncPairs.json:ro,Z
+        - /var/home/sloan/Containers/nocodb:/mnt/nocodb:z
+        - /var/home/sloan/Containers/node-red:/mnt/node-red:z
+        - /var/home/sloan/Containers/shiori:/mnt/shiori:z
+        - /var/home/sloan/Containers/paperless:/mnt/paperless:z
