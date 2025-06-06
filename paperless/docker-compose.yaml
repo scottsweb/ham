@@ -1,0 +1,28 @@
+x-podman:
+  in_pod: false
+
+services:
+  paperless-broker:
+    image: docker.io/library/redis:8
+    container_name: paperless-broker
+    restart: always
+    user: 1000:1000
+    userns_mode: "keep-id:uid=1000,gid=1000"
+    volumes:
+      - ./data/redis:/data:Z
+  paperless:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: paperless
+    restart: always
+    env_file: ./.settings.env
+    user: 1000:1000
+    userns_mode: "keep-id:uid=1000,gid=1000"
+    depends_on:
+      - paperless-broker
+    ports:
+      - 8089:8000
+    volumes:
+      - ./data/data:/usr/src/paperless/data:Z
+      - ./data/media:/usr/src/paperless/media:z
+      - ./data/export:/usr/src/paperless/export:z
+      - ./data/consume:/usr/src/paperless/consume:z
