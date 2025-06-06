@@ -14,6 +14,7 @@ services:
       - /media/sloan/data/TV/:/backup/TV:ro
       - /media/sloan/data/Films/:/backup/Films:ro
       - /media/sloan/data/Software/:/backup/Software:z,ro
+      - /media/sloan/data/Books/:/backup/Books:z,ro
       - ./data/jottacloud:/data/jottad:Z
 
   samba:
