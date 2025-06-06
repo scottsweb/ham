@@ -1,0 +1,11 @@
+services:
+  shiori:
+    image: ghcr.io/go-shiori/shiori:latest
+    container_name: shiori
+    env_file: ./.settings.env
+    restart: always
+    user: 0:0
+    ports:
+      - 8086:8080
+    volumes:
+      - ./data:/shiori:Z
